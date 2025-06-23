@@ -47,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">गढवा</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              पूर्वाधार, कृषि र पर्यटनः समृद्ध गढवाको मुख्य साधन
+              शिक्षा,स्वास्थ्य,कृषि र रोजगार ,समृद् गढवा गाउँपालिकाको आधार
             </p>
             <div className="pt-2">
               <Link
@@ -112,8 +112,8 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
             <div className="flex items-center gap-2">
               <Copyright className="w-4 h-4" />
               <span>
-                {localizeNumber(new Date().getFullYear(), "ne")} गढवा
-                गाउँपालिका । सर्वाधिकार सुरक्षित
+                {localizeNumber(new Date().getFullYear(), "ne")} गढवा गाउँपालिका
+                । सर्वाधिकार सुरक्षित
               </span>
             </div>
             <div className="flex items-center gap-6">

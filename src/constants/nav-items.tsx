@@ -115,34 +115,34 @@ export const navItems: NavItem[] = [
         title: "सिंचाईको स्रोतको आधारमा सिंचित जमिन",
         href: "/profile/economics/municipality-wide-irrigation-source",
       },
-      // {
-      //   title: "अन्नबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-food-crops",
-      // },
-      // {
-      //   title: "दलहनबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-pulses",
-      // },
-      // {
-      //   title: "तेलबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-oil-seeds",
-      // },
-      // {
-      //   title: "फलफुलबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-fruits",
-      // },
-      // {
-      //   title: "मसलाबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-spices",
-      // },
-      // {
-      //   title: "तरकारीबाली उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-vegetables",
-      // },
-      // {
-      //   title: "पशुपन्छीजन्य वस्तुको उत्पादन सम्बन्धी विवरण",
-      //   href: "/profile/economics/municipality-wide-animal-products",
-      // },
+      {
+        title: "अन्नबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-food-crops",
+      },
+      {
+        title: "दलहनबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-pulses",
+      },
+      {
+        title: "तेलबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-oil-seeds",
+      },
+      {
+        title: "फलफुलबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-fruits",
+      },
+      {
+        title: "मसलाबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-spices",
+      },
+      {
+        title: "तरकारीबाली उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-vegetables",
+      },
+      {
+        title: "पशुपन्छीजन्य वस्तुको उत्पादन सम्बन्धी विवरण",
+        href: "/profile/economics/municipality-wide-animal-products",
+      },
       {
         title: "खाद्यान्न बालीमा लाग्ने रोग विवरण",
         href: "/profile/economics/municipality-wide-crop-diseases",

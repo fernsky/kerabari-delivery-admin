@@ -10,6 +10,7 @@ import {
   Sparkles,
   Users,
   Home,
+  TreePalm,
 } from "lucide-react";
 import Head from "next/head";
 import { localizeNumber } from "@/lib/utils/localize-number";
@@ -37,10 +38,10 @@ const Hero: React.FC<HeroProps> = ({
   // Extract data with proper fallbacks
   const totalArea = demographicData?.areaSqKm
     ? parseFloat(demographicData.areaSqKm)
-    : 135.23;
+    : 356.57;
 
   // Get ward count data for Khajura Rural Municipality
-  const wardCount = 7;
+  const wardCount = 8;
 
   // Calculate stats to display
   const population = demographicData?.totalPopulation || 35055;
@@ -101,14 +102,14 @@ const Hero: React.FC<HeroProps> = ({
         {/* Pattern Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Gadhawa.jpeg"
+            src="/images/gadhawa.jpg"
             alt="Gadhawa Municipality Background"
             fill
             priority={true}
             className="object-cover"
           />
           {/* Enhanced overlay with better contrast and gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f42]/60 via-[#123772]/50 to-[#1a4894]/40 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f42]/60 via-[#123772]/50 to-[#1a4894]/40 z-10 backdrop-blur-[6px]"></div>
 
           {/* Additional subtle texture */}
           <div className="absolute inset-0 bg-[url('/patterns/topography.svg')] opacity-5 mix-blend-overlay z-10"></div>
@@ -130,9 +131,9 @@ const Hero: React.FC<HeroProps> = ({
               <Image
                 src="/images/coat_of_arms.png"
                 alt="Coat of Arms of Nepal"
-                width={100}
-                height={100}
-                className="w-20 h-20 sm:w-20 sm:h-20 object-contain drop-shadow-lg"
+                width={160}
+                height={160}
+                className="w-40 h-40 sm:w-40 sm:h-40 object-contain drop-shadow-lg"
               />
             </div>
           </motion.div>
@@ -161,10 +162,7 @@ const Hero: React.FC<HeroProps> = ({
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               दाङ जिल्ला, लुम्बिनी प्रदेश
-              <div className="text-sm block">
-                {" "}
-                पूर्वाधार, कृषि र पर्यटनः समृद्ध लुङ्रीको मुख्य साधन
-              </div>
+              <div className="text-sm block"> </div>
             </motion.div>
 
             {/* Key Metrics Cards with enhanced contrast */}
@@ -176,7 +174,7 @@ const Hero: React.FC<HeroProps> = ({
             >
               {/* Area Card - improved with stronger background */}
               <div className="flex items-center gap-1.5 sm:gap-2 bg-white/95 backdrop-blur-md px-2 sm:px-3 py-1.5 rounded-full shadow-md text-[#123772] border border-[#123772]/20 border-l-4 border-l-[#1a4894] text-xs sm:text-sm">
-                <Mountain className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <TreePalm className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span
                   className="font-medium whitespace-nowrap"
                   itemProp="areaServed"

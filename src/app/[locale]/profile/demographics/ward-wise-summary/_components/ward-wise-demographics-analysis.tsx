@@ -75,8 +75,8 @@ export default function WardWiseDemographicsAnalysis({
     wardData.map((ward) => ward.totalPopulation),
   );
   const populationRange =
-    highestPopulationWard.totalPopulation -
-    lowestPopulationWard.totalPopulation;
+    highestPopulationWard?.totalPopulation -
+    lowestPopulationWard?.totalPopulation;
   const populationStandardDeviation = Math.sqrt(populationVariance);
   const populationCoefficientOfVariation =
     (populationStandardDeviation /
@@ -248,9 +248,10 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>सबैभन्दा बढी जनसंख्या:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(highestPopulationWard.wardNumber, "ne")} (
+                  वडा {localizeNumber(highestPopulationWard?.wardNumber, "ne")}{" "}
+                  (
                   {localizeNumber(
-                    highestPopulationWard.totalPopulation.toLocaleString(),
+                    highestPopulationWard?.totalPopulation.toLocaleString(),
                     "ne",
                   )}{" "}
                   जना)
@@ -259,9 +260,9 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>सबैभन्दा कम जनसंख्या:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(lowestPopulationWard.wardNumber, "ne")} (
+                  वडा {localizeNumber(lowestPopulationWard?.wardNumber, "ne")} (
                   {localizeNumber(
-                    lowestPopulationWard.totalPopulation.toLocaleString(),
+                    lowestPopulationWard?.totalPopulation.toLocaleString(),
                     "ne",
                   )}{" "}
                   जना)
@@ -285,9 +286,9 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>उच्चतम लैङ्गिक अनुपात:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(highestSexRatioWard.wardNumber, "ne")} (
+                  वडा {localizeNumber(highestSexRatioWard?.wardNumber, "ne")} (
                   {localizeNumber(
-                    highestSexRatioWard.sexRatio.toFixed(1),
+                    highestSexRatioWard?.sexRatio.toFixed(1),
                     "ne",
                   )}
                   )
@@ -296,8 +297,11 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>न्यूनतम लैङ्गिक अनुपात:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(lowestSexRatioWard.wardNumber, "ne")} (
-                  {localizeNumber(lowestSexRatioWard.sexRatio.toFixed(1), "ne")}
+                  वडा {localizeNumber(lowestSexRatioWard?.wardNumber, "ne")} (
+                  {localizeNumber(
+                    lowestSexRatioWard?.sexRatio.toFixed(1),
+                    "ne",
+                  )}
                   )
                 </span>
               </div>
@@ -322,9 +326,10 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>सबैभन्दा बढी घरधुरी:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(highestHouseholdsWard.wardNumber, "ne")} (
+                  वडा {localizeNumber(highestHouseholdsWard?.wardNumber, "ne")}{" "}
+                  (
                   {localizeNumber(
-                    highestHouseholdsWard.totalHouseholds.toLocaleString(),
+                    highestHouseholdsWard?.totalHouseholds.toLocaleString(),
                     "ne",
                   )}
                   )
@@ -333,9 +338,9 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>सबैभन्दा कम घरधुरी:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(lowestHouseholdsWard.wardNumber, "ne")} (
+                  वडा {localizeNumber(lowestHouseholdsWard?.wardNumber, "ne")} (
                   {localizeNumber(
-                    lowestHouseholdsWard.totalHouseholds.toLocaleString(),
+                    lowestHouseholdsWard?.totalHouseholds.toLocaleString(),
                     "ne",
                   )}
                   )
@@ -365,9 +370,9 @@ export default function WardWiseDemographicsAnalysis({
                 <span>सबैभन्दा बढी परिवार संख्या:</span>
                 <span className="font-medium">
                   वडा{" "}
-                  {localizeNumber(highestHouseholdSizeWard.wardNumber, "ne")} (
+                  {localizeNumber(highestHouseholdSizeWard?.wardNumber, "ne")} (
                   {localizeNumber(
-                    highestHouseholdSizeWard.averageHouseholdSize.toFixed(2),
+                    highestHouseholdSizeWard?.averageHouseholdSize.toFixed(2),
                     "ne",
                   )}
                   )
@@ -376,10 +381,10 @@ export default function WardWiseDemographicsAnalysis({
               <div className="flex justify-between items-center">
                 <span>सबैभन्दा कम परिवार संख्या:</span>
                 <span className="font-medium">
-                  वडा {localizeNumber(lowestHouseholdSizeWard.wardNumber, "ne")}{" "}
-                  (
+                  वडा{" "}
+                  {localizeNumber(lowestHouseholdSizeWard?.wardNumber, "ne")} (
                   {localizeNumber(
-                    lowestHouseholdSizeWard.averageHouseholdSize.toFixed(2),
+                    lowestHouseholdSizeWard?.averageHouseholdSize.toFixed(2),
                     "ne",
                   )}
                   )
@@ -406,8 +411,8 @@ export default function WardWiseDemographicsAnalysis({
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            गढवा गाउँपालिकाको वडागत जनसंख्या वितरण विश्लेषणबाट निम्न
-            निष्कर्षहरू निकाल्न सकिन्छ:
+            गढवा गाउँपालिकाको वडागत जनसंख्या वितरण विश्लेषणबाट निम्न निष्कर्षहरू
+            निकाल्न सकिन्छ:
           </p>
 
           <ul itemScope itemType="https://schema.org/ItemList">
@@ -418,8 +423,8 @@ export default function WardWiseDemographicsAnalysis({
             >
               <meta itemProp="position" content="1" />
               <div itemProp="item">
-                <strong>जनसंख्या वितरण:</strong> गढवा गाउँपालिकाभित्र वडाहरू
-                बीच जनसंख्याको विविधता सूचक{" "}
+                <strong>जनसंख्या वितरण:</strong> गढवा गाउँपालिकाभित्र वडाहरू बीच
+                जनसंख्याको विविधता सूचक{" "}
                 {localizeNumber(
                   populationCoefficientOfVariation.toFixed(1),
                   "ne",
@@ -442,13 +447,13 @@ export default function WardWiseDemographicsAnalysis({
               <div itemProp="item">
                 <strong>लैङ्गिक अनुपात:</strong> गढवा गाउँपालिकाका विभिन्न
                 वडाहरूमा लैङ्गिक अनुपात{" "}
-                {localizeNumber(lowestSexRatioWard.sexRatio.toFixed(1), "ne")}{" "}
+                {localizeNumber(lowestSexRatioWard?.sexRatio.toFixed(1), "ne")}{" "}
                 देखि{" "}
-                {localizeNumber(highestSexRatioWard.sexRatio.toFixed(1), "ne")}{" "}
+                {localizeNumber(highestSexRatioWard?.sexRatio.toFixed(1), "ne")}{" "}
                 सम्म रहेको छ। वडा{" "}
-                {localizeNumber(highestSexRatioWard.wardNumber, "ne")} मा
+                {localizeNumber(highestSexRatioWard?.wardNumber, "ne")} मा
                 सबैभन्दा बढी र वडा{" "}
-                {localizeNumber(lowestSexRatioWard.wardNumber, "ne")} मा
+                {localizeNumber(lowestSexRatioWard?.wardNumber, "ne")} मा
                 सबैभन्दा कम लैङ्गिक अनुपात रहेको छ।
               </div>
             </li>
@@ -460,17 +465,17 @@ export default function WardWiseDemographicsAnalysis({
               <meta itemProp="position" content="3" />
               <div itemProp="item">
                 <strong>घरधुरी:</strong> वडा{" "}
-                {localizeNumber(highestHouseholdsWard.wardNumber, "ne")} मा
+                {localizeNumber(highestHouseholdsWard?.wardNumber, "ne")} मा
                 सबैभन्दा बढी घरधुरी (
                 {localizeNumber(
-                  highestHouseholdsWard.totalHouseholds.toLocaleString(),
+                  highestHouseholdsWard?.totalHouseholds.toLocaleString(),
                   "ne",
                 )}
                 ) छन्, जबकि वडा{" "}
-                {localizeNumber(lowestHouseholdsWard.wardNumber, "ne")} मा
+                {localizeNumber(lowestHouseholdsWard?.wardNumber, "ne")} मा
                 सबैभन्दा कम घरधुरी (
                 {localizeNumber(
-                  lowestHouseholdsWard.totalHouseholds.toLocaleString(),
+                  lowestHouseholdsWard?.totalHouseholds.toLocaleString(),
                   "ne",
                 )}
                 ) रहेका छन्।
@@ -485,15 +490,15 @@ export default function WardWiseDemographicsAnalysis({
               <div itemProp="item">
                 <strong>परिवार संख्या:</strong> गढवा गाउँपालिकामा औसत परिवार
                 संख्यामा पनि वडा अनुसार भिन्नता देखिन्छ, जुन वडा{" "}
-                {localizeNumber(lowestHouseholdSizeWard.wardNumber, "ne")} को{" "}
+                {localizeNumber(lowestHouseholdSizeWard?.wardNumber, "ne")} को{" "}
                 {localizeNumber(
-                  lowestHouseholdSizeWard.averageHouseholdSize.toFixed(2),
+                  lowestHouseholdSizeWard?.averageHouseholdSize.toFixed(2),
                   "ne",
                 )}{" "}
                 देखि वडा{" "}
-                {localizeNumber(highestHouseholdSizeWard.wardNumber, "ne")} को{" "}
+                {localizeNumber(highestHouseholdSizeWard?.wardNumber, "ne")} को{" "}
                 {localizeNumber(
-                  highestHouseholdSizeWard.averageHouseholdSize.toFixed(2),
+                  highestHouseholdSizeWard?.averageHouseholdSize.toFixed(2),
                   "ne",
                 )}{" "}
                 सम्म रहेको छ।
@@ -517,21 +522,21 @@ export default function WardWiseDemographicsAnalysis({
           <ul>
             <li>
               <strong>समतामूलक विकास:</strong> वडा{" "}
-              {localizeNumber(highestPopulationWard.wardNumber, "ne")} र वडा{" "}
-              {localizeNumber(lowestPopulationWard.wardNumber, "ne")} बीचको
-              जनसंख्या असमानतालाई सम्बोधन गर्न गढवा गाउँपालिकाको विकास योजना
-              र बजेट विनियोजनमा समतामूलक दृष्टिकोण अपनाउने।
+              {localizeNumber(highestPopulationWard?.wardNumber, "ne")} र वडा{" "}
+              {localizeNumber(lowestPopulationWard?.wardNumber, "ne")} बीचको
+              जनसंख्या असमानतालाई सम्बोधन गर्न गढवा गाउँपालिकाको विकास योजना र
+              बजेट विनियोजनमा समतामूलक दृष्टिकोण अपनाउने।
             </li>
             <li>
-              <strong>लैङ्गिक समानता:</strong> गढवा गाउँपालिकाको न्यून
-              लैङ्गिक अनुपात भएका वडाहरूमा (विशेष गरी वडा{" "}
-              {localizeNumber(lowestSexRatioWard.wardNumber, "ne")}) लैङ्गिक
+              <strong>लैङ्गिक समानता:</strong> गढवा गाउँपालिकाको न्यून लैङ्गिक
+              अनुपात भएका वडाहरूमा (विशेष गरी वडा{" "}
+              {localizeNumber(lowestSexRatioWard?.wardNumber, "ne")}) लैङ्गिक
               समानता सम्बन्धी विशेष कार्यक्रमहरू सञ्चालन गर्ने।
             </li>
             <li>
-              <strong>घरधुरी सर्वेक्षण:</strong> गढवा गाउँपालिकाको उच्च
-              परिवार संख्या भएका वडाहरूमा (विशेष गरी वडा{" "}
-              {localizeNumber(highestHouseholdSizeWard.wardNumber, "ne")})
+              <strong>घरधुरी सर्वेक्षण:</strong> गढवा गाउँपालिकाको उच्च परिवार
+              संख्या भएका वडाहरूमा (विशेष गरी वडा{" "}
+              {localizeNumber(highestHouseholdSizeWard?.wardNumber, "ne")})
               परिवार नियोजन र सचेतना कार्यक्रम सञ्चालन गर्ने।
             </li>
             <li>

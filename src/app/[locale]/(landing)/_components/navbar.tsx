@@ -18,6 +18,7 @@ import {
   Info,
   FileText,
   Map,
+  TreePalm,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -63,21 +64,10 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
               href={`/profile`}
               className="flex items-center gap-2 sm:gap-3 group"
             >
-              {/* <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#123772] to-[#0b1f42] text-white group-hover:shadow-lg group-hover:shadow-[#123772]/25 transition-all duration-300">
-                <Mountain className="w-5 h-5" />
-              </div> */}
-              <div className="flex items-center">
-                <Image
-                  src="/images/Gadhawa_transparent.png"
-                  alt="Gadhawa Municipality Logo"
-                  width={80}
-                  height={80}
-                  className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
-                  onError={(e) => {
-                    console.log("Image failed to load:", e);
-                  }}
-                />
+              <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#123772] to-[#0b1f42] text-white group-hover:shadow-lg group-hover:shadow-[#123772]/25 transition-all duration-300">
+                <TreePalm className="w-5 h-5" />
               </div>
+
               <div className="flex flex-col">
                 <span
                   className={`font-bold sm:text-3xl md:text-4xl tracking-tight ${
