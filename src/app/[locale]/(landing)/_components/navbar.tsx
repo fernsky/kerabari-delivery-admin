@@ -78,10 +78,12 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
                   </span>
                   <Badge
                     variant="outline"
-                    className="hidden sm:flex items-center gap-1 mt-1 border-gray-200"
+                    className="hidden sm:flex items-center gap-1 mt-1 border-black-500"
                   >
-                    <Sparkles className="w-3 h-3 text-white" />
-                    <span className="text-[10px] text-white">गाउँपालिका</span>
+                    <Sparkles className="w-3 h-3 text-black-500" />
+                    <span className="text-[10px] text-black-500">
+                      गाउँपालिका
+                    </span>
                   </Badge>
                 </div>
               </div>
