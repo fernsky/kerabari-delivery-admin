@@ -74,7 +74,7 @@ export const getAllWardAgeWiseEconomicallyActivePopulation = publicProcedure
             age_group,
             population
           FROM 
-            acme_ward_age_wise_economically_active_population
+            acme_ward_age_gender_wise_economically_active_population
           ORDER BY 
             ward_number, age_group
         `;

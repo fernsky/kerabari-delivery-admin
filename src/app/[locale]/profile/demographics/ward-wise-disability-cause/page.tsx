@@ -22,13 +22,13 @@ export const revalidate = 86400; // Revalidate once per day (in seconds)
 
 // Define Nepali names for disability causes
 const DISABILITY_CAUSE_NAMES: Record<string, string> = {
-  CONGENITAL: "जन्मजात",
-  ACCIDENT: "दुर्घटना",
-  MALNUTRITION: "कुपोषण",
-  DISEASE: "रोगको कारण",
-  CONFLICT: "द्वन्द्वको कारण",
-  OTHER: "अन्य(खुलाऊनुहोस्)",
-  UNKNOWN: "थहा नभएको",
+  congenital: "जन्मजात",
+  accident: "दुर्घटना",
+  malnutrition: "कुपोषण",
+  disease: "रोगको कारण",
+  conflict: "द्वन्द्वको कारण",
+  other: "अन्य(खुलाऊनुहोस्)",
+  unknown: "थहा नभएको",
 };
 
 // Define English names for disability causes (for SEO)

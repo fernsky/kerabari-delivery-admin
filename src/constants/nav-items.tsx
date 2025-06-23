@@ -139,10 +139,10 @@ export const navItems: NavItem[] = [
         title: "तरकारीबाली उत्पादन सम्बन्धी विवरण",
         href: "/profile/economics/municipality-wide-vegetables",
       },
-      {
-        title: "पशुपन्छीजन्य वस्तुको उत्पादन सम्बन्धी विवरण",
-        href: "/profile/economics/municipality-wide-animal-products",
-      },
+      // {
+      //   title: "पशुपन्छीजन्य वस्तुको उत्पादन सम्बन्धी विवरण",
+      //   href: "/profile/economics/municipality-wide-animal-products",
+      // },
       {
         title: "खाद्यान्न बालीमा लाग्ने रोग विवरण",
         href: "/profile/economics/municipality-wide-crop-diseases",

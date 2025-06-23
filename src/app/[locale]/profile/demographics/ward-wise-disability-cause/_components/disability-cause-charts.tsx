@@ -9,12 +9,12 @@ import { localizeNumber } from "@/lib/utils/localize-number";
 
 // Define disability cause colors with a modern and accessible palette
 const DISABILITY_CAUSE_COLORS = {
-  CONGENITAL: "#6366F1", // Indigo
-  ACCIDENT: "#EF4444", // Red
-  MALNUTRITION: "#F59E0B", // Amber
-  DISEASE: "#10B981", // Emerald
-  CONFLICT: "#8B5CF6", // Purple
-  OTHER: "#64748B", // Slate
+  congenital: "#6366F1", // Indigo
+  accident: "#EF4444", // Red
+  malnutrition: "#F59E0B", // Amber
+  disease: "#10B981", // Emerald
+  conflict: "#8B5CF6", // Purple
+  other: "#64748B", // Slate
 };
 
 interface DisabilityCauseChartsProps {
