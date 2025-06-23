@@ -64,18 +64,26 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
               href={`/profile`}
               className="flex items-center gap-2 sm:gap-3 group"
             >
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#123772] to-[#0b1f42] text-white group-hover:shadow-lg group-hover:shadow-[#123772]/25 transition-all duration-300">
-                <TreePalm className="w-5 h-5" />
-              </div>
-
-              <div className="flex flex-col">
-                <span
-                  className={`font-bold sm:text-3xl md:text-4xl tracking-tight ${
-                    scrolled ? "text-gray-800" : "text-white"
-                  }`}
-                >
-                  गढवा
-                </span>
+              <div className="flex items-center gap-2">
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#123772] to-[#0b1f42] text-white group-hover:shadow-lg group-hover:shadow-[#123772]/25 transition-all duration-300 flex items-center justify-center">
+                  <TreePalm className="w-5 h-5" />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <span
+                    className={`font-bold sm:text-xl md:text-2xl tracking-tight ${
+                      scrolled ? "text-gray-800" : "text-white"
+                    }`}
+                  >
+                    गढवा
+                  </span>
+                  <Badge
+                    variant="outline"
+                    className="hidden sm:flex items-center gap-1 mt-1 border-gray-200"
+                  >
+                    <Sparkles className="w-3 h-3 text-white" />
+                    <span className="text-[10px] text-white">गाउँपालिका</span>
+                  </Badge>
+                </div>
               </div>
             </Link>
 
