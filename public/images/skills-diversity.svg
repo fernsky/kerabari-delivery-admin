@@ -1,0 +1,46 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central skills representation -->
+  <g transform="translate(600, 200)">
+    <!-- Agriculture skill -->
+    <g transform="translate(-200, 0)">
+      <circle cx="0" cy="0" r="50" fill="#10b981" opacity="0.7" />
+      <!-- Simple plant icon -->
+      <path d="M0,-25 L0,25 M-15,-10 L0,-25 L15,-10" stroke="white" stroke-width="4" fill="none" />
+    </g>
+    
+    <!-- Technical/engineering skill -->
+    <g transform="translate(0, 0)">
+      <circle cx="0" cy="0" r="50" fill="#0ea5e9" opacity="0.7" />
+      <!-- Simple gear icon -->
+      <circle cx="0" cy="0" r="20" fill="none" stroke="white" stroke-width="4" />
+      <path d="M0,-30 L0,-20 M21,-21 L14,-14 M30,0 L20,0 M21,21 L14,14 M0,30 L0,20 M-21,21 L-14,14 M-30,0 L-20,0 M-21,-21 L-14,-14" 
+            stroke="white" stroke-width="4" />
+    </g>
+    
+    <!-- Business/commerce skill -->
+    <g transform="translate(200, 0)">
+      <circle cx="0" cy="0" r="50" fill="#8b5cf6" opacity="0.7" />
+      <!-- Simple chart icon -->
+      <path d="M-20,-15 L-20,20 L20,20 M-15,10 L-5,-10 L5,5 L15,-20" 
+            stroke="white" stroke-width="4" fill="none" />
+    </g>
+  </g>
+  
+  <!-- Connection lines -->
+  <path d="M450,200 Q500,160 550,200" stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.5" />
+  <path d="M650,200 Q700,160 750,200" stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.5" />
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#10b981" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#8b5cf6" opacity="0.05" />
+</svg>

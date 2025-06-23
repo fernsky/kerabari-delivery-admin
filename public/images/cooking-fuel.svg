@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <linearGradient id="flame-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="70%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fcd34d" />
+    </linearGradient>
+    
+    <linearGradient id="pot-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central cooking pot and flame representation -->
+  <g transform="translate(600, 200)">
+    <!-- Cooking pot -->
+    <path d="M-80,-40 C-80,-60 80,-60 80,-40 L80,30 C80,50 -80,50 -80,30 Z" fill="url(#pot-gradient)" opacity="0.9" />
+    
+    <!-- Pot handles -->
+    <path d="M-90,-20 L-110,-10 L-110,10 L-90,20" stroke="#64748b" stroke-width="6" fill="none" opacity="0.8" />
+    <path d="M90,-20 L110,-10 L110,10 L90,20" stroke="#64748b" stroke-width="6" fill="none" opacity="0.8" />
+    
+    <!-- Pot lid -->
+    <ellipse cx="0" cy="-40" rx="80" ry="20" fill="#94a3b8" opacity="0.9" />
+    <ellipse cx="0" cy="-40" rx="60" ry="10" fill="#cbd5e1" opacity="0.5" />
+    
+    <!-- Lid handle -->
+    <circle cx="0" cy="-40" r="8" fill="#64748b" opacity="0.9" />
+    <circle cx="0" cy="-40" r="5" fill="#94a3b8" opacity="0.9" />
+    
+    <!-- Flames under pot - central theme -->
+    <g transform="translate(0, 50)">
+      <!-- Large central flame -->
+      <path d="M-10,0 C-15,20 -20,40 0,20 C20,40 15,20 10,0 Z" fill="url(#flame-gradient)" opacity="0.9" />
+      
+      <!-- Side flames -->
+      <path d="M-40,10 C-45,25 -50,40 -30,25 C-15,40 -25,25 -30,10 Z" fill="url(#flame-gradient)" opacity="0.7" />
+      <path d="M40,10 C45,25 50,40 30,25 C15,40 25,25 30,10 Z" fill="url(#flame-gradient)" opacity="0.7" />
+      
+      <!-- Smaller flames -->
+      <path d="M-20,15 C-22,25 -24,35 -15,30 C-5,35 -7,25 -10,15 Z" fill="url(#flame-gradient)" opacity="0.8" />
+      <path d="M20,15 C22,25 24,35 15,30 C5,35 7,25 10,15 Z" fill="url(#flame-gradient)" opacity="0.8" />
+    </g>
+  </g>
+  
+  <!-- Subtle cooking smoke -->
+  <path d="M580,-10 Q590,-30 600,-20 Q610,-10 620,-30 Q630,-50 620,-70" 
+        fill="none" stroke="#94a3b8" stroke-width="2" opacity="0.3" />
+  
+  <!-- Simple fuel source suggestion (wood) -->
+  <g transform="translate(500, 275)">
+    <rect x="-20" y="-5" width="40" height="10" rx="2" fill="#92400e" opacity="0.6" />
+    <rect x="10" y="-15" width="40" height="10" rx="2" fill="#92400e" opacity="0.6" />
+    <rect x="-30" y="5" width="30" height="10" rx="2" fill="#92400e" opacity="0.6" />
+  </g>
+  
+  <!-- Simple gas canister suggestion -->
+  <g transform="translate(700, 275)">
+    <rect x="-15" y="-20" width="30" height="30" rx="5" fill="#0f766e" opacity="0.6" />
+    <circle cx="0" cy="-25" r="5" fill="#0f766e" opacity="0.6" />
+  </g>
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#f97316" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#f97316" opacity="0.05" />
+</svg>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <!-- Syringe gradient -->
+    <linearGradient id="syringe-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    
+    <!-- Vaccine gradient -->
+    <linearGradient id="vaccine-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central elegant syringe -->
+  <g transform="translate(600, 200)">
+    <!-- Syringe barrel -->
+    <rect x="-80" y="-15" width="160" height="30" rx="15" fill="url(#syringe-gradient)" stroke="#cbd5e1" stroke-width="1" opacity="0.9" />
+    
+    <!-- Vaccine liquid inside -->
+    <rect x="-75" y="-10" width="100" height="20" rx="10" fill="url(#vaccine-gradient)" opacity="0.8" />
+    
+    <!-- Plunger -->
+    <rect x="80" y="-8" width="40" height="16" rx="8" fill="#94a3b8" opacity="0.8" />
+    <circle cx="120" cy="0" r="12" fill="#64748b" opacity="0.8" />
+    
+    <!-- Needle -->
+    <rect x="-120" y="-2" width="40" height="4" fill="#94a3b8" opacity="0.9" />
+    <path d="M-120,-2 L-140,0 L-120,2 Z" fill="#94a3b8" opacity="0.9" />
+    
+    <!-- Measurement marks on syringe -->
+    <line x1="-60" y1="-15" x2="-60" y2="-10" stroke="#94a3b8" stroke-width="0.5" opacity="0.6" />
+    <line x1="-40" y1="-15" x2="-40" y2="-10" stroke="#94a3b8" stroke-width="0.5" opacity="0.6" />
+    <line x1="-20" y1="-15" x2="-20" y2="-10" stroke="#94a3b8" stroke-width="0.5" opacity="0.6" />
+    <line x1="0" y1="-15" x2="0" y2="-10" stroke="#94a3b8" stroke-width="0.5" opacity="0.6" />
+    <line x1="20" y1="-15" x2="20" y2="-10" stroke="#94a3b8" stroke-width="0.5" opacity="0.6" />
+  </g>
+  
+  <!-- Subtle protective shield around syringe -->
+  <circle cx="600" cy="200" r="120" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.2" stroke-dasharray="5 5" />
+  
+  <!-- Small protective droplets -->
+  <circle cx="520" cy="150" r="8" fill="#3b82f6" opacity="0.3" />
+  <circle cx="680" cy="250" r="6" fill="#3b82f6" opacity="0.3" />
+  <circle cx="550" cy="270" r="5" fill="#3b82f6" opacity="0.3" />
+  <circle cx="650" cy="130" r="7" fill="#3b82f6" opacity="0.3" />
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#3b82f6" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#60a5fa" opacity="0.05" />
+</svg>

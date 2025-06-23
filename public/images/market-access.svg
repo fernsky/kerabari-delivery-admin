@@ -1,0 +1,38 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Simple market center representation -->
+  <g transform="translate(600, 200)">
+    <!-- Storefront outline -->
+    <rect x="-80" y="-60" width="160" height="120" fill="none" stroke="#64748b" stroke-width="2" rx="5" opacity="0.7" />
+    
+    <!-- Simple awning -->
+    <path d="M-80,-60 L-80,-80 L80,-80 L80,-60" stroke="#64748b" stroke-width="2" fill="none" opacity="0.7" />
+    
+    <!-- Distance markers -->
+    <circle cx="0" cy="0" r="15" fill="#3b82f6" opacity="0.2" />
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="5 3" opacity="0.5" />
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="5 3" opacity="0.3" />
+    
+    <!-- Person silhouette -->
+    <g transform="translate(-150, 30)">
+      <circle cx="0" cy="-15" r="15" fill="#64748b" opacity="0.7" />
+      <rect x="-10" y="0" width="20" height="30" rx="5" fill="#64748b" opacity="0.7" />
+    </g>
+    
+    <!-- Path to market -->
+    <path d="M-150,30 C-100,40 -50,10 0,0" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5 3" />
+  </g>
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#3b82f6" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#94a3b8" opacity="0.05" />
+</svg>

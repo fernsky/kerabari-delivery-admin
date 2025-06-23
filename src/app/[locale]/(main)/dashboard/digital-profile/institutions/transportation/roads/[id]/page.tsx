@@ -1,0 +1,183 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { api } from "@/trpc/react";
+import { ContentLayout } from "@/components/admin-panel/content-layout";
+import { Button } from "@/components/ui/button";
+import { Loader, ChevronLeft, Edit, Trash2 } from "lucide-react";
+import { RoadDetails } from "./_components/road-details";
+import { RoadMedia } from "./_components/road-media";
+import { RoadMap } from "./_components/road-map";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+export default function ViewRoadPage({ params }: { params: { id: string } }) {
+  const router = useRouter();
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+  // Fetch road data by ID
+  const { data: road, isLoading } =
+    api.profile.transportation.roads.getById.useQuery(params.id, {
+      retry: false,
+      enabled: !!params.id,
+      onError: () => {
+        router.push(
+          "/dashboard/digital-profile/institutions/transportation/roads",
+        );
+        toast.error("सडक फेला परेन");
+      },
+    });
+
+  // Delete mutation
+  const { mutate: deleteRoad, isLoading: isDeleting } =
+    api.profile.transportation.roads.delete.useMutation({
+      onSuccess: () => {
+        toast.success("सडक सफलतापूर्वक हटाइयो");
+        router.push(
+          "/dashboard/digital-profile/institutions/transportation/roads",
+        );
+      },
+      onError: (error) => {
+        toast.error(`सडक हटाउन असफल: ${error.message}`);
+        setIsDeleteDialogOpen(false);
+      },
+    });
+
+  // Handle delete confirmation
+  const handleDelete = () => {
+    if (road?.id) {
+      deleteRoad(road.id);
+    }
+  };
+
+  // Get road type label
+  const getRoadTypeLabel = (type: string) => {
+    const types = {
+      HIGHWAY: "हाइवे",
+      URBAN: "सहरी सडक",
+      RURAL: "ग्रामीण सडक",
+      GRAVEL: "ग्राभेल सडक",
+      EARTHEN: "कच्ची सडक",
+      AGRICULTURAL: "कृषि सडक",
+      ALLEY: "गल्ली",
+      BRIDGE: "पुल",
+    };
+    return types[type as keyof typeof types] || type;
+  };
+
+  if (isLoading) {
+    return (
+      <ContentLayout title="सडक लोड गर्दै...">
+        <div className="flex justify-center items-center h-64">
+          <Loader className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </ContentLayout>
+    );
+  }
+
+  if (!road) {
+    return (
+      <ContentLayout title="सडक फेला परेन">
+        <div className="flex flex-col items-center justify-center h-64 gap-4">
+          <p className="text-muted-foreground">माग गरिएको सडक फेला परेन</p>
+          <Button
+            onClick={() =>
+              router.push(
+                "/dashboard/digital-profile/institutions/transportation/roads",
+              )
+            }
+            variant="outline"
+          >
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            सूचीमा फर्कनुहोस्
+          </Button>
+        </div>
+      </ContentLayout>
+    );
+  }
+
+  return (
+    <ContentLayout
+      title={road.name}
+      subtitle={getRoadTypeLabel(road.type)}
+      backHref="/dashboard/digital-profile/institutions/transportation/roads"
+      actions={
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            onClick={() =>
+              router.push(
+                `/dashboard/digital-profile/institutions/transportation/roads/edit/${road.id}`,
+              )
+            }
+          >
+            <Edit className="mr-2 h-4 w-4" />
+            सम्पादन
+          </Button>
+          <Button
+            variant="destructive"
+            onClick={() => setIsDeleteDialogOpen(true)}
+          >
+            <Trash2 className="mr-2 h-4 w-4" />
+            हटाउनुहोस्
+          </Button>
+        </div>
+      }
+    >
+      <div className="space-y-8">
+        <Tabs defaultValue="details">
+          <TabsList className="mb-6">
+            <TabsTrigger value="details">विवरण</TabsTrigger>
+            <TabsTrigger value="map">नक्सा</TabsTrigger>
+            <TabsTrigger value="media">फोटोहरू</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="details">
+            <RoadDetails road={road} />
+          </TabsContent>
+
+          <TabsContent value="map">
+            <RoadMap road={road} />
+          </TabsContent>
+
+          <TabsContent value="media">
+            <RoadMedia roadId={road.id} media={road.media || []} />
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      {/* Delete confirmation dialog */}
+      <AlertDialog
+        open={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>के तपाईं निश्चित हुनुहुन्छ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              सडक &quot;{road.name}&quot; हटाउने। यो कार्य पूर्ववत हुन सक्दैन।
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>रद्द गर्नुहोस्</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete} disabled={isDeleting}>
+              {isDeleting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+              हटाउनुहोस्
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </ContentLayout>
+  );
+}

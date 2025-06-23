@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://digital.khajuramun.gov.np
+
+# Sitemaps
+Sitemap: https://digital.khajuramun.gov.np/sitemap.xml
+Sitemap: https://digital.khajuramun.gov.np/sitemap-index.xml

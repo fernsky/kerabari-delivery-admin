@@ -1,0 +1,71 @@
+{
+  "title": "मेरो प्रोफाइल",
+  "subtitle": "आफ्नो व्यक्तिगत जानकारी हेर्नुहोस् र प्रबन्ध गर्नुहोस्",
+  "state": {
+    "uploading": "अपलोड गर्दै..."
+  },
+  "documentState": {
+    "approved": "प्रमाणित",
+    "underReview": "समीक्षा अन्तर्गत",
+    "rejectedBlurry": "अस्वीकृत: अस्पष्ट",
+    "rejectedUnsuitable": "अस्वीकृत: अनुपयुक्त",
+    "rejectedMismatch": "अस्वीकृत: जानकारी मेल खाँदैन",
+    "rejectedInconsistent": "अस्वीकृत: असंगत",
+    "notUploaded": "अपलोड भएको छैन",
+    "note": "टिप्पणी"
+  },
+  "actions": {
+    "edit": "प्रोफाइल सम्पादन",
+    "uploadPhoto": "फोटो अपलोड",
+    "replacePhoto": "फोटो बदल्नुहोस्",
+    "uploadDocument": "कागजात अपलोड",
+    "replaceDocument": "कागजात बदल्नुहोस्"
+  },
+  "tabs": {
+    "details": "विवरणहरू",
+    "documents": "कागजातहरू",
+    "verification": "प्रमाणीकरण"
+  },
+  "sections": {
+    "personalInfo": "व्यक्तिगत जानकारी",
+    "contactInfo": "सम्पर्क जानकारी",
+    "documents": "कागजातहरू",
+    "verificationStatus": "प्रमाणीकरण स्थिति"
+  },
+  "details": {
+    "name": "पूरा नाम",
+    "nameDevnagari": "देवनागरीमा नाम",
+    "citizenshipNumber": "नागरिकता नम्बर",
+    "citizenshipIssuedDate": "नागरिकता जारी मिति",
+    "citizenshipIssuedOffice": "नागरिकता जारी कार्यालय",
+    "email": "इमेल ठेगाना",
+    "phone": "फोन नम्बर"
+  },
+  "status": {
+    "verified": "प्रमाणित",
+    "pending": "प्रमाणीकरण बाँकी",
+    "action": "कार्य आवश्यक"
+  },
+  "documents": {
+    "description": "प्रमाणीकरणको लागि आफ्ना कागजातहरूको स्पष्ट स्क्यान वा फोटो अपलोड गर्नुहोस्",
+    "citizenshipFront": "नागरिकता अगाडि",
+    "citizenshipFrontDesc": "नागरिकता प्रमाणपत्रको अगाडि भाग",
+    "citizenshipBack": "नागरिकता पछाडि",
+    "citizenshipBackDesc": "नागरिकता प्रमाणपत्रको पछाडि भाग",
+    "photo": "प्रोफाइल फोटो",
+    "photoDesc": "सेतो पृष्ठभूमिमा हालको पासपोर्ट-साइज फोटो"
+  },
+  "verification": {
+    "description": "आफ्नो प्रोफाइल प्रमाणीकरण प्रक्रियाको स्थिति ट्र्याक गर्नुहोस्",
+    "verifiedTitle": "तपाईंको प्रोफाइल प्रमाणित छ",
+    "verifiedDesc": "तपाईंको पहिचान सफलतापूर्वक प्रमाणित भएको छ। तपाईंको सबै सेवाहरूमा पूर्ण पहुँच छ।",
+    "pendingTitle": "प्रमाणीकरण प्रगतिमा छ",
+    "pendingDesc": "तपाईंको प्रोफाइल हाम्रो प्रमाणीकरण टोलीद्वारा समीक्षा गरिँदैछ। यसमा सामान्यतया १-३ कार्य दिन लाग्छ।",
+    "actionTitle": "कार्य आवश्यक छ",
+    "actionDesc": "तपाईंको पेश गरेको जानकारीमा समाधान गर्नुपर्ने समस्याहरू छन्। कृपया विवरणको लागि तल हेर्नुहोस्।",
+    "history": "प्रमाणीकरण इतिहास",
+    "date": "मिति",
+    "status": "स्थिति",
+    "details": "विवरण"
+  }
+}

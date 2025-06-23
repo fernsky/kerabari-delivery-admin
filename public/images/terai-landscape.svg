@@ -1,0 +1,266 @@
+<svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <!-- Defs for reusable elements -->
+  <defs>
+    <!-- Sky gradient -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8ec0f0" />
+      <stop offset="100%" stop-color="#e6f0fa" />
+    </linearGradient>
+    
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="80%" cy="15%" r="25%" fx="80%" fy="15%">
+      <stop offset="0%" stop-color="#fffd9e" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#fffd9e" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Agricultural field gradients -->
+    <linearGradient id="fieldGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8bc34a" />
+      <stop offset="100%" stop-color="#7cb342" />
+    </linearGradient>
+    
+    <linearGradient id="fieldGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7cb342" />
+      <stop offset="100%" stop-color="#9ccc65" />
+    </linearGradient>
+    
+    <linearGradient id="fieldGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9ccc65" />
+      <stop offset="100%" stop-color="#aed581" />
+    </linearGradient>
+    
+    <linearGradient id="fieldGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8bc34a" />
+      <stop offset="100%" stop-color="#689f38" />
+    </linearGradient>
+    
+    <!-- Distant hills gradient -->
+    <linearGradient id="distantHills" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#558b2f" />
+      <stop offset="100%" stop-color="#689f38" />
+    </linearGradient>
+
+    <!-- Cloud definition -->
+    <g id="cloud">
+      <ellipse cx="0" cy="0" rx="30" ry="20" fill="white" opacity="0.9" />
+      <ellipse cx="25" cy="-5" rx="25" ry="15" fill="white" opacity="0.9" />
+      <ellipse cx="-25" cy="0" rx="20" ry="12" fill="white" opacity="0.9" />
+      <ellipse cx="10" cy="10" rx="15" ry="10" fill="white" opacity="0.9" />
+    </g>
+    
+    <!-- Bird definition -->
+    <path id="bird" d="M0,0 C1,-1 2,-2 4,-1 C2,0 1,1 0,0 C-1,1 -2,0 -4,-1 C-2,-2 -1,-1 0,0" fill="#333" />
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#skyGradient)" />
+  
+  <!-- Sun and glow -->
+  <circle cx="80%" cy="15%" r="60" fill="#fff176" />
+  <circle cx="80%" cy="15%" r="200" fill="url(#sunGlow)" />
+  
+  <!-- Clouds -->
+  <g opacity="0.85">
+    <use href="#cloud" x="10%" y="20%" transform="scale(1.2)" />
+    <use href="#cloud" x="30%" y="15%" transform="scale(0.8)" />
+    <use href="#cloud" x="50%" y="25%" transform="scale(1.5)" />
+    <use href="#cloud" x="70%" y="18%" transform="scale(0.9)" />
+    <use href="#cloud" x="85%" y="22%" transform="scale(1.1)" />
+  </g>
+  
+  <!-- Flying birds -->
+  <g>
+    <use href="#bird" x="20%" y="25%" />
+    <use href="#bird" x="22%" y="24%" transform="scale(0.8)" />
+    <use href="#bird" x="25%" y="26%" transform="scale(0.7)" />
+    <use href="#bird" x="55%" y="20%" transform="scale(1.2)" />
+    <use href="#bird" x="58%" y="22%" transform="scale(0.9)" />
+  </g>
+  
+  <!-- Distant hills -->
+  <path d="M0,380 L100,350 L200,370 L300,340 L400,380 L500,350 L600,370 L700,340 L800,360 L900,340 L1000,370 L1100,330 L1200,360 L1300,340 L1400,380 L1500,350 L1600,370 L1700,340 L1800,360 L1920,380 L1920,420 L0,420 Z" fill="url(#distantHills)" opacity="0.8" />
+  
+  <!-- Agricultural fields - Terraced rice fields with curved paths -->
+  
+  <!-- Base terrain -->
+  <path d="M0,400 Q960,440 1920,400 L1920,1080 L0,1080 Z" fill="#7cb342" />
+  
+  <!-- Terraced field layers with paths - intentionally overlapping to create the terraced effect -->
+  <!-- First layer -->
+  <path d="M0,450 Q240,470 480,460 Q720,450 960,470 Q1200,480 1440,460 Q1680,450 1920,470 L1920,1080 L0,1080 Z" fill="url(#fieldGradient1)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,450 Q240,470 480,460 Q720,450 960,470 Q1200,480 1440,460 Q1680,450 1920,470" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Second layer -->  
+  <path d="M0,520 Q240,500 480,510 Q720,520 960,500 Q1200,490 1440,510 Q1680,520 1920,500 L1920,1080 L0,1080 Z" fill="url(#fieldGradient2)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,520 Q240,500 480,510 Q720,520 960,500 Q1200,490 1440,510 Q1680,520 1920,500" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Third layer -->
+  <path d="M0,590 Q240,610 480,600 Q720,590 960,610 Q1200,620 1440,600 Q1680,590 1920,610 L1920,1080 L0,1080 Z" fill="url(#fieldGradient3)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,590 Q240,610 480,600 Q720,590 960,610 Q1200,620 1440,600 Q1680,590 1920,610" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Fourth layer --> 
+  <path d="M0,660 Q240,640 480,650 Q720,660 960,640 Q1200,630 1440,650 Q1680,660 1920,640 L1920,1080 L0,1080 Z" fill="url(#fieldGradient4)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,660 Q240,640 480,650 Q720,660 960,640 Q1200,630 1440,650 Q1680,660 1920,640" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Fifth layer --> 
+  <path d="M0,730 Q240,750 480,740 Q720,730 960,750 Q1200,760 1440,740 Q1680,730 1920,750 L1920,1080 L0,1080 Z" fill="url(#fieldGradient1)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,730 Q240,750 480,740 Q720,730 960,750 Q1200,760 1440,740 Q1680,730 1920,750" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Sixth layer -->
+  <path d="M0,800 Q240,780 480,790 Q720,800 960,780 Q1200,770 1440,790 Q1680,800 1920,780 L1920,1080 L0,1080 Z" fill="url(#fieldGradient2)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,800 Q240,780 480,790 Q720,800 960,780 Q1200,770 1440,790 Q1680,800 1920,780" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Seventh layer -->
+  <path d="M0,870 Q240,890 480,880 Q720,870 960,890 Q1200,900 1440,880 Q1680,870 1920,890 L1920,1080 L0,1080 Z" fill="url(#fieldGradient3)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,870 Q240,890 480,880 Q720,870 960,890 Q1200,900 1440,880 Q1680,870 1920,890" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Eighth layer -->
+  <path d="M0,940 Q240,920 480,930 Q720,940 960,920 Q1200,910 1440,930 Q1680,940 1920,920 L1920,1080 L0,1080 Z" fill="url(#fieldGradient4)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,940 Q240,920 480,930 Q720,940 960,920 Q1200,910 1440,930 Q1680,940 1920,920" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Ninth layer -->
+  <path d="M0,1010 Q240,1030 480,1020 Q720,1010 960,1030 Q1200,1040 1440,1020 Q1680,1010 1920,1030 L1920,1080 L0,1080 Z" fill="url(#fieldGradient1)" />
+  
+  <!-- Field divider line -->
+  <path d="M0,1010 Q240,1030 480,1020 Q720,1010 960,1030 Q1200,1040 1440,1020 Q1680,1010 1920,1030" fill="none" stroke="#5d8c2f" stroke-width="2" opacity="0.7" />
+  
+  <!-- Curved paths/roads -->
+  <path d="M300,450 Q400,550 500,650 Q600,750 800,850 Q1000,950 1200,1050" fill="none" stroke="#a5d6a7" stroke-width="8" opacity="0.6" />
+  
+  <path d="M1500,450 Q1400,550 1300,600 Q1200,650 1100,770 Q1000,850 900,950 Q800,1000 600,1050" fill="none" stroke="#a5d6a7" stroke-width="6" opacity="0.5" />
+  
+  <path d="M900,450 Q950,550 950,650 Q950,750 900,900" fill="none" stroke="#a5d6a7" stroke-width="4" opacity="0.5" />
+  
+  <!-- Add field details - small lines representing crops -->
+  <g opacity="0.6">
+    <!-- Field section 1 -->
+    <g transform="translate(0, 485)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(400, 485)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <!-- Field section 2 -->
+    <g transform="translate(800, 555)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(1200, 555)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <!-- Field section 3 -->
+    <g transform="translate(200, 625)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(600, 625)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(1000, 625)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(1400, 625)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <!-- Field section 4 -->
+    <g transform="translate(400, 695)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(800, 695)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+    
+    <g transform="translate(1600, 695)">
+      <line x1="50" y1="0" x2="50" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="110" y1="0" x2="110" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="140" y1="0" x2="140" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="170" y1="0" x2="170" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+      <line x1="200" y1="0" x2="200" y2="-15" stroke="#dcf3bd" stroke-width="1" />
+    </g>
+  </g>
+  
+  <!-- Water reflection - small ponds in the fields -->
+  <ellipse cx="400" cy="750" rx="50" ry="25" fill="#90caf9" opacity="0.5" />
+  <ellipse cx="1200" cy="920" rx="70" ry="30" fill="#90caf9" opacity="0.5" />
+  <ellipse cx="800" cy="850" rx="60" ry="25" fill="#90caf9" opacity="0.5" />
+  
+  <!-- Road -->
+  <path d="M960,400 L960,1080" stroke="#c5e1a5" stroke-width="10" opacity="0.6" />
+  
+  <!-- Semi-transparent overlay for better text readability -->
+  <rect width="100%" height="100%" fill="white" opacity="0.1" />
+</svg>

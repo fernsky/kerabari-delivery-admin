@@ -1,0 +1,87 @@
+{
+  "appName": "Digital Profile System",
+  "navigation": {
+    "home": "Home",
+    "myProfile": "My Profile",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "button": {
+    "submit": "Submit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "continue": "Continue",
+    "learnMore": "Learn More",
+    "close": "Close"
+  },
+  "imageViewer": {
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "rotate": "Rotate",
+    "download": "Download",
+    "reset": "Reset View",
+    "fullscreen": "Fullscreen",
+    "dragToMove": "Drag to move image",
+    "close": "Close"
+  },
+  "status": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "pending": "Pending",
+    "completed": "Completed"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "password": "Password must be at least 8 characters",
+    "match": "Fields do not match"
+  },
+  "form": {
+    "requiredFields": "Fields marked with * are required",
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordMismatch": "Passwords do not match",
+    "invalidPassword": "Password must contain at least 8 characters, including uppercase, lowercase, number and special character",
+    "submitting": "Submitting...",
+    "next": "Next",
+    "back": "Back"
+  },
+  "errors": {
+    "connectionFailed": "Could not connect to the server. Please check your internet connection and try again.",
+    "serverError": "The server encountered an error. Please try again later.",
+    "unknownError": "An unexpected error occurred. Please try again.",
+    "registrationFailed": "Registration failed"
+  },
+  "homepage": {
+    "services": {
+      "heading": "Our Services",
+      "description": "Manage your digital identity and access government services securely through our platform",
+      "profileManagement": {
+        "title": "Profile Management",
+        "description": "Update and manage your digital profile information",
+        "content": "Keep your citizen profile updated with current contact information and identification documents."
+      },
+      "documentUpload": {
+        "title": "Document Upload",
+        "description": "Securely upload and store your documents",
+        "content": "Upload your photo and citizenship documents to verify your identity for government services."
+      },
+      "digitalIdentity": {
+        "title": "Digital Identity",
+        "description": "Access government services online",
+        "content": "Use your verified digital identity to access various government services seamlessly."
+      }
+    },
+    "information": {
+      "heading": "khajura Digital Profile System",
+      "description": "The official digital identity management system of the Government of Nepal. This secure platform helps citizens maintain their digital profiles and access government services efficiently.",
+      "additionalInfo": "Part of Nepal's digital transformation initiative, enhancing service delivery through secure, accessible, and efficient digital solutions.",
+      "aboutButton": "Learn More About Us"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "profile": {
+    "title": "Citizen Profile",
+    "personalInfo": "Personal Information",
+    "documents": "Documents",
+    "security": "Security Settings",
+    "name": "Full Name",
+    "nameDevnagari": "Name in Devnagari",
+    "citizenshipNumber": "Citizenship Number",
+    "citizenshipIssuedDate": "Citizenship Issued Date",
+    "citizenshipIssuedOffice": "Issued By",
+    "contactInfo": "Contact Information",
+    "email": "Email Address",
+    "phoneNumber": "Phone Number",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "photo": "Profile Photo",
+    "citizenshipFront": "Citizenship Certificate (Front)",
+    "citizenshipBack": "Citizenship Certificate (Back)",
+    "citizenship": "Citizenship Details"
+  },
+  "registration": {
+    "title": "Citizen Registration",
+    "description": "Register yourself as a citizen to access government services",
+    "success": "Registration successful. Your account is pending verification.",
+    "registerNow": "Register Now",
+    "successTitle": "Registration Successful",
+    "dataProtectionNotice": "Your Data is Protected",
+    "dataProtectionDescription": "Your personal information is protected by the Digital Privacy Act and will only be used for official government purposes.",
+    "contactInfo": "Contact Information"
+  },
+  "validation": {
+    "nameMinLength": "Name must be at least 2 characters",
+    "nameMaxLength": "Name cannot exceed 100 characters",
+    "nameFormat": "Name can only contain letters, spaces and basic punctuation",
+    "nameDevnagariMinLength": "Name in Devnagari must be at least 2 characters",
+    "nameDevnagariMaxLength": "Name in Devnagari cannot exceed 100 characters",
+    "required": "This field is required",
+    "citizenshipNumberFormat": "Please enter a valid citizenship number format",
+    "dateInPast": "Date must be in the past",
+    "citizenshipDateValid": "Citizenship issue date must be at least 16 years ago",
+    "maxLength": "Cannot exceed {length} characters",
+    "emailValid": "Please enter a valid email address",
+    "phoneFormat": "Please enter a valid Nepali phone number format (e.g., +9779812345678)",
+    "passwordMinLength": "Password must be at least 8 characters long",
+    "passwordRequirements": "Password must contain uppercase, lowercase, number and special character",
+    "passwordMatch": "Passwords do not match"
+  }
+}

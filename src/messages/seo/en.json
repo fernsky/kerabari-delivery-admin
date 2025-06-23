@@ -1,0 +1,50 @@
+{
+  "default": {
+    "title": "Digital Profile System | Government of Nepal",
+    "description": "Official Digital Profile Information System for citizens of Nepal"
+  },
+  "home": {
+    "title": "Home - khajura Digital Profile System",
+    "description": "Access government services online through the official khajura Digital Profile Citizen Portal. Manage your documents, verify your identity, and access services securely.",
+    "keywords": "khajura, digital profile, citizen portal, nepal government, digital identity, online services, e-governance"
+  },
+  "profile": {
+    "title": "My Profile | Digital Profile System",
+    "description": "View and manage your personal information and verification status",
+    "keywords": "citizen profile, digital identity, khajura profile, personal information, digital documents"
+  },
+  "register": {
+    "title": "Register | Digital Profile System",
+    "description": "Register yourself in the Digital Profile Information System to access government services securely",
+    "keywords": "citizen registration, new account, digital identity, khajura registration, government services"
+  },
+  "login": {
+    "title": "Login | Digital Profile System",
+    "description": "Sign in to your Digital Profile account to access government services and manage your digital identity",
+    "keywords": "citizen login, secure access, khajura login, government portal, digital services"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password - khajura Digital Profile System",
+    "description": "Reset your password to regain access to your khajura Digital Profile account and government services.",
+    "keywords": "password recovery, forgot password, account access, reset password, khajura account"
+  },
+  "dashboard": {
+    "title": "Dashboard | Digital Profile System",
+    "description": "Manage your digital profile, upload documents, and track verification status",
+    "keywords": "citizen dashboard, service status, khajura services, digital profile dashboard"
+  },
+  "documents": {
+    "title": "My Documents - khajura Digital Profile System",
+    "description": "Manage your official documents in the khajura Digital Profile System. Upload, update, and access your verified digital documents.",
+    "keywords": "digital documents, citizenship documents, official papers, document management, khajura documents"
+  },
+  "services": {
+    "title": "Services - khajura Digital Profile System",
+    "description": "Explore and access government services available through the khajura Digital Profile System.",
+    "keywords": "government services, online services, e-governance, public services, khajura services"
+  },
+  "registrationSuccess": {
+    "title": "Registration Successful | Digital Profile System",
+    "description": "Your registration with the Digital Profile Information System has been received. Follow the next steps to complete your profile verification."
+  }
+}

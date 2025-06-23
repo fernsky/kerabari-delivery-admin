@@ -1,0 +1,128 @@
+import { z } from "zod";
+
+// Fiscal year enum and options (from 2079/80 to 2085/86 for example)
+export const ImmunizationFiscalYearEnum = z.enum([
+  "FY_2079_2080",
+  "FY_2080_2081",
+  "FY_2081_2082",
+  "FY_2082_2083",
+  "FY_2083_2084",
+  "FY_2084_2085",
+  "FY_2085_2086",
+]);
+export type ImmunizationFiscalYear = z.infer<typeof ImmunizationFiscalYearEnum>;
+
+export const immunizationFiscalYearOptions = [
+  { value: "FY_2079_2080", label: "२०७९/८०" },
+  { value: "FY_2080_2081", label: "२०८०/८१" },
+  { value: "FY_2081_2082", label: "२०८१/८२" },
+  { value: "FY_2082_2083", label: "२०८२/८३" },
+  { value: "FY_2083_2084", label: "२०८३/८४" },
+  { value: "FY_2084_2085", label: "२०८४/८५" },
+  { value: "FY_2085_2086", label: "२०८५/८६" },
+];
+
+// Indicator enum (excluding the first data/label row)
+export const ImmunizationIndicatorEnum = z.enum([
+  "DPT_HEPB_HIB1_COVERAGE",
+  "OPV1_COVERAGE",
+  "PCV1_COVERAGE",
+  "ROTA1_COVERAGE",
+  "DPT_HEPB_HIB3_COVERAGE",
+  "OPV3_COVERAGE",
+  "ROTA2_COVERAGE",
+  "PLANNED_IMMUNIZATION_SESSIONS_CONDUCTED",
+  "PLANNED_IMMUNIZATION_CLINICS_CONDUCTED",
+  "HYGIENE_PROMOTION_SESSION_AMONG_ROUTINE_IMMUNIZATION",
+  "PCV3_COVERAGE",
+  "MEASLES_RUBELLA1_COVERAGE",
+  "MEASLES_RUBELLA2_COVERAGE",
+  "FULLY_IMMUNIZED_NIP_SCHEDULE",
+  "BCG_COVERAGE",
+  "TCV_COVERAGE",
+  "JE_COVERAGE",
+  "FIPV1_COVERAGE",
+  "TD2_TD2PLUS_COMPLETED_PREGNANT_WOMEN",
+  "VACCINE_WASTAGE_BCG",
+  "TD2PLUS_PREGNANT_WOMEN",
+  "FIPV2_COVERAGE",
+  "TD2_PREGNANT_WOMEN",
+  "VACCINE_WASTAGE_JE",
+  "VACCINE_WASTAGE_MR",
+  "VACCINE_WASTAGE_FIPV",
+  "VACCINE_WASTAGE_TCV",
+  "MEASLES_INCIDENCE_RATE",
+  "VACCINE_WASTAGE_TD",
+  "VACCINE_WASTAGE_OPV",
+  "VACCINE_WASTAGE_DPT_HEPB_HIB",
+  "DPT_HEPB_HIB1_VS_MR2_DROPOUT",
+  "PCV_DROPOUT",
+  "VACCINE_WASTAGE_PCV",
+  "DPT_HEPB_HIB_DROPOUT",
+  "VACCINE_WASTAGE_ROTA",
+  "HPV1_COVERAGE",
+  "HPV2_COVERAGE",
+  "MEASLES_RUBELLA_DROPOUT",
+  "SERIOUS_AEFI_PERCENT",
+  "AES_RATE",
+  "NEONATAL_TETANUS_RATE",
+  "HPV_DROPOUT",
+]);
+export type ImmunizationIndicator = z.infer<typeof ImmunizationIndicatorEnum>;
+
+export const immunizationIndicatorOptions = [
+  { value: "DPT_HEPB_HIB1_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा DPT-HepB-Hib१ खोपको कभरेज प्रतिशत" },
+  { value: "OPV1_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा OPV १ खोपको कभरेज प्रतिशत" },
+  { value: "PCV1_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा PCV १ खोपको कभरेज प्रतिशत" },
+  { value: "ROTA1_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा रोटा खोप १ को कभरेज प्रतिशत" },
+  { value: "DPT_HEPB_HIB3_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा DPT-HepB-Hib३ खोपको कभरेज प्रतिशत" },
+  { value: "OPV3_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा OPV ३ खोपको कभरेज प्रतिशत" },
+  { value: "ROTA2_COVERAGE", label: "एक वर्षका बालबालिकामा रोटा खोप २ को कभरेज प्रतिशत" },
+  { value: "PLANNED_IMMUNIZATION_SESSIONS_CONDUCTED", label: "योजनाबद्ध खोप सत्रहरू सञ्चालित प्रतिशत" },
+  { value: "PLANNED_IMMUNIZATION_CLINICS_CONDUCTED", label: "योजनाबद्ध खोप क्लिनिकहरू सञ्चालित प्रतिशत" },
+  { value: "HYGIENE_PROMOTION_SESSION_AMONG_ROUTINE_IMMUNIZATION", label: "नियमित खोप सत्रमा स्वच्छता प्रवर्द्धन सत्र सञ्चालित प्रतिशत" },
+  { value: "PCV3_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा PCV ३ खोपको कभरेज प्रतिशत" },
+  { value: "MEASLES_RUBELLA1_COVERAGE", label: "दादुरा-रुबेला खोप १ को कभरेज प्रतिशत" },
+  { value: "MEASLES_RUBELLA2_COVERAGE", label: "१२-२३ महिनाका बालबालिकामा दादुरा-रुबेला खोप २ को कभरेज प्रतिशत" },
+  { value: "FULLY_IMMUNIZED_NIP_SCHEDULE", label: "राष्ट्रिय खोप कार्यक्रम अनुसार पूर्ण खोप प्राप्त बालबालिकाको प्रतिशत" },
+  { value: "BCG_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा BCG खोपको कभरेज प्रतिशत" },
+  { value: "TCV_COVERAGE", label: "TCV खोपको कभरेज प्रतिशत" },
+  { value: "JE_COVERAGE", label: "१२-२३ महिनाका बालबालिकामा JE खोपको कभरेज प्रतिशत" },
+  { value: "FIPV1_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा FIPV १ खोपको कभरेज प्रतिशत" },
+  { value: "TD2_TD2PLUS_COMPLETED_PREGNANT_WOMEN", label: "गर्भवती महिलामा TD (TD२ र TD२+) पूर्ण मात्रा प्राप्त गर्नेको प्रतिशत" },
+  { value: "VACCINE_WASTAGE_BCG", label: "BCG खोप खेर जाने दर" },
+  { value: "TD2PLUS_PREGNANT_WOMEN", label: "गर्भवती महिलामा TD२+ प्राप्त गर्नेको प्रतिशत" },
+  { value: "FIPV2_COVERAGE", label: "एक वर्षमुनिका बालबालिकामा FIPV २ खोपको कभरेज प्रतिशत" },
+  { value: "TD2_PREGNANT_WOMEN", label: "गर्भवती महिलामा TD२ प्राप्त गर्नेको प्रतिशत" },
+  { value: "VACCINE_WASTAGE_JE", label: "JE खोप खेर जाने दर" },
+  { value: "VACCINE_WASTAGE_MR", label: "MR खोप खेर जाने दर" },
+  { value: "VACCINE_WASTAGE_FIPV", label: "FIPV खोप खेर जाने दर" },
+  { value: "VACCINE_WASTAGE_TCV", label: "TCV खोप खेर जाने दर" },
+  { value: "MEASLES_INCIDENCE_RATE", label: "प्रति १,००,००० जनसंख्यामा दादुराको घटना दर" },
+  { value: "VACCINE_WASTAGE_TD", label: "TD खोप खेर जाने दर" },
+  { value: "VACCINE_WASTAGE_OPV", label: "OPV खोप खेर जाने दर" },
+  { value: "VACCINE_WASTAGE_DPT_HEPB_HIB", label: "DPT/HepB/Hib खोप खेर जाने दर" },
+  { value: "DPT_HEPB_HIB1_VS_MR2_DROPOUT", label: "DPT-HepB-Hिब१ र MR२ बीचको ड्रपआउट दर" },
+  { value: "PCV_DROPOUT", label: "PCV ड्रपआउट दर (PCV१ र PCV३ बीच)" },
+  { value: "VACCINE_WASTAGE_PCV", label: "PCV खोप खेर जाने दर" },
+  { value: "DPT_HEPB_HIB_DROPOUT", label: "DPT-HepB-Hib ड्रपआउट दर (DPT-HepB-Hिब १ र ३ बीच)" },
+  { value: "VACCINE_WASTAGE_ROTA", label: "रोटा खोप खेर जाने दर" },
+  { value: "HPV1_COVERAGE", label: "९-१३ वर्षका केटीहरूमा HPV१ खोपको कभरेज प्रतिशत" },
+  { value: "HPV2_COVERAGE", label: "९-१३ वर्षका केटीहरूमा HPV२ खोपको कभरेज प्रतिशत" },
+  { value: "MEASLES_RUBELLA_DROPOUT", label: "दादुरा-रुबेला ड्रपआउट दर" },
+  { value: "SERIOUS_AEFI_PERCENT", label: "रिपोर्ट गरिएका AEFI केसहरूमा गम्भीर AEFI को प्रतिशत" },
+  { value: "AES_RATE", label: "प्रति १,००,००० जनसंख्यामा तीव्र इन्सेफलाइटिस सिन्ड्रोम (AES) दर" },
+  { value: "NEONATAL_TETANUS_RATE", label: "प्रति १,००० जीवित जन्ममा नवजात धनुष्टंकार दर" },
+  { value: "HPV_DROPOUT", label: "HPV ड्रपआउट दर (HPV १ र HPV२ बीच)" },
+];
+
+// Data schema
+export const immunizationIndicatorDataSchema = z.object({
+  id: z.string().optional(),
+  fiscalYear: ImmunizationFiscalYearEnum,
+  indicator: ImmunizationIndicatorEnum,
+  value: z.number().nullable(),
+  // Optionally add wardNumber or other fields if needed
+});
+
+export type ImmunizationIndicatorData = z.infer<typeof immunizationIndicatorDataSchema>;

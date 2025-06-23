@@ -1,0 +1,101 @@
+{
+  "login": {
+    "meta": {
+      "title": "Log in to Khajura Rural Municipality",
+      "description": "Access the Khajura Rural Municipality Digital Profile System. Log in securely to manage profile data and administrative tasks."
+    },
+    "welcome": {
+      "badge": "Welcome back",
+      "headingLine1": "Digital Profile",
+      "headingLine2": "System",
+      "description": "Access your dashboard to manage and monitor profile data, track progress, and generate insights for better decision making.",
+      "features": [
+        "Real-time profile tracking and monitoring",
+        "Comprehensive data management tools",
+        "Interactive maps and visualizations",
+        "Secure and efficient data collection"
+      ]
+    },
+    "form": {
+      "branding": "Khajura Rural Municipality",
+      "title": "Log in to your account to access the dashboard",
+      "username": {
+        "label": "Username",
+        "placeholder": "ramprasadkoirala"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "********"
+      },
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create account",
+      "forgotPassword": "Forgot password?"
+    },
+    "errors": {
+      "invalidCredentials": "Invalid username or password",
+      "accountLocked": "Your account has been locked due to multiple failed attempts. Please contact support.",
+      "general": "An error occurred. Please try again later."
+    }
+  },
+  "signup": {
+    "meta": {
+      "title": "Sign up - Khajura Rural Municipality",
+      "description": "Create an account for the Khajura Rural Municipality Digital Profile System. Register to start managing digital profiles and data."
+    },
+    "welcome": {
+      "badge": "Get Started Today",
+      "headingLine1": "Join Our Digital",
+      "headingLine2": "Profile System",
+      "description": "Create your account to start collecting and managing digital profile data efficiently. Join our network of dedicated professionals.",
+      "benefits": [
+        "Access to comprehensive digital profile tools",
+        "Real-time data synchronization",
+        "Secure data collection platform",
+        "Interactive mapping features"
+      ]
+    },
+    "form": {
+      "branding": "Khajura Rural Municipality",
+      "title": "Fill in your details to create your account",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Ram Prasad Koirala"
+      },
+      "phoneNumber": {
+        "label": "Phone Number",
+        "placeholder": "9841234567"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "ramprasadkoirala@gmail.com"
+      },
+      "username": {
+        "label": "Username",
+        "placeholder": "ramprasad"
+      },
+      "wardNumber": {
+        "label": "Ward Number",
+        "placeholder": "Select your ward",
+        "optionPrefix": "Ward"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "********"
+      },
+      "confirmPassword": {
+        "label": "Confirm Password",
+        "placeholder": "********"
+      },
+      "submit": "Create Account",
+      "haveAccount": "Already have an account?",
+      "backToLogin": "Back to login"
+    },
+    "errors": {
+      "passwordNotMatch": "Passwords do not match",
+      "userExists": "User with this username or email already exists",
+      "invalidInformation": "Invalid information provided",
+      "general": "An error occurred. Please try again later."
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "title": "My Profile",
+  "subtitle": "View and manage your personal information",
+  "state": {
+    "uploading": "Uploading..."
+  },
+  "documentState": {
+    "approved": "Approved",
+    "underReview": "Under Review",
+    "rejectedBlurry": "Rejected: Too Blurry",
+    "rejectedUnsuitable": "Rejected: Unsuitable",
+    "rejectedMismatch": "Rejected: Mismatch",
+    "rejectedInconsistent": "Rejected: Inconsistent",
+    "notUploaded": "Not Uploaded",
+    "note": "Note"
+  },
+  "actions": {
+    "edit": "Edit Profile",
+    "uploadPhoto": "Upload Photo",
+    "replacePhoto": "Replace Photo",
+    "uploadDocument": "Upload Document",
+    "replaceDocument": "Replace Document"
+  },
+  "tabs": {
+    "details": "Details",
+    "documents": "Documents",
+    "verification": "Verification"
+  },
+  "sections": {
+    "personalInfo": "Personal Information",
+    "contactInfo": "Contact Information",
+    "documents": "Documents",
+    "verificationStatus": "Verification Status"
+  },
+  "details": {
+    "name": "Full Name",
+    "nameDevnagari": "Name in Devnagari",
+    "citizenshipNumber": "Citizenship Number",
+    "citizenshipIssuedDate": "Citizenship Issued Date",
+    "citizenshipIssuedOffice": "Citizenship Issued Office",
+    "email": "Email Address",
+    "phone": "Phone Number"
+  },
+  "status": {
+    "verified": "Verified",
+    "pending": "Pending Verification",
+    "action": "Action Required"
+  },
+  "documents": {
+    "description": "Upload clear scans or photos of your documents for verification",
+    "citizenshipFront": "Citizenship Front",
+    "citizenshipFrontDesc": "Front side of your citizenship certificate",
+    "citizenshipBack": "Citizenship Back",
+    "citizenshipBackDesc": "Back side of your citizenship certificate",
+    "photo": "Profile Photo",
+    "photoDesc": "Recent passport-size photo on white background"
+  },
+  "verification": {
+    "description": "Track the status of your profile verification process",
+    "verifiedTitle": "Your Profile is Verified",
+    "verifiedDesc": "Your identity has been verified successfully. You have full access to all services.",
+    "pendingTitle": "Verification in Progress",
+    "pendingDesc": "Your profile is being reviewed by our verification team. This typically takes 1-3 business days.",
+    "actionTitle": "Action Required",
+    "actionDesc": "There are issues with your submission that need to be addressed. Please check below for details.",
+    "history": "Verification History",
+    "date": "Date",
+    "status": "Status",
+    "details": "Details"
+  }
+}

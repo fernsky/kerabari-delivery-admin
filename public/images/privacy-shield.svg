@@ -1,0 +1,28 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield base with gradient -->
+  <path d="M100 190C100 190 175 150 175 80V35L100 10L25 35V80C25 150 100 190 100 190Z" fill="url(#shield_gradient)" />
+  
+  <!-- Inner shield (light area) -->
+  <path d="M100 170C100 170 160 138 160 80V45L100 25L40 45V80C40 138 100 170 100 170Z" fill="#FFFFFF" fill-opacity="0.3" />
+  
+  <!-- Lock body -->
+  <rect x="70" y="85" width="60" height="50" rx="10" fill="#FFFFFF" />
+  
+  <!-- Lock shackle -->
+  <path d="M85 85V60C85 52 92 45 100 45C108 45 115 52 115 60V85" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" />
+  
+  <!-- Lock keyhole -->
+  <circle cx="100" cy="110" r="10" fill="#123772" />
+  <rect x="95" y="110" width="10" height="15" fill="#123772" />
+  
+  <!-- Shield outline -->
+  <path d="M100 190C100 190 175 150 175 80V35L100 10L25 35V80C25 150 100 190 100 190Z" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="shield_gradient" x1="25" y1="10" x2="175" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1a4894" />
+      <stop offset="1" stop-color="#0b1f42" />
+    </linearGradient>
+  </defs>
+</svg>

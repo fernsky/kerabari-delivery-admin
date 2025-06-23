@@ -1,0 +1,27 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central marital status representation - interlocked rings -->
+  <g transform="translate(600, 200)">
+    <!-- Left ring representing one spouse -->
+    <circle cx="-40" cy="0" r="70" fill="none" stroke="#3b82f6" stroke-width="8" opacity="0.7" />
+    
+    <!-- Right ring representing other spouse - slightly overlapping -->
+    <circle cx="40" cy="0" r="70" fill="none" stroke="#60a5fa" stroke-width="8" opacity="0.7" />
+  </g>
+  
+  <!-- Simple horizontal line representing relationship status baseline -->
+  <line x1="350" y1="300" x2="850" y2="300" stroke="#94a3b8" stroke-width="2" opacity="0.5" stroke-dasharray="5 3" />
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#3b82f6" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#60a5fa" opacity="0.05" />
+</svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central fertility symbol - mother/parent and child -->
+  <g transform="translate(600, 200)">
+    <!-- Adult figure -->
+    <circle cx="-20" cy="-40" r="30" fill="#fb7185" opacity="0.7" />
+    <rect x="-40" y="-10" width="40" height="70" rx="5" fill="#fb7185" opacity="0.7" />
+    
+    <!-- Child figure -->
+    <circle cx="30" cy="-20" r="20" fill="#fda4af" opacity="0.7" />
+    <rect x="20" y="0" width="20" height="40" rx="5" fill="#fda4af" opacity="0.7" />
+    
+    <!-- Connecting arc representing care/nurture -->
+    <path d="M-20,-40 Q5,-70 30,-20" stroke="#fb7185" stroke-width="4" fill="none" opacity="0.5" />
+  </g>
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#f9a8d4" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#fda4af" opacity="0.05" />
+</svg>

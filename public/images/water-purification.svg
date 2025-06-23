@@ -1,0 +1,31 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <linearGradient id="water-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#93c5fd" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Water Filtering Method (Centered) -->
+  <g transform="translate(600, 200)">
+    <!-- Filter container -->
+    <path d="M-40,0 L40,0 L30,60 L-30,60 Z" fill="#3498DB" opacity="0.3" />
+    <path d="M-40,0 L40,0 L30,-20 L-30,-20 Z" fill="#3498DB" opacity="0.7" />
+    <!-- Filtering media suggestion -->
+    <line x1="-25" y1="15" x2="25" y2="15" stroke="#3498DB" stroke-width="3" stroke-dasharray="3 2" opacity="0.7" />
+    <!-- Water drop -->
+    <path d="M0,60 C0,80 15,80 15,70 C15,60 0,60 0,70 Z" fill="url(#water-gradient)" opacity="0.8" />
+  </g>
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#3498DB" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#9B59B6" opacity="0.05" />
+</svg>

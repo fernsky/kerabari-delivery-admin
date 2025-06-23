@@ -1,0 +1,249 @@
+"use client";
+
+import { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { MoreHorizontal, Edit2, Trash2, AlertTriangle } from "lucide-react";
+import { api } from "@/trpc/react";
+import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+type WardTimeSeriesData = {
+  id: string;
+  wardNumber: number;
+  wardName?: string | null;
+  year: number;
+  totalPopulation?: number | null;
+  malePopulation?: number | null;
+  femalePopulation?: number | null;
+  totalHouseholds?: number | null;
+  literacyRate?: number | null;
+};
+
+interface WardTimeSeriesTableProps {
+  data: WardTimeSeriesData[];
+  onEdit: (id: string) => void;
+}
+
+export default function WardTimeSeriesTable({
+  data,
+  onEdit,
+}: WardTimeSeriesTableProps) {
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [filterWard, setFilterWard] = useState<string>("all");
+  const [filterYear, setFilterYear] = useState<string>("all");
+
+  const utils = api.useContext();
+  const deleteWardTimeSeries =
+    api.profile.demographics.wardTimeSeries.delete.useMutation({
+      onSuccess: () => {
+        toast.success("डाटा सफलतापूर्वक मेटियो");
+        utils.profile.demographics.wardTimeSeries.getAll.invalidate();
+      },
+      onError: (err) => {
+        toast.error(`त्रुटि: ${err.message}`);
+      },
+    });
+
+  const handleDelete = () => {
+    if (deleteId) {
+      deleteWardTimeSeries.mutate({ id: deleteId });
+      setDeleteId(null);
+    }
+  };
+
+  // Calculate unique wards and years for filtering
+  const uniqueWards = Array.from(
+    new Set(data.map((item) => item.wardNumber)),
+  ).sort((a, b) => a - b);
+  const uniqueYears = Array.from(new Set(data.map((item) => item.year))).sort(
+    (a, b) => a - b,
+  );
+
+  // Filter the data
+  const filteredData = data.filter((item) => {
+    const matchesWard =
+      filterWard === "all" || item.wardNumber === parseInt(filterWard);
+    const matchesYear =
+      filterYear === "all" || item.year === parseInt(filterYear);
+    return matchesWard && matchesYear;
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-4 mb-4">
+        <div className="flex items-center space-x-2">
+          <label htmlFor="ward-filter" className="text-sm whitespace-nowrap">
+            वडा अनुसार फिल्टर:
+          </label>
+          <Select value={filterWard} onValueChange={setFilterWard}>
+            <SelectTrigger className="w-[150px]">
+              <SelectValue placeholder="सबै वडाहरू" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">सबै वडाहरू</SelectItem>
+              {uniqueWards.map((ward) => (
+                <SelectItem key={ward} value={ward.toString()}>
+                  वडा {ward}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <label htmlFor="year-filter" className="text-sm whitespace-nowrap">
+            वर्ष अनुसार फिल्टर:
+          </label>
+          <Select value={filterYear} onValueChange={setFilterYear}>
+            <SelectTrigger className="w-[150px]">
+              <SelectValue placeholder="सबै वर्षहरू" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">सबै वर्षहरू</SelectItem>
+              {uniqueYears.map((year) => (
+                <SelectItem key={year} value={year.toString()}>
+                  {year} बि.स.
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="border rounded-lg overflow-hidden">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-16">वडा नं.</TableHead>
+              <TableHead className="w-20">वर्ष</TableHead>
+              <TableHead>वडाको नाम</TableHead>
+              <TableHead className="text-right">जम्मा जनसंख्या</TableHead>
+              <TableHead className="text-right">पुरुष</TableHead>
+              <TableHead className="text-right">महिला</TableHead>
+              <TableHead className="text-right">जम्मा घरधुरी</TableHead>
+              <TableHead className="text-right">साक्षरता दर (%)</TableHead>
+              <TableHead className="w-10"></TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filteredData.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={9} className="h-24 text-center">
+                  कुनै डाटा भेटिएन
+                </TableCell>
+              </TableRow>
+            ) : (
+              filteredData.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell className="font-medium">
+                    {item.wardNumber}
+                  </TableCell>
+                  <TableCell>{item.year}</TableCell>
+                  <TableCell>{item.wardName || `-`}</TableCell>
+                  <TableCell className="text-right">
+                    {item.totalPopulation?.toLocaleString() || "-"}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {item.malePopulation?.toLocaleString() || "-"}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {item.femalePopulation?.toLocaleString() || "-"}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {item.totalHouseholds?.toLocaleString() || "-"}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {item.literacyRate ? `${item.literacyRate}%` : "-"}
+                  </TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>कार्यहरू</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={() => onEdit(item.id)}>
+                          <Edit2 className="mr-2 h-4 w-4" />
+                          सम्पादन गर्नुहोस्
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => setDeleteId(item.id)}
+                          className="text-red-600"
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          मेट्नुहोस्
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500" />
+              वडा जनसंख्या डाटा मेट्ने?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              यो कार्य पूर्ववत हुन सक्दैन। डाटा स्थायी रूपमा हटाइनेछ।
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>रद्द गर्नुहोस्</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDelete}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              मेट्नुहोस्
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
+  );
+}

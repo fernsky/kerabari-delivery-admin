@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    
+    <linearGradient id="water-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Full background of crops -->
+  <!-- Row 1 -->
+  <g transform="translate(100, 80)">
+    <line x1="0" y1="0" x2="0" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="50" y1="0" x2="50" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="100" y1="0" x2="100" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="150" y1="0" x2="150" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="200" y1="0" x2="200" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="250" y1="0" x2="250" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="300" y1="0" x2="300" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="350" y1="0" x2="350" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="400" y1="0" x2="400" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="450" y1="0" x2="450" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="500" y1="0" x2="500" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="550" y1="0" x2="550" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="600" y1="0" x2="600" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="650" y1="0" x2="650" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="700" y1="0" x2="700" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="750" y1="0" x2="750" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="800" y1="0" x2="800" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="850" y1="0" x2="850" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="900" y1="0" x2="900" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="950" y1="0" x2="950" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="1000" y1="0" x2="1000" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="1050" y1="0" x2="1050" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    
+    <!-- Plant heads for row 1 -->
+    <ellipse cx="0" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="50" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="100" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="150" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="200" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="250" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="300" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="350" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="400" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="450" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="500" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="550" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="600" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="650" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="700" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="750" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="800" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="850" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="900" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="950" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="1000" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="1050" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(125, 160)">
+    <line x1="0" y1="0" x2="0" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="50" y1="0" x2="50" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="100" y1="0" x2="100" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="150" y1="0" x2="150" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="200" y1="0" x2="200" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="250" y1="0" x2="250" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="300" y1="0" x2="300" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="350" y1="0" x2="350" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="400" y1="0" x2="400" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="450" y1="0" x2="450" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="500" y1="0" x2="500" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="550" y1="0" x2="550" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="600" y1="0" x2="600" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="650" y1="0" x2="650" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="700" y1="0" x2="700" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="750" y1="0" x2="750" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="800" y1="0" x2="800" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="850" y1="0" x2="850" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="900" y1="0" x2="900" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="950" y1="0" x2="950" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="1000" y1="0" x2="1000" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    
+    <!-- Plant heads for row 2 -->
+    <ellipse cx="0" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="50" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="100" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="150" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="200" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="250" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="300" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="350" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="400" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="450" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="500" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="550" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="600" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="650" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="700" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="750" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="800" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="850" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="900" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="950" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="1000" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+  </g>
+
+  <!-- Row 3 -->
+  <g transform="translate(100, 240)">
+    <line x1="0" y1="0" x2="0" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="50" y1="0" x2="50" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="100" y1="0" x2="100" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="150" y1="0" x2="150" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="200" y1="0" x2="200" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="250" y1="0" x2="250" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="300" y1="0" x2="300" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="350" y1="0" x2="350" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="400" y1="0" x2="400" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="450" y1="0" x2="450" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="500" y1="0" x2="500" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="550" y1="0" x2="550" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="600" y1="0" x2="600" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="650" y1="0" x2="650" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="700" y1="0" x2="700" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="750" y1="0" x2="750" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="800" y1="0" x2="800" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="850" y1="0" x2="850" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="900" y1="0" x2="900" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="950" y1="0" x2="950" y2="-30" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="1000" y1="0" x2="1000" y2="-35" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    <line x1="1050" y1="0" x2="1050" y2="-25" stroke="#16a34a" stroke-width="2" opacity="0.8" />
+    
+    <!-- Plant heads for row 3 -->
+    <ellipse cx="0" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="50" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="100" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="150" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="200" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="250" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="300" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="350" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="400" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="450" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="500" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="550" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="600" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="650" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="700" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="750" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="800" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="850" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="900" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="950" cy="-30" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="1000" cy="-35" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+    <ellipse cx="1050" cy="-25" rx="5" ry="10" fill="#15803d" opacity="0.7" />
+  </g>
+  
+  <!-- Light blue water line at the bottom -->
+  <path d="M0,320 Q300,335 600,320 Q900,305 1200,320" 
+        stroke="#60a5fa" stroke-width="4" fill="none" opacity="0.8">
+    <animate attributeName="d" 
+             values="M0,320 Q300,335 600,320 Q900,305 1200,320;
+                     M0,315 Q300,330 600,315 Q900,300 1200,315;
+                     M0,320 Q300,335 600,320 Q900,305 1200,320" 
+             dur="5s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Subtle water ripples -->
+  <path d="M300,320 Q350,315 400,320 Q450,325 500,320" 
+        stroke="#93c5fd" stroke-width="1" fill="none" opacity="0.6">
+    <animate attributeName="d" 
+             values="M300,320 Q350,315 400,320 Q450,325 500,320;
+                     M280,320 Q330,315 380,320 Q430,325 480,320;
+                     M300,320 Q350,315 400,320 Q450,325 500,320" 
+             dur="3s" repeatCount="indefinite" />
+  </path>
+  
+  <path d="M700,320 Q750,315 800,320 Q850,325 900,320" 
+        stroke="#93c5fd" stroke-width="1" fill="none" opacity="0.6">
+    <animate attributeName="d" 
+             values="M700,320 Q750,315 800,320 Q850,325 900,320;
+                     M680,320 Q730,315 780,320 Q830,325 880,320;
+                     M700,320 Q750,315 800,320 Q850,325 900,320" 
+             dur="4s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#3b82f6" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#16a34a" opacity="0.05" />
+</svg>

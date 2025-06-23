@@ -1,0 +1,53 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Central migration representation -->
+  <g transform="translate(600, 200)">
+    <!-- Origin house/location with rounded roof -->
+    <rect x="-250" y="-50" width="100" height="80" fill="#34A0A4" opacity="0.7" />
+    <path d="M-250,-50 Q-200,-100 -150,-50" fill="#34A0A4" opacity="0.7" />
+    
+    <!-- Destination house/location with rounded roof -->
+    <rect x="150" y="-50" width="100" height="80" fill="#76C893" opacity="0.7" />
+    <path d="M150,-50 Q200,-100 250,-50" fill="#76C893" opacity="0.7" />
+    
+    <!-- Migration arrow removed -->
+    
+    <!-- People silhouettes -->
+    <g transform="translate(-200, 80)">
+      <circle cx="0" cy="0" r="15" fill="#34A0A4" opacity="0.9" />
+      <rect x="-10" y="15" width="20" height="30" rx="3" fill="#34A0A4" opacity="0.9" />
+    </g>
+    
+    <g transform="translate(-170, 80)">
+      <circle cx="0" cy="0" r="12" fill="#34A0A4" opacity="0.9" />
+      <rect x="-8" y="12" width="16" height="25" rx="3" fill="#34A0A4" opacity="0.9" />
+    </g>
+    
+    <g transform="translate(170, 80)">
+      <circle cx="0" cy="0" r="15" fill="#76C893" opacity="0.9" />
+      <rect x="-10" y="15" width="20" height="30" rx="3" fill="#76C893" opacity="0.9" />
+    </g>
+    
+    <g transform="translate(200, 80)">
+      <circle cx="0" cy="0" r="12" fill="#76C893" opacity="0.9" />
+      <rect x="-8" y="12" width="16" height="25" rx="3" fill="#76C893" opacity="0.9" />
+    </g>
+  </g>
+  
+  <!-- Simple dotted path representing migration route -->
+  <path d="M300,250 Q450,200 600,220 Q750,240 900,250" 
+        stroke="#34A0A4" stroke-width="2" stroke-dasharray="5,5" fill="none" opacity="0.5" />
+  
+  <!-- Subtle decorative elements -->
+  <circle cx="200" cy="100" r="80" fill="#34A0A4" opacity="0.05" />
+  <circle cx="1000" cy="300" r="120" fill="#76C893" opacity="0.05" />
+</svg>

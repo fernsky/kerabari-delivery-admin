@@ -1,0 +1,29 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Simple Pie Chart Element - Center of image -->
+  <circle cx="600" cy="200" r="100" fill="none" stroke="#94a3b8" stroke-width="1" />
+  <path d="M600,200 L700,200 A100,100 0 0,0 650,105 Z" fill="#4285F4" opacity="0.7" />
+  <path d="M600,200 L650,105 A100,100 0 0,0 500,105 Z" fill="#34A853" opacity="0.7" />
+  <path d="M600,200 L500,105 A100,100 0 0,0 500,295 Z" fill="#FBBC05" opacity="0.7" />
+  <path d="M600,200 L500,295 A100,100 0 0,0 700,200 Z" fill="#EA4335" opacity="0.7" />
+  
+  <!-- Minimal hospital icon (left) -->
+  <g transform="translate(350, 200)">
+    <rect x="-30" y="-30" width="60" height="60" rx="3" fill="#4285F4" opacity="0.6" />
+    <path d="M0,-20 L0,20 M-20,0 L20,0" stroke="#ffffff" stroke-width="2" />
+  </g>
+  
+  <!-- Minimal house icon (right) -->
+  <g transform="translate(850, 200)">
+    <path d="M-25,20 L-25,-5 L0,-25 L25,-5 L25,20 Z" fill="#FBBC05" opacity="0.6" />
+  </g>
+</svg>

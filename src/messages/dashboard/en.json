@@ -1,0 +1,74 @@
+{
+  "welcome": "Welcome to Your Dashboard",
+  "welcomeMessage": "Track your profile verification and manage your documents here",
+  "completeProfile": "Complete Your Profile",
+
+  "header": {
+    "welcome": "Welcome to Your Dashboard",
+    "completeProfile": "Complete Your Profile",
+    "welcomeMessage": "Track your profile verification and manage your documents here"
+  },
+
+  "alerts": {
+    "underReviewTitle": "Your Profile is Under Review",
+    "underReviewDescription": "We're reviewing your information. This typically takes 1-3 business days.",
+    "actionRequiredTitle": "Action Required",
+    "actionRequiredDescription": "There are issues with your submission that need to be addressed. Please check the verification tab.",
+    "approvedTitle": "Your Profile is Verified",
+    "approvedDescription": "Your profile has been verified successfully. You now have full access to all services."
+  },
+
+  "profileCompletion": {
+    "title": "Profile Completion",
+    "description": "Complete your profile to speed up the verification process",
+    "progress": "Profile completion status: {percentage}% complete",
+    "personalInfo": "Personal Information",
+    "documents": "Documents",
+    "documentsStatus": "{uploaded} of {total} uploaded",
+    "verification": "Verification",
+    "verificationPending": "Pending review",
+    "viewProfile": "View full profile"
+  },
+
+  "quickActions": {
+    "title": "Quick Actions",
+    "uploadDocuments": "Upload Documents",
+    "uploadDocumentsDesc": "Upload your citizenship certificate and profile photo",
+    "updateProfile": "Update Profile",
+    "updateProfileDesc": "Keep your personal and contact information up to date",
+    "checkStatus": "Check Status",
+    "checkStatusDesc": "View the current status of your profile verification",
+    "viewNotifications": "View Notifications",
+    "viewNotificationsDesc": "Check important updates and messages from the system"
+  },
+
+  "sidebar": {
+    "status": "Verification Status",
+    "verified": "Verified",
+    "pending": "Pending",
+    "action": "Action Required",
+    "helpSection": "Help & Support",
+    "helpTitle": "Need Help?",
+    "helpText": "If you need assistance or have questions about your profile verification.",
+    "helpAction": "Contact Support"
+  },
+
+  "menu": {
+    "home": "Dashboard",
+    "profile": "My Profile",
+    "documents": "Documents",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "activity": "Activity"
+  },
+
+  "notifications": {
+    "title": "Notifications",
+    "empty": "You have no new notifications"
+  },
+
+  "user": {
+    "greeting": "Hello",
+    "profile": "Your Profile"
+  }
+}

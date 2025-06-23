@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400"
+    xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f8fafc" />
+            <stop offset="100%" stop-color="#e2e8f0" />
+        </linearGradient>
+        
+        <linearGradient id="carrot-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fb923c" />
+            <stop offset="100%" stop-color="#ea580c" />
+        </linearGradient>
+        
+        <linearGradient id="leaf-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22c55e" />
+            <stop offset="100%" stop-color="#16a34a" />
+        </linearGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="1200" height="400" fill="url(#bg-gradient)" />
+    
+    <!-- Central carrot representation -->
+    <g transform="translate(600, 220)">
+        <!-- Carrot body -->
+        <path d="M-20,-80 Q0,-100 20,-80 L50,80 Q0,120 -50,80 Z" 
+              fill="url(#carrot-gradient)" stroke="#ea580c" stroke-width="1" opacity="0.9" />
+              
+        <!-- Carrot top/leaves -->
+        <path d="M0,-80 C-30,-150 -60,-120 -40,-90" 
+              fill="none" stroke="url(#leaf-gradient)" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+        <path d="M0,-80 C0,-160 20,-140 10,-90" 
+              fill="none" stroke="url(#leaf-gradient)" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+        <path d="M0,-80 C30,-150 50,-130 30,-90" 
+              fill="none" stroke="url(#leaf-gradient)" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+              
+        <!-- Carrot detail lines -->
+        <path d="M-10,-60 C0,-40 0,-20 -10,0" 
+              fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5" />
+        <path d="M10,-60 C0,-30 5,0 15,30" 
+              fill="none" stroke="#c2410c" stroke-width="1" opacity="0.5" />
+    </g>
+    
+    <!-- Subtle decorative elements -->
+    <circle cx="300" cy="150" r="100" fill="#f97316" opacity="0.05" />
+    <circle cx="900" cy="250" r="120" fill="#15803d" opacity="0.05" />
+</svg>
