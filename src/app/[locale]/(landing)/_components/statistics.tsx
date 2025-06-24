@@ -336,11 +336,12 @@ const Statistics = ({
                       <TrendingUp className="w-3 h-3 mr-1 opacity-70" />
                       साक्षरता दर
                     </p>
-                    <p className="text-xl font-bold text-gray-900">
+                    {/* <p className="text-xl font-bold text-gray-900">
                       {demographicData.literacyRateAbove15
                         ? `${localizeNumber(parseFloat(demographicData.literacyRateAbove15).toFixed(1), "ne")}%`
-                        : "N/A"}
-                    </p>
+                        : "७९.२%"}
+                    </p> */}
+                    <p className="text-xl font-bold text-gray-900">७९.४%</p>
                   </div>
                 </div>
               </div>

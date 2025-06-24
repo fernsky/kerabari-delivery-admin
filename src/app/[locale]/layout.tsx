@@ -79,6 +79,8 @@ export async function generateMetadata(props: {
       ],
       authors: [
         { name: "Digital Profile Information System, Government of Nepal" },
+        { name: "त्रिलोचन भुसाल | सर्वज्ञ घो श्रेष्ठ" },
+        { name: "Trilochan Bhusal, Sarbagya Gho Shrestha" },
       ],
       creator: "Government of Nepal",
       publisher: "Digital Profile Information System",
@@ -217,6 +219,8 @@ export default async function RootLayout(props: {
           content="Digital Profile Information System"
         />
         <meta name="gov:confidentiality" content="public" />
+        <meta name="author" content="त्रिलोचन भुसाल, सर्वज्ञ घो श्रेष्ठ" />
+        <meta name="author" content="Trilochan Bhusal, Sarbagya Gho Shrestha" />
       </head>
       <body className={fontClass}>
         <NextIntlClientProvider locale={locale} messages={messages}>
