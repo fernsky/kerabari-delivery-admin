@@ -26,6 +26,7 @@ interface HeroProps {
     areaSqKm?: string | null;
     populationDensity?: string | null;
     id?: string;
+    totalWards?: number | null;
   } | null;
 }
 
@@ -192,7 +193,9 @@ const Hero: React.FC<HeroProps> = ({
               <div className="flex items-center gap-1.5 sm:gap-2 bg-white/95 backdrop-blur-md px-2 sm:px-3 py-1.5 rounded-full shadow-md text-[#123772] border border-[#123772]/20 border-l-4 border-l-[#1a4894] text-xs sm:text-sm">
                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span className="font-medium whitespace-nowrap">
-                  {localizeNumber(wardCount.toString(), "ne")} वडा
+                  {demographicData?.totalWards != null
+                    ? `${localizeNumber(demographicData.totalWards, "ne")} वडा`
+                    : "- वडा"}
                 </span>
               </div>
 

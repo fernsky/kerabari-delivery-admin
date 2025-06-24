@@ -13,6 +13,7 @@ export const wardWiseDemographicSummarySchema = z.object({
   // Ward identification
   wardNumber: z.number().int().min(1).max(20),
   wardName: z.string().optional(),
+  areaSqKm: decimalTransformer.optional(),
   
   // Population statistics
   totalPopulation: z.number().int().nonnegative().optional(),

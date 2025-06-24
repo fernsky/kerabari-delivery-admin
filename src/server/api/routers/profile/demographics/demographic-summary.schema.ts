@@ -25,6 +25,10 @@ export const demographicSummarySchema = z.object({
   averageHouseholdSize: decimalTransformer.optional(),
   populationDensity: decimalTransformer.optional(),
 
+  // New fields
+  totalWards: z.number().int().nonnegative().optional(),
+  totalLandArea: decimalTransformer.optional(),
+
   // Age groups
   population0To14: z.number().int().nonnegative().optional(),
   population15To59: z.number().int().nonnegative().optional(),

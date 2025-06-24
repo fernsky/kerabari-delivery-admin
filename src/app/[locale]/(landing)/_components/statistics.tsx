@@ -22,6 +22,8 @@ import WardAgeBarChart from "../../profile/demographics/ward-age-wise-population
 
 interface StatisticsProps {
   demographicData?: {
+    totalWards?: number | null;
+    totalLandArea?: number | null;
     totalPopulation?: number | null;
     totalHouseholds?: number | null;
     areaSqKm?: string | null;
@@ -52,7 +54,7 @@ const Statistics = ({
   const stats = [
     {
       label: "कुल क्षेत्रफल",
-      value: demographicData?.areaSqKm || 135.23,
+      value: demographicData?.totalLandArea || "N/A",
       suffix: "वर्ग कि.मि.",
       icon: <MapPinned className="w-5 h-5" />,
       description: "कुल भूमि क्षेत्रफल",
@@ -63,7 +65,7 @@ const Statistics = ({
       value: demographicData?.totalPopulation || 5534,
       suffix: "+",
       icon: <Users className="w-5 h-5" />,
-      description: "बासिन्दा संख्या",
+      description: " जनसंख्या",
       color: "from-[#1a4894] to-[#123772]",
     },
     {
@@ -76,7 +78,7 @@ const Statistics = ({
     },
     {
       label: "वडाको संख्या",
-      value: demographicData?.populationAbsenteeTotal || 7,
+      value: demographicData?.totalWards || "N/A",
       suffix: "",
       icon: <HomeIcon className="w-5 h-5" />,
       description: "वडाहरुको संख्या",

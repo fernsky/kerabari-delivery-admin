@@ -23,6 +23,10 @@ export const demographicSummary = pgTable("demographic_summary", {
   averageHouseholdSize: decimal("average_household_size"),
   populationDensity: decimal("population_density"), // People per sq km
 
+  // New fields
+  totalWards: integer("total_wards"),
+  totalLandArea: decimal("total_land_area"),
+
   // Age groups
   population0To14: integer("population_0_to_14"),
   population15To59: integer("population_15_to_59"),

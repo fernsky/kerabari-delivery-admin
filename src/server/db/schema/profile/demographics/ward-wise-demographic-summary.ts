@@ -13,6 +13,7 @@ export const wardWiseDemographicSummary = pgTable("ward_wise_demographic_summary
   // Ward identification
   wardNumber: integer("ward_number").notNull(),
   wardName: text("ward_name"), // Using text for proper UTF-8 handling
+ 
 
   // Population statistics
   totalPopulation: integer("total_population"),
