@@ -61,11 +61,11 @@ export default function IncomeSourcesSEO({
         ),
         ...Object.values(INCOME_SOURCE_NAMES).map((name) => `${name} आयस्रोत`),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/income-sources",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/income-sources",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

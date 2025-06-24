@@ -56,11 +56,11 @@ export default function GenderSEO({
         "Female household heads",
         "Male household heads",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/demographics/ward-wise-househead-gender",
+      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-househead-gender",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

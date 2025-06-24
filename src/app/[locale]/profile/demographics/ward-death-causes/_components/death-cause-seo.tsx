@@ -55,11 +55,11 @@ export default function DeathCauseSEO({
           (name) => `${name} मृत्यु तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/demographics/ward-death-causes",
+      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-death-causes",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -111,11 +111,11 @@ export default function TimeToFinancialOrganizationSEO({
         "Time to banks",
         "Financial service accessibility",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/ward-wise-time-to-financial-organization",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-time-to-financial-organization",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -78,11 +78,11 @@ export default function IrrigationSourceSEO({
           (name) => `${name} सिंचाई क्षेत्रफल`,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/municipality-wide-irrigation-source",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-irrigation-source",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

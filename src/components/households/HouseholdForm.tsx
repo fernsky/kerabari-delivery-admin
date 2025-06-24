@@ -38,7 +38,7 @@ export function HouseholdForm({ currentStep }: HouseholdFormProps) {
   const methods = useForm<Household>({
     resolver: zodResolver(householdSchema),
     defaultValues: {
-      tenant_id: "khajura",
+      tenant_id: "gadhawa",
     },
     mode: "onChange",
   });

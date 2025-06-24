@@ -108,11 +108,11 @@ export default function WardWiseTimeToHealthOrganizationSEO({
         "Healthcare proximity",
         "Healthcare access index",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/health/ward-wise-time-to-health-organization",
+      url: "https://digital.gadhawamun.gov.np/profile/health/ward-wise-time-to-health-organization",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

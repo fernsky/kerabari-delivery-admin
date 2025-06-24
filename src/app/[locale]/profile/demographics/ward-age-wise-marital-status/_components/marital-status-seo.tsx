@@ -88,11 +88,11 @@ export default function MaritalStatusSEO({
           (name) => `${name} वैवाहिक स्थिति`,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/demographics/ward-age-wise-marital-status",
+      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-age-wise-marital-status",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

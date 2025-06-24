@@ -58,12 +58,12 @@ export default function SkillsSEO({
         ...Object.values(SKILL_NAMES_EN).map((name) => `${name} population`),
         ...Object.values(skillLabels).map((name) => `${name} जनसंख्या`),
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-main-skills",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-main-skills",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
         alternateName: "गढवा गाउँपालिका",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

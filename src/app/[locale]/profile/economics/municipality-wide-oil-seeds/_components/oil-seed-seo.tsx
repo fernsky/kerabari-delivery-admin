@@ -82,11 +82,11 @@ export default function OilSeedSEO({
           (name) => `${name} उत्पादन तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/municipality-wide-oil-seeds",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-oil-seeds",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

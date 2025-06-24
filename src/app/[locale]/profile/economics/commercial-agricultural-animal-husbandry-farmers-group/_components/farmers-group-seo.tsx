@@ -121,11 +121,11 @@ export default function FarmersGroupSEO({
           (item) => BUSINESS_TYPES_EN[item.type] || item.type,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/commercial-agricultural-animal-husbandry-farmers-group",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/commercial-agricultural-animal-husbandry-farmers-group",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -186,7 +186,7 @@ export default function FarmersGroupSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
     };
   };

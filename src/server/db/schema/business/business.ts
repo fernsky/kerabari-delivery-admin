@@ -18,7 +18,7 @@ export const businessStatusEnum = pgEnum("business_status_enum", [
 ]);
 
 // Main business table based on the JSON schema
-export const business = pgTable("acme_khajura_business", {
+export const business = pgTable("acme_gadhawa_business", {
   // Primary identification
   id: text("id").primaryKey().notNull(),
   wardNo: integer("ward_no").notNull(),
@@ -129,7 +129,7 @@ export const business = pgTable("acme_khajura_business", {
 });
 
 // Staging table for business data validation
-export const stagingBusiness = pgTable("staging_acme_khajura_businesses", {
+export const stagingBusiness = pgTable("staging_acme_gadhawa_businesses", {
   // Primary identification
   id: text("id").primaryKey().notNull(),
   wardNo: integer("ward_no").notNull(),
@@ -237,7 +237,7 @@ export const stagingBusiness = pgTable("staging_acme_khajura_businesses", {
 });
 
 // Edit requests table for business
-export const businessEditRequests = pgTable("acme_khajura_business_edit_requests", {
+export const businessEditRequests = pgTable("acme_gadhawa_business_edit_requests", {
   id: varchar("id", { length: 48 }).primaryKey(),
   businessId: varchar("business_id", { length: 48 }).references(() => business.id),
   message: text("message").notNull(),

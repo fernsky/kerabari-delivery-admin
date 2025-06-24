@@ -53,11 +53,11 @@ export default function RemittanceExpensesSEO({
           (name) => `${name} विप्रेषण खर्च`,
         ),
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-remittance-expenses",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-remittance-expenses",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -69,11 +69,11 @@ export default function LanguageSEO({
         ...Object.values(LANGUAGE_NAMES_EN).map((name) => `${name} speakers`),
         ...Object.values(LANGUAGE_NAMES).map((name) => `${name} वक्ता`),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/demographics/ward-wise-mother-tongue-population",
+      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-mother-tongue-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -81,11 +81,11 @@ export default function AgricultureHouseholdsSEO({
         "Khajura farming statistics",
         "Ward-wise farming distribution",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/ward-wise-households-in-agriculture",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-households-in-agriculture",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -104,11 +104,11 @@ export default function WardWiseDrinkingWaterSourceSEO({
         "Safe drinking water",
         "Water source availability",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/water-and-sanitation/ward-wise-drinking-water-source",
+      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-drinking-water-source",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

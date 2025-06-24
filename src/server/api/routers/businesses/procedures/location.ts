@@ -34,7 +34,7 @@ export const getBusinessLocationProcedure = protectedProcedure
           business_location,
           geom,
           operator_name
-        FROM acme_khajura_business
+        FROM acme_gadhawa_business
         WHERE id = ${formattedId}
       `;
       
@@ -144,7 +144,7 @@ export const getBusinessesLocationsProcedure = protectedProcedure
           business_province,
           business_district,
           business_locality
-        FROM acme_khajura_business
+        FROM acme_gadhawa_business
         WHERE (business_location IS NOT NULL OR geom IS NOT NULL)
       `;
       
@@ -209,7 +209,7 @@ export const getBusinessesLocationsProcedure = protectedProcedure
       // Count query for total businesses with locations
       let countQuery = sql`
         SELECT COUNT(*) as total
-        FROM acme_khajura_business 
+        FROM acme_gadhawa_business 
         WHERE (business_location IS NOT NULL OR geom IS NOT NULL)
       `;
       

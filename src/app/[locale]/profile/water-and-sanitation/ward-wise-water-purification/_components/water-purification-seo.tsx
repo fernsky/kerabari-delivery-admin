@@ -90,11 +90,11 @@ export default function WaterPurificationSEO({
         "Piyush usage",
         "Water safety measures",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/water-and-sanitation/ward-wise-water-purification",
+      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-water-purification",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
@@ -149,7 +149,7 @@ export default function WaterPurificationSEO({
       isPartOf: {
         "@type": "WebSite",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
     };
   };

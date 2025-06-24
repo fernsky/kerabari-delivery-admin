@@ -47,11 +47,11 @@ export default function TrainedPopulationSEO({
         "Rural skill development",
         "Economic indicators Nepal",
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-trained-population",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-trained-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

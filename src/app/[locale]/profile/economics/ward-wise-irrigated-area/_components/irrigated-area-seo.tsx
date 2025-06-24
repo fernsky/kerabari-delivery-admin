@@ -90,11 +90,11 @@ export default function IrrigatedAreaSEO({
         "वडा अनुसार सिंचित क्षेत्रफल",
         "सिंचित र असिंचित क्षेत्रफल",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/ward-wise-irrigated-area",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-irrigated-area",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

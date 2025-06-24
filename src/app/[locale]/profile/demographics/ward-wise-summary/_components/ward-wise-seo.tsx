@@ -119,11 +119,11 @@ export default function WardWiseSEO({
         "गढवा घरधुरी तथ्याङ्क",
         "दाङ जिल्ला जनसंख्या",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/demographics/ward-wise-summary",
+      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-summary",
       creator: {
         "@type": "Organization",
         name: "गढवा गाउँपालिका",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -3,7 +3,7 @@ import { z } from "zod";
 export const householdSchema = z.object({
   // Basic Information
   id: z.string().optional(),
-  tenant_id: z.string().default("khajura"),
+  tenant_id: z.string().default("gadhawa"),
   
   // Location Information
   province: z.string().optional(),

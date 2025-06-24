@@ -22,7 +22,7 @@ export const educationLevelEnum = pgEnum("education_level_enum", [
 ]);
 
 // Main individuals table
-export const individuals = pgTable("acme_khajura_individuals", {
+export const individuals = pgTable("acme_gadhawa_individuals", {
   // Primary identification
   id: text("id").primaryKey().notNull(),
   tenantId: text("tenant_id"),
@@ -125,7 +125,7 @@ export const individuals = pgTable("acme_khajura_individuals", {
 });
 
 // Staging table for data validation
-export const stagingIndividuals = pgTable("staging_acme_khajura_individuals", {
+export const stagingIndividuals = pgTable("staging_acme_gadhawa_individuals", {
   // Copy the same structure as the main individuals table
   id: text("id").primaryKey().notNull(),
   tenantId: text("tenant_id"),
@@ -214,7 +214,7 @@ export const stagingIndividuals = pgTable("staging_acme_khajura_individuals", {
 });
 
 // Individual edit requests table
-export const individualEditRequests = pgTable("acme_khajura_individual_edit_requests", {
+export const individualEditRequests = pgTable("acme_gadhawa_individual_edit_requests", {
   id: varchar("id", { length: 48 }).primaryKey(),
   individualId: varchar("individual_id", { length: 48 }).references(() => individuals.id),
   message: text("message").notNull(),

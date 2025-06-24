@@ -37,7 +37,7 @@ export const getAll = protectedProcedure
         is_business_registered,
         business_investment,
         status
-      FROM acme_khajura_business
+      FROM acme_gadhawa_business
       WHERE 1=1
     `;
 
@@ -123,7 +123,7 @@ export const getAll = protectedProcedure
       // Build count query with the same filters
       let countQuery = sql`
         SELECT COUNT(*) as total 
-        FROM acme_khajura_business
+        FROM acme_gadhawa_business
         WHERE 1=1
       `;
       
@@ -191,7 +191,7 @@ export const getById = protectedProcedure
 
       // Try to fetch with the formatted ID
       let query = sql`
-        SELECT * FROM acme_khajura_business
+        SELECT * FROM acme_gadhawa_business
         WHERE id = ${finalId}
       `;
       
@@ -200,7 +200,7 @@ export const getById = protectedProcedure
       // If not found, try with just the normalized ID
       if (!result || result.length === 0) {
         query = sql`
-          SELECT * FROM acme_khajura_business
+          SELECT * FROM acme_gadhawa_business
           WHERE id = ${finalId}
         `;
         result = await ctx.db.execute(query);

@@ -88,7 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: `${municipalityName} डिजिटल प्रोफाइल`,
         images: [
           {
-            url: "https://digital.khajuramun.gov.np/images/municipality-logo.png",
+            url: "https://digital.gadhawamun.gov.np/images/municipality-logo.png",
             width: 1200,
             height: 630,
             alt: municipalityName,
@@ -100,7 +100,7 @@ export async function generateMetadata(): Promise<Metadata> {
         title: `${municipalityName} | आधिकारिक वेबसाइट`,
         description: descriptionNP,
         images: [
-          "https://digital.khajuramun.gov.np/images/municipality-logo.png",
+          "https://digital.gadhawamun.gov.np/images/municipality-logo.png",
         ],
       },
     };

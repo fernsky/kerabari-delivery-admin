@@ -105,11 +105,11 @@ export default function FarmersGroupSEO({
         "Farming Groups",
         ...groupSummary.map((item) => item.type),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/agriculture-related-farmers-group",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/agriculture-related-farmers-group",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -170,7 +170,7 @@ export default function FarmersGroupSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
     };
   };

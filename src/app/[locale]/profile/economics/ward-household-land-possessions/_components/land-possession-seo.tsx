@@ -50,11 +50,11 @@ export default function LandPossessionSEO({
         "भूमिको वितरण",
         "आर्थिक सर्वेक्षण",
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-household-land-possessions",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-household-land-possessions",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

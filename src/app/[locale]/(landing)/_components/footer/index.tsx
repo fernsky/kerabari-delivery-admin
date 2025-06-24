@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
             </p>
             <div className="pt-2">
               <Link
-                href="https://khajuramun.gov.np/"
+                href="https://gadhawamun.gov.np/"
                 className="inline-flex items-center gap-2 text-sm text-[#123772] hover:text-green-700 transition-colors"
               >
                 वेबसाइट हेर्नुहोस् <ExternalLink className="w-4 h-4" />

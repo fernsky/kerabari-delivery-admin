@@ -137,7 +137,7 @@ const WardInfo: React.FC<WardInfoProps> = ({
     "@type": "Dataset",
     name: `${municipalityName}का वडाहरू - जनसांख्यिकीय तथ्याङ्क`,
     description: `${municipalityName}का वडाहरूको जनसंख्या, घरधुरी, क्षेत्रफल र अन्य महत्वपूर्ण तथ्याङ्क`,
-    url: `https://digital.khajuramun.gov.np/${lng}/profile/demographics`,
+    url: `https://digital.gadhawamun.gov.np/${lng}/profile/demographics`,
     keywords: [
       `${municipalityName} वडा`,
       `${municipalityName} वडा विवरण`,

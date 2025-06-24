@@ -63,11 +63,11 @@ export default function LoanUsageSEO({
         ...Object.values(LOAN_USE_NAMES_EN).map((name) => `${name} loans`),
         ...Object.values(loanUseLabels).map((name) => `${name} कर्जा`),
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-households-loan-usage",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-households-loan-usage",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

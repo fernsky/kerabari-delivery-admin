@@ -41,8 +41,8 @@ export const getHouseholdsProcedure = protectedProcedure
           locality,
           house_symbol_no,
           date_of_interview
-        FROM acme_khajura_households
-        WHERE profile_id = 'khajura'
+        FROM acme_gadhawa_households
+        WHERE profile_id = 'gadhawa'
       `;
 
       if (input.search) {
@@ -116,8 +116,8 @@ export const getHouseholdsProcedure = protectedProcedure
 
       let countQuery = sql`
         SELECT COUNT(*) as total 
-        FROM acme_khajura_households
-        WHERE profile_id = 'khajura'
+        FROM acme_gadhawa_households
+        WHERE profile_id = 'gadhawa'
       `;
       
       if (input.search) {
@@ -191,7 +191,7 @@ export const getHouseholdByIdProcedure = protectedProcedure
       const formattedId = formatDbUuid(normalizedId);
       
       let query = sql`
-        SELECT * FROM acme_khajura_households
+        SELECT * FROM acme_gadhawa_households
         WHERE id = ${formattedId}
       `;
       
@@ -199,7 +199,7 @@ export const getHouseholdByIdProcedure = protectedProcedure
 
       if (!result || result.length === 0) {
         query = sql`
-          SELECT * FROM acme_khajura_households
+          SELECT * FROM acme_gadhawa_households
           WHERE id = ${normalizedId}
         `;
         result = await ctx.db.execute(query);
@@ -475,8 +475,8 @@ export const getHouseholdEditRequestsProcedure = protectedProcedure
           h.family_head_name,
           h.ward_no,
           h.locality
-        FROM acme_khajura_household_edit_requests e
-        JOIN acme_khajura_households h ON h.id = e.household_id
+        FROM acme_gadhawa_household_edit_requests e
+        JOIN acme_gadhawa_households h ON h.id = e.household_id
         ORDER BY e.requested_at DESC
         LIMIT ${limit} OFFSET ${offset}
       `;
@@ -485,7 +485,7 @@ export const getHouseholdEditRequestsProcedure = protectedProcedure
       
       const countQuery = sql`
         SELECT COUNT(*) as total 
-        FROM acme_khajura_household_edit_requests
+        FROM acme_gadhawa_household_edit_requests
       `;
       
       const countResult = await ctx.db.execute(countQuery);

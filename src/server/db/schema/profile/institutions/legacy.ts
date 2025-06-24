@@ -5,7 +5,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { geometry } from "@/server/db/geographical";
 
 const connectionString =
-  "postgres://crepeclan:OQt1h83yx2HmPVw3uisSQUD5yO936OFT@163.172.84.132:48432/khajura";
+  "postgres://crepeclan:OQt1h83yx2HmPVw3uisSQUD5yO936OFT@163.172.84.132:48432/gadhawa";
 const pool = postgres(connectionString, { max: 1 });
 
 export const db = drizzle(pool);

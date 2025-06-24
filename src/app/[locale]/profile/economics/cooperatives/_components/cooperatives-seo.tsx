@@ -128,11 +128,11 @@ export default function CooperativesSEO({
           (item) => COOPERATIVE_TYPES_EN[item.type] || item.type,
         ),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/cooperatives",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/cooperatives",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -200,7 +200,7 @@ export default function CooperativesSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
     };
   };

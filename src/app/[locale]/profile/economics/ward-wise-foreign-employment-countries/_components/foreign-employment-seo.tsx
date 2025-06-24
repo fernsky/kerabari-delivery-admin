@@ -92,11 +92,11 @@ export default function ForeignEmploymentSEO({
           .slice(0, 10)
           .map((name) => `${name} मा कार्यरत गढवावासी`),
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/ward-wise-foreign-employment-countries",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-foreign-employment-countries",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

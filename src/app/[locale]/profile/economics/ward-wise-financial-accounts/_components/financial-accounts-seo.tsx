@@ -113,11 +113,11 @@ export default function FinancialAccountsSEO({
         "Financial services",
         "Financial inclusion index",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/economics/ward-wise-financial-accounts",
+      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-financial-accounts",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

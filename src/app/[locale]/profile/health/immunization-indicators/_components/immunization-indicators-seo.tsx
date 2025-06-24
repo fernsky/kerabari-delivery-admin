@@ -116,11 +116,11 @@ export default function ImmunizationIndicatorsSEO({
         "Nepal immunization program",
         "Rural health services",
       ],
-      url: "https://digital.khajuramun.gov.np/profile/health/immunization-indicators",
+      url: "https://digital.gadhawamun.gov.np/profile/health/immunization-indicators",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.khajuramun.gov.np",
+        url: "https://digital.gadhawamun.gov.np",
       },
       temporalCoverage: fiscalYearLabel,
       spatialCoverage: {

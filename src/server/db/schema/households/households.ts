@@ -18,7 +18,7 @@ export const householdStatusEnum = pgEnum("household_status_enum", [
 ]);
 
 // Main household table
-export const households = pgTable("acme_khajura_households", {
+export const households = pgTable("acme_gadhawa_households", {
   // Primary identification
   id: text("id").primaryKey().notNull(),
   profileId: text("profile_id"),
@@ -165,7 +165,7 @@ export const households = pgTable("acme_khajura_households", {
 });
 
 // Staging table for data validation - Update to match the same schema as households
-export const stagingHouseholds = pgTable("staging_acme_khajura_household", {
+export const stagingHouseholds = pgTable("staging_acme_gadhawa_household", {
   // Copy the same structure as the main households table
   id: text("id").primaryKey().notNull(),
   profileId: text("profile_id"),
@@ -297,7 +297,7 @@ export const stagingHouseholds = pgTable("staging_acme_khajura_household", {
 });
 
 // Edit requests for households
-export const householdEditRequests = pgTable("acme_khajura_household_edit_requests", {
+export const householdEditRequests = pgTable("acme_gadhawa_household_edit_requests", {
   id: varchar("id", { length: 48 }).primaryKey(),
   householdId: varchar("household_id", { length: 48 }).references(() => households.id),
   message: text("message").notNull(),

@@ -61,11 +61,11 @@ export default function IncomeSourceSEO({
         ),
         ...Object.values(incomeSourceLabels).map((name) => `${name} घरपरिवार`),
       ],
-      url: "https://khajura-rm.gov.np/profile/economics/ward-wise-household-income-source",
+      url: "https://gadhawa-rm.gov.np/profile/economics/ward-wise-household-income-source",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://khajura-rm.gov.np",
+        url: "https://gadhawa-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
