@@ -120,12 +120,12 @@ const Statistics = ({
       },
       {
         "@type": "PropertyValue",
-        name: "पुरुष जनसंख्या",
+        name: "पुरुष उपस्थित जनसंख्या",
         value: demographicData?.populationMale || "उपलब्ध छैन",
       },
       {
         "@type": "PropertyValue",
-        name: "महिला जनसंख्या",
+        name: "महिला उपस्थित जनसंख्या",
         value: demographicData?.populationFemale || "उपलब्ध छैन",
       },
       {
@@ -294,7 +294,7 @@ const Statistics = ({
                   <div className="p-4 bg-gradient-to-br from-white to-[#123772]/5">
                     <p className="text-xs text-[#123772] font-medium mb-1 flex items-center">
                       <Users className="w-3 h-3 mr-1 opacity-70" />
-                      पुरुष जनसंख्या
+                      पुरुष उपस्थित जनसंख्या
                     </p>
                     <p className="text-xl font-bold text-gray-900">
                       {demographicData.populationMale
@@ -308,7 +308,7 @@ const Statistics = ({
                   <div className="p-4 bg-gradient-to-br from-white to-[#123772]/5">
                     <p className="text-xs text-[#123772] font-medium mb-1 flex items-center">
                       <Users className="w-3 h-3 mr-1 opacity-70" />
-                      महिला जनसंख्या
+                      महिला उपस्थित जनसंख्या
                     </p>
                     <p className="text-xl font-bold text-gray-900">
                       {demographicData.populationFemale

@@ -41,13 +41,15 @@ export type MunicipalityWideFoodCropsFilter = z.infer<
 
 // Export the food crop options for use in UI components
 export const foodCropTypeOptions = [
-  { value: "PADDY", label: "धान" },
-  { value: "CORN", label: "मकै" },
-  { value: "WHEAT", label: "गहुँ" },
-  { value: "MILLET", label: "कोदो" },
-  { value: "BARLEY", label: "जौ" },
-  { value: "PHAPAR", label: "फापर" },
-  { value: "JUNELO", label: "जुनेलो" },
-  { value: "KAGUNO", label: "कागुनो" },
-  { value: "OTHER", label: "अन्य खद्यान्नबाली" },
+  { value: "chaite_paddy", label: "चैते धान" },
+  { value: "barse_paddy", label: "बर्षे धान" },
+  { value: "corn", label: "मकै" },
+  { value: "wheat", label: "गहुँ" },
+  { value: "millet", label: "कोदो" },
+  { value: "barley", label: "जौ" },
+  { value: "phapar", label: "फापर" },
+  { value: "junelo", label: "जुनेलो" },
+  { value: "kaguno", label: "कागुनो" },
+  { value: "other", label: "अन्य खद्यान्नबाली" },
+  { value: "none", label: "कुनै अन्नबाली उत्पदान गर्दिन" },
 ];

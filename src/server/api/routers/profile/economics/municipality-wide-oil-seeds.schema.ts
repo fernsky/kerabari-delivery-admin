@@ -37,9 +37,9 @@ export type MunicipalityWideOilSeedsFilter = z.infer<
 
 // Export the oil seed options for use in UI components
 export const oilSeedTypeOptions = [
-  { value: "MUSTARD", label: "तोरी/सरसोँ" },
-  { value: "FLAX", label: "आलस" },
-  { value: "SUNFLOWER", label: "सूर्यमूखी" },
-  { value: "OTHER", label: "अन्य तेलबाली (जैतुन, रायो, ...)" },
-  { value: "NONE", label: "कुनै तेलबाली उत्पदान गर्दिन" },
+  { value: "mustard", label: "तोरी/सरसोँ" },
+  { value: "flax", label: "आलस" },
+  { value: "sunflower", label: "सूर्यमूखी" },
+  { value: "other", label: "अन्य तेलबाली (जैतुन, रायो, ...)" },
+  { value: "none", label: "कुनै तेलबाली उत्पदान गर्दिन" },
 ];

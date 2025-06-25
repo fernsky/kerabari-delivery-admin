@@ -42,15 +42,15 @@ export type MunicipalityWidePulsesFilter = z.infer<
 
 // Export the pulse options for use in UI components
 export const pulseTypeOptions = [
-  { value: "LENTIL", label: "मसुरो" },
-  { value: "CHICKPEA", label: "चना" },
-  { value: "PEA", label: "केराउ" },
-  { value: "PIGEON_PEA", label: "रहर" },
-  { value: "BLACK_GRAM", label: "मास" },
-  { value: "SOYABEAN", label: "भटमास" },
-  { value: "SNAKE_BEAN", label: "बोडी" },
-  { value: "BEAN", label: "सिमी" },
-  { value: "HORSE_GRAM", label: "गहत" },
-  { value: "OTHER", label: "अन्य दालबाली (मस्याङ्, खेसरी,....)" },
-  { value: "NONE", label: "कुनै दालबाली उत्पदान गर्दिन" },
+  { value: "pigeon_pea", label: "रहर" },
+  { value: "black_gram", label: "मास" },
+  { value: "lentil", label: "मसुरो" },
+  { value: "chickpea", label: "चना" },
+  { value: "soyabean", label: "भटमास" },
+  { value: "snake_bean", label: "बोडी" },
+  { value: "bean", label: "सिमी" },
+  { value: "horse_gram", label: "गहत" },
+  { value: "pea", label: "केराउ" },
+  { value: "other", label: "अन्य दालबाली (मस्याङ्, खेसरी,....)" },
+  { value: "none", label: "कुनै दालबाली उत्पदान गर्दिन" },
 ];
