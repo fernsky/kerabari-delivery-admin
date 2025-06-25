@@ -24,6 +24,7 @@ interface HeroProps {
     totalPopulation?: number | null;
     totalHouseholds?: number | null;
     areaSqKm?: string | null;
+    totalLandArea?: number | null;
     populationDensity?: string | null;
     id?: string;
     totalWards?: number | null;
@@ -37,9 +38,7 @@ const Hero: React.FC<HeroProps> = ({
   demographicData,
 }) => {
   // Extract data with proper fallbacks
-  const totalArea = demographicData?.areaSqKm
-    ? parseFloat(demographicData.areaSqKm)
-    : 356.57;
+  const totalArea = demographicData?.totalLandArea || "N/A";
 
   // Get ward count data for Khajura Rural Municipality
   const wardCount = 8;
