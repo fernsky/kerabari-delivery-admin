@@ -255,10 +255,10 @@ export const navItems: NavItem[] = [
           "आफु बसोबास गरेको स्थानबाट नजिकका बजार केन्द्रसम्म लाग्ने अनुमानित समय",
         href: "/profile/physical/ward-wise-time-to-market-center",
       },
-      {
-        title: "खाना पकाउने मुख्य इन्धनको आधारमा घरधुरी",
-        href: "/profile/physical/ward-wise-cooking-fuel",
-      },
+      // {
+      //   title: "खाना पकाउने मुख्य इन्धनको आधारमा घरधुरी",
+      //   href: "/profile/physical/ward-wise-cooking-fuel",
+      // },
       {
         title: "बत्ती बाल्ने इन्धनको प्रयोगको आधारमा",
         href: "/profile/physical/ward-wise-electricity-source",
