@@ -1,4 +1,143 @@
+"use client";
+
+import { api } from "@/trpc/react";
+import { 
+  processAgeGenderData, 
+  generateAgeGenderAnalysis, 
+  convertToNepaliNumber, 
+  formatNepaliPercentage,
+  AGE_GROUP_LABELS,
+  GENDER_LABELS,
+  type ProcessedAgeGenderData 
+} from "@/lib/utils/age-gender-utils";
+import { 
+  ChartGenerator, 
+  type PopulationPyramidData, 
+  type WardData, 
+  type ChartData 
+} from "@/lib/utils/chart-generator";
+import { useMemo } from "react";
+
 export function AgeGenderReport() {
+  // Fetch data from TRPC API
+  const { data: rawData, isLoading, error } = api.profile.demographics.wardAgeWisePopulation.getAll.useQuery();
+
+  // Process the raw data
+  const processedData: ProcessedAgeGenderData | null = useMemo(() => {
+    if (!rawData || rawData.length === 0) return null;
+    
+    const mappedData = rawData.map(item => ({
+      id: item.id,
+      wardNumber: item.wardNumber,
+      ageGroup: item.ageGroup,
+      gender: item.gender,
+      population: item.population
+    }));
+    
+    return processAgeGenderData(mappedData);
+  }, [rawData]);
+
+  // Generate charts
+  const charts = useMemo(() => {
+    if (!processedData) return { populationPyramid: '', genderDistribution: '', wardComparison: '' };
+
+    // Population Pyramid Data
+    const pyramidData: PopulationPyramidData = {};
+    Object.entries(processedData.ageGroupData).forEach(([ageGroup, data]) => {
+      pyramidData[ageGroup] = {
+        male: data.male,
+        female: data.female,
+        other: data.other || 0,
+        label: data.label
+      };
+    });
+
+    // Gender Distribution Pie Chart Data
+    const genderData: ChartData = {
+      male: {
+        value: processedData.malePopulation,
+        label: GENDER_LABELS.MALE,
+        color: '#3498db'
+      },
+      female: {
+        value: processedData.femalePopulation,
+        label: GENDER_LABELS.FEMALE,
+        color: '#e74c3c'
+      }
+    };
+
+    if (processedData.otherPopulation > 0) {
+      genderData.other = {
+        value: processedData.otherPopulation,
+        label: GENDER_LABELS.OTHER,
+        color: '#95a5a6'
+      };
+    }
+
+    // Ward Comparison Data
+    const wardComparisonData: WardData = {};
+    Object.entries(processedData.wardData).forEach(([wardNum, data]) => {
+      wardComparisonData[wardNum] = {
+        [GENDER_LABELS.MALE]: data.male,
+        [GENDER_LABELS.FEMALE]: data.female
+      };
+      if (data.other > 0) {
+        wardComparisonData[wardNum][GENDER_LABELS.OTHER] = data.other;
+      }
+    });
+
+    return {
+      populationPyramid: ChartGenerator.generatePopulationPyramid(pyramidData, {
+        width: 800,
+        height: 600,
+        title: 'जनसंख्या पिरामिड'
+      }),
+      genderDistribution: ChartGenerator.generatePieChart(genderData, {
+        width: 500,
+        height: 400,
+        title: 'लिङ्ग अनुसार जनसंख्या वितरण'
+      }),
+      wardComparison: ChartGenerator.generateStackedBarChart(wardComparisonData, {
+        width: 800,
+        height: 500,
+        title: 'वडागत लिङ्गीय वितरण',
+        colors: ['#3498db', '#e74c3c', '#95a5a6']
+      })
+    };
+  }, [processedData]);
+
+  // Generate analysis text
+  const analysisText = useMemo(() => {
+    if (!processedData) return '';
+    return generateAgeGenderAnalysis(processedData);
+  }, [processedData]);
+
+  if (isLoading) {
+    return (
+      <div className="section-content" id="section-age-gender">
+        <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
+          ३.२ उमेर र लिङ्ग अनुसार जनसंख्या वितरण
+        </h2>
+        <div className="content-section">
+          <p>डेटा लोड भइरहेको छ...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !processedData) {
+    return (
+      <div className="section-content" id="section-age-gender">
+        <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
+          ३.२ उमेर र लिङ्ग अनुसार जनसंख्या वितरण
+        </h2>
+        <div className="content-section">
+          <p>डेटा लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="section-content" id="section-age-gender">
       <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
@@ -7,10 +146,7 @@ export function AgeGenderReport() {
       
       <div className="content-section">
         <div className="content-paragraph">
-          <p>
-            यस खण्डमा बुद्धशान्ति गाउँपालिकाको जनसंख्यालाई उमेर समूह र लिङ्गका आधारमा विश्लेषण गरिएको छ। 
-            उमेर संरचनाले जनसंख्याको जनसांख्यिकीय संक्रमण र भविष्यका आवश्यकताहरूको संकेत दिन्छ।
-          </p>
+          <p>{analysisText}</p>
         </div>
       </div>
 
@@ -18,19 +154,35 @@ export function AgeGenderReport() {
       <div className="chart-section">
         <h3 className="chart-title">चित्र ३.२.१: जनसंख्या पिरामिड</h3>
         <div className="pdf-chart-container">
-          <div style={{ 
-            width: "100%", 
-            height: "400px", 
-            border: "1px solid #ccc", 
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center",
-            backgroundColor: "#f9fafb",
-            fontSize: "12pt",
-            color: "#6b7280"
-          }}>
-            [उमेर र लिङ्ग अनुसार जनसंख्या पिरामिड यहाँ देखाइनेछ]
-          </div>
+          <div 
+            style={{ 
+              width: "100%", 
+              height: "600px", 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              backgroundColor: "#f9fafb"
+            }}
+            dangerouslySetInnerHTML={{ __html: charts.populationPyramid }}
+          />
+        </div>
+      </div>
+
+      {/* Gender Distribution Pie Chart */}
+      <div className="chart-section">
+        <h3 className="chart-title">चित्र ३.२.२: लिङ्ग अनुसार जनसंख्या वितरण</h3>
+        <div className="pdf-chart-container">
+          <div 
+            style={{ 
+              width: "100%", 
+              height: "400px", 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              backgroundColor: "#f9fafb"
+            }}
+            dangerouslySetInnerHTML={{ __html: charts.genderDistribution }}
+          />
         </div>
       </div>
 
@@ -43,86 +195,50 @@ export function AgeGenderReport() {
               <th>उमेर समूह</th>
               <th>पुरुष</th>
               <th>महिला</th>
-              <th>अन्य</th>
+              {processedData.otherPopulation > 0 && <th>अन्य</th>}
               <th>जम्मा</th>
               <th>प्रतिशत</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>०-४ वर्ष</td>
-              <td>१,८५२</td>
-              <td>१,७९४</td>
-              <td>०</td>
-              <td>३,६४६</td>
-              <td>१२.८%</td>
-            </tr>
-            <tr>
-              <td>५-९ वर्ष</td>
-              <td>१,७३५</td>
-              <td>१,६८९</td>
-              <td>०</td>
-              <td>३,४२४</td>
-              <td>१२.०%</td>
-            </tr>
-            <tr>
-              <td>१०-१४ वर्ष</td>
-              <td>१,६२८</td>
-              <td>१,५७२</td>
-              <td>०</td>
-              <td>३,२००</td>
-              <td>११.२%</td>
-            </tr>
-            <tr>
-              <td>१५-१९ वर्ष</td>
-              <td>१,४५३</td>
-              <td>१,५८९</td>
-              <td>०</td>
-              <td>३,०४२</td>
-              <td>१०.७%</td>
-            </tr>
-            <tr>
-              <td>२०-२४ वर्ष</td>
-              <td>१,२८९</td>
-              <td>१,४२३</td>
-              <td>०</td>
-              <td>२,७१२</td>
-              <td>९.५%</td>
-            </tr>
-            <tr>
-              <td>२५-२९ वर्ष</td>
-              <td>१,१५६</td>
-              <td>१,३०२</td>
-              <td>०</td>
-              <td>२,४५८</td>
-              <td>८.६%</td>
-            </tr>
-            <tr>
-              <td>३०-३४ वर्ष</td>
-              <td>१,०८९</td>
-              <td>१,२४५</td>
-              <td>०</td>
-              <td>२,३३४</td>
-              <td>८.२%</td>
-            </tr>
-            <tr>
-              <td>३५+ वर्ष</td>
-              <td>५,६२२</td>
-              <td>६,१०९</td>
-              <td>०</td>
-              <td>११,७३१</td>
-              <td>४१.१%</td>
-            </tr>
+            {Object.entries(processedData.ageGroupData).map(([ageGroup, data]) => (
+              <tr key={ageGroup}>
+                <td>{data.label}</td>
+                <td>{convertToNepaliNumber(data.male)}</td>
+                <td>{convertToNepaliNumber(data.female)}</td>
+                {processedData.otherPopulation > 0 && <td>{convertToNepaliNumber(data.other)}</td>}
+                <td>{convertToNepaliNumber(data.total)}</td>
+                <td>{formatNepaliPercentage(data.percentage)}</td>
+              </tr>
+            ))}
             <tr className="total-row">
               <td className="total-label">जम्मा</td>
-              <td className="total-cell">१३,८२४</td>
-              <td className="total-cell">१४,७२३</td>
-              <td className="total-cell">०</td>
-              <td className="grand-total-cell">२८,५४७</td>
+              <td className="total-cell">{convertToNepaliNumber(processedData.malePopulation)}</td>
+              <td className="total-cell">{convertToNepaliNumber(processedData.femalePopulation)}</td>
+              {processedData.otherPopulation > 0 && <td className="total-cell">{convertToNepaliNumber(processedData.otherPopulation)}</td>}
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalPopulation)}</td>
               <td className="total-cell">१००.०%</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* Ward-wise Comparison Chart */}
+      <div className="chart-section">
+        <h3 className="chart-title">चित्र ३.२.३: वडागत लिङ्गीय वितरण</h3>
+        <div className="pdf-chart-container">
+          <div 
+            style={{ 
+              width: "100%", 
+              height: "500px", 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              backgroundColor: "#f9fafb"
+            }}
+            dangerouslySetInnerHTML={{ __html: charts.wardComparison }}
+          />
+        </div>
       </div>
 
       {/* Dependency Ratio Analysis */}
@@ -132,9 +248,37 @@ export function AgeGenderReport() {
           जनसंख्याको उमेर संरचनाका आधारमा निर्भरता अनुपातहरू निम्नानुसार छन्:
         </p>
         <ul>
-          <li><strong>बाल निर्भरता अनुपात:</strong> ४२.५ (प्रति १०० कार्यशील उमेरका व्यक्तिमा ४२.५ बालबालिका)</li>
-          <li><strong>वृद्ध निर्भरता अनुपात:</strong> १८.३ (प्रति १०० कार्यशील उमेरका व्यक्तिमा १८.३ वृद्धवृद्धा)</li>
-          <li><strong>कुल निर्भरता अनुपात:</strong> ६०.८ (प्रति १०० कार्यशील उमेरका व्यक्तिमा ६०.८ निर्भर व्यक्ति)</li>
+          <li>
+            <strong>बाल निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.childDependencyRatio)} 
+            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.childDependencyRatio))} बालबालिका)
+          </li>
+          <li>
+            <strong>वृद्ध निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.elderlyDependencyRatio)} 
+            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.elderlyDependencyRatio))} वृद्धवृद्धा)
+          </li>
+          <li>
+            <strong>कुल निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.totalDependencyRatio)} 
+            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.totalDependencyRatio))} निर्भर व्यक्ति)
+          </li>
+        </ul>
+      </div>
+
+      {/* Demographic Indicators */}
+      <div className="content-section">
+        <h3 className="section-header level-3">जनसांख्यिकीय सूचकहरू</h3>
+        <ul>
+          <li>
+            <strong>लिङ्गीय अनुपात:</strong> {convertToNepaliNumber(Math.round(processedData.demographicIndicators.genderRatio))} 
+            (प्रति १०० महिलामा पुरुष)
+          </li>
+          <li>
+            <strong>युवा जनसंख्या (१५-३९ वर्ष):</strong> {convertToNepaliNumber(processedData.demographicIndicators.youthPopulation)} 
+            ({formatNepaliPercentage(processedData.demographicIndicators.youthPercentage)})
+          </li>
+          <li>
+            <strong>प्रजनन उमेरका महिला (१५-४९ वर्ष):</strong> {convertToNepaliNumber(processedData.demographicIndicators.reproductiveAgeWomen)} 
+            ({formatNepaliPercentage(processedData.demographicIndicators.reproductiveWomenPercentage)})
+          </li>
         </ul>
       </div>
     </div>
