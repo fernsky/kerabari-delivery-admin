@@ -145,6 +145,22 @@ export default function DemographicVisualization({ data }: { data: any }) {
               </span>
               <span className="text-xs text-gray-500">वार्षिक</span>
             </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500">कुल वडा संख्या</span>
+              <span className="text-2xl font-bold">
+                {data.totalWards || 0}
+              </span>
+              <span className="text-xs text-gray-500">वडा</span>
+            </div>
+
+            <div className="flex flex-col">
+              <span className="text-sm text-gray-500">कुल भूमि क्षेत्र</span>
+              <span className="text-2xl font-bold">
+                {data.totalLandArea || 0}
+              </span>
+              <span className="text-xs text-gray-500">वर्ग कि.मि.</span>
+            </div>
           </div>
         </CardContent>
       </Card>

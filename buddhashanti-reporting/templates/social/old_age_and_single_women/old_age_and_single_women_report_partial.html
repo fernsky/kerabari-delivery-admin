@@ -1,0 +1,234 @@
+{% load nepali_filters %}
+{% load househead_filters %}
+
+<!-- Old Age Population and Single Women Social Report Partial for PDF -->
+<p class="section-content old-age-single-women-social-section" id="section-old-age-single-women-social">
+    <h2 class="section-header level-2" style="color: #1e40af; border-bottom: 2px solid #0ea5e9; padding-bottom: 0.3em; font-size: 16pt; margin-top: 2em;">
+        ५.४.३ जेष्ठ नागरिक र एकल महिलाको अवस्था
+    </h2>
+    
+    <!-- Coherent Analysis Text -->
+    <div class="content-section">
+        <div class="content-paragraph">{{ coherent_analysis|linebreaks }}</div>
+    </div>
+
+    <!-- Pie Chart for Municipality-wide Distribution -->
+    {% if municipality_data %}
+        <div class="chart-section">
+            <h3 class="chart-title">चित्र ५.४.३.१: जेष्ठ नागरिकको लैङ्गिक वितरण</h3>
+            <div class="pdf-chart-container">
+                {% load static %}
+                <img src="{% static 'images/charts/oldageandsinglewomen_pie_chart.png' %}" alt="जेष्ठ नागरिकको लैङ्गिक वितरण" class="pdf-chart-image">
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Bar Chart for Ward-wise Distribution -->
+    {% if ward_data %}
+        <div class="chart-section">
+            <h3 class="chart-title">चित्र ५.४.३.२: वडागत जेष्ठ नागरिक र एकल महिला वितरण</h3>
+            <div class="pdf-chart-container">
+                {% load static %}
+                <img src="{% static 'images/charts/oldageandsinglewomen_bar_chart.png' %}" alt="वडागत जेष्ठ नागरिक र एकल महिला वितरण" class="pdf-chart-image">
+            </div>
+        </div>
+    {% endif %}
+    
+    <!-- Ward-wise Detailed Table -->
+    {% if ward_data %}
+    <div class="table-section">
+        <h3 class="table-title">तालिका ५.४.३.१: वडागत जेष्ठ नागरिक र एकल महिला विस्तृत विवरण</h3>
+        <table class="pdf-data-table ward-elderly-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%; text-align: left; padding: 6px;">श्रेणी</th>
+                    {% for ward_num, ward_info in ward_data.items %}
+                        <th style="text-align: center; font-size: 9pt; padding: 4px;">वडा {{ ward_num|nepali_number }}</th>
+                    {% endfor %}
+                    <th style="text-align: center; font-weight: bold; font-size: 9pt;">जम्मा</th>
+                    <th style="text-align: center; font-weight: bold; font-size: 9pt;">प्रतिशत</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category_type, data in municipality_data.items %}
+                    {% if data.population > 0 %}
+                        <tr>
+                            <td style="text-align: left; font-weight: bold; padding: 6px; font-size: 9pt;">{{ data.name_nepali }}</td>
+                            {% for ward_num, ward_info in ward_data.items %}
+                                <td style="text-align: center; font-size: 9pt; padding: 4px;">
+                                    {% with ward_info.old_age_data|get_item:category_type as category_demo %}
+                                        {{ category_demo.population|default:0|nepali_number }}
+                                    {% endwith %}
+                                </td>
+                            {% endfor %}
+                            <td style="text-align: center; font-weight: bold; font-size: 9pt; background-color: #f0f8ff;">
+                                {{ data.population|nepali_number }}
+                            </td>
+                            <td style="text-align: center; font-weight: bold; font-size: 9pt; background-color: #e8f4f8; color: #666;">
+                                {{ data.percentage|nepali_percentage }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr style="font-weight: bold; background-color: #f8fafc; border-top: 2px solid #333;">
+                    <td style="text-align: left; padding: 6px; font-size: 10pt;">जम्मा</td>
+                    {% for ward_num, ward_info in ward_data.items %}
+                        <td style="text-align: center; font-size: 9pt; padding: 4px;">{{ ward_info.total_population|nepali_number }}</td>
+                    {% endfor %}
+                    <td style="text-align: center; font-size: 10pt; background-color: #e8f4f8;">{{ total_old_age_population|nepali_number }}</td>
+                    <td style="text-align: center; font-size: 10pt; background-color: #d4edda;">१००.०%</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    {% endif %}
+</p>
+
+<style>
+/* PDF-specific styles */
+.old-age-single-women-social-section {
+    page-break-inside: auto;
+    margin-bottom: 2em;
+}
+
+.pdf-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 9pt;
+}
+
+.pdf-data-table th,
+.pdf-data-table td {
+    border: 1px solid #333;
+    padding: 4px;
+    vertical-align: top;
+}
+
+.pdf-data-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    text-align: center;
+    color: #1e40af;
+}
+
+.ward-elderly-table th,
+.ward-elderly-table td {
+    border: 1px solid #333;
+    padding: 3px;
+    vertical-align: middle;
+}
+
+.ward-elderly-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #1e40af;
+}
+
+.pdf-chart-container {
+    border: none;    
+    text-align: center;
+    margin: 1.5em 0;
+    page-break-inside: auto;
+}
+
+.pdf-chart-image {
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+
+.chart-title,
+.table-title {
+    color: #1e40af;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.content-paragraph {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+.content-paragraph p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.content-section {
+    margin-bottom: 2em;
+}
+
+.chart-section {
+    margin-bottom: 2em;
+}
+
+.table-section {
+    margin-bottom: 2em;
+}
+
+/* Priority level styling */
+.high-priority {
+    background-color: #fecaca;
+    color: #991b1b;
+}
+
+.medium-priority {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.low-priority {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* Enhanced table styling */
+.ward-elderly-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.ward-elderly-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+/* Special care indicator */
+.special-care-indicator {
+    font-style: italic;
+    color: #dc2626;
+    font-size: 8pt;
+}
+
+/* Gender-specific styling */
+.male-elderly {
+    color: #2563eb;
+}
+
+.female-elderly {
+    color: #dc2626;
+}
+
+.single-women {
+    color: #7c2d12;
+    font-weight: bold;
+}
+
+/* Print optimization */
+@media print {
+    .old-age-single-women-social-section {
+        page-break-inside: auto;
+    }
+    
+    .chart-section {
+        page-break-inside: avoid;
+    }
+
+    .table-section {
+        page-break-inside: auto;
+    }
+}
+</style>

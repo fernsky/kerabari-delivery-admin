@@ -1,0 +1,267 @@
+{% load nepali_filters %}
+{% load househead_filters %}
+
+<!-- School Dropout Social Report Partial for PDF -->
+<p class="section-content school-dropout-social-section" id="section-school-dropout-social">
+    <h2 class="section-header level-2" style="color: #1e40af; border-bottom: 2px solid #0ea5e9; padding-bottom: 0.3em; font-size: 16pt; margin-top: 2em;">
+        {{ section_number|default:"५.१.६" }} {{ section_title|default:"विद्यालय वाहिर रहेका तथा विद्यालय छाडेका बालबालिकाहरुको विवरण" }}
+    </h2>
+    
+    <!-- Coherent Analysis Text -->
+    <div class="content-section">
+        <div class="content-paragraph">
+            {{ coherent_analysis|default:"यस गाउँपालिकामा विद्यालय छोडेका र विद्यालय बाहिर रहेका बालबालिकाहरूको अवस्थाले शिक्षाको पहुँच र गुणस्तरमा उल्लेखनीय प्रभाव पारेको छ। विभिन्न सामाजिक, आर्थिक र सांस्कृतिक कारणहरूले गर्दा बालबालिकाहरू शिक्षाबाट वञ्चित भएका छन्।"|safe }}
+        </div>
+    </div>
+
+    <!-- Pie Chart for Municipality-wide Distribution -->
+    {% if municipality_data %}
+    <div class="chart-section">
+        <h3 class="chart-title">चित्र ५.१.६.१: विद्यालय छाड्नुको मुख्य कारणहरू</h3>
+        <div class="pdf-chart-container">
+            {% load static %}
+            {% if charts.pie_chart_png %}
+                <img src="{% static charts.pie_chart_png %}" alt="School Dropout Causes Distribution" class="pdf-chart-image">
+            {% elif charts.pie_chart_svg %}
+                <img src="{% static charts.pie_chart_svg %}" alt="School Dropout Causes Distribution" class="pdf-chart-image">
+            {% else %}
+                <img src="{% static 'images/charts/schooldropout_pie_chart.png' %}" alt="School Dropout Causes Distribution" class="pdf-chart-image">
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Bar Chart for Ward-wise Distribution -->
+    {% if ward_data %}
+    <div class="chart-section">
+        <h3 class="chart-title">चित्र ५.१.६.२: वडा अनुसार विद्यालय छोडेका बालबालिकाहरूको संख्या</h3>
+        <div class="pdf-chart-container">
+            {% if charts.bar_chart_png %}
+                <img src="{% static charts.bar_chart_png %}" alt="Ward-wise School Dropout Distribution" class="pdf-chart-image">
+            {% elif charts.bar_chart_svg %}
+                <img src="{% static charts.bar_chart_svg %}" alt="Ward-wise School Dropout Distribution" class="pdf-chart-image">
+            {% else %}
+                <img src="{% static 'images/charts/schooldropout_bar_chart.png' %}" alt="Ward-wise School Dropout Distribution" class="pdf-chart-image">
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Ward-wise Detailed Table -->
+    {% if ward_data %}
+    <div class="table-section">
+        <h3 class="table-title">तालिका ५.१.६.१: वडा अनुसार विद्यालय छोडेका बालबालिकाहरूको विस्तृत विवरण</h3>
+        <table class="pdf-data-table ward-school-dropout-table">
+            <thead>
+                <tr>
+                    <th>वडा नं.</th>
+                    <th>सीमित ठाउँ</th>
+                    <th>महँगो</th>
+                    <th>टाढा</th>
+                    <th>घरको काम</th>
+                    <th>अनिच्छुक अभिभावक</th>
+                    <th>अध्ययन पूरा गर्न चाहना</th>
+                    <th>विवाह</th>
+                    <th>रोजगारी</th>
+                    <th>अज्ञात</th>
+                    <th>अन्य</th>
+                    <th>जम्मा</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ward_num, ward_info in ward_data.items %}
+                <tr>
+                    <td class="ward-number">{{ ward_num|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.LIMITED_SPACE.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.EXPENSIVE.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.FAR.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.HOUSE_HELP.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.UNWILLING_PARENTS.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.WANTED_STUDY_COMPLETED.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.MARRIAGE.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.EMPLOYMENT.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.UNKNOWN.population|default:0|nepali_digits }}</td>
+                    <td>{{ ward_info.dropout_causes.OTHER.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ ward_info.total_population|default:0|nepali_digits }}</td>
+                </tr>
+                {% endfor %}
+                <tr class="total-row">
+                    <td class="total-label">जम्मा</td>
+                    <td class="total-cell">{{ municipality_data.LIMITED_SPACE.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.EXPENSIVE.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.FAR.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.HOUSE_HELP.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.UNWILLING_PARENTS.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.WANTED_STUDY_COMPLETED.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.MARRIAGE.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.EMPLOYMENT.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.UNKNOWN.population|default:0|nepali_digits }}</td>
+                    <td class="total-cell">{{ municipality_data.OTHER.population|default:0|nepali_digits }}</td>
+                    <td class="grand-total-cell">{{ municipality_total_population|default:0|nepali_digits }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</p>
+
+<style>
+/* PDF-specific styles */
+.school-dropout-social-section {
+    page-break-inside: auto;
+    margin-bottom: 2em;
+}
+
+.pdf-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 9pt;
+}
+
+.pdf-data-table th,
+.pdf-data-table td {
+    border: 1px solid #333;
+    padding: 4px;
+    vertical-align: top;
+}
+
+.pdf-data-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    text-align: center;
+    color: #1e40af;
+}
+
+.ward-school-dropout-table th,
+.ward-school-dropout-table td {
+    border: 1px solid #333;
+    padding: 3px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.ward-school-dropout-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    font-size: 8pt;
+}
+
+.ward-number {
+    font-weight: bold;
+    background-color: #f1f5f9;
+}
+
+.total-row {
+    background-color: #e2e8f0;
+    font-weight: bold;
+}
+
+.total-label {
+    background-color: #cbd5e1;
+    font-weight: bold;
+    text-align: center;
+}
+
+.total-cell {
+    background-color: #f1f5f9;
+    font-weight: bold;
+}
+
+.grand-total-cell {
+    background-color: #ddd6fe;
+    font-weight: bold;
+    color: #5b21b6;
+}
+
+.pdf-chart-container {
+    border: none;    
+    text-align: center;
+    margin: 1em 0;
+    page-break-inside: auto;
+}
+
+.pdf-chart-image {
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+
+.chart-title,
+.table-title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1e40af;
+    margin: 1em 0 0.5em 0;
+    text-align: center;
+}
+
+.content-paragraph {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+.content-paragraph p {
+    margin-bottom: 1em;
+}
+
+.content-section {
+    margin-bottom: 1.5em;
+}
+
+.chart-section {
+    margin-bottom: 1.5em;
+    page-break-inside: avoid;
+}
+
+.table-section {
+    margin-bottom: 1.5em;
+}
+
+.summary-statistics {
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    font-size: 10pt;
+}
+
+/* Enhanced table styling */
+.ward-school-dropout-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.ward-school-dropout-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+/* Color coding for different dropout causes */
+.marriage-related {
+    background-color: #fee2e2;
+}
+
+.economic-related {
+    background-color: #fef3c7;
+}
+
+.academic-related {
+    background-color: #dcfce7;
+}
+
+/* Print optimization */
+@media print {
+    .school-dropout-social-section {
+        page-break-inside: auto;
+    }
+    
+    .ward-school-dropout-table {
+        font-size: 8pt;
+    }
+    
+    .pdf-chart-image {
+        max-width: 90%;
+    }
+}
+</style>

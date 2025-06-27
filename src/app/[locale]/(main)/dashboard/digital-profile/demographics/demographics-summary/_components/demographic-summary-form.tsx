@@ -35,6 +35,8 @@ const formSchema = z.object({
   totalHouseholds: z.coerce.number().int().nonnegative().optional(),
   averageHouseholdSize: z.coerce.number().nonnegative().optional(),
   populationDensity: z.coerce.number().nonnegative().optional(),
+  totalWards: z.coerce.number().int().nonnegative().optional(),
+  totalLandArea: z.coerce.number().nonnegative().optional(),
   population0To14: z.coerce.number().int().nonnegative().optional(),
   population15To59: z.coerce.number().int().nonnegative().optional(),
   population60AndAbove: z.coerce.number().int().nonnegative().optional(),
@@ -82,6 +84,8 @@ export default function DemographicSummaryForm({
       totalHouseholds: initialData?.totalHouseholds || undefined,
       averageHouseholdSize: initialData?.averageHouseholdSize || undefined,
       populationDensity: initialData?.populationDensity || undefined,
+      totalWards: initialData?.totalWards || undefined,
+      totalLandArea: initialData?.totalLandArea || undefined,
       population0To14: initialData?.population0To14 || undefined,
       population15To59: initialData?.population15To59 || undefined,
       population60AndAbove: initialData?.population60AndAbove || undefined,
@@ -265,6 +269,37 @@ export default function DemographicSummaryForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>लिङ्ग अनुपात (प्रति १०० महिला)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.01"
+                        placeholder="0.00"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="totalWards"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>कुल वडा संख्या</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="0" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="totalLandArea"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>कुल भूमि क्षेत्र (वर्ग कि.मि.)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"

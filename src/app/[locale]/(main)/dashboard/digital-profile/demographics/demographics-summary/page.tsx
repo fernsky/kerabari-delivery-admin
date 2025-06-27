@@ -3,10 +3,11 @@
 import { PageHeader } from "@/components/page-header";
 import { api } from "@/trpc/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, AlertCircle, BarChart3 } from "lucide-react";
+import { Loader2, AlertCircle, BarChart3, FileText } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import DemographicSummaryForm from "./_components/demographic-summary-form";
 import DemographicVisualization from "./_components/demographic-visualization";
+import DemographicSummaryReport from "./_components/demographic-summary-report";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 
@@ -54,9 +55,10 @@ export default function DemographicSummaryPage() {
       icon={<BarChart3 className="h-6 w-6 text-primary" />}
     >
       <Tabs defaultValue="edit" className="mt-6">
-        <TabsList className="grid w-full max-w-md grid-cols-2">
+        <TabsList className="grid w-full max-w-lg grid-cols-3">
           <TabsTrigger value="edit">सम्पादन</TabsTrigger>
           <TabsTrigger value="view">दृश्य</TabsTrigger>
+          <TabsTrigger value="report">प्रतिवेदन</TabsTrigger>
         </TabsList>
 
         <TabsContent value="edit" className="mt-6">
@@ -74,6 +76,20 @@ export default function DemographicSummaryPage() {
 
         <TabsContent value="view" className="mt-6">
           <DemographicVisualization data={data} />
+        </TabsContent>
+
+        <TabsContent value="report" className="mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl font-medium flex items-center">
+                <FileText className="mr-2 h-5 w-5" />
+                जनसांख्यिकीय प्रतिवेदन
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <DemographicSummaryReport data={data} />
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
     </ContentLayout>

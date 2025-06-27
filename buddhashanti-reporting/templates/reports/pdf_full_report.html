@@ -1,0 +1,614 @@
+{% extends 'reports/pdf_base.html' %}
+{% load nepali_filters %}
+
+{% block title %}गढवा गाउँपालिका - पूर्ण प्रतिवेदन{% endblock %}
+
+{% block content %}
+<!-- Cover Page -->
+<div class="cover-page>
+  <div style="text-align: center; margin-bottom: 4cm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2cm;
+      "
+    >
+      <div style="width: 80px; height: 80px">
+        <!-- Nepal Government Logo placeholder -->
+      </div>
+      <div style="flex-grow: 1">
+        <div
+          style="
+            color: #1e3a8a;
+            font-size: 20pt;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+          "
+        >
+          गढवा गाउँपालिका
+        </div>
+        <div
+          style="
+            color: #1e40af;
+            font-size: 16pt;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+          "
+        >
+          गाउँकार्यपालिकाको कार्यालय
+        </div>
+        <div style="color: #1e40af; font-size: 12pt; margin-bottom: 0.5em">
+          गढवा, दाङ, लुम्बिनी प्रदेश
+        </div>
+      </div>
+      <div style="width: 80px; height: 80px">
+        <!-- Municipality Logo placeholder -->
+      </div>
+    </div>
+
+    <!-- Main Title Section -->
+    <div
+      style="
+        color: #dc2626;
+        padding: 1.5em;
+        margin: 2cm 0;
+        font-size: 24pt;
+        font-weight: 700;
+      "
+    >
+      गाउँपालिका पार्श्वचित्र
+    </div>
+
+    <!-- Bottom Section -->
+    <div style="color: #0f172a; padding: 1em; margin-top: 1cm">
+      <div style="font-size: 16pt; font-weight: 600">मस्यौदा प्रतिवेदन</div>
+      <div style="font-size: 18pt; font-weight: 700">२०८१</div>
+    </div>
+  </div>
+
+  <!-- Publication Info -->
+  {% if publication_settings %}
+  <div
+    style="
+      position: absolute;
+      bottom: 2cm;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 10pt;
+      color: #64748b;
+    "
+  >
+    <div>
+      प्रकाशन मिति: {{ publication_settings.publication_date|nepali_date:"Y F j"
+      }}
+    </div>
+    {% if publication_settings.version %}
+    <div>संस्करण: {{ publication_settings.version }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-page">
+  <h1
+    class="toc-title"
+    style="color: #1e3a8a; border-bottom: 3px solid #0ea5e9"
+  >
+    विषयसूची
+  </h1>
+
+  <!-- Hardcoded Introduction Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">१. परिचय</span>
+    <span class="page-ref"><a href="#category-introduction"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">१.१ पृष्ठभूमि</span>
+    <span class="page-ref"><a href="#section-background"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">१.२ उद्देश्य</span>
+    <span class="page-ref"><a href="#section-objectives"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">१.३ कानूनी तथा नीतिगत आधारहरू</span>
+    <span class="page-ref"><a href="#section-legal-policy-framework"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">१.४ तयारीका चरणहरू</span>
+    <span class="page-ref"><a href="#section-preparation-phases"></a></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link"
+      >१.४.१ वस्तुस्थिति विवरण ढाँचा, औजार तथा कार्यविधि तयारी</span
+    >
+    <span class="page-ref"><a href="#section-format-tools-procedure"></a></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link">१.४.२ वस्तुस्थिति विवरण तयारी कार्यशाला</span>
+    <span class="page-ref"><a href="#section-preparation-workshop"></a></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link"
+      >१.४.३ सहजकर्ता तथा स्वयंसेवी गणक छनौट अभिमुखीकरण र परिचालन</span
+    >
+    <span class="page-ref"
+      ><a href="#section-facilitator-volunteer-selection"></a
+    ></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link">१.४.४ तथ्याङ्क संकलन</span>
+    <span class="page-ref"><a href="#section-data-collection"></a></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link"
+      >१.४.५ तथ्याङ्क प्रशोधन तथा विश्लेषण र स्रोत नक्सा तयारी</span
+    >
+    <span class="page-ref"
+      ><a href="#section-data-processing-analysis"></a
+    ></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link">१.४.६ वस्तुस्थिति विवरणको मस्यौदा तयारी</span>
+    <span class="page-ref"
+      ><a href="#section-draft-report-preparation"></a
+    ></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link">१.४.७ वस्तुस्थिति विवरण सुझाव संकलन</span>
+    <span class="page-ref"><a href="#section-feedback-collection"></a></span>
+  </div>
+
+  <div class="toc-item level-3">
+    <span class="toc-link"
+      >१.४.८ गाउँ वस्तुस्थिति विवरण अन्तिम प्रतिवेदन तयारी</span
+    >
+    <span class="page-ref"
+      ><a href="#section-final-report-preparation"></a
+    ></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">१.५ वस्तुस्थिति विवरणको सीमा</span>
+    <span class="page-ref"><a href="#section-scope-of-report"></a></span>
+  </div>
+
+  <!-- Municipality Introduction Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">२. गाउँपालिका/नगरपालिकाको चिनारी</span>
+    <span class="page-ref"><a href="#category-municipality-introduction"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">२.१ भौगोलिक अवस्थिति</span>
+    <span class="page-ref"><a href="#section-geographical-location"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">२.२ ऐतिहासिक पृष्ठभूमि तथा नामाकरण</span>
+    <span class="page-ref"><a href="#section-historical-background"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">२.७ ग्रार्हस्थ उत्पादन</span>
+    <span class="page-ref"><a href="#section-gross-domestic-product"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">२.८ मानव विकास सुचकाङ्क</span>
+    <span class="page-ref"><a href="#section-human-development-indicator-section"></a></span>
+  </div>
+
+  <!-- Demographics Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">३. पारिवारिक विवरण तथा जनसंख्याको अवस्था</span>
+    <span class="page-ref"><a href="#category-demographics"></a></span>
+  </div>
+  
+  <div class="toc-item level-2">
+    <span class="toc-link">३.२ जनसंख्या वितरणको अवस्था</span>
+    <span class="page-ref"><a href="#section-demographic-summary"></a></span>
+  </div>
+  
+  <div class="toc-item level-2">
+    <span class="toc-link">३.३ उमेर तथा लिङ्गको आधारमा जनसंख्या विवरण</span>
+    <span class="page-ref"><a href="#section-age-gender-demographics"></a></span>
+  </div>
+  
+  <div class="toc-item level-2">
+    <span class="toc-link">३.४ मातृभाषाको आधारमा जनसंख्या विवरण</span>
+    <span class="page-ref"><a href="#section-language-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.५ धर्म अनुसार जनसंख्याको विवरण</span>
+    <span class="page-ref"><a href="#section-religion-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.६ जातिगत आधारमा जनसंख्या विवरण</span>
+    <span class="page-ref"><a href="#section-caste-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.७ घरमूलीको विवरण</span>
+    <span class="page-ref"><a href="#section-househead-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.८ पेशाका आधारमा जनसंख्या विवरण</span>
+    <span class="page-ref"><a href="#section-occupation-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.१३ महिला सम्पत्ति स्वामित्व सम्बन्धी विवरण</span>
+    <span class="page-ref"><a href="#section-female-property-ownership"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.१० अपाङ्गताका आधारमा जनसंख्याको विवरण</span>
+    <span class="page-ref"><a href="#section-disability-cause-demographics"></a></span>
+  </div>
+
+  <div class="toc-item level-2">
+    <span class="toc-link">३.१२ व्यक्तिगत घटना दर्ता सम्बन्धी विवरण</span>
+    <span class="page-ref"><a href="#section-death-registration-demographics"></a></span>
+  </div>
+
+  <!-- Economics Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">४. आर्थिक अवस्था</span>
+    <span class="page-ref"><a href="#category-economics"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">४.१ वडागत मुख्य सीपहरू</span>
+    <span class="page-ref"><a href="#section-major-skills"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">४.२ रेमिटेन्स प्राप्त गरेको र खर्चको विवरण</span>
+    <span class="page-ref"><a href="#section-remittance-expenses-economics"></a></span>
+  </div>
+
+  <!-- Social Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">५. सामाजिक अवस्था</span>
+    <span class="page-ref"><a href="#category-social"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">५.१ शैक्षिक तथा मानव संशाधन विकास</span>
+    <span class="page-ref"><a href="#section-educational-human-resource"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.१.१ पाँच वर्षभन्दा माथि र १५ बर्षभन्दा माथिको साक्षरता विवरण</span>
+    <span class="page-ref"><a href="#section-literacy-status"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.१.२ मुख्य विषय अनुसार शैक्षिक योग्यता</span>
+    <span class="page-ref"><a href="#section-major-subject"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.१.६ विद्यालय वाहिर रहेका तथा विद्यालय छाडेका बालबालिकाहरुको विवरण</span>
+    <span class="page-ref"><a href="#section-school-dropout-social"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">५.३ खानेपानी तथा सरसफाई</span>
+    <span class="page-ref"><a href="#section-water-sanitation"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.३.३ शौचालय प्रयोगको अवस्था</span>
+    <span class="page-ref"><a href="#section-toilet-type-social"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.३.४ फोहोरमैला व्यवस्थापनको अवस्था</span>
+    <span class="page-ref"><a href="#section-solid-waste-management-social"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">५.४ महिला, बालबालिका तथा सामाजिक समावेशीकरण</span>
+    <span class="page-ref"><a href="#section-women-children-inclusion"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">५.४.३ जेष्ठ नागरिक र एकल महिलाको अवस्था</span>
+    <span class="page-ref"><a href="#section-old-age-single-women-social"></a></span>
+  </div>
+
+  <!-- Infrastructure Chapter TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">७. भौतिक विकासको अवस्था</span>
+    <span class="page-ref"><a href="#category-infrastructure"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">७.१ यातायात पूर्वाधार</span>
+    <span class="page-ref"><a href="#section-transport-infrastructure"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">७.१.१ सडकको अवस्था अनुसार घरपरिवार विवरण</span>
+    <span class="page-ref"><a href="#section-road-status-infrastructure"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">७.१.२ सार्वजनिक यातायातमा पहुँचको अवस्था</span>
+    <span class="page-ref"><a href="#section-public-transport"></a></span>
+  </div>
+  <div class="toc-item level-3">
+    <span class="toc-link">७.१.३ बजार केन्द्रमा पुग्न लाग्ने समयको विवरण</span>
+    <span class="page-ref"><a href="#section-market-center-time-infrastructure"></a></span>
+  </div>
+
+  <!-- Appendices TOC -->
+  <div class="toc-item level-1">
+    <span class="toc-link">अनुसूचिहरू</span>
+    <span class="page-ref"><a href="#appendices-section"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">अनुसूचि - क: गाउँपालिका कार्यपालिका सदस्यहरूको विवरण</span>
+    <span class="page-ref"><a href="#appendix-municipal-representatives"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">अनुसूचि - ख: निर्वाचित जनप्रतिनिधिहरूको विवरण</span>
+    <span class="page-ref"><a href="#appendix-elected-representatives"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">अनुसूचि - ग: कार्यालय कर्मचारीहरूको विवरण</span>
+    <span class="page-ref"><a href="#appendix-office-employees"></a></span>
+  </div>
+  <div class="toc-item level-2">
+    <span class="toc-link">अनुसूचि - घ: स्वास्थ्य कार्यालय कर्मचारीहरूको विवरण</span>
+    <span class="page-ref"><a href="#appendix-health-employees"></a></span>
+  </div>
+
+  <!-- Maps Section TOC -->
+  <div class="toc-item level-1 maps-toc">
+    <span class="toc-link"><em>नक्साहरू</em></span>
+    <span class="page-ref"><a href="#maps-section"></a></span>
+  </div>
+  
+  <div class="toc-item level-2 maps-toc">
+    <span class="toc-link"><em>नक्सा १: पहाडी ढलानको दिशा वर्गीकरण</em></span>
+    <span class="page-ref"><a href="#map-aspect-classification"></a></span>
+  </div>
+  
+  <div class="toc-item level-2 maps-toc">
+    <span class="toc-link"><em>नक्सा २: उचाइ वर्गीकरण</em></span>
+    <span class="page-ref"><a href="#map-elevation-classification"></a></span>
+  </div>
+  
+  <div class="toc-item level-2 maps-toc">
+    <span class="toc-link"><em>नक्सा ३: भूमि उपयोग वर्गीकरण</em></span>
+    <span class="page-ref"><a href="#map-land-use-classification"></a></span>
+  </div>
+  
+  <div class="toc-item level-2 maps-toc">
+    <span class="toc-link"><em>नक्सा ४: ढलान वर्गीकरण</em></span>
+    <span class="page-ref"><a href="#map-slope-classification"></a></span>
+  </div>
+
+  <!-- Other categories would go here when added -->
+</div>
+
+<!-- Note: Lists of figures and tables can be added here when content is available -->
+
+
+
+<!-- Main Content Start -->
+<div class="main-content-start">
+  <!-- Include Hardcoded Introduction Chapter -->
+  <div class="category-break" id="category-introduction">
+    {% include 'reports/partials/introduction/introduction_complete.html' %}
+  </div>
+
+  <!-- Municipality Introduction Chapter -->
+  <div class="category-break" id="category-municipality-introduction">
+      {% include 'municipality_introduction/municipality_introduction_full_report.html' %}
+  </div>
+ 
+  <!-- Demographics Chapter -->
+  <div class="category-break" id="category-demographics">
+    <h1 class="category-title" style="color: #dc2626; text-align: center; padding: 0.5em; page-break-before: always;">
+      परिच्छेद – ३ः पारिवारिक विवरण तथा जनसंख्याको अवस्था
+    </h1>
+    <p class="section-content">      <!-- Introduction to demographics -->
+      <div class="content-section">
+        <div class="content-paragraph" style="font-size: 11pt; margin-bottom: 2em;">
+          गढवा गाउँपालिकामा विभिन्न धर्म, जातजाति र मातृभाषी समुदायहरूको बसोबास रहेको छ । यस खण्डमा गाउँपालिकाको जनसांख्यिकीय विविधता, सामाजिक संरचना र सांस्कृतिक पहिचानको विस्तृत विवरण प्रस्तुत गरिएको छ । नेपालको संविधान २०७२ ले प्रत्याभूत गरेका भाषिक, धार्मिक र सांस्कृतिक अधिकारहरूको सन्दर्भमा यहाँका विविध समुदायहरूको अवस्था र चुनौतीहरूको विश्लेषण गरिएको छ ।
+        </div>
+      </div>
+      <!-- Ward Settlement Demographics Section -->
+      {% include 'demographics/ward_settlement/ward_settlement_report_partial.html' with ward_data=all_demographics_data.ward_settlement.data total_settlements=all_demographics_data.ward_settlement.total_settlements total_wards=all_demographics_data.ward_settlement.total_wards report_content=all_demographics_data.ward_settlement.report_content %}
+
+      <!-- Demographic Summary Section -->
+      {% if all_demographics_data.demographic_summary %}
+        {% include 'demographics/demographic_summary/demographic_summary_report_partial.html' with data=all_demographics_data.demographic_summary.data report_content=all_demographics_data.demographic_summary.report_content %}
+      {% endif %}
+      
+
+      <!-- Ward Household Demographics Section -->
+      {% if all_demographics_data.ward_household %}
+        {% include 'demographics/ward_household/ward_household_report_partial.html' with data=all_demographics_data.ward_household.data summary_stats=all_demographics_data.ward_household.summary_stats charts=all_demographics_data.ward_household.charts report_content=all_demographics_data.ward_household.report_content %}
+      {% endif %}
+
+      <!-- Age-Gender Demographics Section -->
+      {% if all_demographics_data.age_gender %}
+        {% include 'demographics/age_gender/age_gender_report_partial.html' with age_gender_data=all_demographics_data.age_gender.age_gender_data ward_data=all_demographics_data.age_gender.ward_data ward_table_data=all_demographics_data.age_gender.ward_table_data total_population=all_demographics_data.age_gender.total_population total_male=all_demographics_data.age_gender.total_male total_female=all_demographics_data.age_gender.total_female male_percentage=all_demographics_data.age_gender.male_percentage female_percentage=all_demographics_data.age_gender.female_percentage demographic_indicators=all_demographics_data.age_gender.demographic_indicators dependency_ratios=all_demographics_data.age_gender.dependency_ratios coherent_analysis=all_demographics_data.age_gender.report_content charts=all_demographics_data.age_gender.charts %}
+      {% endif %}
+
+      <!-- Language Demographics Section -->
+      {% if all_demographics_data.language %}
+        {% include 'demographics/language/language_report_partial.html' with language_data=all_demographics_data.language.data total_population=all_demographics_data.language.total_population coherent_analysis=all_demographics_data.language.report_content %}
+      {% endif %}
+      
+      <!-- Religion Demographics Section -->
+      {% if all_demographics_data.religion %}
+        {% include 'demographics/religion/religion_report_partial.html' with religion_data=all_demographics_data.religion.data total_population=all_demographics_data.religion.total_population coherent_analysis=all_demographics_data.religion.report_content %}
+      {% endif %}
+      
+      <!-- Caste Demographics Section -->
+      {% if all_demographics_data.caste %}
+        {% include 'demographics/caste/caste_report_partial.html' with caste_data=all_demographics_data.caste.data total_population=all_demographics_data.caste.total_population coherent_analysis=all_demographics_data.caste.report_content %}
+      {% endif %}       
+      
+     
+      
+      <!-- Househead Demographics Section -->
+      {% include 'demographics/househead/househead_report_partial.html' with househead_data=all_demographics_data.househead.data.municipality_data ward_data=all_demographics_data.househead.data.ward_data total_population=all_demographics_data.househead.data.total_population coherent_analysis=all_demographics_data.househead.report_content %}
+
+
+       <!-- Occupation Demographics Section -->
+      {% if all_demographics_data.occupation %}
+       {% include 'demographics/occupation/occupation_report_partial.html' with municipality_data=all_demographics_data.occupation.data.municipality_data ward_data=all_demographics_data.occupation.data.ward_data total_population=all_demographics_data.occupation.total_population coherent_analysis=all_demographics_data.occupation.report_content pdf_charts=pdf_charts %}
+      {% endif %}
+
+        <!-- Ward wise economically active Population -->
+      {% if all_demographics_data.economically_active %}
+       {% include 'demographics/economically_active/economically_active_report_partial.html' with age_group_data=all_demographics_data.economically_active.data.age_group_data gender_data=all_demographics_data.economically_active.data.gender_data ward_data=all_demographics_data.economically_active.data.ward_data total_population=all_demographics_data.economically_active.total_population coherent_analysis=all_demographics_data.economically_active.report_content pdf_charts=pdf_charts %}
+      {% endif %}
+
+        <!-- Disability Cause Demographics Section -->
+      {% if all_demographics_data.disability_cause %}
+        {% include 'demographics/disability_cause/disability_cause_report_partial.html' with municipality_data=all_demographics_data.disability_cause.data.municipality_data ward_data=all_demographics_data.disability_cause.data.ward_data total_population=all_demographics_data.disability_cause.total_population coherent_analysis=all_demographics_data.disability_cause.report_content pdf_charts=pdf_charts %}
+      {% endif %}
+     
+
+      <!-- Female Property Ownership Demographics Section -->
+      {% if all_demographics_data.female_property_ownership %}
+        {% include 'demographics/female_property_ownership/female_property_ownership_report_partial.html' with data=all_demographics_data.female_property_ownership.data municipality_totals=all_demographics_data.female_property_ownership.data.municipality_data ward_data=all_demographics_data.female_property_ownership.data.ward_data total_population=all_demographics_data.female_property_ownership.total_population municipality_percentages=all_demographics_data.female_property_ownership.data.municipality_data property_type_names=all_demographics_data.female_property_ownership.data.municipality_data coherent_analysis=all_demographics_data.female_property_ownership.report_content charts=all_demographics_data.female_property_ownership.charts %}
+      {% endif %}
+
+      <!-- Death Registration Demographics Section -->
+      {% if all_demographics_data.death_registration %}
+        {% include 'demographics/death_registration/death_registration_report_partial.html' with death_registration_data=all_demographics_data.death_registration.death_registration_data ward_data=all_demographics_data.death_registration.ward_data ward_table_data=all_demographics_data.death_registration.ward_table_data total_population=all_demographics_data.death_registration.total_population total_male=all_demographics_data.death_registration.total_male total_female=all_demographics_data.death_registration.total_female male_percentage=all_demographics_data.death_registration.male_percentage female_percentage=all_demographics_data.death_registration.female_percentage coherent_analysis=all_demographics_data.death_registration.report_content charts=all_demographics_data.death_registration.charts %}
+      {% endif %}
+
+       <!-- Death Cause Demographics Section -->
+      {% if all_demographics_data.death_cause %}
+      {% include 'demographics/death_cause/death_cause_report_partial.html' with municipality_data=all_demographics_data.death_cause.municipality_data ward_data=all_demographics_data.death_cause.ward_data total_population=all_demographics_data.death_cause.total_population coherent_analysis=all_demographics_data.death_cause.coherent_analysis charts=all_demographics_data.death_cause.charts %}
+      {% endif %}
+
+    </p>
+  </div>
+
+
+
+  <!-- Economics Chapter -->
+  <div class="category-break" id="category-economics">
+    <h1 class="category-title" style="color: #dc2626; text-align: center; padding: 0.5em; page-break-before: always;">
+      परिच्छेद – ४ः आर्थिक अवस्था
+    </h1>
+    <p class="section-content">
+      <!-- Economics Full Section -->
+      {% include 'economics/economics_full_report.html' %}
+    </p>
+  </div>
+
+  <!-- Social Chapter -->
+  <div class="category-break" id="category-social">
+    <h1 class="category-title" style="color: #dc2626; text-align: center; padding: 0.5em; page-break-before: always;">
+      परिच्छेद – ५ः सामाजिक अवस्था
+    </h1>
+    <p class="section-content">
+      <!-- Introduction to social -->
+      <div class="content-section">
+        <div class="content-paragraph" style="font-size: 11pt; margin-bottom: 2em;">
+          गढवा गाउँपालिकाको सामाजिक क्षेत्रको अवस्था र समुदायिक सेवाहरूको विश्लेषण यस खण्डमा समावेश गरिएको छ । शिक्षा, स्वास्थ्य, सामाजिक सुरक्षा र सामुदायिक विकासका क्षेत्रहरूमा उपलब्ध सुविधाहरू र तिनका पहुँचको अवस्थाले स्थानीयहरूको जीवनयापनको गुणस्तरमा प्रत्यक्ष प्रभाव पार्छ । यस अध्ययनले गाउँपालिकाको सामाजिक विकासको स्थिति र भविष्यका आवश्यकताहरूको मूल्याङ्कन गरेको छ ।
+        </div>
+      </div>
+      
+      <!-- Literacy Status Section -->
+      {% if all_social_data.literacy_status %}
+        {% include 'social/literacy_status/literacy_status_report_partial.html' with municipality_data=all_social_data.literacy_status.municipality_data ward_data=all_social_data.literacy_status.ward_data total_population=all_social_data.literacy_status.total_population coherent_analysis=all_social_data.literacy_status.coherent_analysis %}
+      {% endif %}
+      
+      <!-- Educational Institution Section -->
+      {% if all_social_data.educational_institution %}
+          {% include 'social/educational_institution/educational_institution_report_partial.html' with municipality_data=all_social_data.educational_institution.municipality_data ward_data=all_social_data.educational_institution.ward_data historical_data=all_social_data.educational_institution.historical_data total_institutions=all_social_data.educational_institution.total_institutions total_students=all_social_data.educational_institution.total_students total_male_students=all_social_data.educational_institution.total_male_students total_female_students=all_social_data.educational_institution.total_female_students coherent_analysis=all_social_data.educational_institution.coherent_analysis %}
+      {% endif %}
+      
+      <!-- School Dropout Section -->
+      {% if all_social_data.school_dropout %}
+        {% include 'social/school_dropout/school_dropout_report_partial.html' with municipality_data=all_social_data.school_dropout.municipality_data ward_data=all_social_data.school_dropout.ward_data total_population=all_social_data.school_dropout.total_population coherent_analysis=all_social_data.school_dropout.coherent_analysis charts=all_social_data.school_dropout.charts %}
+      {% endif %}
+      
+      <!-- Toilet Type Section -->
+      {% if all_social_data.toilet_type %}
+        {% include 'social/toilet_type/toilet_type_report_partial.html' with municipality_data=all_social_data.toilet_type.municipality_data ward_data=all_social_data.toilet_type.ward_data total_population=all_social_data.toilet_type.total_population coherent_analysis=all_social_data.toilet_type.coherent_analysis %}
+      {% endif %}
+      
+      <!-- Solid Waste Management Section -->
+      {% if all_social_data.solid_waste_management %}
+        {% include 'social/solid_waste_management/solid_waste_management_report_partial.html' with municipality_data=all_social_data.solid_waste_management.municipality_data ward_data=all_social_data.solid_waste_management.ward_data total_households=all_social_data.solid_waste_management.total_households coherent_analysis=all_social_data.solid_waste_management.coherent_analysis %}
+      {% endif %}
+      
+      <!-- Old Age and Single Women Section -->
+      {% if all_social_data.old_age_and_single_women %}
+        {% include 'social/old_age_and_single_women/old_age_and_single_women_report_partial.html' with municipality_data=all_social_data.old_age_and_single_women.municipality_data ward_data=all_social_data.old_age_and_single_women.ward_data total_old_age_population=all_social_data.old_age_and_single_women.total_old_age_population coherent_analysis=all_social_data.old_age_and_single_women.coherent_analysis %}
+      {% endif %}
+    </p>
+  </div>
+
+  <!-- Infrastructure Chapter -->
+  <div class="category-break" id="category-infrastructure">
+    <h1 class="category-title" style="color: #dc2626; text-align: center; padding: 0.5em; page-break-before: always;">
+      परिच्छेद – ७ः भौतिक विकासको अवस्था
+    </h1>
+    <p class="section-content">
+      <!-- Introduction to infrastructure -->
+      <div class="content-section">
+        <div class="content-paragraph" style="font-size: 11pt; margin-bottom: 2em;">
+          भौतिक पूर्वाधार कुनै पनि स्थानीय तहको आर्थिक तथा सामाजिक विकासको महत्वपूर्ण आधार हो । गढवा गाउँपालिकाको भौतिक पूर्वाधारको अवस्थाको यो खण्डमा सडक, यातायात, बजार केन्द्रसम्मको पहुँच र अन्य आधारभूत संरचनाहरूको विस्तृत विश्लेषण प्रस्तुत गरिएको छ ।
+        </div>
+      </div>
+      
+     <!-- Infrastructure Full Section -->
+      {% if all_infrastructure_data %}
+        {% include 'infrastructure/infrastructure_full_report.html' with all_infrastructure_data=all_infrastructure_data %}
+      {% endif %}
+    </p>
+  </div>
+
+
+  <!-- Template for additional categories -->
+  {% comment %}
+  <!-- When adding more categories, use this structure: -->
+  <div class="category-break" id="category-[category-slug]">
+    <h1 class="category-title" style="color: #dc2626; text-align: center; padding: 0.5em;">
+      [Category Title]
+    </h1>
+    <div class="section-content">
+      <!-- Category content here -->
+      
+      <!-- Individual sections within the category -->
+      <div class="section-within-category" id="section-[section-slug]">
+        <h2 class="section-header level-2">[Section Title]</h2>
+        <!-- Section content -->
+      </div>
+      
+      <div class="section-within-category" id="section-[another-section-slug]">
+        <h2 class="section-header level-2">[Another Section Title]</h2>
+        <!-- Section content -->
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+
+  <!-- Placeholder for additional chapters -->
+  <!-- Other chapters would be added here as separate category-break divs -->
+  
+  <!-- Appendices Section -->
+  <div class="appendices-break" id="appendices-section">
+    {% include 'appendices/appendices_full.html' %}
+  </div>
+</div>
+
+{% endblock %}

@@ -24,6 +24,12 @@ import {
   Bus,
   TowerControl,
   StoreIcon, // For public transport icon
+  Tag,
+  Users,
+  Settings,
+  Bookmark,
+  SquarePen,
+  FileText, // Add this import
 } from "lucide-react";
 
 export type Role = "admin" | "superadmin" | "enumerator";
@@ -76,7 +82,7 @@ const menuConfig: Menu[] = [
   },
   // Demographics submenu with children
   {
-    href: "#",
+    href: "/dashboard/digital-profile/demographics",
     label: "जनसांख्यिकी",
     icon: BarChart3,
     roles: ["admin", "superadmin"],
@@ -326,6 +332,36 @@ const menuConfig: Menu[] = [
       {
         href: "/dashboard/digital-profile/institutions/cultural/historical-sites",
         label: "ऐतिहासिक स्थलहरू",
+        roles: ["admin", "superadmin"],
+      },
+    ],
+  },
+
+  // Digital Profile main menu with submenus
+  {
+    href: "#",
+    label: "डिजिटल प्रोफाइल",
+    icon: FileText,
+    roles: ["admin", "superadmin"],
+    submenus: [
+      {
+        href: "/dashboard/digital-profile/report-preview",
+        label: "प्रतिवेदन पूर्वावलोकन",
+        roles: ["admin", "superadmin"],
+      },
+      {
+        href: "/dashboard/digital-profile/demographics",
+        label: "जनसांख्यिकी",
+        roles: ["admin", "superadmin"],
+      },
+      {
+        href: "/dashboard/digital-profile/economics",
+        label: "आर्थिक",
+        roles: ["admin", "superadmin"],
+      },
+      {
+        href: "/dashboard/digital-profile/institutions",
+        label: "संस्थाहरू",
         roles: ["admin", "superadmin"],
       },
     ],

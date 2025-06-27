@@ -1,0 +1,278 @@
+{% load nepali_filters %}
+
+<!-- Educational Institution Report Section (५.१.२) -->
+<div class="section-content educational-institution-section" id="section-educational-institution">
+  <h2 class="section-header level-2" style="color: #1e40af; border-bottom: 2px solid #0ea5e9; padding-bottom: 0.3em; font-size: 16pt; margin-top: 2em;">
+    ५.१.२ तहगत रुपमा शैक्षिक संस्था/विद्यालय र विद्यार्थी विवरण
+  </h2>
+
+  <!-- Bar Chart for Ward-wise Distribution -->
+  {% if ward_data %}
+  <div class="chart-section">
+    <h3 class="chart-title">चित्र ५.१.२.२: वडागत शैक्षिक संस्था र विद्यार्थी वितरण</h3>
+    <div class="pdf-chart-container">
+      {% load static %}
+      <img src="{% static 'images/charts/educational_institution_bar_chart.png' %}" alt="वडागत शैक्षिक संस्था र विद्यार्थी वितरण" class="pdf-chart-image">
+    </div>
+  </div>
+  {% endif %}
+
+
+
+
+  <!-- Analysis Content -->
+  <div class="content-section">
+    {% if coherent_analysis %}
+      <div class="content-paragraph">
+        {{ coherent_analysis|safe }}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Pie Chart for Municipality-wide Distribution by School Level -->
+  {% if municipality_data and pdf_charts.pie_chart %}
+  <div class="chart-section">
+    <div class="chart-title">विद्यालयको तह अनुसार विद्यार्थी वितरण</div>
+    <div class="pdf-chart-container">
+      {{ pdf_charts.pie_chart|safe }}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Bar Chart for Ward-wise Distribution -->
+  {% if ward_data and pdf_charts.bar_chart %}
+  <div class="chart-section">
+    <div class="chart-title">वडागत शैक्षिक संस्था र विद्यार्थी वितरण</div>
+    <div class="pdf-chart-container">
+      {{ pdf_charts.bar_chart|safe }}
+    </div>
+  </div>
+  {% endif %}
+
+  
+  <!-- No Data Message -->
+  {% if not municipality_data and not ward_data %}
+  <div class="no-data-message">
+    <p>शैक्षिक संस्था र विद्यार्थी सम्बन्धी तथ्याङ्क उपलब्ध छैन।</p>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+/* PDF-specific styles for Educational Institution */
+.educational-institution-section {
+    page-break-inside: auto;
+    margin-bottom: 2em;
+}
+
+.pdf-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 9pt;
+}
+
+.pdf-data-table th,
+.pdf-data-table td {
+    border: 1px solid #333;
+    padding: 4px;
+    vertical-align: top;
+}
+
+.pdf-data-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    text-align: center;
+    color: #1e40af;
+}
+
+.ward-educational-table th,
+.ward-educational-table td,
+.ward-educational-detail-table th,
+.ward-educational-detail-table td,
+.historical-trends-table th,
+.historical-trends-table td {
+    border: 1px solid #333;
+    padding: 3px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.ward-educational-table th,
+.ward-educational-detail-table th,
+.historical-trends-table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #1e40af;
+    font-size: 8pt;
+}
+
+.institution-name {
+    text-align: left !important;
+    font-size: 8pt;
+}
+
+.school-level-cell {
+    text-align: center;
+    font-size: 8pt;
+}
+
+.number-cell {
+    text-align: center;
+    font-weight: 500;
+}
+
+.percentage-cell {
+    text-align: center;
+    font-weight: 500;
+}
+
+.ward-number {
+    font-weight: bold;
+    background-color: #f1f5f9;
+    vertical-align: middle;
+}
+
+.total-row {
+    background-color: #e2e8f0;
+    font-weight: bold;
+}
+
+.ward-subtotal {
+    background-color: #f1f5f9;
+    font-weight: bold;
+}
+
+.total-label,
+.subtotal-label {
+    text-align: center;
+    font-weight: bold;
+}
+
+.total-cell {
+    background-color: #f8fafc;
+    font-weight: bold;
+}
+
+.subtotal-cell {
+    background-color: #f1f5f9;
+    font-weight: bold;
+}
+
+.grand-total-cell {
+    background-color: #dbeafe;
+    font-weight: bold;
+}
+
+.year-cell {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8fafc;
+}
+
+.pdf-chart-container {
+    border: none;    
+    text-align: center;
+    margin: 1.5em 0;
+    page-break-inside: auto;
+}
+
+.pdf-chart-image {
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+
+.chart-title,
+.table-title {
+    color: #1e40af;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.content-paragraph {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+.content-paragraph p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.content-section {
+    margin-bottom: 2em;
+}
+
+.chart-section {
+    margin-bottom: 2em;
+}
+
+.table-section {
+    margin-bottom: 2em;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 2em;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+/* School level specific styling */
+.secondary-level {
+    color: #1976D2;
+    font-weight: bold;
+}
+
+.primary-level {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.lower-secondary-level {
+    color: #FF9800;
+    font-weight: bold;
+}
+
+.early-childhood-level {
+    color: #9C27B0;
+    font-weight: bold;
+}
+
+/* Enhanced table styling */
+.ward-educational-table tbody tr:nth-child(even),
+.ward-educational-detail-table tbody tr:nth-child(even),
+.historical-trends-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.ward-educational-table tbody tr:hover,
+.ward-educational-detail-table tbody tr:hover,
+.historical-trends-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+/* Print optimization */
+@media print {
+    .educational-institution-section {
+        page-break-inside: auto;
+    }
+
+    .chart-section {
+        page-break-inside: avoid;
+    }
+    
+    .table-section {
+        page-break-inside: auto;
+    }
+
+    .ward-educational-detail-table {
+        page-break-inside: auto;
+    }
+}
+</style>
