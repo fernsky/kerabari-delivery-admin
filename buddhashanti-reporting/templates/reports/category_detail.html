@@ -1,20 +1,12 @@
-{% extends 'reports/base.html' %}
-{% load static %}
-{% load nepali_filters %}
-
-{% block title %}
-{{ category.name_nepali|default:category.name }} - {{ municipality_name|default:"गढवा गाउँपालिका" }}
-{% endblock %}
-
-{% block description %}
-{{ category.description_nepali|default:category.description|default:category.name_nepali }} - {{ municipality_name|default:"गढवाँपालिका" }}को डिजिटल प्रोफाइल र वार्षिक प्रतिवेदन।
-{% endblock %}
-
-{% block keywords %}
-{{ category.name_nepali|default:category.name }}, गढवाउँपालिका, नेपाल, प्रतिवेदन
-{% endblock %}
-
-{% block breadcrumb %}
+{% extends 'reports/base.html' %} {% load static %} {% load nepali_filters %} {%
+block title %} {{ category.name_nepali|default:category.name }} - {{
+municipality_name|default:"बुद्धशान्ति गाउँपालिका" }} {% endblock %} {% block
+description %} {{
+category.description_nepali|default:category.description|default:category.name_nepali
+}} - {{ municipality_name|default:"बुद्धशान्तिँपालिका" }}को डिजिटल प्रोफाइल र
+वार्षिक प्रतिवेदन। {% endblock %} {% block keywords %} {{
+category.name_nepali|default:category.name }}, बुद्धशान्तिउँपालिका, नेपाल,
+प्रतिवेदन {% endblock %} {% block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -25,9 +17,7 @@
     </li>
   </ol>
 </nav>
-{% endblock %}
-
-{% block structured_data %}
+{% endblock %} {% block structured_data %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,20 +27,18 @@
     "url": "{{ request.build_absolute_uri }}",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "{{ municipality_name|default:'गढवाँपालिका' }}",
+      "name": "{{ municipality_name|default:'बुद्धशान्तिँपालिका' }}",
       "url": "{% url 'reports:home' %}"
     },
     "datePublished": "{{ category.created_at|date:'c' }}",
     "dateModified": "{{ category.updated_at|date:'c' }}",
     "publisher": {
       "@type": "GovernmentOrganization",
-      "name": "{{ municipality_name|default:'गढवाँपालिका' }}"
+      "name": "{{ municipality_name|default:'बुद्धशान्तिँपालिका' }}"
     }
   }
 </script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="content-header">
   <div class="d-flex justify-content-between align-items-center">
     <div>
@@ -94,11 +82,14 @@
                 href="{% url 'reports:section' category.slug section.slug %}"
                 class="toc-link"
               >
-                <i class="fas fa-chevron-right me-2"></i>{{ section.title_nepali|default:section.title }}
+                <i class="fas fa-chevron-right me-2"></i>{{
+                section.title_nepali|default:section.title }}
               </a>
               {% if section.summary_nepali or section.summary %}
               <small class="d-block text-muted mt-1">
-                {{ section.summary_nepali|default:section.summary|truncatewords:15 }}
+                {{
+                section.summary_nepali|default:section.summary|truncatewords:15
+                }}
               </small>
               {% endif %}
             </div>
@@ -128,9 +119,7 @@
   <div class="card-body">
     {% if section.summary_nepali or section.summary %}
     <p class="lead">{{ section.summary_nepali|default:section.summary }}</p>
-    {% endif %}
-    
-    {% if section.content %}
+    {% endif %} {% if section.content %}
     <div class="content-section">{{ section.content|safe }}</div>
     {% endif %}
 
@@ -151,7 +140,8 @@
             {% endif %}
             <div class="card-body">
               <h6 class="card-title">
-                चित्र {{ figure.figure_number|nepali_digits }}: {{ figure.title }}
+                चित्र {{ figure.figure_number|nepali_digits }}: {{ figure.title
+                }}
               </h6>
               {% if figure.caption %}
               <p class="card-text figure-caption">{{ figure.caption }}</p>
@@ -172,7 +162,10 @@
       <div class="table-responsive mb-4">
         <table class="table table-bordered table-striped">
           <caption class="caption-top">
-            <strong>तालिका {{ table.table_number|nepali_digits }}: {{ table.title }}</strong>
+            <strong
+              >तालिका {{ table.table_number|nepali_digits }}: {{ table.title
+              }}</strong
+            >
             {% if table.caption %}
             <br /><small class="text-muted">{{ table.caption }}</small>
             {% endif %}
@@ -201,9 +194,12 @@
     </div>
     {% endif %}
 
-    <div class="d-flex justify-content-between align-items-center mt-3 no-print">
+    <div
+      class="d-flex justify-content-between align-items-center mt-3 no-print"
+    >
       <small class="text-muted">
-        <i class="fas fa-clock me-1"></i>अन्तिम अद्यावधिक: {{ section.updated_at|nepali_date:"Y F j" }}
+        <i class="fas fa-clock me-1"></i>अन्तिम अद्यावधिक: {{
+        section.updated_at|nepali_date:"Y F j" }}
       </small>
       <div>
         <a
@@ -241,7 +237,8 @@
             class="page-link"
             href="{% url 'reports:category' prev_category.slug %}"
           >
-            <i class="fas fa-chevron-left me-2"></i>{{ prev_category.name_nepali|default:prev_category.name }}
+            <i class="fas fa-chevron-left me-2"></i>{{
+            prev_category.name_nepali|default:prev_category.name }}
           </a>
           {% else %}
           <span class="page-link">
@@ -255,7 +252,9 @@
             class="page-link"
             href="{% url 'reports:category' next_category.slug %}"
           >
-            {{ next_category.name_nepali|default:next_category.name }}<i class="fas fa-chevron-right ms-2"></i>
+            {{ next_category.name_nepali|default:next_category.name }}<i
+              class="fas fa-chevron-right ms-2"
+            ></i>
           </a>
           {% else %}
           <span class="page-link">
@@ -296,9 +295,7 @@
   </div>
 </div>
 
-{% endblock %}
-
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script>
   // Smooth scrolling to sections
   function scrollToSection(sectionId) {

@@ -1,8 +1,8 @@
-# गढवा गाउँपालिका डिजिटल प्रोफाइल प्रतिवेदन प्रणाली
+# बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल प्रतिवेदन प्रणाली
 
-# gadhawa Rural Municipality Digital Profile Report System
+# buddhashanti Rural Municipality Digital Profile Report System
 
-A comprehensive Django-based system for creating and managing digital profile reports for gadhawa Rural Municipality (गढवा गाउँपालिका), Dang District, Lumbini Province, Nepal.
+A comprehensive Django-based system for creating and managing digital profile reports for buddhashanti Rural Municipality (बुद्धशान्ति गाउँपालिका), jhapa District, Lumbini Province, Nepal.
 
 ## 🌟 Features
 
@@ -47,7 +47,7 @@ Based on provided SQL schemas, will implement models for:
 
 ```bash
 git clone <repository-url>
-cd gadhawa-report
+cd buddhashanti-report
 ```
 
 2. **Set up virtual environment**
@@ -118,7 +118,7 @@ The system supports the following user roles:
 ## 🏗️ Project Structure
 
 ```
-gadhawa-report/
+buddhashanti-report/
 ├── apps/                      # Django applications
 │   ├── core/                  # Core utilities and base models
 │   ├── users/                 # User management and authentication
@@ -130,7 +130,7 @@ gadhawa-report/
 │   ├── governance/            # Governance and administrative data
 │   └── reports/               # Report generation
 ├── docs/                      # Project documentation
-├── gadhawa_report/            # Django project settings
+├── buddhashanti_report/            # Django project settings
 ├── templates/                 # HTML templates
 ├── static/                    # Static files (CSS, JS, images)
 ├── media/                     # User uploads
@@ -142,8 +142,8 @@ gadhawa-report/
 
 ### Settings
 
-- **Development**: `gadhawa_report.settings.development`
-- **Production**: `gadhawa_report.settings.production`
+- **Development**: `buddhashanti_report.settings.development`
+- **Production**: `buddhashanti_report.settings.production`
 
 ### Database
 
@@ -212,16 +212,16 @@ Will implement comprehensive models based on Nepal's rural municipality data sta
 
 ## 📄 License
 
-This project is developed for gadhawa Rural Municipality and follows appropriate licensing for government software projects.
+This project is developed for buddhashanti Rural Municipality and follows appropriate licensing for government software projects.
 
 ## 📞 Support
 
 For technical support or questions about the system:
 
-- Email: tech@gadhawa.gov.np
+- Email: tech@buddhashanti.gov.np
 - Phone: +977-XX-XXXXXX
 
 ---
 
-**विकसित**: गढवा गाउँपालिकाको लागि डिजिटल प्रोफाइल प्रतिवेदन प्रणाली  
-**Developed**: Digital Profile Report System for gadhawa Rural Municipality
+**विकसित**: बुद्धशान्ति गाउँपालिकाको लागि डिजिटल प्रोफाइल प्रतिवेदन प्रणाली  
+**Developed**: Digital Profile Report System for buddhashanti Rural Municipality

@@ -311,6 +311,6 @@ class ReportDownloadAdmin(admin.ModelAdmin):
 
 
 # Customize admin site
-admin.site.site_header = "gadhawa Digital Profile Admin"
-admin.site.site_title = "GadhawaAdmin"
+admin.site.site_header = "buddhashanti Digital Profile Admin"
+admin.site.site_title = "buddhashantiAdmin"
 admin.site.index_title = "Digital Profile Management"

@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseSolidWasteManagementData =
       await api.profile.waterAndSanitation.wardWiseSolidWasteManagement.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseSolidWasteManagementData.reduce(
@@ -70,7 +70,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका फोहोर व्यवस्थापन",
+      "बुद्धशान्ति गाउँपालिका फोहोर व्यवस्थापन",
       "वडागत फोहोरमैला व्यवस्थापन",
       "घरमै फोहोर संकलन",
       `घरमै फोहोर संकलन ${homeCollectionPercentage}%`,
@@ -86,7 +86,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको वडागत विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(homeCollectionPercentage, "ne")}% (${localizeNumber(homeCollectionHouseholds.toLocaleString(), "ne")}) घरधुरीले घरमै फोहोर संकलन विधि प्रयोग गर्दछन्।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको वडागत विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(homeCollectionPercentage, "ne")}% (${localizeNumber(homeCollectionHouseholds.toLocaleString(), "ne")}) घरधुरीले घरमै फोहोर संकलन विधि प्रयोग गर्दछन्।`;
 
     const descriptionEN = `Ward-wise analysis of solid waste management in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${homeCollectionPercentage}% (${homeCollectionHouseholds.toLocaleString()}) households use home waste collection methods.`;
 
@@ -119,7 +119,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "फोहोरमैला व्यवस्थापन | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "फोहोरमैला व्यवस्थापन | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार फोहोरमैला व्यवस्थापनको अवस्था र विश्लेषण।",
     };
   }
@@ -296,7 +296,7 @@ export default async function WardWiseSolidWasteManagementPage() {
               src="/images/solid-waste-management.svg"
               width={1200}
               height={400}
-              alt="फोहोरमैला व्यवस्थापन - गढवा गाउँपालिका (Solid Waste Management - Khajura Rural Municipality)"
+              alt="फोहोरमैला व्यवस्थापन - बुद्धशान्ति गाउँपालिका (Solid Waste Management - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -304,7 +304,7 @@ export default async function WardWiseSolidWasteManagementPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको अवस्था
+              बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -313,11 +313,11 @@ export default async function WardWiseSolidWasteManagementPage() {
             <p>
               फोहोरमैला व्यवस्थापनको अवस्था वातावरणीय स्वच्छता, सार्वजनिक
               स्वास्थ्य र समग्र जीवनस्तरको एक महत्वपूर्ण निर्धारक हो। यस खण्डमा
-              गढवा गाउँपालिकाको विभिन्न वडाहरूमा फोहोरमैला व्यवस्थापन
+              बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा फोहोरमैला व्यवस्थापन
               विधिहरूको प्रयोग र वितरणको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरीहरू
               मध्ये
               {wasteManagementTotals.HOME_COLLECTION
@@ -339,7 +339,7 @@ export default async function WardWiseSolidWasteManagementPage() {
               फोहोरमैला व्यवस्थापनको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको वितरण निम्नानुसार
+              बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको वितरण निम्नानुसार
               रहेको छ:
             </p>
           </div>
@@ -365,7 +365,7 @@ export default async function WardWiseSolidWasteManagementPage() {
               फोहोरमैला व्यवस्थापनको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको विश्लेषण गर्दा,
               समग्रमा
               {wasteManagementTotals.HOME_COLLECTION
                 ? ` ${localizeNumber(wasteManagementPercentages.HOME_COLLECTION.toFixed(2), "ne")}% घरधुरीले घरमै फोहोर संकलन विधि अपनाउँछन्।`
@@ -402,8 +402,8 @@ export default async function WardWiseSolidWasteManagementPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको तथ्याङ्क विश्लेषणबाट
-              निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
+              बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको तथ्याङ्क
+              विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
             <div className="pl-6 space-y-4">
@@ -454,7 +454,7 @@ export default async function WardWiseSolidWasteManagementPage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा फोहोरमैला व्यवस्थापनको विश्लेषणले
+              यसरी बुद्धशान्ति गाउँपालिकामा फोहोरमैला व्यवस्थापनको विश्लेषणले
               पालिकामा फोहोरमैला व्यवस्थापन नीति निर्माण र कार्यक्रम तर्जुमा
               गर्न महत्वपूर्ण भूमिका खेल्दछ। वडागत आवश्यकता र विशेषताहरूलाई
               ध्यानमा राखी दिगो फोहोरमैला व्यवस्थापन प्रणाली स्थापना गर्न विशेष

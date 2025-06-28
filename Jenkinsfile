@@ -2,21 +2,21 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'isresearch/gadhawa-integrated-profile'
+        DOCKER_IMAGE = 'isresearch/buddhashanti-integrated-profile'
         DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
         NODE_VERSION = '20'
         
         // Define environment variables from Jenkins credentials
-        DATABASE_URL = credentials('gadhawa-profile-database-url')
-        NEXT_PUBLIC_APP_URL = credentials('gadhawa-profile-next-public-app-url')
-        MINIO_ENDPOINT = credentials('gadhawa-profile-minio-endpoint')
-        MINIO_PORT = credentials('gadhawa-profile-minio-port')
-        MINIO_CLIENT_ACCESS_KEY = credentials('gadhawa-profile-minio-client-access-key')
-        MINIO_CLIENT_SECRET_KEY = credentials('gadhawa-profile-minio-client-secret-key')
-        MINIO_USE_SSL = credentials('gadhawa-profile-minio-use-ssl')
-        BUCKET_NAME = credentials('gadhawa-profile-bucket-name')
-        REDIS_URL = credentials('gadhawa-profile-redis-url')
-        REDIS_PASSWORD = credentials('gadhawa-profile-redis-password')
+        DATABASE_URL = credentials('buddhashanti-profile-database-url')
+        NEXT_PUBLIC_APP_URL = credentials('buddhashanti-profile-next-public-app-url')
+        MINIO_ENDPOINT = credentials('buddhashanti-profile-minio-endpoint')
+        MINIO_PORT = credentials('buddhashanti-profile-minio-port')
+        MINIO_CLIENT_ACCESS_KEY = credentials('buddhashanti-profile-minio-client-access-key')
+        MINIO_CLIENT_SECRET_KEY = credentials('buddhashanti-profile-minio-client-secret-key')
+        MINIO_USE_SSL = credentials('buddhashanti-profile-minio-use-ssl')
+        BUCKET_NAME = credentials('buddhashanti-profile-bucket-name')
+        REDIS_URL = credentials('buddhashanti-profile-redis-url')
+        REDIS_PASSWORD = credentials('buddhashanti-profile-redis-password')
     }
 
     stages {

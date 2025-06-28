@@ -66,11 +66,11 @@ export default function MaritalStatusSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Marital Status Demographics of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Marital Status Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Age-wise and ward-wise marital status distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${localizeNumber(totalPopulation, "ne")} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Marital status demographics",
         "Age-wise marital status",
         "Ward-wise marital status data",
@@ -88,11 +88,11 @@ export default function MaritalStatusSEO({
           (name) => `${name} वैवाहिक स्थिति`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-age-wise-marital-status",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-age-wise-marital-status",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

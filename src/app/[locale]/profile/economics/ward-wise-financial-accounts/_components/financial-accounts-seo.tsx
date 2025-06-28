@@ -97,11 +97,11 @@ export default function FinancialAccountsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Financial Account Distribution in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Financial Account Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of financial accounts across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${bankTotal.toLocaleString()} households (${bankPercentage.toFixed(2)}%) have bank accounts, while ${noAccountTotal.toLocaleString()} households (${noAccountPercentage.toFixed(2)}%) have no financial accounts. The best financial inclusion is in Ward ${bestInclusionWard?.wardNumber || ""} with ${bestInclusionWard?.accountPercent.toFixed(2) || ""}% of households having financial accounts.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Financial accounts",
         "Bank accounts",
         "Financial inclusion",
@@ -113,11 +113,11 @@ export default function FinancialAccountsSEO({
         "Financial services",
         "Financial inclusion index",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-financial-accounts",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-financial-accounts",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

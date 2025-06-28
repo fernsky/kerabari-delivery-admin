@@ -45,13 +45,14 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Column */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">गढवा</h3>
+            <h3 className="text-lg font-semibold text-gray-900">बुद्धशान्ति</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              शिक्षा,स्वास्थ्य,कृषि र रोजगार ,समृद् गढवा गाउँपालिकाको आधार
+              स्वास्थ्य,पूर्वाधार ,लघुउद्यम र कृषिमा क्रान्ति:समृद्ध र
+              सुशासनयुक्त बुद्धशान्ति
             </p>
             <div className="pt-2">
               <Link
-                href="https://gadhawamun.gov.np/"
+                href="https://buddhashantimun.gov.np/"
                 className="inline-flex items-center gap-2 text-sm text-[#123772] hover:text-green-700 transition-colors"
               >
                 वेबसाइट हेर्नुहोस् <ExternalLink className="w-4 h-4" />
@@ -81,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">सम्पर्क</h3>
             <div className="space-y-3 text-sm text-gray-600">
-              <p>गढवा, दाङ</p>
+              <p>बुद्धशान्ति, झापा</p>
               <p>नेपाल</p>
             </div>
           </div>
@@ -112,8 +113,8 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
             <div className="flex items-center gap-2">
               <Copyright className="w-4 h-4" />
               <span>
-                {localizeNumber(new Date().getFullYear(), "ne")} गढवा गाउँपालिका
-                । सर्वाधिकार सुरक्षित
+                {localizeNumber(new Date().getFullYear(), "ne")} बुद्धशान्ति
+                गाउँपालिका । सर्वाधिकार सुरक्षित
               </span>
             </div>
             <div className="flex items-center gap-6">

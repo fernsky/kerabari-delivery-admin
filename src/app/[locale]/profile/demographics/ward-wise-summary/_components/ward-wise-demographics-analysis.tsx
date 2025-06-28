@@ -89,7 +89,7 @@ export default function WardWiseDemographicsAnalysis({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-population",
@@ -154,7 +154,7 @@ export default function WardWiseDemographicsAnalysis({
               {localizeNumber(wardData.length, "ne")}
             </div>
             <div className="text-sm text-muted-foreground mt-1">
-              गढवा गाउँपालिकामा रहेका वडाहरूको कुल संख्या
+              बुद्धशान्ति गाउँपालिकामा रहेका वडाहरूको कुल संख्या
               <span className="sr-only">
                 Total number of wards in Khajura Rural Municipality
               </span>
@@ -177,7 +177,7 @@ export default function WardWiseDemographicsAnalysis({
               )}
             </div>
             <div className="text-sm text-muted-foreground mt-1">
-              गढवा गाउँपालिकामा प्रति वडाको औसत जनसंख्या
+              बुद्धशान्ति गाउँपालिकामा प्रति वडाको औसत जनसंख्या
               <span className="sr-only">
                 Average population per ward in Khajura
               </span>
@@ -200,7 +200,7 @@ export default function WardWiseDemographicsAnalysis({
               )}
             </div>
             <div className="text-sm text-muted-foreground mt-1">
-              गढवा गाउँपालिकामा प्रति वडामा रहेको औसत घरधुरी संख्या
+              बुद्धशान्ति गाउँपालिकामा प्रति वडामा रहेको औसत घरधुरी संख्या
               <span className="sr-only">
                 Average number of households per ward in Khajura
               </span>
@@ -222,7 +222,7 @@ export default function WardWiseDemographicsAnalysis({
               %
             </div>
             <div className="text-sm text-muted-foreground mt-1">
-              गढवा गाउँपालिकाको वडागत जनसंख्या वितरणको विविधता सूचक
+              बुद्धशान्ति गाउँपालिकाको वडागत जनसंख्या वितरणको विविधता सूचक
               <span className="sr-only">
                 Ward population distribution diversity index in Khajura
               </span>
@@ -233,7 +233,7 @@ export default function WardWiseDemographicsAnalysis({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-8">
         <h3 className="text-xl font-medium mb-4">
-          गढवा गाउँपालिकाको वडागत अधिकतम र न्यूनतम सूचकहरू
+          बुद्धशान्ति गाउँपालिकाको वडागत अधिकतम र न्यूनतम सूचकहरू
           <span className="sr-only">
             Ward-wise Maximum and Minimum Indicators in Khajura
           </span>
@@ -406,13 +406,13 @@ export default function WardWiseDemographicsAnalysis({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-6">
         <h3 className="text-xl font-medium mb-2">
-          गढवा गाउँपालिकाको वडागत विश्लेषण
+          बुद्धशान्ति गाउँपालिकाको वडागत विश्लेषण
           <span className="sr-only">Ward-wise Analysis of Khajura</span>
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            गढवा गाउँपालिकाको वडागत जनसंख्या वितरण विश्लेषणबाट निम्न निष्कर्षहरू
-            निकाल्न सकिन्छ:
+            बुद्धशान्ति गाउँपालिकाको वडागत जनसंख्या वितरण विश्लेषणबाट निम्न
+            निष्कर्षहरू निकाल्न सकिन्छ:
           </p>
 
           <ul itemScope itemType="https://schema.org/ItemList">
@@ -423,8 +423,8 @@ export default function WardWiseDemographicsAnalysis({
             >
               <meta itemProp="position" content="1" />
               <div itemProp="item">
-                <strong>जनसंख्या वितरण:</strong> गढवा गाउँपालिकाभित्र वडाहरू बीच
-                जनसंख्याको विविधता सूचक{" "}
+                <strong>जनसंख्या वितरण:</strong> बुद्धशान्ति गाउँपालिकाभित्र
+                वडाहरू बीच जनसंख्याको विविधता सूचक{" "}
                 {localizeNumber(
                   populationCoefficientOfVariation.toFixed(1),
                   "ne",
@@ -445,8 +445,8 @@ export default function WardWiseDemographicsAnalysis({
             >
               <meta itemProp="position" content="2" />
               <div itemProp="item">
-                <strong>लैङ्गिक अनुपात:</strong> गढवा गाउँपालिकाका विभिन्न
-                वडाहरूमा लैङ्गिक अनुपात{" "}
+                <strong>लैङ्गिक अनुपात:</strong> बुद्धशान्ति गाउँपालिकाका
+                विभिन्न वडाहरूमा लैङ्गिक अनुपात{" "}
                 {localizeNumber(lowestSexRatioWard?.sexRatio.toFixed(1), "ne")}{" "}
                 देखि{" "}
                 {localizeNumber(highestSexRatioWard?.sexRatio.toFixed(1), "ne")}{" "}
@@ -488,8 +488,8 @@ export default function WardWiseDemographicsAnalysis({
             >
               <meta itemProp="position" content="4" />
               <div itemProp="item">
-                <strong>परिवार संख्या:</strong> गढवा गाउँपालिकामा औसत परिवार
-                संख्यामा पनि वडा अनुसार भिन्नता देखिन्छ, जुन वडा{" "}
+                <strong>परिवार संख्या:</strong> बुद्धशान्ति गाउँपालिकामा औसत
+                परिवार संख्यामा पनि वडा अनुसार भिन्नता देखिन्छ, जुन वडा{" "}
                 {localizeNumber(lowestHouseholdSizeWard?.wardNumber, "ne")} को{" "}
                 {localizeNumber(
                   lowestHouseholdSizeWard?.averageHouseholdSize.toFixed(2),
@@ -510,13 +510,13 @@ export default function WardWiseDemographicsAnalysis({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-6">
         <h3 className="text-xl font-medium mb-2">
-          गढवा गाउँपालिकाको नीतिगत सुझाव
+          बुद्धशान्ति गाउँपालिकाको नीतिगत सुझाव
           <span className="sr-only">Policy Recommendations for Khajura</span>
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            गढवा गाउँपालिकाको वडागत विश्लेषणका आधारमा निम्न नीतिगत सुझावहरू
-            प्रस्तुत गरिएका छन्:
+            बुद्धशान्ति गाउँपालिकाको वडागत विश्लेषणका आधारमा निम्न नीतिगत
+            सुझावहरू प्रस्तुत गरिएका छन्:
           </p>
 
           <ul>
@@ -524,25 +524,25 @@ export default function WardWiseDemographicsAnalysis({
               <strong>समतामूलक विकास:</strong> वडा{" "}
               {localizeNumber(highestPopulationWard?.wardNumber, "ne")} र वडा{" "}
               {localizeNumber(lowestPopulationWard?.wardNumber, "ne")} बीचको
-              जनसंख्या असमानतालाई सम्बोधन गर्न गढवा गाउँपालिकाको विकास योजना र
-              बजेट विनियोजनमा समतामूलक दृष्टिकोण अपनाउने।
+              जनसंख्या असमानतालाई सम्बोधन गर्न बुद्धशान्ति गाउँपालिकाको विकास
+              योजना र बजेट विनियोजनमा समतामूलक दृष्टिकोण अपनाउने।
             </li>
             <li>
-              <strong>लैङ्गिक समानता:</strong> गढवा गाउँपालिकाको न्यून लैङ्गिक
-              अनुपात भएका वडाहरूमा (विशेष गरी वडा{" "}
+              <strong>लैङ्गिक समानता:</strong> बुद्धशान्ति गाउँपालिकाको न्यून
+              लैङ्गिक अनुपात भएका वडाहरूमा (विशेष गरी वडा{" "}
               {localizeNumber(lowestSexRatioWard?.wardNumber, "ne")}) लैङ्गिक
               समानता सम्बन्धी विशेष कार्यक्रमहरू सञ्चालन गर्ने।
             </li>
             <li>
-              <strong>घरधुरी सर्वेक्षण:</strong> गढवा गाउँपालिकाको उच्च परिवार
-              संख्या भएका वडाहरूमा (विशेष गरी वडा{" "}
+              <strong>घरधुरी सर्वेक्षण:</strong> बुद्धशान्ति गाउँपालिकाको उच्च
+              परिवार संख्या भएका वडाहरूमा (विशेष गरी वडा{" "}
               {localizeNumber(highestHouseholdSizeWard?.wardNumber, "ne")})
               परिवार नियोजन र सचेतना कार्यक्रम सञ्चालन गर्ने।
             </li>
             <li>
-              <strong>वडागत योजना:</strong> गढवा गाउँपालिकाको प्रत्येक वडाको
-              विशिष्ट जनसांख्यिकी विशेषतालाई ध्यानमा राखेर वडागत विकास योजना
-              तर्जुमा गर्ने।
+              <strong>वडागत योजना:</strong> बुद्धशान्ति गाउँपालिकाको प्रत्येक
+              वडाको विशिष्ट जनसांख्यिकी विशेषतालाई ध्यानमा राखेर वडागत विकास
+              योजना तर्जुमा गर्ने।
             </li>
           </ul>
         </div>

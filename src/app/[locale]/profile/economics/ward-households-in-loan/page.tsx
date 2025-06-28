@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const loanData =
       await api.profile.economics.wardWiseHouseholdsOnLoan.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholdsOnLoan = loanData.reduce(
@@ -40,14 +40,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका ऋणमा घरपरिवार",
-      "गढवा कर्जा लिने घरपरिवार",
-      "गढवा आर्थिक स्थिति",
-      `गढवा वडा ${wardsWithHighestLoans[0]?.wardNumber || ""} ऋण`,
+      "बुद्धशान्ति गाउँपालिका ऋणमा घरपरिवार",
+      "बुद्धशान्ति कर्जा लिने घरपरिवार",
+      "बुद्धशान्ति आर्थिक स्थिति",
+      `बुद्धशान्ति वडा ${wardsWithHighestLoans[0]?.wardNumber || ""} ऋण`,
       "वडा अनुसार ऋण वितरण",
       "गाउँपालिका कर्जा तथ्याङ्क",
-      "आर्थिक सर्वेक्षण गढवा",
-      `गढवा कुल ऋणी घरपरिवार संख्या ${totalHouseholdsOnLoan}`,
+      "आर्थिक सर्वेक्षण बुद्धशान्ति",
+      `बुद्धशान्ति कुल ऋणी घरपरिवार संख्या ${totalHouseholdsOnLoan}`,
     ];
 
     const keywordsEN = [
@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार ऋण लिएका घरपरिवारहरूको वितरण, प्रवृत्ति र विश्लेषण। कुल ${totalHouseholdsOnLoan} घरपरिवारले कुनै न कुनै प्रकारको कर्जा लिएका छन्। सबैभन्दा बढी ऋणी घरपरिवार भएका वडाहरू: वडा ${wardsWithHighestLoans[0]?.wardNumber || "N/A"} (${wardsWithHighestLoans[0]?.households || 0} घरपरिवार), वडा ${wardsWithHighestLoans[1]?.wardNumber || "N/A"} (${wardsWithHighestLoans[1]?.households || 0} घरपरिवार)। विस्तृत तथ्याङ्क र विजुअलाइजेसन यहाँ पेश गरिएको छ।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार ऋण लिएका घरपरिवारहरूको वितरण, प्रवृत्ति र विश्लेषण। कुल ${totalHouseholdsOnLoan} घरपरिवारले कुनै न कुनै प्रकारको कर्जा लिएका छन्। सबैभन्दा बढी ऋणी घरपरिवार भएका वडाहरू: वडा ${wardsWithHighestLoans[0]?.wardNumber || "N/A"} (${wardsWithHighestLoans[0]?.households || 0} घरपरिवार), वडा ${wardsWithHighestLoans[1]?.wardNumber || "N/A"} (${wardsWithHighestLoans[1]?.households || 0} घरपरिवार)। विस्तृत तथ्याङ्क र विजुअलाइजेसन यहाँ पेश गरिएको छ।`;
 
     const descriptionEN = `Ward-wise distribution, trends and analysis of households with loans in Khajura Rural Municipality. A total of ${totalHouseholdsOnLoan} households have taken some form of loans. Wards with most households in debt: Ward ${wardsWithHighestLoans[0]?.wardNumber || "N/A"} (${wardsWithHighestLoans[0]?.households || 0} households), Ward ${wardsWithHighestLoans[1]?.wardNumber || "N/A"} (${wardsWithHighestLoans[1]?.households || 0} households). Detailed statistics and visualizations presented here.`;
 
@@ -170,7 +170,7 @@ export default async function WardHouseholdsInLoanPage() {
               src="/images/loan-households.svg"
               width={1200}
               height={400}
-              alt="ऋण लिएका घरपरिवार - गढवा गाउँपालिका (Households With Loans - Khajura Rural Municipality)"
+              alt="ऋण लिएका घरपरिवार - बुद्धशान्ति गाउँपालिका (Households With Loans - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -178,30 +178,31 @@ export default async function WardHouseholdsInLoanPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा ऋण लिएका घरपरिवारहरु
+              बुद्धशान्ति गाउँपालिकामा ऋण लिएका घरपरिवारहरु
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा ऋण लिएका
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा ऋण लिएका
               घरपरिवारहरूको तथ्याङ्क प्रस्तुत गरिएको छ। यो तथ्याङ्कले
               गाउँपालिकाको आर्थिक अवस्था, वित्तीय समावेशीकरण र आर्थिक विकासको
               स्थितिलाई बुझ्न सहयोग गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल {totalHouseholdsOnLoan.toLocaleString()}{" "}
-              घरपरिवारले विभिन्न प्रकारका ऋणहरू लिएका छन्। यस तथ्याङ्कले स्थानीय
-              सरकारलाई वित्तीय साक्षरता, आर्थिक सशक्तिकरण र वित्तीय पहुँच बढाउन
-              नीति निर्माणमा सहयोग गर्दछ।
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              {totalHouseholdsOnLoan.toLocaleString()} घरपरिवारले विभिन्न
+              प्रकारका ऋणहरू लिएका छन्। यस तथ्याङ्कले स्थानीय सरकारलाई वित्तीय
+              साक्षरता, आर्थिक सशक्तिकरण र वित्तीय पहुँच बढाउन नीति निर्माणमा
+              सहयोग गर्दछ।
             </p>
 
             <h2 id="ward-wise-loans" className="scroll-m-20 border-b pb-2">
               वडा अनुसार ऋणी घरपरिवार
             </h2>
             <p>
-              गढवा गाउँपालिकाको विभिन्न वडाहरूमा ऋणमा रहेका घरपरिवारहरूको
+              बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा ऋणमा रहेका घरपरिवारहरूको
               संख्या निम्नानुसार छ:
             </p>
           </div>
@@ -219,7 +220,7 @@ export default async function WardHouseholdsInLoanPage() {
               ऋण वितरण विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा ऋण लिएका घरपरिवारहरूको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा ऋण लिएका घरपरिवारहरूको विश्लेषण गर्दा,
               {topWardsByLoan[0]?.ward || ""} मा सबैभन्दा बढी{" "}
               {topWardsByLoan[0]?.households || 0}
               घरपरिवारले ऋण लिएको देखिन्छ, जुन कुल ऋणी घरपरिवारको
@@ -240,7 +241,7 @@ export default async function WardHouseholdsInLoanPage() {
               तथ्याङ्क स्रोत
             </h2>
             <p>
-              माथि प्रस्तुत गरिएका तथ्याङ्कहरू गढवा गाउँपालिकाको आर्थिक
+              माथि प्रस्तुत गरिएका तथ्याङ्कहरू बुद्धशान्ति गाउँपालिकाको आर्थिक
               सर्वेक्षण र स्थानीय वित्तीय संस्थाहरूको सहकार्यमा संकलन गरिएको हो।
               यी तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>

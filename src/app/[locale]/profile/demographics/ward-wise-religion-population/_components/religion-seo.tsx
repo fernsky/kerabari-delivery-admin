@@ -51,22 +51,22 @@ export default function ReligionSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Religious Demographics of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Religious Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Religious population distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Religious demographics",
         "Ward-wise religion data",
         "Nepal census",
         ...Object.values(RELIGION_NAMES_EN).map((name) => `${name} population`),
         ...Object.values(RELIGION_NAMES).map((name) => `${name} जनसंख्या`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-religion-population",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-religion-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

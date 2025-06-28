@@ -28,7 +28,7 @@ class Command(BaseCommand):
             "Creating ward household demographics data based on actual municipality time series data..."
         )
 
-        # Actual ward household time series data for Gadhawa
+        # Actual ward household time series data for buddhashanti
         # Each dict matches the model fields
         ward_household_data = [
             {
@@ -138,7 +138,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 6,
-                "ward_name": "गढवा(१,२,३,४,५)",
+                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
                 "year": 2078,
                 "total_population": 7847,
                 "male_population": 3819,
@@ -159,7 +159,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 7,
-                "ward_name": "गढवा(६,७,८,९)",
+                "ward_name": "बुद्धशान्ति(६,७,८,९)",
                 "year": 2078,
                 "total_population": 6111,
                 "male_population": 2925,
@@ -306,7 +306,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 6,
-                "ward_name": "गढवा(१,२,३,४,५)",
+                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
                 "year": 2081,
                 "total_population": 8069,
                 "male_population": 3926,
@@ -327,7 +327,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 7,
-                "ward_name": "गढवा(६,७,८,९)",
+                "ward_name": "बुद्धशान्ति(६,७,८,९)",
                 "year": 2081,
                 "total_population": 6285,
                 "male_population": 3007,

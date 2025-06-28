@@ -75,11 +75,11 @@ export default function ToiletTypeSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Toilet Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Toilet Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of toilet types across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${sanitizedPercentage}% of households have proper toilet facilities. The most common toilet type is ${mostCommonTypeName} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Toilet types",
         "Sanitation facilities",
         "Flush toilets",
@@ -91,11 +91,11 @@ export default function ToiletTypeSEO({
         "No toilet households",
         "Sanitation improvement",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-toilet-type",
+      url: "https://digital.buddhashantimun.gov.np/profile/water-and-sanitation/ward-wise-toilet-type",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
@@ -150,7 +150,7 @@ export default function ToiletTypeSEO({
       isPartOf: {
         "@type": "WebSite",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
     };
   };

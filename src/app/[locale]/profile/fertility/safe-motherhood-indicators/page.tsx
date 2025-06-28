@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const safeMotherhoodSummary =
       await api.profile.fertility.safeMotherhoodIndicators.summary.query();
 
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
     const latestYear = safeMotherhoodSummary.latestYear;
 
     // Find key indicators for description
@@ -47,12 +47,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका सुरक्षित मातृत्व सेवा",
+      "बुद्धशान्ति गाउँपालिका सुरक्षित मातृत्व सेवा",
       "मातृ स्वास्थ्य सेवा",
       "संस्थागत सुत्केरी",
       `संस्थागत प्रसूति दर ${Number(institutionalDeliveries).toFixed(1)}%`,
       `गर्भवती जाँच कभरेज ${Number(ancCheckups).toFixed(1)}%`,
-      "गढवा गाउँपालिकामा सुरक्षित मातृत्व",
+      "बुद्धशान्ति गाउँपालिकामा सुरक्षित मातृत्व",
       "मातृ स्वास्थ्य विश्लेषण",
     ];
 
@@ -67,7 +67,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा सुरक्षित मातृत्व सेवाको विश्लेषण। वर्ष ${latestYear} मा संस्थागत प्रसूति दर ${localizeNumber(Number(institutionalDeliveries).toFixed(1), "ne")}%, नियमित गर्भवती जाँच ${localizeNumber(Number(ancCheckups).toFixed(1), "ne")}%, र सुत्केरी पछिको जाँच ${localizeNumber(Number(pncVisits).toFixed(1), "ne")}% रहेको छ।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा सुरक्षित मातृत्व सेवाको विश्लेषण। वर्ष ${latestYear} मा संस्थागत प्रसूति दर ${localizeNumber(Number(institutionalDeliveries).toFixed(1), "ne")}%, नियमित गर्भवती जाँच ${localizeNumber(Number(ancCheckups).toFixed(1), "ne")}%, र सुत्केरी पछिको जाँच ${localizeNumber(Number(pncVisits).toFixed(1), "ne")}% रहेको छ।`;
 
     const descriptionEN = `Analysis of safe motherhood services in Khajura Rural Municipality. In year ${latestYear}, institutional delivery rate was ${Number(institutionalDeliveries).toFixed(1)}%, regular ANC checkups was ${Number(ancCheckups).toFixed(1)}%, and postnatal care was ${Number(pncVisits).toFixed(1)}%.`;
 
@@ -99,9 +99,10 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "सुरक्षित मातृत्व सूचकहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title:
+        "सुरक्षित मातृत्व सूचकहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
-        "गढवा गाउँपालिकामा मातृ स्वास्थ्य सेवा र सूचकहरूको अवस्था र विश्लेषण।",
+        "बुद्धशान्ति गाउँपालिकामा मातृ स्वास्थ्य सेवा र सूचकहरूको अवस्था र विश्लेषण।",
     };
   }
 }
@@ -224,7 +225,7 @@ export default async function SafeMotherhoodIndicatorsPage() {
               src="/images/safe-motherhood-services.svg"
               width={1200}
               height={400}
-              alt="सुरक्षित मातृत्व सेवा - गढवा गाउँपालिका (Safe Motherhood Services - Khajura Rural Municipality)"
+              alt="सुरक्षित मातृत्व सेवा - बुद्धशान्ति गाउँपालिका (Safe Motherhood Services - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -232,7 +233,7 @@ export default async function SafeMotherhoodIndicatorsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा सुरक्षित मातृत्व सेवाको अवस्था
+              बुद्धशान्ति गाउँपालिकामा सुरक्षित मातृत्व सेवाको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -248,7 +249,7 @@ export default async function SafeMotherhoodIndicatorsPage() {
               प्रदान गरिन्छ।
             </p>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको वर्ष{" "}
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको वर्ष{" "}
               {localizeNumber((latestYear || 2080).toString(), "ne")} को
               सुरक्षित मातृत्व सेवाको अवस्था र विश्लेषण प्रस्तुत गरिएको छ।
               पालिकामा गर्भवती सेवा, संस्थागत सुत्केरी दर, सुत्केरी स्याहार र
@@ -262,7 +263,7 @@ export default async function SafeMotherhoodIndicatorsPage() {
               प्रमुख सुरक्षित मातृत्व सूचकहरू
             </h2>
             <p>
-              गढवा गाउँपालिकामा वर्ष{" "}
+              बुद्धशान्ति गाउँपालिकामा वर्ष{" "}
               {localizeNumber((latestYear || 2080)?.toString(), "ne")} मा
               सुरक्षित मातृत्व सम्बन्धी महत्वपूर्ण सूचकहरूको अवस्था निम्नानुसार
               रहेको छ:
@@ -297,8 +298,8 @@ export default async function SafeMotherhoodIndicatorsPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा सुरक्षित मातृत्व सेवाको अवस्था विश्लेषणबाट
-              निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
+              बुद्धशान्ति गाउँपालिकामा सुरक्षित मातृत्व सेवाको अवस्था
+              विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
             <SafeMotherhoodIndicatorsAnalysisSection
@@ -318,11 +319,11 @@ export default async function SafeMotherhoodIndicatorsPage() {
             />
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकाको सुरक्षित मातृत्व सेवाको अवस्थामा सुधार
-              ल्याउन स्पष्ट लक्ष्य, सामुदायिक सहभागिता र समन्वित प्रयास आवश्यक
-              छ। सबै गर्भवती र सुत्केरी महिलाहरूले गुणस्तरीय स्वास्थ्य सेवा पाउन
-              सक्ने वातावरण सुनिश्चित गर्न पालिकाले आफ्नो स्रोत-साधन र जनशक्तिको
-              समुचित परिचालन गर्नुपर्ने देखिन्छ।
+              यसरी बुद्धशान्ति गाउँपालिकाको सुरक्षित मातृत्व सेवाको अवस्थामा
+              सुधार ल्याउन स्पष्ट लक्ष्य, सामुदायिक सहभागिता र समन्वित प्रयास
+              आवश्यक छ। सबै गर्भवती र सुत्केरी महिलाहरूले गुणस्तरीय स्वास्थ्य
+              सेवा पाउन सक्ने वातावरण सुनिश्चित गर्न पालिकाले आफ्नो स्रोत-साधन र
+              जनशक्तिको समुचित परिचालन गर्नुपर्ने देखिन्छ।
             </p>
           </div>
         </section>

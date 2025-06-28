@@ -1,18 +1,12 @@
-{% extends 'reports/pdf_base.html' %}
-{% load nepali_filters %}
-
-{% block title %}
-{{ section.title_nepali|default:section.title }} - {{ category.name_nepali|default:category.name }} - गढवा गाउँपालिका
-{% endblock %}
-
-{% block chapter_header %}
-{{ category.name_nepali|default:category.name }} - {{ section.title_nepali|default:section.title }}
-{% endblock %}
-
-{% block content %}
+{% extends 'reports/pdf_base.html' %} {% load nepali_filters %} {% block title
+%} {{ section.title_nepali|default:section.title }} - {{
+category.name_nepali|default:category.name }} - बुद्धशान्ति गाउँपालिका {%
+endblock %} {% block chapter_header %} {{
+category.name_nepali|default:category.name }} - {{
+section.title_nepali|default:section.title }} {% endblock %} {% block content %}
 <!-- Cover Page -->
 <div class="cover-page">
-  <div class="cover-title">गढवाँपालिका</div>
+  <div class="cover-title">बुद्धशान्तिँपालिका</div>
   <div class="cover-subtitle">
     {{ section.title_nepali|default:section.title }}
   </div>
@@ -41,13 +35,14 @@
   <div class="cover-info">
     {% if publication_settings %}
     <div>
-      <strong>प्रकाशन मिति:</strong> {{ publication_settings.publication_date|nepali_date:"Y F j" }}
+      <strong>प्रकाशन मिति:</strong> {{
+      publication_settings.publication_date|nepali_date:"Y F j" }}
     </div>
     <div><strong>संस्करण:</strong> {{ publication_settings.version }}</div>
     {% endif %}
 
     <div style="margin-top: 2em; font-size: 10pt">
-      © {% now "Y" %} गढवाँपालिका। सबै अधिकार सुरक्षित।
+      © {% now "Y" %} बुद्धशान्तिँपालिका। सबै अधिकार सुरक्षित।
     </div>
   </div>
 </div>
@@ -65,7 +60,10 @@
     <h3>चित्रहरू</h3>
     {% for figure in section.figures.all %}
     <div class="list-item">
-      <span class="title">चित्र {{ figure.figure_number|nepali_digits }}: {{ figure.title_nepali|default:figure.title }}</span>
+      <span class="title"
+        >चित्र {{ figure.figure_number|nepali_digits }}: {{
+        figure.title_nepali|default:figure.title }}</span
+      >
       <span class="page-number">{{ forloop.counter }}</span>
     </div>
     {% endfor %}
@@ -78,7 +76,10 @@
     <h3>तालिकाहरू</h3>
     {% for table in section.tables.all %}
     <div class="list-item">
-      <span class="title">तालिका {{ table.table_number }}: {{ table.title_nepali|default:table.title }}</span>
+      <span class="title"
+        >तालिका {{ table.table_number }}: {{
+        table.title_nepali|default:table.title }}</span
+      >
       <span class="page-number">{{ forloop.counter }}</span>
     </div>
     {% endfor %}
@@ -127,12 +128,13 @@
       />
       {% endif %}
       <div class="figure-caption">
-        <strong>चित्र {{ figure.figure_number|nepali_digits }}:</strong> {{ figure.title_nepali|default:figure.title }}
-        {% if figure.description_nepali or figure.description %}
-        <br />{{ figure.description_nepali|default:figure.description }}
-        {% endif %}
-        {% if figure.source_nepali or figure.source %}
-        <br /><em>स्रोत: {{ figure.source_nepali|default:figure.source }}</em>
+        <strong>चित्र {{ figure.figure_number|nepali_digits }}:</strong> {{
+        figure.title_nepali|default:figure.title }} {% if
+        figure.description_nepali or figure.description %} <br />{{
+        figure.description_nepali|default:figure.description }} {% endif %} {%
+        if figure.source_nepali or figure.source %} <br /><em
+          >स्रोत: {{ figure.source_nepali|default:figure.source }}</em
+        >
         {% endif %}
       </div>
     </div>
@@ -152,9 +154,7 @@
           <strong>तालिका {{ table.table_number }}:</strong>
           {{ table.title_nepali|default:table.title }}
         </caption>
-        {% if table.data %}
-        {{ table.data|safe }}
-        {% else %}
+        {% if table.data %} {{ table.data|safe }} {% else %}
         <thead>
           <tr>
             <th>विवरण</th>
@@ -179,9 +179,7 @@
       <div style="font-size: 10pt; color: #666; margin-top: 0.5em">
         {{ table.description_nepali|default:table.description }}
       </div>
-      {% endif %}
-      
-      {% if table.source_nepali or table.source %}
+      {% endif %} {% if table.source_nepali or table.source %}
       <div style="font-size: 10pt; color: #666; margin-top: 0.25em">
         <em>स्रोत: {{ table.source_nepali|default:table.source }}</em>
       </div>

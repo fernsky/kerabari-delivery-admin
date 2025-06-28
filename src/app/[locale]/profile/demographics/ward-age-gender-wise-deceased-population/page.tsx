@@ -80,7 +80,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const deceasedData =
       await api.profile.demographics.wardAgeGenderWiseDeceasedPopulation.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalDeceasedPopulation = deceasedData.reduce(
@@ -119,12 +119,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका मृत्यु विवरण",
-      "गढवा मृत्यु दर",
+      "बुद्धशान्ति गाउँपालिका मृत्यु विवरण",
+      "बुद्धशान्ति मृत्यु दर",
       "वडा अनुसार उमेर लिङ्ग मृत्यु विवरण",
       "उमेर लिङ्ग अनुसार मृत्यु",
-      "गढवा जनसांख्यिकी विश्लेषण",
-      `गढवा मृत्यु संख्या ${localizeNumber(totalDeceasedPopulation.toString(), "ne")}`,
+      "बुद्धशान्ति जनसांख्यिकी विश्लेषण",
+      `बुद्धशान्ति मृत्यु संख्या ${localizeNumber(totalDeceasedPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -137,7 +137,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा, उमेर र लिङ्ग अनुसार मृत्यु भएका जनसंख्याको वितरण र विश्लेषण। कुल मृत्यु संख्या ${localizeNumber(totalDeceasedPopulation.toString(), "ne")} मध्ये ${localizeNumber(mostAffectedPercentage, "ne")}% (${localizeNumber(mostAffectedCount.toString(), "ne")}) ${AGE_GROUP_NAMES[mostAffectedAgeGroup] || mostAffectedAgeGroup} उमेर समूहमा रहेका छन्। विभिन्न वडाहरूमा उमेर र लिङ्ग अनुसार मृत्युको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा, उमेर र लिङ्ग अनुसार मृत्यु भएका जनसंख्याको वितरण र विश्लेषण। कुल मृत्यु संख्या ${localizeNumber(totalDeceasedPopulation.toString(), "ne")} मध्ये ${localizeNumber(mostAffectedPercentage, "ne")}% (${localizeNumber(mostAffectedCount.toString(), "ne")}) ${AGE_GROUP_NAMES[mostAffectedAgeGroup] || mostAffectedAgeGroup} उमेर समूहमा रहेका छन्। विभिन्न वडाहरूमा उमेर र लिङ्ग अनुसार मृत्युको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward, age and gender-wise distribution and analysis of deceased population in Khajura Rural Municipality. Out of a total deceased population of ${totalDeceasedPopulation}, ${mostAffectedPercentage}% (${mostAffectedCount}) are in the age group of ${AGE_GROUP_NAMES_EN[mostAffectedAgeGroup] || mostAffectedAgeGroup}. Detailed analysis of mortality across wards by age and gender.`;
 
@@ -171,7 +171,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "उमेर तथा लिङ्ग अनुसार मृत्यु विवरण | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+        "उमेर तथा लिङ्ग अनुसार मृत्यु विवरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा, उमेर र लिङ्ग अनुसार मृत्यु भएका जनसंख्याको वितरण र विश्लेषण।",
     };
@@ -421,7 +421,7 @@ export default async function WardAgeGenderWiseDeceasedPopulationPage() {
               src="/images/deceased-population.svg"
               width={1200}
               height={400}
-              alt="उमेर तथा लिङ्ग अनुसार मृत्यु विवरण - गढवा गाउँपालिका (Age and Gender Wise Deceased Population - Khajura Rural Municipality)"
+              alt="उमेर तथा लिङ्ग अनुसार मृत्यु विवरण - बुद्धशान्ति गाउँपालिका (Age and Gender Wise Deceased Population - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -429,21 +429,21 @@ export default async function WardAgeGenderWiseDeceasedPopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा उमेर तथा लिङ्ग अनुसार मृत्यु विवरण
+              बुद्धशान्ति गाउँपालिकामा उमेर तथा लिङ्ग अनुसार मृत्यु विवरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              गढवा गाउँपालिकाको जनसांख्यिकी विश्लेषणमा उमेर र लिङ्ग अनुसारको
-              मृत्युदरको अध्ययन महत्वपूर्ण छ। यसले स्वास्थ्य नीति निर्माण,
-              सेवाहरूको प्राथमिकीकरण र जनसंख्या परिवर्तनको बुझाई विकास गर्न
-              मद्दत गर्दछ। यस खण्डमा गढवा गाउँपालिकाको वडा, उमेर र लिङ्ग
-              अनुसारको मृत्यु विवरण प्रस्तुत गरिएको छ।
+              बुद्धशान्ति गाउँपालिकाको जनसांख्यिकी विश्लेषणमा उमेर र लिङ्ग
+              अनुसारको मृत्युदरको अध्ययन महत्वपूर्ण छ। यसले स्वास्थ्य नीति
+              निर्माण, सेवाहरूको प्राथमिकीकरण र जनसंख्या परिवर्तनको बुझाई विकास
+              गर्न मद्दत गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको वडा, उमेर र
+              लिङ्ग अनुसारको मृत्यु विवरण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalDeceasedPopulation.toString(), "ne")} जनाको
               मृत्यु भएको विवरण अनुसार, वडा, उमेर र लिङ्गका आधारमा मृत्युदरमा
               महत्वपूर्ण भिन्नता देखिन्छ। यसले स्थानीय सरकारलाई स्वास्थ्य सेवा,
@@ -491,7 +491,7 @@ export default async function WardAgeGenderWiseDeceasedPopulationPage() {
               उमेर र लिङ्ग अनुसार मृत्यु विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा उमेर र लिङ्ग अनुसारको मृत्युदरको विश्लेषण
+              बुद्धशान्ति गाउँपालिकामा उमेर र लिङ्ग अनुसारको मृत्युदरको विश्लेषण
               गर्दा, निम्न प्रवृत्तिहरू देखिएका छन्।{" "}
               {localizeNumber(malePercentage, "ne")}% पुरुष,{" "}
               {localizeNumber(femalePercentage, "ne")}% महिला, र

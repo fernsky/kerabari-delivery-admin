@@ -83,7 +83,7 @@ export default function FarmersGroupAnalysisSection({
 
   // SEO attributes to include in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-groups": totalGroups.toString(),
     "data-most-common-group": primaryGroup?.type || "",
     "data-ward-distribution": farmsByWard
@@ -98,8 +98,8 @@ export default function FarmersGroupAnalysisSection({
       </h2>
 
       <p className="mt-4">
-        गढवा गाउँपालिकाका कृषि सम्बन्धित समूहहरूले कृषि उत्पादन, बजारीकरण र
-        सामूहिक विकासका क्षेत्रमा महत्त्वपूर्ण कार्य गरिरहेका छन्। विभिन्न
+        बुद्धशान्ति गाउँपालिकाका कृषि सम्बन्धित समूहहरूले कृषि उत्पादन, बजारीकरण
+        र सामूहिक विकासका क्षेत्रमा महत्त्वपूर्ण कार्य गरिरहेका छन्। विभिन्न
         प्रकारका कृषक समूह, महिला कृषक समूह, दलित कृषक समूह, बचत समूह जस्ता
         संगठित समूहहरूले स्थानीय अर्थतन्त्रमा योगदान पुर्‍याइरहेका छन्।
       </p>
@@ -111,7 +111,7 @@ export default function FarmersGroupAnalysisSection({
             {groupSummary[0]?.type || ""}
           </h3>
           <p className="text-muted-foreground text-sm mb-4">
-            गढवामा सबैभन्दा लोकप्रिय कृषि समूह प्रकार, जुन कुल समूहको
+            बुद्धशान्तिमा सबैभन्दा लोकप्रिय कृषि समूह प्रकार, जुन कुल समूहको
             {localizeNumber(
               groupSummary[0]?.percentage.toFixed(1) || "0",
               "ne",
@@ -523,7 +523,7 @@ export default function FarmersGroupAnalysisSection({
         <div className="mt-6 pt-4 border-t">
           <h4 className="font-medium mb-4">समूह प्रोफाइल विश्लेषण</h4>
           <p className="text-sm">
-            गढवा गाउँपालिकामा सञ्चालित कृषि सम्बन्धित समूहहरूले स्थानीय
+            बुद्धशान्ति गाउँपालिकामा सञ्चालित कृषि सम्बन्धित समूहहरूले स्थानीय
             अर्थतन्त्रमा उल्लेखनीय योगदान पुर्‍याइरहेका छन्।{" "}
             {primaryGroup?.type} समूहहरूले प्रमुख हिस्सा ओगटेका छन्। वडा नं.{" "}
             {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}

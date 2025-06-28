@@ -49,11 +49,11 @@ export default function HouseholdBaseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "House Foundation Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "House Foundation Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `House foundation data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "House foundation",
         "Foundation distribution",
         "Ward-wise foundation data",
@@ -66,11 +66,11 @@ export default function HouseholdBaseSEO({
           (name) => `${name} घरधुरी तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-household-base",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-household-base",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

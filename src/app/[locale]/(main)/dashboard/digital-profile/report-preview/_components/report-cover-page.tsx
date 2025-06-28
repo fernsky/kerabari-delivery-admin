@@ -52,8 +52,14 @@ export function ReportCoverPage() {
             >
               गाउँकार्यपालिकाको कार्यालय
             </div>
-            <div style={{ color: "#1e40af", fontSize: "12pt", marginBottom: "0.5em" }}>
-              बुद्धशान्ति, दाङ, लुम्बिनी प्रदेश
+            <div
+              style={{
+                color: "#1e40af",
+                fontSize: "12pt",
+                marginBottom: "0.5em",
+              }}
+            >
+              बुद्धशान्ति, झापा, कोशी प्रदेश
             </div>
           </div>
           <div style={{ width: "80px", height: "80px" }}>
@@ -103,7 +109,9 @@ export function ReportCoverPage() {
 
         {/* Bottom Section */}
         <div style={{ color: "#0f172a", padding: "1em", marginTop: "1cm" }}>
-          <div style={{ fontSize: "16pt", fontWeight: 600 }}>मस्यौदा प्रतिवेदन</div>
+          <div style={{ fontSize: "16pt", fontWeight: 600 }}>
+            मस्यौदा प्रतिवेदन
+          </div>
           <div style={{ fontSize: "18pt", fontWeight: 700 }}>{nepaliYear}</div>
         </div>
       </div>
@@ -125,4 +133,4 @@ export function ReportCoverPage() {
       </div>
     </div>
   );
-} 
+}

@@ -65,7 +65,7 @@ export default function AnimalProductSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Animal Products in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Animal Products in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Animal product production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(
         2,
       )} tonnes/units and sales of ${totalSales.toFixed(2)} tonnes/units (${(
@@ -78,7 +78,7 @@ export default function AnimalProductSEO({
       )} tonnes/units (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from animal product sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Animal product production",
         "Animal product sales",
         "Milk production",
@@ -93,11 +93,11 @@ export default function AnimalProductSEO({
           (name) => `${name} उत्पादन तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-animal-products",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/municipality-wide-animal-products",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

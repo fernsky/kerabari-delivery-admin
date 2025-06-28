@@ -45,7 +45,7 @@ export default function ExportedProductsAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-exported-products",
@@ -233,8 +233,8 @@ export default function ExportedProductsAnalysisSection({
               <span className="ml-3 text-sm font-medium">75%</span>
             </div>
             <p className="text-sm text-muted-foreground mt-2">
-              अन्तरराष्ट्रिय र राष्ट्रिय बजारमा गढवा निर्यातको सम्भावना उच्च
-              छ
+              अन्तरराष्ट्रिय र राष्ट्रिय बजारमा बुद्धशान्ति निर्यातको सम्भावना
+              उच्च छ
             </p>
           </div>
 
@@ -250,14 +250,14 @@ export default function ExportedProductsAnalysisSection({
               <span className="ml-3 text-sm font-medium">62%</span>
             </div>
             <p className="text-sm text-muted-foreground mt-2">
-              गढवाका उत्पादनहरू गुणस्तर र मूल्यमा प्रतिस्पर्धी छन्
+              बुद्धशान्तिका उत्पादनहरू गुणस्तर र मूल्यमा प्रतिस्पर्धी छन्
             </p>
           </div>
         </div>
 
         <p className="mt-5">
-          गढवा गाउँपालिकाको निर्यात प्रवर्द्धन रणनीति सम्बन्धी थप जानकारीको
-          लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको निर्यात प्रवर्द्धन रणनीति सम्बन्धी थप
+          जानकारीको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

@@ -62,7 +62,7 @@ export default function WardWiseLiteracyStatusAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-population": totalPopulation.toString(),
     "data-literacy-rate": literacyRate.toFixed(2),
     "data-illiteracy-rate": illiteracyRate.toFixed(2),
@@ -407,7 +407,7 @@ export default function WardWiseLiteracyStatusAnalysisSection({
 
             <div>
               <h5 className="text-sm font-medium">
-                गढवा गाउँपालिका साक्षरताको स्थिति
+                बुद्धशान्ति गाउँपालिका साक्षरताको स्थिति
               </h5>
               <div className="mt-2 space-y-3">
                 {/* Literacy rate */}

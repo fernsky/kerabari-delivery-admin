@@ -95,7 +95,7 @@ export default function ForeignEmploymentAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-migrant-workers": totalPopulation.toString(),
     "data-most-common-destination":
       overallSummary.length > 0
@@ -372,8 +372,8 @@ export default function ForeignEmploymentAnalysisSection({
               <li className="flex gap-2">
                 <span className="text-green-500">•</span>
                 <span>
-                  <strong>विविधता स्कोर:</strong> गढवा गाउँपालिकाको वैदेशिक
-                  रोजगारी गन्तव्य विविधता स्कोर{" "}
+                  <strong>विविधता स्कोर:</strong> बुद्धशान्ति गाउँपालिकाको
+                  वैदेशिक रोजगारी गन्तव्य विविधता स्कोर{" "}
                   {localizeNumber(diversityScoreMunicipality.toString(), "ne")}
                   (१०० मध्ये) रहेको छ, जुन कुल{" "}
                   {localizeNumber(uniqueCountriesOverall.toString(), "ne")} वटा

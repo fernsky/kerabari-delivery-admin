@@ -99,7 +99,7 @@ export default function CooperativesAnalysisSection({
 
   // SEO attributes to include in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-cooperatives": totalCooperatives.toString(),
     "data-province-level": statistics.provinceLevelCooperatives.toString(),
     "data-most-common-cooperative":
@@ -116,11 +116,11 @@ export default function CooperativesAnalysisSection({
         सहकारी प्रोफाइल
       </h2>
       <p className="mt-4">
-        गढवा गाउँपालिकाका सहकारी संस्थाहरूले विभिन्न प्रकारका वित्तीय, कृषि,
-        महिला सशक्तिकरण, बहुउद्देश्यीय र सामुदायिक विकास कार्यहरूमा महत्त्वपूर्ण
-        भूमिका निर्वाह गरिरहेका छन्। यी संस्थाहरूले बचत संकलन, ऋण प्रवाह,
-        सामूहिक व्यवसाय प्रवर्द्धन र आर्थिक सबलीकरणमा योगदान पुर्‍याउँदै आएका
-        छन्।
+        बुद्धशान्ति गाउँपालिकाका सहकारी संस्थाहरूले विभिन्न प्रकारका वित्तीय,
+        कृषि, महिला सशक्तिकरण, बहुउद्देश्यीय र सामुदायिक विकास कार्यहरूमा
+        महत्त्वपूर्ण भूमिका निर्वाह गरिरहेका छन्। यी संस्थाहरूले बचत संकलन, ऋण
+        प्रवाह, सामूहिक व्यवसाय प्रवर्द्धन र आर्थिक सबलीकरणमा योगदान पुर्‍याउँदै
+        आएका छन्।
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
@@ -132,7 +132,7 @@ export default function CooperativesAnalysisSection({
             {cooperativeSummary[0]?.typeName || ""}
           </h3>
           <p className="text-muted-foreground text-sm mb-4">
-            गढवामा सबैभन्दा लोकप्रिय सहकारी प्रकार, जुन कुल सहकारीको
+            बुद्धशान्तिमा सबैभन्दा लोकप्रिय सहकारी प्रकार, जुन कुल सहकारीको
             {localizeNumber(
               cooperativeSummary[0]?.percentage.toFixed(1) || "0",
               "ne",
@@ -573,7 +573,7 @@ export default function CooperativesAnalysisSection({
         <div className="mt-6 pt-4 border-t">
           <h4 className="font-medium mb-4">विस्तृत प्रभाव</h4>
           <p className="text-sm">
-            गढवा गाउँपालिकामा सञ्चालित सहकारी संस्थाहरूले स्थानीय
+            बुद्धशान्ति गाउँपालिकामा सञ्चालित सहकारी संस्थाहरूले स्थानीय
             अर्थतन्त्रमा उल्लेखनीय योगदान पुर्‍याइरहेका छन्।{" "}
             {primaryCooperative?.typeName} संस्थाहरूले बचत तथा ऋण परिचालन मार्फत
             स्थानीय व्यवसाय प्रवर्द्धन र उद्यमशीलता विकासमा सहयोग पुर्‍याएका

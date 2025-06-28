@@ -74,11 +74,11 @@ export default function WaterPurificationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Water Purification Methods in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Water Purification Methods in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of water purification methods across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${treatingPercentage}% of households treat their water before drinking. The most common method is ${mostCommonTypeName} with ${mostCommonMethod?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Water purification",
         "Safe drinking water",
         "Household water treatment",
@@ -90,11 +90,11 @@ export default function WaterPurificationSEO({
         "Piyush usage",
         "Water safety measures",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-water-purification",
+      url: "https://digital.buddhashantimun.gov.np/profile/water-and-sanitation/ward-wise-water-purification",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
@@ -149,7 +149,7 @@ export default function WaterPurificationSEO({
       isPartOf: {
         "@type": "WebSite",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
     };
   };

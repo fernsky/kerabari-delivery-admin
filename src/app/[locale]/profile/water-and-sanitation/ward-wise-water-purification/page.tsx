@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const waterPurificationData =
       await api.profile.waterAndSanitation.wardWiseWaterPurification.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = waterPurificationData.reduce(
@@ -72,12 +72,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका पानी शुद्धिकरण",
+      "बुद्धशान्ति गाउँपालिका पानी शुद्धिकरण",
       "वडागत पानी शुद्धिकरण अभ्यास",
       "पानी उमाल्ने परिवार संख्या",
       "पानी फिल्टर प्रयोग दर",
       "पियूष प्रयोग गर्ने घरधुरी",
-      `गढवा पानी शुद्धिकरण तथ्याङ्क ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति पानी शुद्धिकरण तथ्याङ्क ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -90,7 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकामा वडा अनुसार पानी शुद्धिकरण विधिहरूको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ले ${mostCommonTypeName} विधि प्रयोग गर्दछन्। विभिन्न वडाहरूमा पानी शुद्धिकरण विधिहरूको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वडा अनुसार पानी शुद्धिकरण विधिहरूको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ले ${mostCommonTypeName} विधि प्रयोग गर्दछन्। विभिन्न वडाहरूमा पानी शुद्धिकरण विधिहरूको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of water purification methods in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) use ${mostCommonTypeName} method. Detailed analysis of water purification methods across various wards.`;
 
@@ -122,7 +122,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "पानी शुद्धिकरण विधिहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "पानी शुद्धिकरण विधिहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार पानी शुद्धिकरण विधिहरूको वितरण र विश्लेषण।",
     };
   }
@@ -358,7 +358,7 @@ export default async function WardWiseWaterPurificationPage() {
               src="/images/water-purification.svg"
               width={1200}
               height={400}
-              alt="पानी शुद्धिकरण विधिहरू - गढवा गाउँपालिका (Water Purification Methods - Khajura Rural Municipality)"
+              alt="पानी शुद्धिकरण विधिहरू - बुद्धशान्ति गाउँपालिका (Water Purification Methods - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -366,7 +366,7 @@ export default async function WardWiseWaterPurificationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा पानी शुद्धिकरणको अवस्था
+              बुद्धशान्ति गाउँपालिकामा पानी शुद्धिकरणको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -375,11 +375,11 @@ export default async function WardWiseWaterPurificationPage() {
             <p>
               पानी शुद्धिकरण स्वस्थ जीवनयापनको एक महत्वपूर्ण पक्ष हो। यसले
               जलजन्य रोगहरूबाट बच्न र समग्र जनस्वास्थ्य सुधार गर्न मद्दत गर्छ।
-              यस खण्डमा गढवा गाउँपालिकाका विभिन्न वडाहरूमा प्रयोग गरिने पानी
-              शुद्धिकरण विधिहरूको वितरण र विश्लेषण प्रस्तुत गरिएको छ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाका विभिन्न वडाहरूमा प्रयोग गरिने
+              पानी शुद्धिकरण विधिहरूको वितरण र विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {overallSummary[0] &&
@@ -396,7 +396,7 @@ export default async function WardWiseWaterPurificationPage() {
               पानी शुद्धिकरण विधिहरू
             </h2>
             <p>
-              गढवा गाउँपालिकामा पानी शुद्धिकरणका प्रमुख विधिहरू र तिनको
+              बुद्धशान्ति गाउँपालिकामा पानी शुद्धिकरणका प्रमुख विधिहरू र तिनको
               प्रयोग निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -425,7 +425,7 @@ export default async function WardWiseWaterPurificationPage() {
               पानी शुद्धिकरण विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा पानी शुद्धिकरण विधिहरूको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा पानी शुद्धिकरण विधिहरूको विश्लेषण गर्दा,
               {overallSummary[0]?.waterPurificationName || ""} विधि सबैभन्दा बढी
               {overallSummary[0]
                 ? ` ${localizeNumber((((overallSummary[0]?.households || 0) / totalHouseholds) * 100).toFixed(2), "ne")}% `
@@ -463,7 +463,7 @@ export default async function WardWiseWaterPurificationPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा पानी शुद्धिकरण अभ्यासहरू सुधार गर्न निम्न
+              बुद्धशान्ति गाउँपालिकामा पानी शुद्धिकरण अभ्यासहरू सुधार गर्न निम्न
               सिफारिसहरू प्रस्तुत गरिएका छन्:
             </p>
 
@@ -513,7 +513,7 @@ export default async function WardWiseWaterPurificationPage() {
             </div>
 
             <p className="mt-6">
-              यी सिफारिसहरू कार्यान्वयन गरेर, गढवा गाउँपालिकामा पानी
+              यी सिफारिसहरू कार्यान्वयन गरेर, बुद्धशान्ति गाउँपालिकामा पानी
               शुद्धिकरणको अवस्थामा उल्लेखनीय सुधार ल्याउन सकिन्छ, जसले
               जनस्वास्थ्य सुधार र जलजन्य रोगहरू न्यूनीकरणमा महत्त्वपूर्ण योगदान
               पुर्याउनेछ।

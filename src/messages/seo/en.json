@@ -4,44 +4,44 @@
     "description": "Official Digital Profile Information System for citizens of Nepal"
   },
   "home": {
-    "title": "Home - gadhawa Digital Profile System",
-    "description": "Access government services online through the official gadhawa Digital Profile Citizen Portal. Manage your documents, verify your identity, and access services securely.",
-    "keywords": "gadhawa, digital profile, citizen portal, nepal government, digital identity, online services, e-governance"
+    "title": "Home - buddhashanti Digital Profile System",
+    "description": "Access government services online through the official buddhashanti Digital Profile Citizen Portal. Manage your documents, verify your identity, and access services securely.",
+    "keywords": "buddhashanti, digital profile, citizen portal, nepal government, digital identity, online services, e-governance"
   },
   "profile": {
     "title": "My Profile | Digital Profile System",
     "description": "View and manage your personal information and verification status",
-    "keywords": "citizen profile, digital identity, gadhawa profile, personal information, digital documents"
+    "keywords": "citizen profile, digital identity, buddhashanti profile, personal information, digital documents"
   },
   "register": {
     "title": "Register | Digital Profile System",
     "description": "Register yourself in the Digital Profile Information System to access government services securely",
-    "keywords": "citizen registration, new account, digital identity, gadhawa registration, government services"
+    "keywords": "citizen registration, new account, digital identity, buddhashanti registration, government services"
   },
   "login": {
     "title": "Login | Digital Profile System",
     "description": "Sign in to your Digital Profile account to access government services and manage your digital identity",
-    "keywords": "citizen login, secure access, gadhawa login, government portal, digital services"
+    "keywords": "citizen login, secure access, buddhashanti login, government portal, digital services"
   },
   "forgotPassword": {
-    "title": "Forgot Password - gadhawa Digital Profile System",
-    "description": "Reset your password to regain access to your gadhawa Digital Profile account and government services.",
-    "keywords": "password recovery, forgot password, account access, reset password, gadhawa account"
+    "title": "Forgot Password - buddhashanti Digital Profile System",
+    "description": "Reset your password to regain access to your buddhashanti Digital Profile account and government services.",
+    "keywords": "password recovery, forgot password, account access, reset password, buddhashanti account"
   },
   "dashboard": {
     "title": "Dashboard | Digital Profile System",
     "description": "Manage your digital profile, upload documents, and track verification status",
-    "keywords": "citizen dashboard, service status, gadhawa services, digital profile dashboard"
+    "keywords": "citizen dashboard, service status, buddhashanti services, digital profile dashboard"
   },
   "documents": {
-    "title": "My Documents - gadhawa Digital Profile System",
-    "description": "Manage your official documents in the gadhawa Digital Profile System. Upload, update, and access your verified digital documents.",
-    "keywords": "digital documents, citizenship documents, official papers, document management, gadhawa documents"
+    "title": "My Documents - buddhashanti Digital Profile System",
+    "description": "Manage your official documents in the buddhashanti Digital Profile System. Upload, update, and access your verified digital documents.",
+    "keywords": "digital documents, citizenship documents, official papers, document management, buddhashanti documents"
   },
   "services": {
-    "title": "Services - gadhawa Digital Profile System",
-    "description": "Explore and access government services available through the gadhawa Digital Profile System.",
-    "keywords": "government services, online services, e-governance, public services, gadhawa services"
+    "title": "Services - buddhashanti Digital Profile System",
+    "description": "Explore and access government services available through the buddhashanti Digital Profile System.",
+    "keywords": "government services, online services, e-governance, public services, buddhashanti services"
   },
   "registrationSuccess": {
     "title": "Registration Successful | Digital Profile System",

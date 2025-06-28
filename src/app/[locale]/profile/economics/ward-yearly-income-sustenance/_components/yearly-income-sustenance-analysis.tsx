@@ -103,7 +103,7 @@ export default function YearlyIncomeSustenanceAnalysis({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-households",
@@ -226,9 +226,9 @@ export default function YearlyIncomeSustenanceAnalysis({
           <div className="bg-card p-4 rounded border">
             <h4 className="font-medium mb-2">खाद्य सुरक्षा स्थिति</h4>
             <p className="mb-2">
-              गढवा गाउँपालिकामा {yearRoundPercent}% घरपरिवार मात्र वर्षभरिका
-              लागि पुग्ने आय उत्पादन गर्न सक्षम छन्। यसले समग्रमा खाद्य
-              सुरक्षाको स्थिति चुनौतीपूर्ण रहेको देखाउँछ।
+              बुद्धशान्ति गाउँपालिकामा {yearRoundPercent}% घरपरिवार मात्र
+              वर्षभरिका लागि पुग्ने आय उत्पादन गर्न सक्षम छन्। यसले समग्रमा
+              खाद्य सुरक्षाको स्थिति चुनौतीपूर्ण रहेको देखाउँछ।
             </p>
             <p>
               <span className="font-medium">सबैभन्दा खाद्य सुरक्षित वडा:</span>{" "}
@@ -263,8 +263,8 @@ export default function YearlyIncomeSustenanceAnalysis({
           </span>
         </h3>
         <p>
-          गढवा गाउँपालिकाको वार्षिक आयको पर्याप्तता सम्बन्धी थप जानकारी वा
-          विस्तृत तथ्याङ्कको लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको वार्षिक आयको पर्याप्तता सम्बन्धी थप जानकारी
+          वा विस्तृत तथ्याङ्कको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

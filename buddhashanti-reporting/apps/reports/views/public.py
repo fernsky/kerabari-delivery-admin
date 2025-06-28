@@ -394,8 +394,8 @@ class FullReportView(ReportContextMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         # Municipality name - make dynamic
-        municipality_name = "गढवा गाउँपालिका"
-        municipality_name_english = "Gadhawa Rural Municipality"
+        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name_english = "buddhashanti Rural Municipality"
 
         # Get publication settings (optional)
         publication_settings = self.get_publication_settings()

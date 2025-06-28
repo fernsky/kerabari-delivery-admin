@@ -38,17 +38,17 @@ export default function GenderSEO({
         unitText: "people",
       },
       measuredValue: item.population,
-      description: `${localizeNumber(item.population.toLocaleString(), "ne")} ${item.genderName} घरमूली गढवा गाउँपालिकामा रहेका छन् (कुल घरमूलीको ${localizeNumber(((item.population / totalPopulation) * 100).toFixed(2), "ne")}%)`,
+      description: `${localizeNumber(item.population.toLocaleString(), "ne")} ${item.genderName} घरमूली बुद्धशान्ति गाउँपालिकामा रहेका छन् (कुल घरमूलीको ${localizeNumber(((item.population / totalPopulation) * 100).toFixed(2), "ne")}%)`,
     }));
 
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Head Gender Distribution in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Head Gender Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Ward-wise gender distribution of household heads across ${localizeNumber(wardNumbers.length.toString(), "ne")} wards of Khajura Rural Municipality with a total of ${localizeNumber(totalPopulation.toLocaleString(), "ne")} household heads.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Household head gender",
         "Ward-wise househead data",
         "Nepal demographics",
@@ -56,11 +56,11 @@ export default function GenderSEO({
         "Female household heads",
         "Male household heads",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-househead-gender",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-househead-gender",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

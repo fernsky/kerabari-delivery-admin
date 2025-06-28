@@ -1,15 +1,18 @@
 # API Documentation Specification
 
 ## Overview
-The gadhawa Digital Profile Report API provides comprehensive access to municipality data, report generation, and administrative functions. The API follows RESTful principles and returns JSON responses.
+
+The buddhashanti Digital Profile Report API provides comprehensive access to municipality data, report generation, and administrative functions. The API follows RESTful principles and returns JSON responses.
 
 ## Base URL
+
 ```
 Development: http://localhost:8000/api/v1/
-Production: https://gadhawa-report.gov.np/api/v1/
+Production: https://buddhashanti-report.gov.np/api/v1/
 ```
 
 ## Authentication
+
 ```http
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -19,6 +22,7 @@ Accept: application/json
 ## Core API Endpoints
 
 ### 1. Municipality Information
+
 ```yaml
 GET /api/v1/municipalities/
 Description: List all municipalities
@@ -43,6 +47,7 @@ Description: Delete municipality (Admin only)
 ```
 
 ### 2. Demographics API
+
 ```yaml
 GET /api/v1/demographics/population/
 Description: Get population statistics
@@ -81,6 +86,7 @@ Response: Caste and ethnicity statistics
 ```
 
 ### 3. Economics API
+
 ```yaml
 GET /api/v1/economics/overview/
 Description: Get economic overview
@@ -119,6 +125,7 @@ Response: Household income statistics
 ```
 
 ### 4. Social Services API
+
 ```yaml
 GET /api/v1/social/education/schools/
 Description: Get educational institutions
@@ -149,6 +156,7 @@ Response: Youth programs and sports facilities
 ```
 
 ### 5. Environment API
+
 ```yaml
 GET /api/v1/environment/forests/
 Description: Get forest area data
@@ -171,6 +179,7 @@ Response: Disaster risks and preparedness
 ```
 
 ### 6. Infrastructure API
+
 ```yaml
 GET /api/v1/infrastructure/transportation/
 Description: Get transportation infrastructure
@@ -190,6 +199,7 @@ Response: Housing types and construction materials
 ```
 
 ### 7. Governance API
+
 ```yaml
 GET /api/v1/governance/organization/
 Description: Get organizational structure
@@ -211,6 +221,7 @@ Response: Budget allocation and expenditure
 ```
 
 ### 8. Report Generation API
+
 ```yaml
 POST /api/v1/reports/generate/
 Description: Generate complete report
@@ -222,7 +233,7 @@ Request Body:
     "format": "pdf|html",
     "language": "ne|en"
   }
-Response: 
+Response:
   {
     "report_id": "string",
     "status": "processing|completed|failed",
@@ -251,6 +262,7 @@ Response: HTML preview
 ## Data Models Examples
 
 ### Municipality Model
+
 ```json
 {
   "id": "string",
@@ -273,6 +285,7 @@ Response: HTML preview
 ```
 
 ### Population Statistics Model
+
 ```json
 {
   "municipality_id": "string",
@@ -293,6 +306,7 @@ Response: HTML preview
 ```
 
 ## Error Responses
+
 ```json
 {
   "error": {
@@ -305,11 +319,13 @@ Response: HTML preview
 ```
 
 ## Rate Limiting
+
 - **Public Endpoints**: 100 requests per hour
 - **Authenticated Users**: 1000 requests per hour
 - **Admin Users**: 5000 requests per hour
 
 ## Pagination
+
 ```json
 {
   "count": "integer",
@@ -320,13 +336,16 @@ Response: HTML preview
 ```
 
 ## Filtering and Searching
+
 Most list endpoints support:
+
 - `search`: Text search across relevant fields
 - `ordering`: Sort by field (use `-` for descending)
 - `limit`: Number of results per page
 - `offset`: Number of results to skip
 
 Example:
+
 ```
 GET /api/v1/demographics/population/?search=ward&ordering=-population&limit=10
 ```

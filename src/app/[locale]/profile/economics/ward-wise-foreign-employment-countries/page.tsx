@@ -71,7 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const employmentData =
       await api.profile.economics.wardWiseForeignEmploymentCountries.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = employmentData.reduce(
@@ -103,12 +103,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका वैदेशिक रोजगारी",
-      "गढवा वैदेशिक रोजगारीका गन्तव्य देशहरू",
+      "बुद्धशान्ति गाउँपालिका वैदेशिक रोजगारी",
+      "बुद्धशान्ति वैदेशिक रोजगारीका गन्तव्य देशहरू",
       "वडा अनुसार वैदेशिक रोजगारी",
-      "विदेशमा रोजगारीमा गएका गढवावासीहरू",
+      "विदेशमा रोजगारीमा गएका बुद्धशान्तिवासीहरू",
       COUNTRY_NAMES[mostCommonCountry] || mostCommonCountry,
-      `गढवा वैदेशिक रोजगारी संख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      `बुद्धशान्ति वैदेशिक रोजगारी संख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
       "वैदेशिक रोजगारीको प्रमुख गन्तव्य",
       "रेमिट्यान्स आम्दानी",
     ];
@@ -125,7 +125,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार वैदेशिक रोजगारीमा गएका जनसंख्याको वितरण र विश्लेषण। कुल ${localizeNumber(totalPopulation.toString(), "ne")} जना वैदेशिक रोजगारीमा रहेका छन्, जसमध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${COUNTRY_NAMES[mostCommonCountry] || mostCommonCountry} मा रहेका छन्। विभिन्न वडाहरूमा वैदेशिक रोजगारीको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार वैदेशिक रोजगारीमा गएका जनसंख्याको वितरण र विश्लेषण। कुल ${localizeNumber(totalPopulation.toString(), "ne")} जना वैदेशिक रोजगारीमा रहेका छन्, जसमध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${COUNTRY_NAMES[mostCommonCountry] || mostCommonCountry} मा रहेका छन्। विभिन्न वडाहरूमा वैदेशिक रोजगारीको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of foreign employment population in Khajura Rural Municipality. Out of a total of ${totalPopulation} migrant workers, ${mostCommonPercentage}% (${mostCommonCount}) are working in ${COUNTRY_NAMES_EN[mostCommonCountry] || mostCommonCountry}. Detailed analysis of foreign employment patterns across various wards.`;
 
@@ -158,7 +158,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "वैदेशिक रोजगारीका गन्तव्य देशहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+        "वैदेशिक रोजगारीका गन्तव्य देशहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार वैदेशिक रोजगारीमा गएका जनसंख्याको वितरण र विश्लेषण।",
     };
@@ -511,7 +511,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
               src="/images/foreign-employment.svg"
               width={1200}
               height={400}
-              alt="वैदेशिक रोजगारीका गन्तव्य देशहरू - गढवा गाउँपालिका (Foreign Employment Destinations - Khajura Rural Municipality)"
+              alt="वैदेशिक रोजगारीका गन्तव्य देशहरू - बुद्धशान्ति गाउँपालिका (Foreign Employment Destinations - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -519,7 +519,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा वैदेशिक रोजगारीका गन्तव्य देशहरू
+              बुद्धशान्ति गाउँपालिकामा वैदेशिक रोजगारीका गन्तव्य देशहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -529,11 +529,11 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
               नेपालको अर्थतन्त्रमा वैदेशिक रोजगारीको महत्वपूर्ण भूमिका रहेको छ।
               वैदेशिक रोजगारीबाट प्राप्त रेमिट्यान्सले आर्थिक विकास, घरपरिवारको
               जीवनस्तर सुधार तथा गरिबी निवारणमा महत्वपूर्ण योगदान पुर्‍याएको छ।
-              गढवा गाउँपालिकामा पनि यो क्षेत्र आर्थिक विकासको महत्वपूर्ण
+              बुद्धशान्ति गाउँपालिकामा पनि यो क्षेत्र आर्थिक विकासको महत्वपूर्ण
               आधार बनेको छ।
             </p>
             <p>
-              गढवा गाउँपालिकाको वैदेशिक रोजगारी सम्बन्धी तथ्याङ्क अनुसार,
+              बुद्धशान्ति गाउँपालिकाको वैदेशिक रोजगारी सम्बन्धी तथ्याङ्क अनुसार,
               कुल {localizeNumber(totalPopulation.toLocaleString(), "ne")}
               जना विभिन्न देशहरूमा रोजगारीका लागि गएका छन्। यसमध्ये सबैभन्दा बढी{" "}
               {overallSummary[0]?.countryName || ""}
@@ -560,7 +560,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
               प्रमुख गन्तव्य देशहरू
             </h2>
             <p>
-              गढवा गाउँपालिकाका वासिन्दाहरूको वैदेशिक रोजगारीका प्रमुख
+              बुद्धशान्ति गाउँपालिकाका वासिन्दाहरूको वैदेशिक रोजगारीका प्रमुख
               गन्तव्य देशहरू र त्यहाँ रहेको जनसंख्या निम्नानुसार रहेको छ:
             </p>
 
@@ -601,7 +601,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
             </ul>
 
             <p>
-              क्षेत्रगत विश्लेषण गर्दा, गढवा गाउँपालिकाका{" "}
+              क्षेत्रगत विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकाका{" "}
               {localizeNumber(
                 (
                   (regionData["खाडी मुलुक"] / totalPopulation) * 100 || 0
@@ -664,7 +664,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
               आर्थिक प्रभाव र रेमिट्यान्स
             </h2>
             <p>
-              गढवा गाउँपालिकामा वैदेशिक रोजगारीबाट प्राप्त रेमिट्यान्सले
+              बुद्धशान्ति गाउँपालिकामा वैदेशिक रोजगारीबाट प्राप्त रेमिट्यान्सले
               स्थानीय अर्थतन्त्रमा महत्वपूर्ण योगदान पुर्‍याएको छ। अनुमानित
               हिसाबले वार्षिक रु.{" "}
               {localizeNumber(formattedEstimatedAnnualRemittance, "ne")} करोड
@@ -702,7 +702,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
 
             <p>
               वैदेशिक रोजगारीबाट फर्किएका व्यक्तिहरूमा सीप, अनुभव र पुँजी हुने
-              हुनाले स्थानीय विकासका लागि यो महत्वपूर्ण स्रोत हो। गढवा
+              हुनाले स्थानीय विकासका लागि यो महत्वपूर्ण स्रोत हो। बुद्धशान्ति
               गाउँपालिकाले वैदेशिक रोजगारीमा जाने व्यक्तिहरूलाई गन्तव्य देश
               अनुसार सीपमूलक तालिम प्रदान गर्ने र फर्केर आउनेहरूलाई उद्यमशीलता
               विकासमा सहयोग गर्ने नीति लिएको छ।
@@ -727,8 +727,8 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा वैदेशिक रोजगारीको अवस्था विश्लेषणबाट निम्न
-              निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
+              बुद्धशान्ति गाउँपालिकामा वैदेशिक रोजगारीको अवस्था विश्लेषणबाट
+              निम्न निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
             <div className="pl-6 space-y-4">
@@ -806,7 +806,7 @@ export default async function WardWiseForeignEmploymentCountriesPage() {
             </div>
 
             <p className="mt-6">
-              गढवा गाउँपालिकामा वैदेशिक रोजगारीको वर्तमान अवस्था मध्यम
+              बुद्धशान्ति गाउँपालिकामा वैदेशिक रोजगारीको वर्तमान अवस्था मध्यम
               स्तरको रहेको देखिन्छ। उच्च सीपयुक्त मानव संसाधन विकास, सुरक्षित
               वैदेशिक रोजगारी प्रवद्र्धन र रेमिट्यान्सको उत्पादनशील उपयोग गर्न
               तत्काल रणनीतिक योजना र कार्यक्रम कार्यान्वयन गर्नुपर्ने देखिन्छ।

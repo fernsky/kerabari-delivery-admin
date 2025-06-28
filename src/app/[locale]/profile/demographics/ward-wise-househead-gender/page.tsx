@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const genderData =
       await api.profile.demographics.wardWiseHouseHeadGender.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = genderData.reduce(
@@ -43,19 +43,19 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data using localized numbers
     const keywordsNP = [
-      "गढवा गाउँपालिका घरमूली लिङ्ग वितरण",
-      "गढवा वडागत घरमूली विश्लेषण",
-      "घरमूली महिला पुरुष अनुपात गढवा",
+      "बुद्धशान्ति गाउँपालिका घरमूली लिङ्ग वितरण",
+      "बुद्धशान्ति वडागत घरमूली विश्लेषण",
+      "घरमूली महिला पुरुष अनुपात बुद्धशान्ति",
       "वडा अनुसार घरमूली संख्या",
       "घरमूली लैङ्गिक विविधता",
-      `गढवा कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     // Create detailed description with actual data using localized numbers
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार घरमूली लिङ्ग वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये पुरुष घरमूली ${localizeNumber(genderCounts["MALE"]?.toString() || "0", "ne")} र महिला घरमूली ${localizeNumber(genderCounts["FEMALE"]?.toString() || "0", "ne")} रहेका छन्। विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरमूली लिङ्ग वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये पुरुष घरमूली ${localizeNumber(genderCounts["MALE"]?.toString() || "0", "ne")} र महिला घरमूली ${localizeNumber(genderCounts["FEMALE"]?.toString() || "0", "ne")} रहेका छन्। विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     return {
-      title: `गढवा गाउँपालिका | वडागत घरमूली लिङ्ग वितरण | डिजिटल प्रोफाइल`,
+      title: `बुद्धशान्ति गाउँपालिका | वडागत घरमूली लिङ्ग वितरण | डिजिटल प्रोफाइल`,
       description: descriptionNP,
       keywords: keywordsNP,
       alternates: {
@@ -66,25 +66,26 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `गढवा गाउँपालिका | वडागत घरमूली लिङ्ग वितरण`,
+        title: `बुद्धशान्ति गाउँपालिका | वडागत घरमूली लिङ्ग वितरण`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
         alternateLocale: "en_US",
-        siteName: `गढवा गाउँपालिका डिजिटल प्रोफाइल`,
+        siteName: `बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल`,
       },
       twitter: {
         card: "summary_large_image",
-        title: `गढवा गाउँपालिका | वडागत घरमूली लिङ्ग वितरण`,
+        title: `बुद्धशान्ति गाउँपालिका | वडागत घरमूली लिङ्ग वितरण`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "गढवा गाउँपालिका | वडागत घरमूली लिङ्ग वितरण | डिजिटल प्रोफाइल",
+      title:
+        "बुद्धशान्ति गाउँपालिका | वडागत घरमूली लिङ्ग वितरण | डिजिटल प्रोफाइल",
       description:
-        "गढवा गाउँपालिकाको वडागत घरमूली लिङ्ग वितरण, प्रवृत्ति र विश्लेषण।",
+        "बुद्धशान्ति गाउँपालिकाको वडागत घरमूली लिङ्ग वितरण, प्रवृत्ति र विश्लेषण।",
     };
   }
 }
@@ -196,7 +197,7 @@ export default async function WardWiseHouseheadGenderPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              <span className="font-bold">गढवा गाउँपालिकामा</span> वडागत
+              <span className="font-bold">बुद्धशान्ति गाउँपालिकामा</span> वडागत
               घरमूली लिङ्ग वितरण
             </h1>
 
@@ -204,15 +205,15 @@ export default async function WardWiseHouseheadGenderPage() {
               परिचय
             </h2>
             <p>
-              यस खण्डमा <strong>गढवा गाउँपालिका</strong>को विभिन्न वडाहरूमा
-              घरमूलीको लिङ्ग अनुसार जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत
-              गरिएको छ। घरमूली भनेको घरपरिवारको प्रमुख व्यक्ति हो, जसले घरायसी
-              निर्णयहरूमा प्रमुख भूमिका निर्वाह गर्दछ।
+              यस खण्डमा <strong>बुद्धशान्ति गाउँपालिका</strong>को विभिन्न
+              वडाहरूमा घरमूलीको लिङ्ग अनुसार जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क
+              प्रस्तुत गरिएको छ। घरमूली भनेको घरपरिवारको प्रमुख व्यक्ति हो, जसले
+              घरायसी निर्णयहरूमा प्रमुख भूमिका निर्वाह गर्दछ।
             </p>
             <p>
               यो तथ्याङ्कले लैङ्गिक समानता, सामाजिक संरचना र परिवारको नेतृत्वमा
               महिला सहभागिताको अवस्था बुझ्न मद्दत गर्दछ। यसले{" "}
-              <strong>गढवा गाउँपालिका</strong>लाई लैङ्गिक समानता सम्बन्धी
+              <strong>बुद्धशान्ति गाउँपालिका</strong>लाई लैङ्गिक समानता सम्बन्धी
               नीति तथा कार्यक्रमहरू तर्जुमा गर्न महत्त्वपूर्ण आधार प्रदान गर्दछ।
             </p>
 
@@ -232,10 +233,10 @@ export default async function WardWiseHouseheadGenderPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none mt-8">
             <h2 id="ward-analysis" className="scroll-m-20 border-b pb-2">
-              <strong>गढवा गाउँपालिका</strong>को वडागत विश्लेषण
+              <strong>बुद्धशान्ति गाउँपालिका</strong>को वडागत विश्लेषण
             </h2>
             <p>
-              <strong>गढवा गाउँपालिका</strong>को वडा अनुसार घरमूली लिङ्ग
+              <strong>बुद्धशान्ति गाउँपालिका</strong>को वडा अनुसार घरमूली लिङ्ग
               वितरणको विश्लेषण निम्नानुसार रहेको छ:
             </p>
           </div>

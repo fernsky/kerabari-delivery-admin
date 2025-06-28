@@ -56,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const landOwnershipData =
       await api.profile.economics.wardWiseLandOwnership.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = landOwnershipData.reduce(
@@ -89,14 +89,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका जग्गा स्वामित्व",
-      "गढवा जग्गा स्वामित्व प्रकार",
+      "बुद्धशान्ति गाउँपालिका जग्गा स्वामित्व",
+      "बुद्धशान्ति जग्गा स्वामित्व प्रकार",
       "वडा अनुसार जग्गा स्वामित्व",
       "निजी जग्गा स्वामित्व",
       "सार्वजनिक जग्गा स्वामित्व",
       "गुठी जग्गा स्वामित्व",
       "गाउँ ब्लक जग्गा स्वामित्व",
-      `गढवा घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -111,7 +111,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार जग्गा स्वामित्वको वितरण र विश्लेषण। कुल ${localizeNumber(totalHouseholds.toString(), "ne")} घरपरिवार मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) परिवार ${LAND_OWNERSHIP_TYPES[mostCommonType] || mostCommonType} जग्गामा बसोबास गर्दछन्। विभिन्न वडाहरूमा जग्गा स्वामित्वको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार जग्गा स्वामित्वको वितरण र विश्लेषण। कुल ${localizeNumber(totalHouseholds.toString(), "ne")} घरपरिवार मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) परिवार ${LAND_OWNERSHIP_TYPES[mostCommonType] || mostCommonType} जग्गामा बसोबास गर्दछन्। विभिन्न वडाहरूमा जग्गा स्वामित्वको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of land ownership in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) live on ${LAND_OWNERSHIP_TYPES_EN[mostCommonType] || mostCommonType}. Detailed analysis of land ownership patterns across various wards.`;
 
@@ -144,7 +144,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+        "जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार जग्गा स्वामित्वको प्रकार अनुसारको घरपरिवारको वितरण र विश्लेषण।",
     };
@@ -390,7 +390,7 @@ export default async function WardWiseLandOwnershipPage() {
               src="/images/land-ownership.svg"
               width={1200}
               height={400}
-              alt="जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार - गढवा गाउँपालिका (Land Ownership Types by Households - Khajura Rural Municipality)"
+              alt="जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार - बुद्धशान्ति गाउँपालिका (Land Ownership Types by Households - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -398,7 +398,7 @@ export default async function WardWiseLandOwnershipPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार
+              बुद्धशान्ति गाउँपालिकामा जग्गा स्वामित्वको प्रकार अनुसार घरपरिवार
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -408,12 +408,12 @@ export default async function WardWiseLandOwnershipPage() {
               जग्गा स्वामित्व घरपरिवारको आर्थिक सुरक्षा र सामाजिक स्थितिको
               महत्त्वपूर्ण पक्ष हो। नेपालमा विभिन्न प्रकारको जग्गा स्वामित्व
               प्रणाली अवलम्बन गरिएको छ, जसमा निजी, गुठी, सार्वजनिक/ऐलानी, गाउँ
-              ब्लक लगायतका प्रकारहरू प्रचलनमा छन्। गढवा गाउँपालिकामा पनि यी
-              विभिन्न प्रकारका जग्गा स्वामित्वमा बसोबास गर्ने घरपरिवारहरू रहेका
-              छन्।
+              ब्लक लगायतका प्रकारहरू प्रचलनमा छन्। बुद्धशान्ति गाउँपालिकामा पनि
+              यी विभिन्न प्रकारका जग्गा स्वामित्वमा बसोबास गर्ने घरपरिवारहरू
+              रहेका छन्।
             </p>
             <p>
-              गढवा गाउँपालिकाको जग्गा स्वामित्व सम्बन्धी तथ्याङ्क अनुसार,
+              बुद्धशान्ति गाउँपालिकाको जग्गा स्वामित्व सम्बन्धी तथ्याङ्क अनुसार,
               कुल {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               घरपरिवारमध्ये सबैभन्दा बढी {overallSummary[0]?.typeName || ""}
               जग्गामा{" "}
@@ -439,8 +439,8 @@ export default async function WardWiseLandOwnershipPage() {
               जग्गा स्वामित्वका प्रमुख प्रकारहरू
             </h2>
             <p>
-              गढवा गाउँपालिकामा जग्गा स्वामित्वका प्रमुख प्रकारहरू र तिनमा
-              बसोबास गर्ने घरपरिवार संख्या निम्नानुसार रहेको छ:
+              बुद्धशान्ति गाउँपालिकामा जग्गा स्वामित्वका प्रमुख प्रकारहरू र
+              तिनमा बसोबास गर्ने घरपरिवार संख्या निम्नानुसार रहेको छ:
             </p>
 
             <ul>
@@ -458,7 +458,7 @@ export default async function WardWiseLandOwnershipPage() {
             </ul>
 
             <p>
-              स्वामित्वको विश्लेषण गर्दा, गढवा गाउँपालिकाका{" "}
+              स्वामित्वको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकाका{" "}
               {localizeNumber(
                 (
                   ((overallSummary.find((s) => s.type === "PRIVATE")
@@ -513,7 +513,7 @@ export default async function WardWiseLandOwnershipPage() {
               भूमि व्यवस्थापन र सुरक्षा
             </h2>
             <p>
-              गढवा गाउँपालिकामा जग्गा स्वामित्वको प्रकारले भूमि सुरक्षा र
+              बुद्धशान्ति गाउँपालिकामा जग्गा स्वामित्वको प्रकारले भूमि सुरक्षा र
               व्यवस्थापनमा प्रभाव पारेको देखिन्छ। कुल{" "}
               {localizeNumber(totalHouseholds.toString(), "ne")} घरपरिवारमध्ये{" "}
               {localizeNumber(totalSecureHouseholds.toString(), "ne")}
@@ -547,8 +547,8 @@ export default async function WardWiseLandOwnershipPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकाको जग्गा स्वामित्व अवस्थाको विश्लेषणबाट निम्न
-              निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
+              बुद्धशान्ति गाउँपालिकाको जग्गा स्वामित्व अवस्थाको विश्लेषणबाट
+              निम्न निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
             <div className="pl-6 space-y-4">
@@ -612,7 +612,7 @@ export default async function WardWiseLandOwnershipPage() {
             </div>
 
             <p className="mt-6">
-              गढवा गाउँपालिकामा जग्गा स्वामित्वको वर्तमान अवस्थाले जग्गा
+              बुद्धशान्ति गाउँपालिकामा जग्गा स्वामित्वको वर्तमान अवस्थाले जग्गा
               व्यवस्थापनमा सुधार गर्नुपर्ने आवश्यकता देखाउँछ। जग्गा स्वामित्व
               सुरक्षा, अभिलेखीकरण सुधार र दीर्घकालीन योजना तर्जुमा गरी
               कार्यान्वयन गर्न आवश्यक देखिन्छ।

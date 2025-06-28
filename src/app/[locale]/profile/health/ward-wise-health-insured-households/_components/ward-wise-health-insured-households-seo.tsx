@@ -56,11 +56,11 @@ export default function WardWiseHealthInsuredHouseholdsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Health Insurance Coverage in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Health Insurance Coverage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of health insurance coverage across wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${totalInsuredHouseholds.toLocaleString()} households (${insuredPercentage.toFixed(2)}%) have health insurance coverage. The highest coverage is in Ward ${bestInsuranceWard?.wardNumber || ""} with ${bestInsuranceWard?.percentage.toFixed(2) || ""}% insurance rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Health insurance",
         "स्वास्थ्य बीमा",
         "Ward-wise health insurance",
@@ -71,11 +71,11 @@ export default function WardWiseHealthInsuredHouseholdsSEO({
         "Health insurance rate",
         "Insurance coverage index",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/health/ward-wise-health-insured-households",
+      url: "https://digital.buddhashantimun.gov.np/profile/health/ward-wise-health-insured-households",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

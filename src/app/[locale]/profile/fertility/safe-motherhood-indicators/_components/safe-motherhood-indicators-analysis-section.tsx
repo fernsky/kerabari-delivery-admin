@@ -181,7 +181,7 @@ export default function SafeMotherhoodIndicatorsAnalysisSection({
           <p className="flex gap-2">
             <span className="text-blue-500">•</span>
             <span>
-              <strong>समग्र अवस्था:</strong> गढवा गाउँपालिकामा वर्ष{" "}
+              <strong>समग्र अवस्था:</strong> बुद्धशान्ति गाउँपालिकामा वर्ष{" "}
               {localizeNumber(latestYear, "ne")} मा सुरक्षित मातृत्व सेवाको
               गुणस्तर सूचकाङ्क{" "}
               {localizeNumber(maternalHealthIndex.toFixed(1), "ne")} रहेको छ,

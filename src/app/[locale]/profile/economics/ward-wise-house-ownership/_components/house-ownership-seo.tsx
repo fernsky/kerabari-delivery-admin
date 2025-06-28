@@ -50,11 +50,11 @@ export default function HouseOwnershipSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "House Ownership Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "House Ownership Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `House ownership data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "House ownership",
         "Ownership distribution",
         "Ward-wise ownership data",
@@ -67,11 +67,11 @@ export default function HouseOwnershipSEO({
           (name) => `${name} घरधुरी तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-house-ownership",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-house-ownership",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

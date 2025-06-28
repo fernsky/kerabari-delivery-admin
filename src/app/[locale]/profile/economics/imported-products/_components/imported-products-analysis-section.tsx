@@ -45,7 +45,7 @@ export default function ImportedProductsAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-imported-products",
@@ -219,8 +219,8 @@ export default function ImportedProductsAnalysisSection({
           </span>
         </h3>
         <p>
-          गढवा गाउँपालिकाको आयात प्रतिस्थापन तथा स्थानीय उत्पादन प्रवर्द्धन
-          रणनीति सम्बन्धी थप जानकारीको लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको आयात प्रतिस्थापन तथा स्थानीय उत्पादन
+          प्रवर्द्धन रणनीति सम्बन्धी थप जानकारीको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

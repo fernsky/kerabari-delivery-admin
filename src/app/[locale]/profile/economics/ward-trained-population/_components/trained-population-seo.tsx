@@ -34,11 +34,11 @@ export default function TrainedPopulationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Trained Population Distribution of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Trained Population Distribution of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Trained population distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalTrainedPopulation.toLocaleString()} trained individuals.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Trained population",
         "Skills development",
         "Vocational training",
@@ -47,11 +47,11 @@ export default function TrainedPopulationSEO({
         "Rural skill development",
         "Economic indicators Nepal",
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-trained-population",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-trained-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://gadhawa-rm.gov.np",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

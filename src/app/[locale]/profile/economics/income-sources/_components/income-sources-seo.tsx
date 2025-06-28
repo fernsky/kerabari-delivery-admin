@@ -47,11 +47,11 @@ export default function IncomeSourcesSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Income Sources of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Income Sources of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Household income sources distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Income sources",
         "Household economics",
         "Ward-wise income data",
@@ -61,11 +61,11 @@ export default function IncomeSourcesSEO({
         ),
         ...Object.values(INCOME_SOURCE_NAMES).map((name) => `${name} आयस्रोत`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/income-sources",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/income-sources",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

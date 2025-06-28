@@ -84,7 +84,7 @@ export default function LoanUsageAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-households-with-loans",
@@ -266,7 +266,7 @@ export default function LoanUsageAnalysisSection({
           <span className="sr-only">Conclusions and Recommendations</span>
         </h3>
         <p>
-          कर्जाको प्रयोजन विश्लेषणबाट देखिन्छ कि गढवा गाउँपालिकामा{" "}
+          कर्जाको प्रयोजन विश्लेषणबाट देखिन्छ कि बुद्धशान्ति गाउँपालिकामा{" "}
           {parseFloat(productivePercentage) > parseFloat(consumptionPercentage)
             ? "उत्पादनशील"
             : "उपभोग"}{" "}
@@ -275,7 +275,8 @@ export default function LoanUsageAnalysisSection({
           गर्न आवश्यक छ।
         </p>
         <p className="mt-2">
-          गढवा गाउँपालिकाको कर्जा प्रयोजन सम्बन्धी थप जानकारीको लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको कर्जा प्रयोजन सम्बन्धी थप जानकारीको लागि,
+          कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

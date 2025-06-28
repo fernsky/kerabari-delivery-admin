@@ -115,7 +115,7 @@ export default function EconomicallyActiveAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-population",
@@ -325,8 +325,8 @@ export default function EconomicallyActiveAnalysisSection({
           </span>
         </h3>
         <p>
-          गढवा गाउँपालिकाको आर्थिक रूपमा सक्रिय जनसंख्या सम्बन्धी थप जानकारी
-          वा विस्तृत तथ्याङ्कको लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको आर्थिक रूपमा सक्रिय जनसंख्या सम्बन्धी थप
+          जानकारी वा विस्तृत तथ्याङ्कको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

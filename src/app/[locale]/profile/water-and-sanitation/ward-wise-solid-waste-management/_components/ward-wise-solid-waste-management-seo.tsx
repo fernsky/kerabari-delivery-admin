@@ -111,11 +111,11 @@ export default function WardWiseSolidWasteManagementSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Solid Waste Management in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Solid Waste Management in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of solid waste management methods across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${wasteManagementTotals.HOME_COLLECTION?.toLocaleString() || 0} households (${wasteManagementPercentages.HOME_COLLECTION?.toFixed(2) || 0}%) use home waste collection methods. The highest home collection rate is in Ward ${highestHomeCollectionWard?.wardNumber || ""} with ${highestHomeCollectionWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Solid waste management",
         "Home waste collection",
         "Ward-wise waste management",
@@ -127,11 +127,11 @@ export default function WardWiseSolidWasteManagementSEO({
         "Household waste practices",
         "Waste collection services",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-solid-waste-management",
+      url: "https://digital.buddhashantimun.gov.np/profile/water-and-sanitation/ward-wise-solid-waste-management",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

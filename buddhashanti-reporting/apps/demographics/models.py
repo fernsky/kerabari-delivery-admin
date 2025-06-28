@@ -1,5 +1,5 @@
 """
-Demographics models for Gadhawa Rural Municipality Digital Profile
+Demographics models for buddhashanti Rural Municipality Digital Profile
 
 This module contains models related to population, households, and demographic information
 as specified in the SQL schema files and report structure.
@@ -330,7 +330,7 @@ class LanguageTypeChoice(models.TextChoices):
     JONGKHA = "JONGKHA", _("जोङ्खा")
     BANKARIYA = "BANKARIYA", _("बनकरिया")
     KAIKE = "KAIKE", _("काइके")
-    GADHWALI = "GADHWALI", _("गढवाली")
+    GADHWALI = "GADHWALI", _("बुद्धशान्तिली")
     FRECHN = "FRECHN", _("फ्रेन्च/फ्रान्सेली")
     MIJO = "MIJO", _("मिजो")
     KUKI = "KUKI", _("कुकी")

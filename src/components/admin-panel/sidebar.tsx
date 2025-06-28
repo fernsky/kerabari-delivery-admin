@@ -44,7 +44,7 @@ export function Sidebar() {
                   : "translate-x-0 opacity-100",
               )}
             >
-              गढवा प्रोफाइल
+              बुद्धशान्ति प्रोफाइल
             </h1>
           </Link>
         </Button>

@@ -364,7 +364,7 @@ export default function FarmersGroupCharts({
             </h4>
             <div className="prose prose-sm">
               <p>
-                पछिल्ला वर्षहरूमा गढवा गाउँपालिकामा व्यावसायिक कृषि तथा
+                पछिल्ला वर्षहरूमा बुद्धशान्ति गाउँपालिकामा व्यावसायिक कृषि तथा
                 पशुपालन समूहहरूको संख्यामा क्रमिक वृद्धि भएको देखिन्छ। विशेषगरी{" "}
                 {businessSummary[0]?.typeName || ""} र{" "}
                 {businessSummary[1]?.typeName || ""} जस्ता व्यवसायहरूमा

@@ -52,7 +52,7 @@ export default function PulseAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-production": totalProduction.toString(),
     "data-most-common-pulse":
       overallSummary.length > 0

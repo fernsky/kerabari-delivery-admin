@@ -27,12 +27,12 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "municipality_name",
-                    models.CharField(default="गढवा गाउँपालिका", max_length=200),
+                    models.CharField(default="बुद्धशान्ति गाउँपालिका", max_length=200),
                 ),
                 (
                     "municipality_name_english",
                     models.CharField(
-                        default="gadhawa Rural Municipality", max_length=200
+                        default="buddhashanti Rural Municipality", max_length=200
                     ),
                 ),
                 (

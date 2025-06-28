@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const ageData =
       await api.profile.demographics.wardAgeWisePopulation.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = ageData.reduce(
@@ -66,15 +66,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका उमेर जनसंख्या",
-      "गढवा उमेरगत विविधता",
-      `गढवा बाल जनसंख्या ${localizeNumber(childrenPct, "ne")}%`,
-      `गढवा युवा जनसंख्या ${localizeNumber(youthPct, "ne")}%`,
+      "बुद्धशान्ति गाउँपालिका उमेर जनसंख्या",
+      "बुद्धशान्ति उमेरगत विविधता",
+      `बुद्धशान्ति बाल जनसंख्या ${localizeNumber(childrenPct, "ne")}%`,
+      `बुद्धशान्ति युवा जनसंख्या ${localizeNumber(youthPct, "ne")}%`,
       "वडा अनुसार उमेर वितरण",
       "जनसांख्यिकीय पिरामिड",
       "जनसांख्यिक लाभांश",
       "निर्भरता अनुपात",
-      `गढवा कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -90,12 +90,12 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार उमेर समूहको जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये बाल जनसंख्या ${localizeNumber(childrenPct, "ne")}%, युवा जनसंख्या ${localizeNumber(youthPct, "ne")}% रहेको छ। उमेर समूह अनुसार विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार उमेर समूहको जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये बाल जनसंख्या ${localizeNumber(childrenPct, "ne")}%, युवा जनसंख्या ${localizeNumber(youthPct, "ne")}% रहेको छ। उमेर समूह अनुसार विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise age group population distribution, trends and analysis for Khajura Rural Municipality. Out of a total population of ${totalPopulation}, children make up ${childrenPct}% and youth make up ${youthPct}%. Detailed statistics and visualizations of various age groups.`;
 
     return {
-      title: `उमेर अनुसार जनसंख्या | गढवा गाउँपालिका | डिजिटल प्रोफाइल`,
+      title: `उमेर अनुसार जनसंख्या | बुद्धशान्ति गाउँपालिका | डिजिटल प्रोफाइल`,
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -106,23 +106,23 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `उमेर अनुसार जनसंख्या | गढवा गाउँपालिका`,
+        title: `उमेर अनुसार जनसंख्या | बुद्धशान्ति गाउँपालिका`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
         alternateLocale: "en_US",
-        siteName: `गढवा गाउँपालिका डिजिटल प्रोफाइल`,
+        siteName: `बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल`,
       },
       twitter: {
         card: "summary_large_image",
-        title: `उमेर अनुसार जनसंख्या | गढवा गाउँपालिका`,
+        title: `उमेर अनुसार जनसंख्या | बुद्धशान्ति गाउँपालिका`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "उमेर अनुसार जनसंख्या | गढवा गाउँपालिका | डिजिटल प्रोफाइल",
+      title: "उमेर अनुसार जनसंख्या | बुद्धशान्ति गाउँपालिका | डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार उमेर समूहको जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
@@ -450,31 +450,32 @@ export default async function WardAgeWisePopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा उमेर अनुसार जनसंख्या
+              बुद्धशान्ति गाउँपालिकामा उमेर अनुसार जनसंख्या
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा उमेर समूह
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा उमेर समूह
               अनुसारको जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ।
               उमेर वितरण एक महत्त्वपूर्ण जनसांख्यिकी सूचक हो जसले समाजको संरचना,
               शिक्षा, स्वास्थ्य, रोजगारी र सामाजिक सुरक्षा सम्बन्धी नीतिहरू
               निर्धारण गर्न सहयोग गर्दछ।
             </p>
             <p>
-              यो तथ्याङ्कले गढवा गाउँपालिकाको जनसांख्यिकीय लाभांश, निर्भरता
-              अनुपात र भविष्यको जनसंख्या वृद्धिको प्रक्षेपण गर्न महत्त्वपूर्ण
-              आधार प्रदान गर्दछ। विभिन्न उमेर समूहको आवश्यकता अनुसार विकास योजना
-              तर्जुमा गर्न यस तथ्याङ्कको विश्लेषण अत्यन्त महत्त्वपूर्ण हुन्छ।
+              यो तथ्याङ्कले बुद्धशान्ति गाउँपालिकाको जनसांख्यिकीय लाभांश,
+              निर्भरता अनुपात र भविष्यको जनसंख्या वृद्धिको प्रक्षेपण गर्न
+              महत्त्वपूर्ण आधार प्रदान गर्दछ। विभिन्न उमेर समूहको आवश्यकता
+              अनुसार विकास योजना तर्जुमा गर्न यस तथ्याङ्कको विश्लेषण अत्यन्त
+              महत्त्वपूर्ण हुन्छ।
             </p>
 
             <h2 id="age-distribution" className="scroll-m-20 border-b pb-2">
               उमेर समूह अनुसार जनसंख्या
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न उमेर समूहका व्यक्तिहरूको वितरण
+              बुद्धशान्ति गाउँपालिकामा विभिन्न उमेर समूहका व्यक्तिहरूको वितरण
               निम्नानुसार छ:
             </p>
 
@@ -610,8 +611,8 @@ export default async function WardAgeWisePopulationPage() {
               जनसांख्यिकीय विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकाको जनसंख्याको उमेर संरचनाले निम्न जनसांख्यिकीय
-              सूचकहरू प्रदान गर्दछ:
+              बुद्धशान्ति गाउँपालिकाको जनसंख्याको उमेर संरचनाले निम्न
+              जनसांख्यिकीय सूचकहरू प्रदान गर्दछ:
             </p>
 
             {/* Client component for age analysis section */}

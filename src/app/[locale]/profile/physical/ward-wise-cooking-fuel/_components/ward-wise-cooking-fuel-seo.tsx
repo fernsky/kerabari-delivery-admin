@@ -97,11 +97,11 @@ export default function WardWiseCookingFuelSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Cooking Fuel Usage in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Cooking Fuel Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of cooking fuel usage across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${cleanFuelTotal.toLocaleString()} households (${cleanFuelPercentageValue}%) use clean cooking fuels. The best adoption of clean fuel is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}% clean fuel usage rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Cooking fuel",
         "Clean energy",
         "Ward-wise energy usage",
@@ -113,11 +113,11 @@ export default function WardWiseCookingFuelSEO({
         "Energy transition",
         "Indoor air pollution",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/physical/ward-wise-cooking-fuel",
+      url: "https://digital.buddhashantimun.gov.np/profile/physical/ward-wise-cooking-fuel",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

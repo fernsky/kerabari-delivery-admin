@@ -83,7 +83,7 @@ class PDFGeneratorMixin:
 
         # Build content
         content = []
-        content.append(Paragraph("गढवा गाउँपालिका - पूर्ण प्रतिवेदन", styles["Title"]))
+        content.append(Paragraph("बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन", styles["Title"]))
         content.append(Spacer(1, 12))
 
         # Add basic content
@@ -105,8 +105,8 @@ class GenerateFullPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "गढवा गाउँपालिका"
-        municipality_name_english = "gadhawa Rural Municipality"
+        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name_english = "buddhashanti Rural Municipality"
 
         # Get all data
         publication_settings = self.get_publication_settings()
@@ -139,7 +139,7 @@ class GenerateFullPDFView(PDFGeneratorMixin, TemplateView):
         }
 
         filename = (
-            f"gadhawa_digital_profile_report_{timezone.now().strftime('%Y%m%d')}.pdf"
+            f"buddhashanti_digital_profile_report_{timezone.now().strftime('%Y%m%d')}.pdf"
         )
         return self.generate_pdf_with_weasyprint(
             "reports/pdf_full_report.html", context, filename
@@ -154,8 +154,8 @@ class GenerateCategoryPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "गढवा गाउँपालिका"
-        municipality_name_english = "GadhawaRural Municipality"
+        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name_english = "buddhashantiRural Municipality"
 
         publication_settings = self.get_publication_settings()
         sections = category.sections.filter(is_published=True).prefetch_related(
@@ -183,7 +183,7 @@ class GenerateCategoryPDFView(PDFGeneratorMixin, TemplateView):
         }
 
         filename = (
-            f"gadhawa_{category.slug}_report_{timezone.now().strftime('%Y%m%d')}.pdf"
+            f"buddhashanti_{category.slug}_report_{timezone.now().strftime('%Y%m%d')}.pdf"
         )
         return self.generate_pdf_with_weasyprint(
             "reports/pdf_category.html", context, filename
@@ -201,8 +201,8 @@ class GenerateSectionPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "गढवा गाउँपालिका"
-        municipality_name_english = "GadhawaRural Municipality"
+        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name_english = "buddhashantiRural Municipality"
 
         publication_settings = self.get_publication_settings()
 
@@ -218,7 +218,7 @@ class GenerateSectionPDFView(PDFGeneratorMixin, TemplateView):
             "use_exact_pages": True,
         }
 
-        filename = f"gadhawa_{category.slug}_{section.slug}_{timezone.now().strftime('%Y%m%d')}.pdf"
+        filename = f"buddhashanti_{category.slug}_{section.slug}_{timezone.now().strftime('%Y%m%d')}.pdf"
         return self.generate_pdf_with_weasyprint(
             "reports/pdf_section.html", context, filename
         )

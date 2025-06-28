@@ -92,13 +92,13 @@ const Statistics = ({
     "@type": "Dataset",
     name: `${municipalityName} जनसांख्यिकीय तथ्याङ्क`,
     description:
-      "गढवा गाउँपालिकाको प्रमुख जनसांख्यिकीय तथ्याङ्क, जनगणना अनुसार",
-    url: "https://digital.gadhawamun.gov.np",
+      "बुद्धशान्ति गाउँपालिकाको प्रमुख जनसांख्यिकीय तथ्याङ्क, जनगणना अनुसार",
+    url: "https://digital.buddhashantimun.gov.np",
     keywords: [
-      "गढवा गाउँपालिका जनसंख्या",
+      "बुद्धशान्ति गाउँपालिका जनसंख्या",
       "Khajura Rural Municipality demographics",
-      "गढवा जनगणना",
-      "दाङ जनसंख्या",
+      "बुद्धशान्ति जनगणना",
+      "झापा जनसंख्या",
       "नेपालको जनसंख्या",
     ],
     variableMeasured: [

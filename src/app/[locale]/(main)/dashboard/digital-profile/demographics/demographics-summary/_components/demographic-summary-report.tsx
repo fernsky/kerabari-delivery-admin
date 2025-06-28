@@ -28,7 +28,7 @@ export default function DemographicSummaryReport({
   isPrintMode = false,
 }: DemographicSummaryReportProps) {
   const params = useParams();
-  const locale = params.locale as string || 'en';
+  const locale = (params.locale as string) || "en";
 
   if (!data) {
     return (
@@ -60,20 +60,20 @@ export default function DemographicSummaryReport({
     : 0;
 
   return (
-    <div className={`space-y-6 ${isPrintMode ? 'print-mode' : ''}`}>
+    <div className={`space-y-6 ${isPrintMode ? "print-mode" : ""}`}>
       {/* Report Header */}
       <div className="text-center border-b pb-6">
         <h1 className="text-3xl font-bold text-red-600 mb-2">
           जनसांख्यिकीय सारांश
         </h1>
         <p className="text-lg text-gray-600">
-          गढवा गाउँपालिका - पूर्ण प्रतिवेदन
+          बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन
         </p>
         <p className="text-sm text-gray-500 mt-2">२०८१ मस्यौदा प्रतिवेदन</p>
       </div>
 
       {/* Executive Summary */}
-      <Card className={isPrintMode ? 'print-card' : ''}>
+      <Card className={isPrintMode ? "print-card" : ""}>
         <CardHeader>
           <CardTitle className="text-xl font-medium flex items-center">
             <Users className="mr-2 h-5 w-5" />
@@ -111,7 +111,7 @@ export default function DemographicSummaryReport({
       </Card>
 
       {/* Population Statistics */}
-      <Card className={isPrintMode ? 'print-card' : ''}>
+      <Card className={isPrintMode ? "print-card" : ""}>
         <CardHeader>
           <CardTitle className="text-xl font-medium flex items-center">
             <Users className="mr-2 h-5 w-5" />
@@ -200,7 +200,7 @@ export default function DemographicSummaryReport({
       </Card>
 
       {/* Geographic and Demographic Indicators */}
-      <Card className={isPrintMode ? 'print-card' : ''}>
+      <Card className={isPrintMode ? "print-card" : ""}>
         <CardHeader>
           <CardTitle className="text-xl font-medium flex items-center">
             <MapPin className="mr-2 h-5 w-5" />
@@ -291,7 +291,7 @@ export default function DemographicSummaryReport({
 
       {/* Absentee Population */}
       {data.populationAbsenteeTotal > 0 && (
-        <Card className={isPrintMode ? 'print-card' : ''}>
+        <Card className={isPrintMode ? "print-card" : ""}>
           <CardHeader>
             <CardTitle className="text-xl font-medium flex items-center">
               <UserRoundX className="mr-2 h-5 w-5" />
@@ -330,7 +330,7 @@ export default function DemographicSummaryReport({
       )}
 
       {/* Analysis and Insights */}
-      <Card className={isPrintMode ? 'print-card' : ''}>
+      <Card className={isPrintMode ? "print-card" : ""}>
         <CardHeader>
           <CardTitle className="text-xl font-medium flex items-center">
             <Book className="mr-2 h-5 w-5" />
@@ -343,29 +343,34 @@ export default function DemographicSummaryReport({
               <div>
                 <h4 className="font-medium text-lg mb-2">जनसंख्या संरचना</h4>
                 <p className="text-gray-700">
-                  गढवा गाउँपालिकामा कुल {localizeNumber(data.totalPopulation || 0, locale)} जनसंख्या छन्, 
-                  जसमा {localizeNumber(data.populationMale || 0, locale)} पुरुष ({malePct.toFixed(1)}%) र 
-                  {localizeNumber(data.populationFemale || 0, locale)} महिला ({femalePct.toFixed(1)}%) समावेश छन्। 
-                  लिङ्ग अनुपात {data.sexRatio || 0} छ, जसले पुरुष र महिलाको सन्तुलित वितरण देखाउँछ।
+                  बुद्धशान्ति गाउँपालिकामा कुल{" "}
+                  {localizeNumber(data.totalPopulation || 0, locale)} जनसंख्या
+                  छन्, जसमा {localizeNumber(data.populationMale || 0, locale)}{" "}
+                  पुरुष ({malePct.toFixed(1)}%) र
+                  {localizeNumber(data.populationFemale || 0, locale)} महिला (
+                  {femalePct.toFixed(1)}%) समावेश छन्। लिङ्ग अनुपात{" "}
+                  {data.sexRatio || 0} छ, जसले पुरुष र महिलाको सन्तुलित वितरण
+                  देखाउँछ।
                 </p>
               </div>
 
               <div>
                 <h4 className="font-medium text-lg mb-2">उमेर संरचना</h4>
                 <p className="text-gray-700">
-                  जनसंख्याको {pop0to14Pct.toFixed(1)}% बालबालिका (०-१४ वर्ष), 
-                  {pop15to59Pct.toFixed(1)}% कामदार उमेर (१५-५९ वर्ष), र 
-                  {pop60PlusPct.toFixed(1)}% वृद्धवृद्धा (६०+ वर्ष) छन्। 
-                  यो संरचनाले युवा जनसंख्याको प्रधानता देखाउँछ।
+                  जनसंख्याको {pop0to14Pct.toFixed(1)}% बालबालिका (०-१४ वर्ष),
+                  {pop15to59Pct.toFixed(1)}% कामदार उमेर (१५-५९ वर्ष), र
+                  {pop60PlusPct.toFixed(1)}% वृद्धवृद्धा (६०+ वर्ष) छन्। यो
+                  संरचनाले युवा जनसंख्याको प्रधानता देखाउँछ।
                 </p>
               </div>
 
               <div>
                 <h4 className="font-medium text-lg mb-2">घरधुरी विश्लेषण</h4>
                 <p className="text-gray-700">
-                  कुल {localizeNumber(data.totalHouseholds || 0, locale)} घरधुरीमा औसत {data.averageHouseholdSize || 0} व्यक्ति छन्। 
-                  जनसंख्या घनत्व {data.populationDensity || 0} प्रति वर्ग किलोमिटर छ, 
-                  जसले यस क्षेत्रको बसोबासको घनत्व देखाउँछ।
+                  कुल {localizeNumber(data.totalHouseholds || 0, locale)}{" "}
+                  घरधुरीमा औसत {data.averageHouseholdSize || 0} व्यक्ति छन्।
+                  जनसंख्या घनत्व {data.populationDensity || 0} प्रति वर्ग
+                  किलोमिटर छ, जसले यस क्षेत्रको बसोबासको घनत्व देखाउँछ।
                 </p>
               </div>
 
@@ -373,8 +378,9 @@ export default function DemographicSummaryReport({
                 <div>
                   <h4 className="font-medium text-lg mb-2">विकास प्रवृत्ति</h4>
                   <p className="text-gray-700">
-                    जनसंख्या वृद्धि दर {data.growthRate}% छ, जसले स्थिर विकासको प्रवृत्ति देखाउँछ। 
-                    साक्षरता दर पनि राम्रो अवस्थामा छ, विशेष गरी युवा समूहमा।
+                    जनसंख्या वृद्धि दर {data.growthRate}% छ, जसले स्थिर विकासको
+                    प्रवृत्ति देखाउँछ। साक्षरता दर पनि राम्रो अवस्थामा छ, विशेष
+                    गरी युवा समूहमा।
                   </p>
                 </div>
               )}
@@ -384,4 +390,4 @@ export default function DemographicSummaryReport({
       </Card>
     </div>
   );
-} 
+}

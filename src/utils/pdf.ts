@@ -44,7 +44,7 @@ export const setupPDFHeader = async (doc: jsPDF, details: HeaderDetails) => {
     align: "center",
   });
   doc.setFontSize(10);
-  doc.text("Dang, Lumbini Province", doc.internal.pageSize.width / 2, 22, {
+  doc.text("jhapa, Lumbini Province", doc.internal.pageSize.width / 2, 22, {
     align: "center",
   });
 

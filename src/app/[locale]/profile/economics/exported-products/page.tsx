@@ -24,21 +24,21 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const exportedProductsData =
       await api.profile.economics.exportedProducts.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalProducts = exportedProductsData.length;
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका निर्यातित उत्पादन",
-      "गढवा निर्यातित वस्तुहरू",
-      "निर्यातित सामान गढवा",
-      "गढवा निर्यात सूची",
-      "आर्थिक प्रोफाइल गढवा",
+      "बुद्धशान्ति गाउँपालिका निर्यातित उत्पादन",
+      "बुद्धशान्ति निर्यातित वस्तुहरू",
+      "निर्यातित सामान बुद्धशान्ति",
+      "बुद्धशान्ति निर्यात सूची",
+      "आर्थिक प्रोफाइल बुद्धशान्ति",
       "निर्यातित वस्तु विश्लेषण",
       "निर्यातित उत्पादनहरूको प्रवृत्ति",
-      `गढवा ${totalProducts} निर्यातित उत्पादनहरू`,
+      `बुद्धशान्ति ${totalProducts} निर्यातित उत्पादनहरू`,
     ];
 
     const keywordsEN = [
@@ -53,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको निर्यातित उत्पादनहरूको विस्तृत सूची, प्रवृत्ति र विश्लेषण। कुल ${totalProducts} निर्यातित उत्पादनहरू पालिकाबाट निर्यात गरिएका छन्। यी निर्यातित वस्तुहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको निर्यातित उत्पादनहरूको विस्तृत सूची, प्रवृत्ति र विश्लेषण। कुल ${totalProducts} निर्यातित उत्पादनहरू पालिकाबाट निर्यात गरिएका छन्। यी निर्यातित वस्तुहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Detailed catalog, trends and analysis of exported products from Khajura Rural Municipality. A total of ${totalProducts} exported products are registered from the municipality. Detailed statistics and visualizations of various exported goods.`;
 
@@ -195,7 +195,7 @@ export default async function ExportedProductsPage() {
               src="/images/exported-products.svg"
               width={1200}
               height={400}
-              alt="निर्यातित उत्पादनहरू - गढवा गाउँपालिका (Exported Products - Khajura Rural Municipality)"
+              alt="निर्यातित उत्पादनहरू - बुद्धशान्ति गाउँपालिका (Exported Products - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -203,20 +203,20 @@ export default async function ExportedProductsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकाबाट निर्यातित उत्पादनहरू
+              बुद्धशान्ति गाउँपालिकाबाट निर्यातित उत्पादनहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाबाट निर्यात गरिने विभिन्न
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाबाट निर्यात गरिने विभिन्न
               उत्पादनहरूको सूची र विश्लेषण प्रस्तुत गरिएको छ। यी निर्यातित
               उत्पादनहरूले स्थानीय अर्थतन्त्र, उत्पादन क्षमता र व्यापारिक
               सम्भावनाहरूको चित्रण गर्दछन्।
             </p>
             <p>
-              गढवा गाउँपालिकाबाट दर्ता भएका कुल {totalProducts} निर्यातित
+              बुद्धशान्ति गाउँपालिकाबाट दर्ता भएका कुल {totalProducts} निर्यातित
               उत्पादनहरूको विवरण यहाँ उपलब्ध छ। यी तथ्याङ्कहरूले स्थानीय आर्थिक
               विकास, उत्पादन प्रवर्द्धन र व्यापार सन्तुलनका लागि महत्त्वपूर्ण
               जानकारी प्रदान गर्दछन्।
@@ -229,7 +229,7 @@ export default async function ExportedProductsPage() {
               निर्यातित उत्पादनहरूको सूची
             </h2>
             <p>
-              गढवा गाउँपालिकाबाट निर्यात गरिएका उत्पादनहरूको सूची
+              बुद्धशान्ति गाउँपालिकाबाट निर्यात गरिएका उत्पादनहरूको सूची
               निम्नानुसार छ:
             </p>
           </div>
@@ -250,7 +250,7 @@ export default async function ExportedProductsPage() {
               निर्यात प्रवृत्ति विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकाबाट निर्यात गरिने उत्पादनहरूको प्रवृत्ति र
+              बुद्धशान्ति गाउँपालिकाबाट निर्यात गरिने उत्पादनहरूको प्रवृत्ति र
               उत्पादन ढाँचामा निम्न विशेषताहरू देखिएका छन्। यी निर्यातित
               वस्तुहरूको नियमित अनुगमन र विश्लेषणले स्थानीय अर्थतन्त्र र व्यापार
               सन्तुलनमा सकारात्मक प्रभाव पार्न सहयोग गर्दछ।
@@ -266,7 +266,7 @@ export default async function ExportedProductsPage() {
               तथ्याङ्क स्रोत
             </h2>
             <p>
-              माथि प्रस्तुत गरिएका तथ्याङ्कहरू गढवा गाउँपालिकाको आर्थिक
+              माथि प्रस्तुत गरिएका तथ्याङ्कहरू बुद्धशान्ति गाउँपालिकाको आर्थिक
               प्रोफाइल अध्ययन र स्थानीय उत्पादन सर्वेक्षणबाट संकलन गरिएको हो। यी
               तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>

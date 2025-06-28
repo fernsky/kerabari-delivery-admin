@@ -96,11 +96,11 @@ export default function WardWiseDeliveryPlaceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Childbirth Locations in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Childbirth Locations in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of childbirth locations across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalDeliveries.toLocaleString()} deliveries. ${institutionalTotal.toLocaleString()} deliveries (${institutionalPercentage}%) occurred in health institutions. The best institutional delivery rate is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Institutional delivery",
         "Home delivery",
         "Childbirth locations",
@@ -111,11 +111,11 @@ export default function WardWiseDeliveryPlaceSEO({
         "Health facility delivery",
         "Rural healthcare",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/fertility/ward-wise-delivery-place",
+      url: "https://digital.buddhashantimun.gov.np/profile/fertility/ward-wise-delivery-place",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

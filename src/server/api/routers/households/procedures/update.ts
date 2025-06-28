@@ -17,8 +17,8 @@ export const updateHouseholdProcedure = protectedProcedure
     // First check if the household exists and belongs to the right profile
     const checkQuery = sql`
       SELECT COUNT(*) as count 
-      FROM acme_gadhawa_households
-      WHERE id = ${id} AND profile_id = ${'gadhawa'}
+      FROM acme_buddhashanti_households
+      WHERE id = ${id} AND profile_id = ${'buddhashanti'}
     `;
     
     const checkResult = await ctx.db.execute(checkQuery);
@@ -180,9 +180,9 @@ export const updateHouseholdProcedure = protectedProcedure
       
       // Build the complete update query with parameters
       const updateQuery = sql`
-        UPDATE acme_gadhawa_households
+        UPDATE acme_buddhashanti_households
         SET ${setClause}
-        WHERE id = ${id} AND profile_id = ${'gadhawa'}
+        WHERE id = ${id} AND profile_id = ${'buddhashanti'}
         RETURNING id
       `;
       

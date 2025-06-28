@@ -57,11 +57,11 @@ export default function LanguageSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Linguistic Demographics of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Linguistic Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Mother tongue distribution data across ${wardIds.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Linguistic demographics",
         "Mother tongue statistics",
         "Ward-wise language data",
@@ -69,11 +69,11 @@ export default function LanguageSEO({
         ...Object.values(LANGUAGE_NAMES_EN).map((name) => `${name} speakers`),
         ...Object.values(LANGUAGE_NAMES).map((name) => `${name} वक्ता`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-mother-tongue-population",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-mother-tongue-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

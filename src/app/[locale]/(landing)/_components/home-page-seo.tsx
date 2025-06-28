@@ -49,11 +49,11 @@ export default function HomePageSEO({
     name: municipalityName,
     alternateName: municipalityNameEn,
     description: `${municipalityName} (${municipalityNameEn}) ${districtName} जिल्लामा अवस्थित एक स्थानीय सरकार हो। यहाँ ${totalPopulation.toLocaleString()} जनसंख्या र ${totalHouseholds.toLocaleString()} घरधुरी छन्।`,
-    url: "https://digital.gadhawamun.gov.np",
-    logo: "https://digital.gadhawamun.gov.np/images/municipality-logo.png",
+    url: "https://digital.buddhashantimun.gov.np",
+    logo: "https://digital.buddhashantimun.gov.np/images/municipality-logo.png",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "गढवा",
+      addressLocality: "बुद्धशान्ति",
       addressRegion: provinceName,
       addressCountry: "नेपाल",
     },
@@ -61,12 +61,12 @@ export default function HomePageSEO({
       "@type": "ContactPoint",
       telephone: "+977-000000000",
       contactType: "customer service",
-      email: "info@digital.gadhawamun.gov.np",
+      email: "info@digital.buddhashantimun.gov.np",
     },
     sameAs: [
-      "https://www.facebook.com/gadhawaruralmun/",
-      "https://twitter.com/gadhawarural",
-      "https://www.youtube.com/channel/gadhawaruralmun",
+      "https://www.facebook.com/buddhashantiruralmun/",
+      "https://twitter.com/buddhashantirural",
+      "https://www.youtube.com/channel/buddhashantiruralmun",
     ],
     areaServed: {
       "@type": "AdministrativeArea",
@@ -88,18 +88,18 @@ export default function HomePageSEO({
     "@type": "Dataset",
     name: `${municipalityName} जनसांख्यिकीय तथ्याङ्क`,
     description: `${municipalityName}को प्रमुख जनसांख्यिकीय तथ्याङ्क, जनगणना अनुसार`,
-    url: "https://digital.gadhawamun.gov.np/profile/demographics",
+    url: "https://digital.buddhashantimun.gov.np/profile/demographics",
     keywords: [
-      "गढवा गाउँपालिका जनसंख्या",
+      "बुद्धशान्ति गाउँपालिका जनसंख्या",
       "Khajura Rural Municipality demographics",
-      "गढवा जनगणना",
-      "दाङ जनसंख्या",
+      "बुद्धशान्ति जनगणना",
+      "झापा जनसंख्या",
       "नेपालको जनसंख्या",
     ],
     creator: {
       "@type": "Organization",
       name: municipalityName,
-      url: "https://digital.gadhawamun.gov.np",
+      url: "https://digital.buddhashantimun.gov.np",
     },
     includedInDataCatalog: {
       "@type": "DataCatalog",
@@ -107,7 +107,8 @@ export default function HomePageSEO({
     },
     distribution: {
       "@type": "DataDownload",
-      contentUrl: "https://digital.gadhawamun.gov.np/data/demographics.csv",
+      contentUrl:
+        "https://digital.buddhashantimun.gov.np/data/demographics.csv",
       encodingFormat: "CSV",
     },
     temporalCoverage: "2021/2023",
@@ -191,7 +192,7 @@ export default function HomePageSEO({
     name: municipalityName,
     alternateName: municipalityNameEn,
     description: `${municipalityName} (${municipalityNameEn}) ${districtName} जिल्लामा अवस्थित एक स्थानीय तह हो।`,
-    hasMap: "https://digital.gadhawamun.gov.np/map",
+    hasMap: "https://digital.buddhashantimun.gov.np/map",
     geo: {
       "@type": "GeoCoordinates",
       latitude: "28.1356",
@@ -206,7 +207,8 @@ export default function HomePageSEO({
         name: provinceName,
       },
     },
-    photo: "https://digital.gadhawamun.gov.np/images/municipality-photo.jpg",
+    photo:
+      "https://digital.buddhashantimun.gov.np/images/municipality-photo.jpg",
   };
 
   // Create WebSite structured data
@@ -215,10 +217,11 @@ export default function HomePageSEO({
     "@type": "WebSite",
     name: `${municipalityName} अधिकारिक वेबसाइट`,
     alternateName: `${municipalityNameEn} Official Website`,
-    url: "https://digital.gadhawamun.gov.np",
+    url: "https://digital.buddhashantimun.gov.np",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://digital.gadhawamun.gov.np/search?q={search_term_string}",
+      target:
+        "https://digital.buddhashantimun.gov.np/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
     inLanguage: ["ne-NP", "en-US"],
@@ -233,7 +236,7 @@ export default function HomePageSEO({
         "@type": "ListItem",
         position: 1,
         name: "मुख्य पृष्ठ",
-        item: "https://digital.gadhawamun.gov.np",
+        item: "https://digital.buddhashantimun.gov.np",
       },
     ],
   };

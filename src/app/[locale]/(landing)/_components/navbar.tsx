@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
                       scrolled ? "text-gray-800" : "text-white"
                     }`}
                   >
-                    गढवा
+                    बुद्धशान्ति
                   </span>
                   <Badge
                     variant="outline"

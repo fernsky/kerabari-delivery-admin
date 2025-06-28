@@ -103,7 +103,7 @@ export default function AgeSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Age Demographics of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Age Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Age distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people. The median age is approximately ${Math.round(
         demographicIndicators.medianAge,
       )} years with a dependency ratio of ${demographicIndicators.dependencyRatio.toFixed(
@@ -111,7 +111,7 @@ export default function AgeSEO({
       )}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Age demographics",
         "Population pyramid",
         "Dependency ratio",
@@ -123,11 +123,11 @@ export default function AgeSEO({
         "निर्भरता अनुपात",
         "मध्यम उमेर",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-age-wise-population",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-age-wise-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

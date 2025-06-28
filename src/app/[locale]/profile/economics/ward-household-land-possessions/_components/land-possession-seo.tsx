@@ -35,11 +35,11 @@ export default function LandPossessionSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Land Ownership in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Land Ownership in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Land ownership distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholdsWithLand.toLocaleString()} land-owning households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Land ownership",
         "Household land possession",
         "Ward-wise land data",
@@ -50,11 +50,11 @@ export default function LandPossessionSEO({
         "भूमिको वितरण",
         "आर्थिक सर्वेक्षण",
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-household-land-possessions",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-household-land-possessions",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://gadhawa-rm.gov.np",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

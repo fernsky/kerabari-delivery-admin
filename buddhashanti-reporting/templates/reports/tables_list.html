@@ -1,20 +1,9 @@
-{% extends 'reports/base.html' %}
-{% load static %}
-{% load nepali_filters %}
-
-{% block title %}
-तालिकाहरूको सूची - गढवा गाउँपालिका
-{% endblock %}
-
-{% block description %}
-गढवा गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै तालिकाहरूको सूची र डेटा।
-{% endblock %}
-
-{% block keywords %}
-तालिकाहरू, डेटा, सांख्यिकी, गढवा, गाउँपालिका, प्रतिवेदन
-{% endblock %}
-
-{% block breadcrumb %}
+{% extends 'reports/base.html' %} {% load static %} {% load nepali_filters %} {%
+block title %} तालिकाहरूको सूची - बुद्धशान्ति गाउँपालिका {% endblock %} {% block
+description %} बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा
+प्रयोग गरिएका सबै तालिकाहरूको सूची र डेटा। {% endblock %} {% block keywords %}
+तालिकाहरू, डेटा, सांख्यिकी, बुद्धशान्ति, गाउँपालिका, प्रतिवेदन {% endblock %} {%
+block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -23,36 +12,32 @@
     <li class="breadcrumb-item active">तालिकाहरूको सूची</li>
   </ol>
 </nav>
-{% endblock %}
-
-{% block structured_data %}
+{% endblock %} {% block structured_data %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "तालिकाहरूको सूची",
-    "description": "गढवा गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै तालिकाहरूको सूची।",
+    "description": "बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै तालिकाहरूको सूची।",
     "url": "{{ request.build_absolute_uri }}",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "गढवा गाउँपालिका",
+      "name": "बुद्धशान्ति गाउँपालिका",
       "url": "{% url 'reports:home' %}"
     },
     "publisher": {
       "@type": "GovernmentOrganization",
-      "name": "गढवा गाउँपालिका"
+      "name": "बुद्धशान्ति गाउँपालिका"
     }
   }
 </script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="content-header">
   <div class="d-flex justify-content-between align-items-center">
     <div>
       <h1><i class="fas fa-table me-3"></i>तालिकाहरूको सूची</h1>
       <p class="lead text-muted">
-        गढवा गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदन
+        बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदन
       </p>
     </div>
     <div class="no-print">
@@ -100,7 +85,9 @@
       <div class="col-md-4">
         <label class="form-label">कुल तालिकाहरू:</label>
         <p class="mb-0">
-          <span class="badge bg-primary fs-6" id="tableCount">{{ tables.count }}</span>
+          <span class="badge bg-primary fs-6" id="tableCount"
+            >{{ tables.count }}</span
+          >
         </p>
       </div>
     </div>
@@ -193,7 +180,8 @@
               {% endfor %} {% if table.data|length > 4 %}
               <tr class="table-warning">
                 <td colspan="{{ table.data.0|length }}" class="text-center">
-                  <i class="fas fa-ellipsis-h"></i> र {{ table.data|length|add:"-4" }} अन्य पंक्तिहरू...
+                  <i class="fas fa-ellipsis-h"></i> र {{
+                  table.data|length|add:"-4" }} अन्य पंक्तिहरू...
                   <button
                     class="btn btn-sm btn-link"
                     onclick="showFullTable('table{{ table.id }}')"
@@ -410,10 +398,10 @@
 
   function toggleTableView(tableId) {
     const preview = document.getElementById(
-      "preview" + tableId.replace("table", "")
+      "preview" + tableId.replace("table", ""),
     );
     const fullView = document.getElementById(
-      "full" + tableId.replace("table", "")
+      "full" + tableId.replace("table", ""),
     );
     const button = event.target.closest("button");
 
@@ -465,7 +453,7 @@
 
   function exportAllTables() {
     const visibleTables = document.querySelectorAll(
-      '.table-item:not([style*="display: none"]) table'
+      '.table-item:not([style*="display: none"]) table',
     );
     let allData = [];
 
@@ -482,7 +470,7 @@
           const rowData = [];
           cols.forEach((col) => {
             rowData.push(
-              '"' + col.textContent.trim().replace(/"/g, '""') + '"'
+              '"' + col.textContent.trim().replace(/"/g, '""') + '"',
             );
           });
           allData.push(rowData.join(","));
@@ -515,13 +503,13 @@
     printWindow.document.write("<html><head><title>" + title + "</title>");
     printWindow.document.write("<style>");
     printWindow.document.write(
-      'body { font-family: "Noto Sans Devanagari", sans-serif; }'
+      'body { font-family: "Noto Sans Devanagari", sans-serif; }',
     );
     printWindow.document.write(
-      "table { border-collapse: collapse; width: 100%; }"
+      "table { border-collapse: collapse; width: 100%; }",
     );
     printWindow.document.write(
-      "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }"
+      "th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }",
     );
     printWindow.document.write("th { background-color: #f2f2f2; }");
     printWindow.document.write("</style></head><body>");
@@ -648,7 +636,7 @@
 
   function updateChart() {
     const visibleItems = document.querySelectorAll(
-      '.table-item:not([style*="display: none"])'
+      '.table-item:not([style*="display: none"])',
     );
     const categories = {};
 

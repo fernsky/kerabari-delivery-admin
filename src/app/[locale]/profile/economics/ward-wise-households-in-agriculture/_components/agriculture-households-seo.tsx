@@ -65,11 +65,11 @@ export default function AgricultureHouseholdsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Agricultural Households Distribution in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Agricultural Households Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Distribution of households involved in agriculture or animal husbandry across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${totalInvolved.toLocaleString()} households (${involvedPercentage.toFixed(2)}%) are involved in agriculture or animal husbandry. The highest agricultural involvement is in Ward ${highestInvolvementWard?.wardNumber || ""} with ${highestInvolvementWard?.involvedPercentage.toFixed(2) || ""}% involvement rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Agricultural households",
         "Farming families",
         "Animal husbandry",
@@ -81,11 +81,11 @@ export default function AgricultureHouseholdsSEO({
         "Khajura farming statistics",
         "Ward-wise farming distribution",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-households-in-agriculture",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-households-in-agriculture",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

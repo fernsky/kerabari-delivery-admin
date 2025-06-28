@@ -58,7 +58,7 @@ export default function MigrationDetailsStep() {
                         <SelectItem value="madhesh">मधेश प्रदेश</SelectItem>
                         <SelectItem value="bagmati">बागमती प्रदेश</SelectItem>
                         <SelectItem value="gandaki">गण्डकी प्रदेश</SelectItem>
-                        <SelectItem value="lumbini">लुम्बिनी प्रदेश</SelectItem>
+                        <SelectItem value="lumbini">कोशी प्रदेश</SelectItem>
                         <SelectItem value="karnali">कर्णाली प्रदेश</SelectItem>
                         <SelectItem value="sudurpaschim">
                           सुदूरपश्चिम प्रदेश
@@ -148,7 +148,7 @@ export default function MigrationDetailsStep() {
                         <SelectItem value="madhesh">मधेश प्रदेश</SelectItem>
                         <SelectItem value="bagmati">बागमती प्रदेश</SelectItem>
                         <SelectItem value="gandaki">गण्डकी प्रदेश</SelectItem>
-                        <SelectItem value="lumbini">लुम्बिनी प्रदेश</SelectItem>
+                        <SelectItem value="lumbini">कोशी प्रदेश</SelectItem>
                         <SelectItem value="karnali">कर्णाली प्रदेश</SelectItem>
                         <SelectItem value="sudurpaschim">
                           सुदूरपश्चिम प्रदेश

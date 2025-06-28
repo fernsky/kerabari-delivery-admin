@@ -63,7 +63,7 @@ export default function SpiceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Spice Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Spice Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Spice production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(
         2,
       )} tonnes and sales of ${totalSales.toFixed(2)} tonnes (${(
@@ -76,7 +76,7 @@ export default function SpiceSEO({
       )} tonnes (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from spice sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Spice production",
         "Spice sales",
         "Garlic production",
@@ -89,11 +89,11 @@ export default function SpiceSEO({
         ),
         ...Object.values(SPICE_TYPES).map((name) => `${name} उत्पादन तथ्याङ्क`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-spices",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/municipality-wide-spices",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

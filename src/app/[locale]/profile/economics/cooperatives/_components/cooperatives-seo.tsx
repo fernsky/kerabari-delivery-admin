@@ -112,7 +112,7 @@ export default function CooperativesSEO({
       description: `Comprehensive analysis of ${totalCooperatives} cooperatives in Khajura Rural Municipality. The most common type is ${mostCommonCooperativeTypeEN} (${statistics.mostPopularCooperativeTypePercentage.toFixed(1)}%), and Ward ${statistics.wardWithMostCooperatives} has the highest concentration with ${statistics.maximumCooperativesInAWard} cooperatives. This dataset includes ${statistics.provinceLevelCooperatives} province-level cooperatives and covers all 9 wards of the municipality.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Cooperatives",
         "सहकारी संस्था",
         "Savings and Credit",
@@ -128,11 +128,11 @@ export default function CooperativesSEO({
           (item) => COOPERATIVE_TYPES_EN[item.type] || item.type,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/cooperatives",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/cooperatives",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -200,7 +200,7 @@ export default function CooperativesSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
     };
   };

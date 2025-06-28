@@ -88,11 +88,11 @@ export default function WardWiseDrinkingWaterSourceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Drinking Water Sources in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Drinking Water Sources in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of drinking water sources across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${waterSourceGroupTotals.PIPED_WATER.toLocaleString()} households (${waterSourceGroupPercentages.PIPED_WATER.toFixed(2)}%) have access to piped water. The highest piped water access rate is in Ward ${highestPipedWaterWard?.wardNumber || ""} with ${highestPipedWaterWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Drinking water sources",
         "Piped water access",
         "Ward-wise water sources",
@@ -104,11 +104,11 @@ export default function WardWiseDrinkingWaterSourceSEO({
         "Safe drinking water",
         "Water source availability",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/water-and-sanitation/ward-wise-drinking-water-source",
+      url: "https://digital.buddhashantimun.gov.np/profile/water-and-sanitation/ward-wise-drinking-water-source",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

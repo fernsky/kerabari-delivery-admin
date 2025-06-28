@@ -11,17 +11,17 @@ export function ReportPreviewActions() {
       </button>
       <button
         onClick={() => {
-          const element = document.getElementById('printable-report');
+          const element = document.getElementById("printable-report");
           if (element) {
-            const printWindow = window.open('', '_blank');
+            const printWindow = window.open("", "_blank");
             if (printWindow) {
               printWindow.document.write(`
                 <!DOCTYPE html>
                 <html>
                   <head>
-                    <title>गढवा गाउँपालिका - पूर्ण प्रतिवेदन</title>
+                    <title>बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन</title>
                     <style>
-                      ${document.getElementById('print-styles')?.innerHTML || ''}
+                      ${document.getElementById("print-styles")?.innerHTML || ""}
                     </style>
                   </head>
                   <body>

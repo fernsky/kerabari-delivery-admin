@@ -90,7 +90,7 @@ export default function GenderAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-househeads",
@@ -198,7 +198,7 @@ export default function GenderAnalysisSection({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-8">
         <h3 className="text-xl font-medium mb-4">
-          <strong>गढवा गाउँपालिका</strong>को घरमूली लिङ्ग विश्लेषण
+          <strong>बुद्धशान्ति गाउँपालिका</strong>को घरमूली लिङ्ग विश्लेषण
           <span className="sr-only">
             Household Head Gender Analysis of Khajura
           </span>
@@ -265,14 +265,14 @@ export default function GenderAnalysisSection({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-6">
         <h3 className="text-xl font-medium mb-2">
-          <strong>गढवा गाउँपालिका</strong>को वडागत घरमूली लिङ्ग विविधता
+          <strong>बुद्धशान्ति गाउँपालिका</strong>को वडागत घरमूली लिङ्ग विविधता
           <span className="sr-only">
             Ward-wise Household Head Gender Diversity in Khajura
           </span>
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            <strong>गढवा गाउँपालिका</strong>को वडागत घरमूली लिङ्ग
+            <strong>बुद्धशान्ति गाउँपालिका</strong>को वडागत घरमूली लिङ्ग
             विश्लेषणबाट निम्न निष्कर्षहरू निकाल्न सकिन्छ:
           </p>
 
@@ -285,7 +285,7 @@ export default function GenderAnalysisSection({
               <meta itemProp="position" content="1" />
               <div itemProp="item">
                 <strong>पुरुष घरमूली:</strong>{" "}
-                <strong>गढवा गाउँपालिका</strong>
+                <strong>बुद्धशान्ति गाउँपालिका</strong>
                 मा कुल घरमूलीको{" "}
                 {localizeNumber(
                   ((maleHouseheads / totalPopulation) * 100).toFixed(2),
@@ -304,7 +304,7 @@ export default function GenderAnalysisSection({
               <meta itemProp="position" content="2" />
               <div itemProp="item">
                 <strong>महिला घरमूली:</strong>{" "}
-                <strong>गढवा गाउँपालिका</strong>
+                <strong>बुद्धशान्ति गाउँपालिका</strong>
                 मा{" "}
                 {localizeNumber(
                   ((femaleHouseheads / totalPopulation) * 100).toFixed(2),
@@ -335,7 +335,7 @@ export default function GenderAnalysisSection({
               <meta itemProp="position" content="3" />
               <div itemProp="item">
                 <strong>वडागत भिन्नता:</strong>{" "}
-                <strong>गढवा गाउँपालिका</strong>का विभिन्न वडाहरूमा महिला
+                <strong>बुद्धशान्ति गाउँपालिका</strong>का विभिन्न वडाहरूमा महिला
                 घरमूलीको प्रतिशत{" "}
                 {localizeNumber(
                   lowestFemaleWard.femalePercentage.toFixed(2),
@@ -358,7 +358,7 @@ export default function GenderAnalysisSection({
               <meta itemProp="position" content="4" />
               <div itemProp="item">
                 <strong>समग्र अवस्था:</strong>{" "}
-                <strong>गढवा गाउँपालिका</strong>
+                <strong>बुद्धशान्ति गाउँपालिका</strong>
                 मा हरेक {localizeNumber(maleFemaleRatio, "ne")} पुरुष घरमूलीका
                 लागि १ महिला घरमूली रहेको अवस्थाले महिला नेतृत्वमा सुधार गर्ने
                 आवश्यकता देखाउँछ।
@@ -375,26 +375,27 @@ export default function GenderAnalysisSection({
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            <strong>गढवा गाउँपालिका</strong>को घरमूली लिङ्ग विश्लेषणका
+            <strong>बुद्धशान्ति गाउँपालिका</strong>को घरमूली लिङ्ग विश्लेषणका
             आधारमा निम्न नीतिगत सुझावहरू प्रस्तुत गरिएका छन्:
           </p>
 
           <ul>
             <li>
               <strong>महिला सशक्तिकरण:</strong>{" "}
-              <strong>गढवा गाउँपालिका</strong>मा महिला घरमूली प्रतिशत बढाउन
-              विशेष आर्थिक सशक्तिकरण र नेतृत्व विकास कार्यक्रमहरू संचालन गर्ने।
+              <strong>बुद्धशान्ति गाउँपालिका</strong>मा महिला घरमूली प्रतिशत
+              बढाउन विशेष आर्थिक सशक्तिकरण र नेतृत्व विकास कार्यक्रमहरू संचालन
+              गर्ने।
             </li>
             <li>
               <strong>लैङ्गिक बजेट:</strong>{" "}
-              <strong>गढवा गाउँपालिका</strong>को न्यून महिला घरमूली प्रतिशत
-              भएका वडाहरूमा (विशेष गरी वडा{" "}
+              <strong>बुद्धशान्ति गाउँपालिका</strong>को न्यून महिला घरमूली
+              प्रतिशत भएका वडाहरूमा (विशेष गरी वडा{" "}
               {localizeNumber(lowestFemaleWard.wardNumber.toString(), "ne")})
               लैङ्गिक समानताका लागि लक्षित बजेट विनियोजन गर्ने।
             </li>
             <li>
               <strong>प्रोत्साहन प्रणाली:</strong>{" "}
-              <strong>गढवा गाउँपालिका</strong>मा महिला नेतृत्वका
+              <strong>बुद्धशान्ति गाउँपालिका</strong>मा महिला नेतृत्वका
               परिवारहरूलाई विशेष प्रोत्साहन, सहुलियत र अवसरहरू प्रदान गर्ने नीति
               लागू गर्ने।
             </li>

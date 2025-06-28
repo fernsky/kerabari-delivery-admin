@@ -80,7 +80,7 @@ class Command(BaseCommand):
             context = {
                 "category": category,
                 "request": request,
-                "municipality_name": "गढवा गाउँपालिका",
+                "municipality_name": "बुद्धशान्ति गाउँपालिका",
             }
 
             self.stdout.write("\n=== TEMPLATE CONTEXT TEST ===")

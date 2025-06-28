@@ -54,7 +54,7 @@ export default function TrainedPopulationAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-trained-population",
@@ -262,7 +262,7 @@ export default function TrainedPopulationAnalysisSection({
           </span>
         </h3>
         <p>
-          गढवा गाउँपालिकाको तालिम प्राप्त जनसंख्या सम्बन्धी थप जानकारी वा
+          बुद्धशान्ति गाउँपालिकाको तालिम प्राप्त जनसंख्या सम्बन्धी थप जानकारी वा
           विस्तृत तथ्याङ्कको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क

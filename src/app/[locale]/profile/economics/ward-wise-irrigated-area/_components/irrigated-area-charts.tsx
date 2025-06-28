@@ -469,7 +469,7 @@ export default function IrrigatedAreaCharts({
             <h5 className="font-medium mb-2">तथ्याङ्क विश्लेषण सारांश</h5>
             <ul className="list-disc pl-5 space-y-1">
               <li>
-                गढवा गाउँपालिकामा कुल क्षेत्रफलको{" "}
+                बुद्धशान्ति गाउँपालिकामा कुल क्षेत्रफलको{" "}
                 {localizeNumber(irrigatedPercentage, "ne")}% सिंचित र{" "}
                 {localizeNumber(unirrigatedPercentage, "ne")}% असिंचित रहेको
                 अवस्था छ।
