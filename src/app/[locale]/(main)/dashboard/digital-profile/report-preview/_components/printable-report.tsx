@@ -1,7 +1,7 @@
 import { ReportCoverPage } from "./report-cover-page";
 import { ReportTableOfContents } from "./report-table-of-contents";
 import { ReportDemographicsSection } from "./sections/report-demographics-section";
-// import { ReportEconomicsSection } from "./sections/report-economics-section";
+import { ReportEconomicsSection } from "./sections/report-economics-section";
 // import { ReportSocialSection } from "./sections/report-social-section";
 // import { ReportInfrastructureSection } from "./sections/report-infrastructure-section";
 import { PrintStyles } from "./print-styles";
@@ -18,30 +18,32 @@ export async function PrintableReport() {
         <ReportTableOfContents />
 
         {/* Main Content Start */}
-        <div className="main-content-start">
-          {/* Introduction Chapter - Static Content */}
+        <div className="main-content">
+          {/* Introduction Chapter */}
           <div className="category-break">
             <h1 className="category-title">१. परिचय</h1>
             <div className="section-content">
-              <h2 className="section-header level-2">१.१ पृष्ठभूमि</h2>
+              <h2 className="section-header level-2">१.१ अध्ययनको पृष्ठभूमि</h2>
               <div className="content-section">
                 <p>
-                  स्थानीय सरकार सञ्चालन ऐन, २०७४ ले स्थानीय तहलाई आफ्नो क्षेत्रको वस्तुस्थिति विवरण तयार गर्ने जिम्मेवारी दिएको छ। यो वस्तुस्थिति विवरण स्थानीय तहको भौगोलिक, जनसांख्यिकीय, सामाजिक, आर्थिक, पूर्वाधार र वातावरणीय अवस्थाको विस्तृत चित्रण हो।
-                </p>
-                <p>
-                  यस प्रतिवेदनले बुद्धशान्ति गाउँपालिकाको समग्र अवस्थालाई प्रस्तुत गर्दै भविष्यका योजना र कार्यक्रमहरूको लागि आधार प्रदान गर्छ।
+                  यो अध्ययन बुद्धशान्ति गाउँपालिकाको समग्र विकासको लागि आवश्यक तथ्याङ्क र सूचनाहरूको संकलन र विश्लेषण गर्ने उद्देश्यले गरिएको छ। 
+                  यसमा जनसांख्यिकीय, आर्थिक, सामाजिक र भौतिक पक्षहरूको विस्तृत अध्ययन समावेश छ।
                 </p>
               </div>
 
-              <h2 className="section-header level-2">१.२ उद्देश्य</h2>
+              <h2 className="section-header level-2">१.२ अध्ययनको उद्देश्य</h2>
               <div className="content-section">
-                <p>यस वस्तुस्थिति विवरणका मुख्य उद्देश्यहरू निम्नलिखित छन्:</p>
-                <ul>
-                  <li>गाउँपालिकाको भौगोलिक र जनसांख्यिकीय अवस्थाको पहिचान</li>
-                  <li>सामाजिक र आर्थिक संरचनाको विश्लेषण</li>
-                  <li>पूर्वाधार र सेवाहरूको वर्तमान अवस्थाको मूल्याङ्कन</li>
-                  <li>भविष्यका योजना निर्माणका लागि आधार तयार गर्ने</li>
-                </ul>
+                <p>
+                  यस अध्ययनको मुख्य उद्देश्य गाउँपालिकाको वर्तमान अवस्थाको मूल्याङ्कन गर्नु र भविष्यको विकास योजनाहरूको लागि आधार तयार पार्नु हो।
+                </p>
+              </div>
+
+              <h2 className="section-header level-2">१.३ अध्ययनको विधि</h2>
+              <div className="content-section">
+                <p>
+                  यो अध्ययन प्राथमिक र द्वितीयक स्रोतहरूबाट संकलित तथ्याङ्कहरूको आधारमा गरिएको छ। 
+                  सर्वेक्षण, साक्षात्कार र दस्तावेजी अध्ययन जस्ता विधिहरू प्रयोग गरिएका छन्।
+                </p>
               </div>
             </div>
           </div>
@@ -70,7 +72,7 @@ export async function PrintableReport() {
           <ReportDemographicsSection />
 
           {/* Economics Section */}
-          {/* <ReportEconomicsSection /> */}
+          <ReportEconomicsSection />
 
           {/* Social Section */}
           {/* <ReportSocialSection /> */}
