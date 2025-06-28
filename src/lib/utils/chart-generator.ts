@@ -236,7 +236,7 @@ export class ChartGenerator {
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
       .axis { font-size: 11px; }
-      .legend { font-size: 11px; }
+      .legend { font-size: 10px; }
     </style>`;
 
     // Draw axes
@@ -304,11 +304,11 @@ export class ChartGenerator {
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        // Legend color box
-        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        // Legend color box - removed border
+        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
         
-        // Legend text - left-aligned within the container
-        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="12" fill="black" text-anchor="start">${category}</text>`;
+        // Legend text - left-aligned within the container with smaller font
+        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="10" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 
@@ -457,7 +457,7 @@ export class ChartGenerator {
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
       .axis { font-size: 10px; }
-      .legend { font-size: 10px; }
+      .legend { font-size: 9px; }
     </style>`;
 
     // Draw axes
@@ -529,11 +529,11 @@ export class ChartGenerator {
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        // Legend color box
-        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        // Legend color box - removed border
+        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
         
-        // Legend text - left-aligned within the container
-        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="12" fill="black" text-anchor="start">${category}</text>`;
+        // Legend text - left-aligned within the container with smaller font
+        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="9" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 
