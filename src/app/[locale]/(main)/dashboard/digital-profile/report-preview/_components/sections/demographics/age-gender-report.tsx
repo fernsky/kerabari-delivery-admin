@@ -145,9 +145,9 @@ export function AgeGenderReport() {
       </h2>
       
       <div className="content-section">
-        <div className="content-paragraph">
-          <p>{analysisText}</p>
-        </div>
+        <p style={{ textAlign: "justify", fontSize: "1.05em", lineHeight: 1.9, marginBottom: 32 }}>
+          {analysisText}
+        </p>
       </div>
 
       {/* Population Pyramid Chart */}
@@ -241,46 +241,7 @@ export function AgeGenderReport() {
         </div>
       </div>
 
-      {/* Dependency Ratio Analysis */}
-      <div className="content-section">
-        <h3 className="section-header level-3">निर्भरता अनुपात विश्लेषण</h3>
-        <p>
-          जनसंख्याको उमेर संरचनाका आधारमा निर्भरता अनुपातहरू निम्नानुसार छन्:
-        </p>
-        <ul>
-          <li>
-            <strong>बाल निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.childDependencyRatio)} 
-            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.childDependencyRatio))} बालबालिका)
-          </li>
-          <li>
-            <strong>वृद्ध निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.elderlyDependencyRatio)} 
-            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.elderlyDependencyRatio))} वृद्धवृद्धा)
-          </li>
-          <li>
-            <strong>कुल निर्भरता अनुपात:</strong> {formatNepaliPercentage(processedData.dependencyRatios.totalDependencyRatio)} 
-            (प्रति १०० कार्यशील उमेरका व्यक्तिमा {convertToNepaliNumber(Math.round(processedData.dependencyRatios.totalDependencyRatio))} निर्भर व्यक्ति)
-          </li>
-        </ul>
-      </div>
 
-      {/* Demographic Indicators */}
-      <div className="content-section">
-        <h3 className="section-header level-3">जनसांख्यिकीय सूचकहरू</h3>
-        <ul>
-          <li>
-            <strong>लिङ्गीय अनुपात:</strong> {convertToNepaliNumber(Math.round(processedData.demographicIndicators.genderRatio))} 
-            (प्रति १०० महिलामा पुरुष)
-          </li>
-          <li>
-            <strong>युवा जनसंख्या (१५-३९ वर्ष):</strong> {convertToNepaliNumber(processedData.demographicIndicators.youthPopulation)} 
-            ({formatNepaliPercentage(processedData.demographicIndicators.youthPercentage)})
-          </li>
-          <li>
-            <strong>प्रजनन उमेरका महिला (१५-४९ वर्ष):</strong> {convertToNepaliNumber(processedData.demographicIndicators.reproductiveAgeWomen)} 
-            ({formatNepaliPercentage(processedData.demographicIndicators.reproductiveWomenPercentage)})
-          </li>
-        </ul>
-      </div>
     </div>
   );
 } 

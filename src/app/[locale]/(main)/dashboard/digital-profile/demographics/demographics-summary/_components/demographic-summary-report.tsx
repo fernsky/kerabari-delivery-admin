@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -26,6 +27,9 @@ export default function DemographicSummaryReport({
   showCharts = true,
   isPrintMode = false,
 }: DemographicSummaryReportProps) {
+  const params = useParams();
+  const locale = params.locale as string || 'en';
+
   if (!data) {
     return (
       <div className="text-center py-8 text-gray-500">
@@ -80,13 +84,13 @@ export default function DemographicSummaryReport({
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="text-3xl font-bold text-blue-600">
-                {localizeNumber(data.totalPopulation || 0)}
+                {localizeNumber(data.totalPopulation || 0, locale)}
               </div>
               <div className="text-sm text-gray-600">कुल जनसंख्या</div>
             </div>
             <div className="text-center p-4 bg-green-50 rounded-lg">
               <div className="text-3xl font-bold text-green-600">
-                {localizeNumber(data.totalHouseholds || 0)}
+                {localizeNumber(data.totalHouseholds || 0, locale)}
               </div>
               <div className="text-sm text-gray-600">कुल घरधुरी</div>
             </div>
@@ -127,7 +131,7 @@ export default function DemographicSummaryReport({
                   <span>पुरुष</span>
                   <div className="flex items-center space-x-2">
                     <span className="font-medium">
-                      {localizeNumber(data.populationMale || 0)}
+                      {localizeNumber(data.populationMale || 0, locale)}
                     </span>
                     <Badge variant="secondary">{malePct.toFixed(1)}%</Badge>
                   </div>
@@ -136,7 +140,7 @@ export default function DemographicSummaryReport({
                   <span>महिला</span>
                   <div className="flex items-center space-x-2">
                     <span className="font-medium">
-                      {localizeNumber(data.populationFemale || 0)}
+                      {localizeNumber(data.populationFemale || 0, locale)}
                     </span>
                     <Badge variant="secondary">{femalePct.toFixed(1)}%</Badge>
                   </div>
@@ -146,7 +150,7 @@ export default function DemographicSummaryReport({
                     <span>अन्य</span>
                     <div className="flex items-center space-x-2">
                       <span className="font-medium">
-                        {localizeNumber(data.populationOther)}
+                        {localizeNumber(data.populationOther, locale)}
                       </span>
                       <Badge variant="secondary">{otherPct.toFixed(1)}%</Badge>
                     </div>
@@ -166,7 +170,7 @@ export default function DemographicSummaryReport({
                   <span>०-१४ वर्ष</span>
                   <div className="flex items-center space-x-2">
                     <span className="font-medium">
-                      {localizeNumber(data.population0To14 || 0)}
+                      {localizeNumber(data.population0To14 || 0, locale)}
                     </span>
                     <Badge variant="outline">{pop0to14Pct.toFixed(1)}%</Badge>
                   </div>
@@ -175,7 +179,7 @@ export default function DemographicSummaryReport({
                   <span>१५-५९ वर्ष</span>
                   <div className="flex items-center space-x-2">
                     <span className="font-medium">
-                      {localizeNumber(data.population15To59 || 0)}
+                      {localizeNumber(data.population15To59 || 0, locale)}
                     </span>
                     <Badge variant="outline">{pop15to59Pct.toFixed(1)}%</Badge>
                   </div>
@@ -184,7 +188,7 @@ export default function DemographicSummaryReport({
                   <span>६०+ वर्ष</span>
                   <div className="flex items-center space-x-2">
                     <span className="font-medium">
-                      {localizeNumber(data.population60AndAbove || 0)}
+                      {localizeNumber(data.population60AndAbove || 0, locale)}
                     </span>
                     <Badge variant="outline">{pop60PlusPct.toFixed(1)}%</Badge>
                   </div>
@@ -239,7 +243,7 @@ export default function DemographicSummaryReport({
                 <div className="flex justify-between">
                   <span>कुल घरधुरी:</span>
                   <span className="font-medium">
-                    {localizeNumber(data.totalHouseholds || 0)}
+                    {localizeNumber(data.totalHouseholds || 0, locale)}
                   </span>
                 </div>
                 <div className="flex justify-between">
@@ -298,25 +302,25 @@ export default function DemographicSummaryReport({
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center p-4 bg-red-50 rounded-lg">
                 <div className="text-2xl font-bold text-red-600">
-                  {localizeNumber(data.populationAbsenteeTotal)}
+                  {localizeNumber(data.populationAbsenteeTotal, locale)}
                 </div>
                 <div className="text-sm text-gray-600">कुल अनुपस्थित</div>
               </div>
               <div className="text-center p-4 bg-orange-50 rounded-lg">
                 <div className="text-2xl font-bold text-orange-600">
-                  {localizeNumber(data.populationMaleAbsentee || 0)}
+                  {localizeNumber(data.populationMaleAbsentee || 0, locale)}
                 </div>
                 <div className="text-sm text-gray-600">पुरुष अनुपस्थित</div>
               </div>
               <div className="text-center p-4 bg-pink-50 rounded-lg">
                 <div className="text-2xl font-bold text-pink-600">
-                  {localizeNumber(data.populationFemaleAbsentee || 0)}
+                  {localizeNumber(data.populationFemaleAbsentee || 0, locale)}
                 </div>
                 <div className="text-sm text-gray-600">महिला अनुपस्थित</div>
               </div>
               <div className="text-center p-4 bg-yellow-50 rounded-lg">
                 <div className="text-2xl font-bold text-yellow-600">
-                  {localizeNumber(data.populationOtherAbsentee || 0)}
+                  {localizeNumber(data.populationOtherAbsentee || 0, locale)}
                 </div>
                 <div className="text-sm text-gray-600">अन्य अनुपस्थित</div>
               </div>
@@ -339,9 +343,9 @@ export default function DemographicSummaryReport({
               <div>
                 <h4 className="font-medium text-lg mb-2">जनसंख्या संरचना</h4>
                 <p className="text-gray-700">
-                  गढवा गाउँपालिकामा कुल {localizeNumber(data.totalPopulation || 0)} जनसंख्या छन्, 
-                  जसमा {localizeNumber(data.populationMale || 0)} पुरुष ({malePct.toFixed(1)}%) र 
-                  {localizeNumber(data.populationFemale || 0)} महिला ({femalePct.toFixed(1)}%) समावेश छन्। 
+                  गढवा गाउँपालिकामा कुल {localizeNumber(data.totalPopulation || 0, locale)} जनसंख्या छन्, 
+                  जसमा {localizeNumber(data.populationMale || 0, locale)} पुरुष ({malePct.toFixed(1)}%) र 
+                  {localizeNumber(data.populationFemale || 0, locale)} महिला ({femalePct.toFixed(1)}%) समावेश छन्। 
                   लिङ्ग अनुपात {data.sexRatio || 0} छ, जसले पुरुष र महिलाको सन्तुलित वितरण देखाउँछ।
                 </p>
               </div>
@@ -359,7 +363,7 @@ export default function DemographicSummaryReport({
               <div>
                 <h4 className="font-medium text-lg mb-2">घरधुरी विश्लेषण</h4>
                 <p className="text-gray-700">
-                  कुल {localizeNumber(data.totalHouseholds || 0)} घरधुरीमा औसत {data.averageHouseholdSize || 0} व्यक्ति छन्। 
+                  कुल {localizeNumber(data.totalHouseholds || 0, locale)} घरधुरीमा औसत {data.averageHouseholdSize || 0} व्यक्ति छन्। 
                   जनसंख्या घनत्व {data.populationDensity || 0} प्रति वर्ग किलोमिटर छ, 
                   जसले यस क्षेत्रको बसोबासको घनत्व देखाउँछ।
                 </p>

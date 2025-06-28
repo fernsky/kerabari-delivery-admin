@@ -23,6 +23,9 @@ import { wardWiseMigratedHouseholdsRouter } from "./ward-wise-migrated-household
 import { wardWiseBirthCertificatePopulationRouter } from "./ward-wise-birth-certificate-population.procedure";
 import {wardAgeGenderWiseDeceasedPopulationRouter} from "./ward-age-gender-wise-deceased-population.procedure";
 import { wardWiseDeathCauseRouter } from "./ward-wise-death-cause.procedure";
+import {municipalityWideCastePopulationRouter} from "./municipality-wide-caste-population.procedure";
+import { municipalityWideReligionPopulationRouter } from "./municipality-wide-religion-population.procedure";
+import { municipalityWideMotherTonguePopulationRouter } from "./municipality-wide-mother-tongue-population.procedure";
 
 export const demographicsRouter = createTRPCRouter({
   summary: demographicSummaryRouter,
@@ -51,4 +54,9 @@ export const demographicsRouter = createTRPCRouter({
   wardWiseBirthCertificatePopulation: wardWiseBirthCertificatePopulationRouter,
   wardAgeGenderWiseDeceasedPopulation: wardAgeGenderWiseDeceasedPopulationRouter,
   wardWiseDeathCause: wardWiseDeathCauseRouter,
+
+  // Municipality wide procedures
+  municipalityWideCastePopulation: municipalityWideCastePopulationRouter,
+  municipalityWideReligionPopulation: municipalityWideReligionPopulationRouter,
+  municipalityWideMotherTonguePopulation: municipalityWideMotherTonguePopulationRouter,
 });

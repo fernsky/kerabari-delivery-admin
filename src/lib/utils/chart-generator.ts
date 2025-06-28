@@ -29,7 +29,6 @@ export interface PopulationPyramidData {
 export interface ChartConfig {
   width?: number;
   height?: number;
-  title?: string;
   colors?: string[];
   showLegend?: boolean;
   showValues?: boolean;
@@ -48,12 +47,22 @@ export class ChartGenerator {
   ];
 
   private static convertToNepali(num: number): string {
+    // Handle undefined, null, or NaN values
+    if (num === undefined || num === null || isNaN(num)) {
+      return '०';
+    }
+    
     return num.toString().replace(/[0-9]/g, (digit) => 
       ChartGenerator.nepaliDigits[digit as keyof typeof ChartGenerator.nepaliDigits]
     );
   }
 
   private static formatNumber(num: number, nepali: boolean = true): string {
+    // Handle undefined, null, or NaN values
+    if (num === undefined || num === null || isNaN(num)) {
+      return nepali ? '०' : '0';
+    }
+    
     return nepali ? ChartGenerator.convertToNepali(num) : num.toString();
   }
 
@@ -67,78 +76,88 @@ export class ChartGenerator {
     const {
       width = 600,
       height = 400,
-      title = '',
       colors = ChartGenerator.defaultColors,
       showLegend = true,
-      showValues = true,
+      showValues = false,
       nepaliNumbers = true
     } = config;
+
+    // Handle empty data
+    if (!data || Object.keys(data).length === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
 
     const centerX = width / 2;
     const centerY = height / 2;
     const radius = Math.min(width, height) / 4;
 
     const entries = Object.entries(data);
-    const total = entries.reduce((sum, [, item]) => sum + item.value, 0);
+    const total = entries.reduce((sum, [, item]) => sum + (item.value || 0), 0);
+
+    // Handle zero total
+    if (total === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
     
     // Add styles for Nepali font
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .title { font-size: 18px; font-weight: bold; }
       .legend { font-size: 12px; }
       .value { font-size: 10px; fill: white; font-weight: bold; }
     </style>`;
 
-    // Add title
-    if (title) {
-      svg += `<text x="${centerX}" y="25" text-anchor="middle" class="title">${title}</text>`;
-    }
-
     // Generate pie slices
     let currentAngle = -90; // Start from top
     entries.forEach(([key, item], index) => {
-      const angle = (item.value / total) * 360;
-      const endAngle = currentAngle + angle;
-      
-      const startX = centerX + radius * Math.cos((currentAngle * Math.PI) / 180);
-      const startY = centerY + radius * Math.sin((currentAngle * Math.PI) / 180);
-      const endX = centerX + radius * Math.cos((endAngle * Math.PI) / 180);
-      const endY = centerY + radius * Math.sin((endAngle * Math.PI) / 180);
-      
-      const largeArcFlag = angle > 180 ? 1 : 0;
-      const color = item.color || colors[index % colors.length];
-      
-      const pathData = `M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
-      
-      svg += `<path d="${pathData}" fill="${color}" stroke="white" stroke-width="2"/>`;
-      
-      // Add value labels
-      if (showValues) {
-        const labelAngle = currentAngle + angle / 2;
-        const labelX = centerX + (radius * 0.7) * Math.cos((labelAngle * Math.PI) / 180);
-        const labelY = centerY + (radius * 0.7) * Math.sin((labelAngle * Math.PI) / 180);
-        const percentage = ((item.value / total) * 100).toFixed(1);
+      const value = item.value || 0;
+      if (value > 0) {
+        const angle = (value / total) * 360;
+        const endAngle = currentAngle + angle;
         
-        svg += `<text x="${labelX}" y="${labelY}" text-anchor="middle" class="value">
-          ${ChartGenerator.formatNumber(item.value, nepaliNumbers)} (${ChartGenerator.formatNumber(parseFloat(percentage), nepaliNumbers)}%)
-        </text>`;
+        const startX = centerX + radius * Math.cos((currentAngle * Math.PI) / 180);
+        const startY = centerY + radius * Math.sin((currentAngle * Math.PI) / 180);
+        const endX = centerX + radius * Math.cos((endAngle * Math.PI) / 180);
+        const endY = centerY + radius * Math.sin((endAngle * Math.PI) / 180);
+        
+        const largeArcFlag = angle > 180 ? 1 : 0;
+        const color = item.color || colors[index % colors.length];
+        
+        const pathData = `M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
+        
+        svg += `<path d="${pathData}" fill="${color}" stroke="white" stroke-width="2"/>`;
+        
+        currentAngle = endAngle;
       }
-      
-      currentAngle = endAngle;
     });
 
-    // Add legend
+    // Add legend - positioned to the right of pie chart with better spacing
     if (showLegend) {
-      const legendX = width - 200;
-      let legendY = 50;
+      const legendX = centerX + radius + 25; // Position to the right of pie chart
+      const legendY = centerY - (entries.length * 15) / 2; // Center vertically
       
       entries.forEach(([key, item], index) => {
-        const color = item.color || colors[index % colors.length];
-        svg += `<rect x="${legendX}" y="${legendY - 8}" width="12" height="12" fill="${color}"/>`;
-        svg += `<text x="${legendX + 20}" y="${legendY}" class="legend">${item.label} (${ChartGenerator.formatNumber(item.value, nepaliNumbers)})</text>`;
-        legendY += 20;
+        const value = item.value || 0;
+        if (value > 0) {
+          const color = item.color || colors[index % colors.length];
+          const yPos = legendY + index * 15; // Reduced spacing between items
+          
+          // Legend color box - smaller size
+          svg += `<rect x="${legendX}" y="${yPos - 4}" width="8" height="8" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+          
+          // Legend text - more compact
+          const legendText = `${item.label} (${ChartGenerator.formatNumber(value, nepaliNumbers)})`;
+          svg += `<text x="${legendX + 12}" y="${yPos}" dominant-baseline="middle" class="legend">${legendText}</text>`;
+        }
       });
     }
 
@@ -156,11 +175,19 @@ export class ChartGenerator {
     const {
       width = 800,
       height = 500,
-      title = '',
       colors = ChartGenerator.defaultColors,
       showLegend = true,
       nepaliNumbers = true
     } = config;
+
+    // Handle empty data
+    if (!data || Object.keys(data).length === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
 
     const margin = { top: 50, right: 50, bottom: 100, left: 70 };
     const chartWidth = width - margin.left - margin.right;
@@ -172,6 +199,16 @@ export class ChartGenerator {
     ));
 
     const maxValue = Math.max(...Object.values(data).flatMap(ward => Object.values(ward)));
+
+    // Handle zero max value
+    if (maxValue === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
+
     const barWidth = chartWidth / wards.length;
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
@@ -179,15 +216,9 @@ export class ChartGenerator {
     // Add styles
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .title { font-size: 18px; font-weight: bold; }
       .axis { font-size: 12px; }
       .legend { font-size: 12px; }
     </style>`;
-
-    // Add title
-    if (title) {
-      svg += `<text x="${width / 2}" y="25" text-anchor="middle" class="title">${title}</text>`;
-    }
 
     // Draw axes
     svg += `<line x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${margin.top + chartHeight}" stroke="black" stroke-width="2"/>`;
@@ -228,14 +259,31 @@ export class ChartGenerator {
 
     // Legend
     if (showLegend) {
-      const legendX = margin.left;
-      let legendY = height - 50;
+      const maxItemsPerRow = 4; // Limit items per row to prevent overflow
+      const itemSpacing = 150; // Spacing between items
+      const rowHeight = 20; // Height between rows
+      
+      // Calculate layout for multi-row legend
+      const totalRows = Math.ceil(categories.length / maxItemsPerRow);
+      const legendStartY = height - 50;
       
       categories.forEach((category, index) => {
+        const row = Math.floor(index / maxItemsPerRow);
+        const col = index % maxItemsPerRow;
+        
+        // Calculate position for this item
+        const itemsInThisRow = Math.min(maxItemsPerRow, categories.length - row * maxItemsPerRow);
+        
+        // Center this row's items
+        const totalRowWidth = itemsInThisRow * itemSpacing;
+        const rowStartX = (width - totalRowWidth) / 2;
+        
+        const x = rowStartX + col * itemSpacing;
+        const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
-        const x = legendX + (index * 150);
-        svg += `<rect x="${x}" y="${legendY - 8}" width="12" height="12" fill="${color}"/>`;
-        svg += `<text x="${x + 20}" y="${legendY}" class="legend">${category}</text>`;
+        
+        svg += `<rect x="${x}" y="${y - 8}" width="12" height="12" fill="${color}" stroke="black" stroke-width="1"/>`;
+        svg += `<text x="${x + 20}" y="${y}" class="legend">${category}</text>`;
       });
     }
 
@@ -253,16 +301,34 @@ export class ChartGenerator {
     const {
       width = 800,
       height = 600,
-      title = '',
       nepaliNumbers = true
     } = config;
+
+    // Handle empty data
+    if (!data || Object.keys(data).length === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
 
     const margin = { top: 50, right: 50, bottom: 50, left: 100 };
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
     const ageGroups = Object.keys(data);
-    const maxValue = Math.max(...Object.values(data).flatMap(group => [group.male, group.female]));
+    const maxValue = Math.max(...Object.values(data).flatMap(group => [group.male || 0, group.female || 0]));
+
+    // Handle zero max value
+    if (maxValue === 0) {
+      return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <text x="${width/2}" y="${height/2}" text-anchor="middle" font-family="Noto Sans Devanagari, Arial, sans-serif">
+          डेटा उपलब्ध छैन
+        </text>
+      </svg>`;
+    }
+
     const barHeight = chartHeight / ageGroups.length;
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
@@ -270,15 +336,9 @@ export class ChartGenerator {
     // Add styles
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .title { font-size: 18px; font-weight: bold; }
       .axis { font-size: 12px; }
       .center-line { stroke: #333; stroke-width: 2; }
     </style>`;
-
-    // Add title
-    if (title) {
-      svg += `<text x="${width / 2}" y="25" text-anchor="middle" class="title">${title}</text>`;
-    }
 
     const centerX = width / 2;
 
@@ -291,23 +351,33 @@ export class ChartGenerator {
       const y = margin.top + index * barHeight;
       
       // Male bars (left side)
-      const maleWidth = (groupData.male / maxValue) * (chartWidth / 2);
-      svg += `<rect x="${centerX - maleWidth}" y="${y + barHeight * 0.1}" width="${maleWidth}" height="${barHeight * 0.8}" fill="#3498db"/>`;
+      const maleValue = groupData.male || 0;
+      const maleWidth = (maleValue / maxValue) * (chartWidth / 2);
+      if (maleValue > 0) {
+        svg += `<rect x="${centerX - maleWidth}" y="${y + barHeight * 0.1}" width="${maleWidth}" height="${barHeight * 0.8}" fill="#3498db"/>`;
+      }
       
       // Female bars (right side)
-      const femaleWidth = (groupData.female / maxValue) * (chartWidth / 2);
-      svg += `<rect x="${centerX}" y="${y + barHeight * 0.1}" width="${femaleWidth}" height="${barHeight * 0.8}" fill="#e74c3c"/>`;
+      const femaleValue = groupData.female || 0;
+      const femaleWidth = (femaleValue / maxValue) * (chartWidth / 2);
+      if (femaleValue > 0) {
+        svg += `<rect x="${centerX}" y="${y + barHeight * 0.1}" width="${femaleWidth}" height="${barHeight * 0.8}" fill="#e74c3c"/>`;
+      }
       
       // Age group labels
       svg += `<text x="${margin.left - 10}" y="${y + barHeight / 2}" text-anchor="end" class="axis">${groupData.label}</text>`;
       
       // Value labels
-      svg += `<text x="${centerX - maleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
-        ${ChartGenerator.formatNumber(groupData.male, nepaliNumbers)}
-      </text>`;
-      svg += `<text x="${centerX + femaleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
-        ${ChartGenerator.formatNumber(groupData.female, nepaliNumbers)}
-      </text>`;
+      if (maleValue > 0) {
+        svg += `<text x="${centerX - maleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
+          ${ChartGenerator.formatNumber(maleValue, nepaliNumbers)}
+        </text>`;
+      }
+      if (femaleValue > 0) {
+        svg += `<text x="${centerX + femaleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
+          ${ChartGenerator.formatNumber(femaleValue, nepaliNumbers)}
+        </text>`;
+      }
     });
 
     // Legend
@@ -330,7 +400,6 @@ export class ChartGenerator {
     const {
       width = 800,
       height = 500,
-      title = '',
       colors = ChartGenerator.defaultColors,
       showLegend = true,
       nepaliNumbers = true
@@ -357,15 +426,9 @@ export class ChartGenerator {
     // Add styles
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .title { font-size: 18px; font-weight: bold; }
       .axis { font-size: 12px; }
       .legend { font-size: 12px; }
     </style>`;
-
-    // Add title
-    if (title) {
-      svg += `<text x="${width / 2}" y="25" text-anchor="middle" class="title">${title}</text>`;
-    }
 
     // Draw axes
     svg += `<line x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${margin.top + chartHeight}" stroke="black" stroke-width="2"/>`;
@@ -414,14 +477,31 @@ export class ChartGenerator {
 
     // Legend
     if (showLegend) {
-      const legendX = margin.left;
-      let legendY = height - 50;
+      const maxItemsPerRow = 4; // Limit items per row to prevent overflow
+      const itemSpacing = 150; // Spacing between items
+      const rowHeight = 20; // Height between rows
+      
+      // Calculate layout for multi-row legend
+      const totalRows = Math.ceil(categories.length / maxItemsPerRow);
+      const legendStartY = height - 50;
       
       categories.forEach((category, index) => {
+        const row = Math.floor(index / maxItemsPerRow);
+        const col = index % maxItemsPerRow;
+        
+        // Calculate position for this item
+        const itemsInThisRow = Math.min(maxItemsPerRow, categories.length - row * maxItemsPerRow);
+        
+        // Center this row's items
+        const totalRowWidth = itemsInThisRow * itemSpacing;
+        const rowStartX = (width - totalRowWidth) / 2;
+        
+        const x = rowStartX + col * itemSpacing;
+        const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
-        const x = legendX + (index * 150);
-        svg += `<rect x="${x}" y="${legendY - 8}" width="12" height="12" fill="${color}"/>`;
-        svg += `<text x="${x + 20}" y="${legendY}" class="legend">${category}</text>`;
+        
+        svg += `<rect x="${x}" y="${y - 8}" width="12" height="12" fill="${color}" stroke="black" stroke-width="1"/>`;
+        svg += `<text x="${x + 20}" y="${y}" class="legend">${category}</text>`;
       });
     }
 

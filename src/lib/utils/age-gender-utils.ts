@@ -106,7 +106,7 @@ export function processAgeGenderData(rawData: AgeGenderData[]): ProcessedAgeGend
   });
 
   // Initialize ward data
-  const uniqueWards = [...new Set(rawData.map(item => item.wardNumber))].sort((a, b) => a - b);
+  const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
   uniqueWards.forEach(wardNum => {
     wardData[wardNum] = {
       male: 0,
@@ -281,23 +281,55 @@ export function generateAgeGenderAnalysis(data: ProcessedAgeGenderData): string 
     totalPopulation,
     malePopulation,
     femalePopulation,
+    otherPopulation,
     malePercentage,
     femalePercentage,
+    otherPercentage,
     dependencyRatios,
     demographicIndicators,
-    wardData
+    wardData,
+    ageGroupData
   } = data;
 
-  const analysisPoints: string[] = [];
+  // Calculate median age estimation
+  let cumulativePopulation = 0;
+  let medianAgeGroup = "";
+  const halfPopulation = totalPopulation / 2;
 
-  // Overall demographic overview
-  analysisPoints.push(
-    `बुद्धशान्ति गाउँपालिकामा रहेका कुल ${convertToNepaliNumber(totalPopulation)} जनसंख्या मध्ये ` +
-    `${convertToNepaliNumber(malePopulation)} पुरुष (${formatNepaliPercentage(malePercentage)}) र ` +
-    `${convertToNepaliNumber(femalePopulation)} जना महिला (${formatNepaliPercentage(femalePercentage)}) जनसंख्या रहेका छन् ।`
-  );
+  for (const [ageGroup, data] of Object.entries(ageGroupData)) {
+    cumulativePopulation += data.total;
+    if (cumulativePopulation >= halfPopulation && !medianAgeGroup) {
+      medianAgeGroup = ageGroup;
+      break;
+    }
+  }
 
-  // Gender ratio analysis
+  // Helper function to estimate median age from age group
+  const getMedianAgeEstimate = (ageGroup: string): number => {
+    switch (ageGroup) {
+      case "AGE_0_4": return 2.5;
+      case "AGE_5_9": return 7.5;
+      case "AGE_10_14": return 12.5;
+      case "AGE_15_19": return 17.5;
+      case "AGE_20_24": return 22.5;
+      case "AGE_25_29": return 27.5;
+      case "AGE_30_34": return 32.5;
+      case "AGE_35_39": return 37.5;
+      case "AGE_40_44": return 42.5;
+      case "AGE_45_49": return 47.5;
+      case "AGE_50_54": return 52.5;
+      case "AGE_55_59": return 57.5;
+      case "AGE_60_64": return 62.5;
+      case "AGE_65_69": return 67.5;
+      case "AGE_70_74": return 72.5;
+      case "AGE_75_AND_ABOVE": return 80;
+      default: return 30;
+    }
+  };
+
+  const medianAge = getMedianAgeEstimate(medianAgeGroup);
+
+  // Gender analysis
   const genderRatio = demographicIndicators.genderRatio;
   let genderAnalysis = "";
   if (genderRatio > 103) {
@@ -308,52 +340,40 @@ export function generateAgeGenderAnalysis(data: ProcessedAgeGenderData): string 
     genderAnalysis = "लिङ्गीय सन्तुलन रहेको";
   }
 
-  analysisPoints.push(
-    `लिङ्गीय अनुपातका आधारमा हेर्दा प्रति सय महिलामा ${convertToNepaliNumber(Math.round(genderRatio))} पुरुष रहेका छन्, ` +
-    `जसले गाउँपालिकामा ${genderAnalysis} देखाउँछ ।`
-  );
+  // Age structure analysis
+  const childrenPopulation = dependencyRatios.childPopulation;
+  const elderlyPopulation = dependencyRatios.elderlyPopulation;
+  const workingAgePopulation = dependencyRatios.workingAgePopulation;
 
-  // Youth population analysis
-  analysisPoints.push(
-    `युवा उमेरको (१५ देखि ३९ वर्ष) जनसंख्या ${convertToNepaliNumber(demographicIndicators.youthPopulation)} ` +
-    `(${formatNepaliPercentage(demographicIndicators.youthPercentage)}) रहेको छ, जसले जनसंख्याको लाभांशको संकेत गर्दछ ।`
-  );
+  const childrenPercentage = (childrenPopulation / totalPopulation) * 100;
+  const elderlyPercentage = (elderlyPopulation / totalPopulation) * 100;
+  const workingAgePercentage = (workingAgePopulation / totalPopulation) * 100;
 
-  // Reproductive age women analysis
-  analysisPoints.push(
-    `प्रजनन उमेरका महिलाहरू (१५ देखि ४९ वर्ष) ${convertToNepaliNumber(demographicIndicators.reproductiveAgeWomen)} ` +
-    `(${formatNepaliPercentage(demographicIndicators.reproductiveWomenPercentage)}) रहेका छन्, ` +
-    `जसले प्रजनन स्वास्थ्य सेवाको आवश्यकतालाई जनाउँछ ।`
-  );
+  // Find largest age groups
+  const sortedAgeGroups = Object.entries(ageGroupData)
+    .sort((a, b) => b[1].total - a[1].total)
+    .slice(0, 3);
 
-  // Dependency ratio analysis
-  analysisPoints.push(
-    `निर्भरता अनुपातका आधारमा हेर्दा बाल निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.childDependencyRatio)} र ` +
-    `वृद्ध निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.elderlyDependencyRatio)} रहेको छ । ` +
-    `कुल निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.totalDependencyRatio)} रहेको छ ।`
-  );
-
-  // Ward-wise analysis summary
   const wardCount = Object.keys(wardData).length;
-  analysisPoints.push(
-    `गाउँपालिकाका ${convertToNepaliNumber(wardCount)} वटा वडाहरूमा जनसंख्याको वितरण फरक फरक रहेको छ । ` +
-    `प्रत्येक वडामा लिङ्गीय संरचना र उमेर समूहको वितरणमा भिन्नता देखिन्छ ।`
-  );
 
-  // Policy recommendations
-  analysisPoints.push(
-    "उमेर समूह अनुसार हेर्दा १५ देखि ३९ वर्ष उमेर समूह भित्रका किशोरी र महिलाहरूको जनसंख्यामा र " +
-    "उमेर पुगेका महिलाहरूको शारीरिक, मानसिक, सामाजिक तथा आर्थिक मुद्दाहरूलाई सम्बोधन गर्ने प्रकारको " +
-    "योजनाहरू निर्माण गर्नु जरुरी छ ।"
+  // Compose a comprehensive, verbose analysis in Nepali
+  return (
+    `बुद्धशान्ति गाउँपालिकाको जनसंख्याको उमेर र लिङ्गीय संरचनाले जटिल जनसांख्यिकीय परिदृश्य प्रकट गर्दै सामाजिक र आर्थिक योजनाको लागि महत्त्वपूर्ण निहितार्थहरू प्रस्तुत गर्दछ । ` +
+    `कुल जनसंख्या ${convertToNepaliNumber(totalPopulation)} रहेको छ, जसमा पुरुष जनसंख्या ${convertToNepaliNumber(malePopulation)} (${formatNepaliPercentage(malePercentage)}) र महिला जनसंख्या ${convertToNepaliNumber(femalePopulation)} (${formatNepaliPercentage(femalePercentage)}) रहेका छन् । ` +
+    `${otherPopulation > 0 ? `अन्य लिङ्गीय श्रेणीका व्यक्तिहरू ${convertToNepaliNumber(otherPopulation)} (${formatNepaliPercentage(otherPercentage)}) रहेका छन्, जसले जनसांख्यिकीय रिपोर्टिङ्गमा समावेशिताको प्रतिबिम्ब देखाउँछ । ` : ''}` +
+    `जनसंख्याको अनुमानित मध्यम उमेर लगभग ${convertToNepaliNumber(parseFloat(medianAge.toFixed(1)))} वर्ष रहेको छ, जसले ${medianAge < 30 ? 'अपेक्षाकृत युवा जनसंख्या र सम्भावित जनसांख्यिकीय लाभांशको अनुभव गर्दै रहेको' : 'जनसंख्या बुढो हुँदै गएको र बढ्दो सामाजिक र आर्थिक निर्भरता दबाबहरू देखिएको'} संकेत गर्दछ । ` +
+    `बाल निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.childDependencyRatio)} रहेको छ, जसले कार्यशील उमेर जनसंख्या (१५-६४ वर्ष) सापेक्ष बालबालिकाहरूको (०-१४ वर्ष) अनुपातलाई उजागर गर्दछ । ` +
+    `वृद्ध निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.elderlyDependencyRatio)} रहेको छ, जसले समाजको उत्पादक खण्डमा वृद्धवृद्धाहरूको (६५+ वर्ष) बोझलाई जनाउँछ । ` +
+    `कुल निर्भरता अनुपात ${formatNepaliPercentage(dependencyRatios.totalDependencyRatio)} रहेको छ, जसले कार्यशील उमेर समूहमा समग्र आर्थिक दबाबलाई समाहित गर्दै प्रत्येक १०० कार्यशील उमेरका व्यक्तिमा लगभग ${convertToNepaliNumber(parseFloat(dependencyRatios.totalDependencyRatio.toFixed(1)))} निर्भर व्यक्ति रहेको संकेत गर्दछ । ` +
+    `लिङ्गीय अनुपात प्रति १०० महिलामा ${convertToNepaliNumber(parseFloat(demographicIndicators.genderRatio.toFixed(1)))} पुरुष रहेको छ, जसले गाउँपालिकामा ${genderAnalysis} देखाउँछ र विवाह प्रवृत्ति र श्रम शक्ति सहभागितासम्मका दूरगामी सामाजिक निहितार्थहरू राख्न सक्छ । ` +
+    `युवा जनसंख्या (१५-२९ वर्ष) ${convertToNepaliNumber(demographicIndicators.youthPopulation)} व्यक्ति रहेका छन्, जसले कुल जनसंख्याको ${formatNepaliPercentage(demographicIndicators.youthPercentage)} प्रतिनिधित्व गर्दै श्रम शक्ति योजना र शैक्षिक स्रोत आवंटनको लागि महत्त्वपूर्ण छ । ` +
+    `प्रजनन उमेरका महिलाहरूको (१५-४९ वर्ष) संख्या ${convertToNepaliNumber(demographicIndicators.reproductiveAgeWomen)} रहेको छ, जसले जनसंख्याको ${formatNepaliPercentage(demographicIndicators.reproductiveWomenPercentage)} प्रतिनिधित्व गर्दै मातृत्व र बाल स्वास्थ्य सेवाहरूको लागि प्रमुख सूचक हो । ` +
+    `उमेर समूह वितरणले देखाउँछ कि सबैभन्दा ठूला समूहहरू ${sortedAgeGroups.map(([ageGroup, data]) => `${data.label} (${convertToNepaliNumber(data.total)})`).join(', ')} रहेका छन्, जसले गाउँपालिकाको सामाजिक र आर्थिक प्राथमिकताहरूलाई थप आकार दिन्छन् । ` +
+    `बाल जनसंख्या (०-१४ वर्ष) ${convertToNepaliNumber(childrenPopulation)} (${formatNepaliPercentage(childrenPercentage)}) रहेको छ, जसले शिक्षा, पोषण र बाल स्वास्थ्य सेवाहरूमा लगानीको आवश्यकतालाई जनाउँछ । ` +
+    `कार्यशील उमेर जनसंख्या (१५-६४ वर्ष) ${convertToNepaliNumber(workingAgePopulation)} (${formatNepaliPercentage(workingAgePercentage)}) रहेको छ, जसले आर्थिक उत्पादकताको मुख्य आधार हो । ` +
+    `वृद्ध जनसंख्या (६५+ वर्ष) ${convertToNepaliNumber(elderlyPopulation)} (${formatNepaliPercentage(elderlyPercentage)}) रहेको छ, जसले सामाजिक सुरक्षा र स्वास्थ्य सेवाहरूको आवश्यकतालाई जनाउँछ । ` +
+    `गाउँपालिकाका ${convertToNepaliNumber(wardCount)} वटा वडाहरूमा जनसंख्याको वितरण फरक फरक रहेको छ, प्रत्येक वडामा लिङ्गीय संरचना र उमेर समूहको वितरणमा भिन्नता देखिन्छ । ` +
+    `समग्र रूपमा जनसांख्यिकीय प्रोफाइल अवसर र चुनौतीहरू दुवैले चिन्हित छ: ठूलो युवा बल्कले प्रभावकारी रूपमा उपयोग गरिएमा आर्थिक वृद्धिको सम्भावना प्रदान गर्दछ, तर उच्च निर्भरता अनुपात र जनसंख्या बुढो हुँदै गएको संकेतहरूले स्थायी विकास र सामाजिक एकताको लागि स्वास्थ्य, शिक्षा र सामाजिक सुरक्षामा सक्रिय नीतिगत हस्तक्षेपहरू आवश्यक बनाउँछन् । ` +
+    `युवा जनसंख्याको लाभ लिन र वृद्ध जनसंख्याको आवश्यकताहरू पूरा गर्न समग्र दृष्टिकोण आवश्यक छ, जसमा शिक्षा, स्वास्थ्य सेवा, रोजगारी अवसर र सामाजिक सुरक्षा कार्यक्रमहरू समावेश छन् ।`
   );
-
-  // Women's health and rights
-  analysisPoints.push(
-    "प्रजनन स्वास्थ्य, यौन स्वास्थ्य, रजस्वला सम्बन्धी समस्याहरू, महिला मैत्री शौचालय, परामर्श केन्द्रहरू, " +
-    "महिला हिंसा, छाउपडी प्रथा, घरेलु लैङ्गिक हिंसा, पाठेघर खस्ने समस्या, दाइजो प्रथा, बाल विवाह, " +
-    "महिला सशक्तिकरण तथा अधिकार जस्ता विषयहरू आम महिलाका लागि प्रमुख तथा संवेदनशील विषय भएकाले " +
-    "गाउँपालिकाले यी विषयहरूको प्रभावकारी योजना निर्माण गरी कार्यान्वयन गर्नुपर्ने संकेत समग्र तथ्याङ्कले गर्दछ ।"
-  );
-
-  return analysisPoints.join(' ');
-} 
+}

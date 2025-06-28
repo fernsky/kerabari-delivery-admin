@@ -189,9 +189,6 @@ class SVGChartGenerator:
     def generate_pie_chart_svg(
         self,
         demographic_data,
-        include_title=False,
-        title_nepali="",
-        title_english="",
         width=600,
         height=300,
     ):
@@ -229,31 +226,11 @@ class SVGChartGenerator:
             percentages = [v / total * 100 for v in values]
             angles = [p / 100 * 360 for p in percentages]
 
-            center_x, center_y = width // 2, height // 2 - 10
+            center_x, center_y = width // 2, height // 2
             radius = 120
 
             # Create SVG
             svg = self._create_svg_with_embedded_font(width, height)
-
-            # Add title only if requested
-            title_offset = 0
-            if include_title and (title_nepali or title_english):
-                title = self._safe_title(title_nepali, title_english)
-                title_elem = ET.SubElement(
-                    svg,
-                    "text",
-                    {
-                        "x": str(center_x),
-                        "y": "25",
-                        "text-anchor": "middle",
-                        "font-family": self.font_family,
-                        "font-size": str(self.font_size_title),
-                        "font-weight": "bold",
-                        "fill": "black",
-                    },
-                )
-                title_elem.text = str(title)
-                title_offset = 30
 
             # Draw pie slices
             start_angle = -90  # Start from top
@@ -347,9 +324,7 @@ class SVGChartGenerator:
             traceback.print_exc()
             return None
 
-    def generate_bar_chart_svg(
-        self, ward_data, include_title=False, title_nepali="", title_english=""
-    ):
+    def generate_bar_chart_svg(self, ward_data):
         """Generate bar chart as SVG for ward-wise demographic data"""
         try:
             if not ward_data:
@@ -433,7 +408,7 @@ class SVGChartGenerator:
                 520 + additional_legend_height
             )  # Dynamic height based on legend rows
             margin = {
-                "top": 30 if include_title else 20,
+                "top": 20,  # Reduced since no title
                 "right": 20,
                 "bottom": 100 + additional_legend_height,  # More space for legend
                 "left": 70,
@@ -443,24 +418,6 @@ class SVGChartGenerator:
 
             # Create SVG
             svg = self._create_svg_with_embedded_font(width, height)
-
-            # Add title only if requested
-            if include_title and (title_nepali or title_english):
-                title = self._safe_title(title_nepali, title_english)
-                title_elem = ET.SubElement(
-                    svg,
-                    "text",
-                    {
-                        "x": str(width // 2),
-                        "y": "25",
-                        "text-anchor": "middle",
-                        "font-family": self.font_family,
-                        "font-size": str(self.font_size_title),
-                        "font-weight": "bold",
-                        "fill": "black",
-                    },
-                )
-                title_elem.text = str(title)
 
             # Calculate bar positions and max population
             bar_width = chart_width / len(wards)
@@ -820,9 +777,6 @@ class SVGChartGenerator:
         output_name,
         static_dir="static/images/charts",
         chart_type="pie",
-        include_title=False,
-        title_nepali="",
-        title_english="",
     ):
         """
         Generate chart image using Inkscape conversion (only if files don't exist)
@@ -832,9 +786,6 @@ class SVGChartGenerator:
             output_name: Base name for the output files (without extension)
             static_dir: Directory to save images
             chart_type: Type of chart ('pie' or 'bar')
-            include_title: Whether to include title in the chart
-            title_nepali: Nepali title for the chart
-            title_english: English title for the chart
 
         Returns:
             tuple: (success, png_path, svg_path)
@@ -857,16 +808,10 @@ class SVGChartGenerator:
             if chart_type == "pie":
                 svg_content = self.generate_pie_chart_svg(
                     demographic_data,
-                    include_title=include_title,
-                    title_nepali=title_nepali,
-                    title_english=title_english,
                 )
             elif chart_type == "bar":
                 svg_content = self.generate_bar_chart_svg(
                     demographic_data,
-                    include_title=include_title,
-                    title_nepali=title_nepali,
-                    title_english=title_english,
                 )
             else:
                 raise ValueError(f"Unsupported chart type: {chart_type}")
@@ -957,11 +902,10 @@ class SVGChartGenerator:
             " ", "_"
         ).lower()
         success, png_path, svg_path = generator.generate_chart_image(
-            religion_data=religion_data,
+            demographic_data=religion_data,
             output_name=output_name,
             static_dir="static/images/charts",
             chart_type="pie",
-            include_title=False,
         )
 
         if success:
@@ -997,9 +941,6 @@ class SVGChartGenerator:
                 output_name="font_test_chart",
                 static_dir=output_dir,
                 chart_type="pie",
-                include_title=True,
-                title_nepali="फन्ट परीक्षण चार्ट",
-                title_english="Font Test Chart",
             )
 
             if success:
