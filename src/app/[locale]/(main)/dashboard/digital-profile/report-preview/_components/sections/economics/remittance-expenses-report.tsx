@@ -66,22 +66,22 @@ export function RemittanceExpensesReport() {
       processedData.expenseData[key].households > 0
     ).length;
     
-    // Adjust legend height based on number of categories - increased for better spacing
-    const legendHeight = Math.ceil(numCategories / 4) * 30 + 40; // Increased padding for better spacing
+    // Adjust legend height based on number of categories - reduced for better fit
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30; // Reduced padding and items per row
     
-    // Adjust max bar width based on number of wards - wider bars for better visibility
-    const maxBarWidth = numWards <= 9 ? 70 : 60; // Increased bar width
+    // Adjust max bar width based on number of wards - narrower bars for better spacing
+    const maxBarWidth = numWards <= 9 ? 50 : 40; // Reduced bar width
 
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
-        width: 500,
-        height: 350,
+        width: 600,
+        height: 500,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800, // Increased width for better spread
-        height: 600, // Increased height for better proportions
+        width: 700, // Reduced width to prevent truncation
+        height: 500, // Reduced height for better proportions
         showLegend: true,
         nepaliNumbers: true,
         legendHeight: legendHeight,
@@ -146,10 +146,12 @@ export function RemittanceExpensesReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "350px", 
+              height: "500px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px", // Match the new chart width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
@@ -196,11 +198,11 @@ export function RemittanceExpensesReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "600px", 
+              height: "500px", 
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px", // Ensure the chart can use the full width
+              maxWidth: "700px", // Ensure the chart can use the full width
               margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}

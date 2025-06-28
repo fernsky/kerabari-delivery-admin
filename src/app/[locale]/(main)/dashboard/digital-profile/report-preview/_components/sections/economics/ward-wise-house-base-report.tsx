@@ -3,7 +3,7 @@
 import { api } from "@/trpc/react";
 import { 
   processWardWiseHouseBaseData, 
-  getWardWiseHouseBaseAnalysis, 
+  generateWardWiseHouseBaseAnalysis, 
   convertToNepaliNumber, 
   formatNepaliPercentage,
   BASE_TYPE_LABELS,
@@ -17,88 +17,75 @@ import {
 import { useMemo } from "react";
 
 export function WardWiseHouseBaseReport() {
-  // Fetch data from TRPC API
+// Fetch data from TRPC API
   const { data: rawData, isLoading, error } = api.profile.economics.wardWiseHouseholdBase.getAll.useQuery();
 
   // Process the raw data
-  const processedData: ProcessedWardWiseHouseBaseData[] | null = useMemo(() => {
+  const processedData: ProcessedWardWiseHouseBaseData | null = useMemo(() => {
     if (!rawData || rawData.length === 0) return null;
     
-    const mappedData = rawData.map((item: any) => ({
+    const mappedData = rawData.map(item => ({
       id: item.id,
       wardNumber: item.wardNumber,
       baseType: item.baseType,
-      count: item.households || 0,
+      households: item.households || 0,
     }));
     
     return processWardWiseHouseBaseData(mappedData);
   }, [rawData]);
 
-  // Generate charts
+  // Generate charts with optimized dimensions and scaling for A4 printing
   const charts = useMemo(() => {
-    if (!processedData || processedData.length === 0) return { pieChart: '', barChart: '' };
+    if (!processedData) return { pieChart: '', barChart: '' };
 
-    // Pie Chart Data - overall base distribution
-    const totalConcretePillar = processedData.reduce((sum, ward) => sum + ward.concretePillar, 0);
-    const totalCementJoined = processedData.reduce((sum, ward) => sum + ward.cementJoined, 0);
-    const totalMudJoined = processedData.reduce((sum, ward) => sum + ward.mudJoined, 0);
-    const totalWoodPole = processedData.reduce((sum, ward) => sum + ward.woodPole, 0);
-    const totalOther = processedData.reduce((sum, ward) => sum + ward.other, 0);
-
-    const pieChartData: ChartData = {
-      CONCRETE_PILLAR: {
-        value: totalConcretePillar,
-        label: BASE_TYPE_LABELS.CONCRETE_PILLAR,
-        color: "#10b981"
-      },
-      CEMENT_JOINED: {
-        value: totalCementJoined,
-        label: BASE_TYPE_LABELS.CEMENT_JOINED,
-        color: "#3b82f6"
-      },
-      MUD_JOINED: {
-        value: totalMudJoined,
-        label: BASE_TYPE_LABELS.MUD_JOINED,
-        color: "#f59e0b"
-      },
-      WOOD_POLE: {
-        value: totalWoodPole,
-        label: BASE_TYPE_LABELS.WOOD_POLE,
-        color: "#ef4444"
-      },
-      OTHER: {
-        value: totalOther,
-        label: BASE_TYPE_LABELS.OTHER,
-        color: "#8b5cf6"
-      }
-    };
+    // Pie Chart Data - only show base types with households > 0
+    const pieChartData: ChartData = {};
+    Object.entries(processedData.baseData)
+      .filter(([_, data]) => data.households > 0)
+      .forEach(([baseType, data]) => {
+        pieChartData[baseType] = {
+          value: data.households,
+          label: data.label,
+          color: `hsl(${(data.rank * 45) % 360}, 70%, 50%)`
+        };
+      });
 
     // Bar Chart Data for ward comparison
     const barChartData: WardData = {};
-    processedData.forEach(ward => {
-      barChartData[ward.wardNumber] = {
-        [BASE_TYPE_LABELS.CONCRETE_PILLAR]: ward.concretePillar,
-        [BASE_TYPE_LABELS.CEMENT_JOINED]: ward.cementJoined,
-        [BASE_TYPE_LABELS.MUD_JOINED]: ward.mudJoined,
-        [BASE_TYPE_LABELS.WOOD_POLE]: ward.woodPole,
-        [BASE_TYPE_LABELS.OTHER]: ward.other,
-      };
+    Object.entries(processedData.wardData).forEach(([wardNum, data]) => {
+      barChartData[wardNum] = {};
+      Object.entries(data.baseTypes).forEach(([baseType, households]) => {
+        const label = processedData.baseData[baseType]?.label || baseType;
+        barChartData[wardNum][label] = households;
+      });
     });
+
+    // Calculate optimal chart dimensions based on data
+    const numWards = Object.keys(processedData.wardData).length;
+    const numCategories = Object.keys(processedData.baseData).filter(key => 
+      processedData.baseData[key].households > 0
+    ).length;
+    
+    // Adjust legend height based on number of categories - reduced for better fit
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30; // Reduced padding and items per row
+    
+    // Adjust max bar width based on number of wards - narrower bars for better spacing
+    const maxBarWidth = numWards <= 9 ? 50 : 40; // Reduced bar width
 
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
+        height: 350,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800,
-        height: 500,
+        width: 700, // Reduced width to prevent truncation
+        height: 500, // Reduced height for better proportions
         showLegend: true,
         nepaliNumbers: true,
-        maxBarWidth: 45,
-        legendHeight: 100
+        legendHeight: legendHeight,
+        maxBarWidth: maxBarWidth
       })
     };
   }, [processedData]);
@@ -106,7 +93,7 @@ export function WardWiseHouseBaseReport() {
   // Generate analysis text
   const analysisText = useMemo(() => {
     if (!processedData) return '';
-    return getWardWiseHouseBaseAnalysis(processedData);
+    return generateWardWiseHouseBaseAnalysis(processedData);
   }, [processedData]);
 
   if (isLoading) {
@@ -129,7 +116,7 @@ export function WardWiseHouseBaseReport() {
     );
   }
 
-  if (!processedData || processedData.length === 0) {
+  if (!processedData || processedData.totalHouseholds === 0) {
     return (
       <div className="section-content" id="section-ward-wise-house-base">
         <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
@@ -139,8 +126,6 @@ export function WardWiseHouseBaseReport() {
       </div>
     );
   }
-
-  const totalHouseholds = processedData.reduce((sum, ward) => sum + ward.total, 0);
 
   return (
     <div className="section-content" id="section-ward-wise-house-base">
@@ -156,24 +141,59 @@ export function WardWiseHouseBaseReport() {
 
       {/* Pie Chart */}
       <div className="chart-section">
-        <h3 className="chart-title">चित्र ४.४.१: आधार अनुसार वितरण</h3>
+        <h3 className="chart-title">चित्र ४.४.१: आधार प्रकार अनुसार परिवार वितरण</h3>
         <div className="pdf-chart-container">
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px", // Match the new chart width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
         </div>
       </div>
 
+      {/* Base Types Distribution Table */}
+      <div className="table-section">
+        <h3 className="table-title">तालिका ४.४.१: आधार प्रकार अनुसार परिवार विस्तृत विवरण</h3>
+        <table className="data-table house-base-table">
+          <thead>
+            <tr>
+              <th>क्र.सं.</th>
+              <th>आधार प्रकार</th>
+              <th>परिवार संख्या</th>
+              <th>प्रतिशत</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(processedData.baseData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([baseType, data], index) => (
+                <tr key={baseType}>
+                  <td>{convertToNepaliNumber(index + 1)}</td>
+                  <td>{data.label}</td>
+                  <td>{convertToNepaliNumber(data.households)}</td>
+                  <td>{formatNepaliPercentage(data.percentage)}</td>
+                </tr>
+              ))}
+            <tr className="total-row">
+              <td className="total-label" colSpan={2}>जम्मा</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalHouseholds)}</td>
+              <td className="total-cell">१००.०%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* Bar Chart */}
       <div className="chart-section">
-        <h3 className="chart-title">चित्र ४.४.२: वडा अनुसार आधार वितरण</h3>
+        <h3 className="chart-title">चित्र ४.४.२: वडा अनुसार आधार प्रकार वितरण</h3>
         <div className="pdf-chart-container">
           <div 
             style={{ 
@@ -182,7 +202,7 @@ export function WardWiseHouseBaseReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px", // Ensure the chart can use the full width
+              maxWidth: "700px", // Ensure the chart can use the full width
               margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
@@ -192,60 +212,55 @@ export function WardWiseHouseBaseReport() {
 
       {/* Ward-wise Table */}
       <div className="table-section">
-        <h3 className="table-title">तालिका ४.४.२: वडा अनुसार आधार विवरण</h3>
+        <h3 className="table-title">तालिका ४.४.२: वडा अनुसार आधार प्रकार विवरण</h3>
         <table className="data-table ward-house-base-table">
           <thead>
             <tr>
               <th>आधार प्रकार</th>
-              {processedData
-                .sort((a, b) => a.wardNumber - b.wardNumber)
-                .map((ward) => (
-                  <th key={ward.wardNumber}>वडा {convertToNepaliNumber(ward.wardNumber)}</th>
+              {Object.entries(processedData.wardData)
+                .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                .map(([wardNum]) => (
+                  <th key={wardNum}>वडा {convertToNepaliNumber(parseInt(wardNum))}</th>
                 ))}
               <th>जम्मा</th>
               <th>प्रतिशत</th>
             </tr>
           </thead>
           <tbody>
-            {[
-              { type: 'CONCRETE_PILLAR', label: BASE_TYPE_LABELS.CONCRETE_PILLAR, key: 'concretePillar' },
-              { type: 'CEMENT_JOINED', label: BASE_TYPE_LABELS.CEMENT_JOINED, key: 'cementJoined' },
-              { type: 'MUD_JOINED', label: BASE_TYPE_LABELS.MUD_JOINED, key: 'mudJoined' },
-              { type: 'WOOD_POLE', label: BASE_TYPE_LABELS.WOOD_POLE, key: 'woodPole' },
-              { type: 'OTHER', label: BASE_TYPE_LABELS.OTHER, key: 'other' },
-            ]
-            .filter(item => processedData.reduce((sum, ward) => sum + (ward as any)[item.key], 0) > 0)
-            .map((item) => {
-              const baseTotals = processedData
-                .sort((a, b) => a.wardNumber - b.wardNumber)
-                .map((ward) => (ward as any)[item.key] || 0);
-              
-              const totalForBase = baseTotals.reduce((sum, count) => sum + count, 0);
-              const percentageForBase = totalHouseholds > 0 
-                ? (totalForBase / totalHouseholds) * 100 
-                : 0;
+            {Object.entries(processedData.baseData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([baseType, baseData]) => {
+                const baseTotals = Object.entries(processedData.wardData)
+                  .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                  .map(([wardNum, wardData]) => wardData.baseTypes[baseType] || 0);
+                
+                const totalForBase = baseTotals.reduce((sum, count) => sum + count, 0);
+                const percentageForBase = processedData.totalHouseholds > 0 
+                  ? (totalForBase / processedData.totalHouseholds) * 100 
+                  : 0;
 
-              return (
-                <tr key={item.type}>
-                  <td>{item.label}</td>
-                  {baseTotals.map((count, index) => (
-                    <td key={index}>{convertToNepaliNumber(count)}</td>
-                  ))}
-                  <td className="grand-total-cell">{convertToNepaliNumber(totalForBase)}</td>
-                  <td>{formatNepaliPercentage(percentageForBase)}</td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr key={baseType}>
+                    <td>{baseData.label}</td>
+                    {baseTotals.map((count, index) => (
+                      <td key={index}>{convertToNepaliNumber(count)}</td>
+                    ))}
+                    <td className="grand-total-cell">{convertToNepaliNumber(totalForBase)}</td>
+                    <td>{formatNepaliPercentage(percentageForBase)}</td>
+                  </tr>
+                );
+              })}
             <tr className="total-row">
               <td className="total-label">जम्मा</td>
-              {processedData
-                .sort((a, b) => a.wardNumber - b.wardNumber)
-                .map((ward) => (
-                  <td key={ward.wardNumber} className="grand-total-cell">
-                    {convertToNepaliNumber(ward.total)}
+              {Object.entries(processedData.wardData)
+                .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                .map(([wardNum, wardData]) => (
+                  <td key={wardNum} className="grand-total-cell">
+                    {convertToNepaliNumber(wardData.totalHouseholds)}
                   </td>
                 ))}
-              <td className="grand-total-cell">{convertToNepaliNumber(totalHouseholds)}</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalHouseholds)}</td>
               <td className="total-cell">१००.०%</td>
             </tr>
           </tbody>

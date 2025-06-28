@@ -96,7 +96,7 @@ export class ChartGenerator {
 
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = Math.min(width, height) / 3.5; // Smaller radius for better fit
+    const radius = Math.min(width, height) / 4; // Smaller radius to make room for legend
 
     const entries = Object.entries(data);
     const total = entries.reduce((sum, [, item]) => sum + (item.value || 0), 0);
@@ -143,28 +143,23 @@ export class ChartGenerator {
       }
     });
 
-    // Add legend - positioned below pie chart for better space utilization
+    // Add legend - positioned on the right side of the pie chart
     if (showLegend) {
-      const legendStartY = centerY + radius + 30;
-      const itemsPerRow = 3; // Show 3 items per row
-      const itemSpacing = width / itemsPerRow;
-      const rowHeight = 20;
+      const legendStartX = centerX + radius + 25; // Position legend to the right of pie chart
+      const legendStartY = centerY - (entries.length * 20) / 2; // Center legend vertically
       
       entries.forEach(([key, item], index) => {
         const value = item.value || 0;
         if (value > 0) {
           const color = item.color || colors[index % colors.length];
-          const row = Math.floor(index / itemsPerRow);
-          const col = index % itemsPerRow;
-          const x = col * itemSpacing + 20;
-          const y = legendStartY + row * rowHeight;
+          const y = legendStartY + index * 20;
           
           // Legend color box
-          svg += `<rect x="${x}" y="${y - 6}" width="10" height="10" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+          svg += `<rect x="${legendStartX}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
           
           // Legend text - more compact
           const legendText = `${item.label} (${ChartGenerator.formatNumber(value, nepaliNumbers)})`;
-          svg += `<text x="${x + 15}" y="${y}" dominant-baseline="middle" class="legend">${legendText}</text>`;
+          svg += `<text x="${legendStartX + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="11" fill="black" text-anchor="start">${legendText}</text>`;
         }
       });
     }
@@ -218,22 +213,22 @@ export class ChartGenerator {
       </svg>`;
     }
 
-    // Calculate margins - increased bottom margin to prevent legend truncation
+    // Calculate margins - adjusted to prevent truncation
     const margin = { 
       top: 40, 
-      right: 40, 
-      bottom: 100 + legendHeight, // Increased bottom margin to prevent legend truncation
-      left: 80 
+      right: 30, // Reduced right margin
+      bottom: 80 + legendHeight, // Reduced bottom margin
+      left: 60  // Reduced left margin
     };
     
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
-    // Calculate optimal bar width - use more of available space
+    // Calculate optimal bar width to use maximum available space
     const availableWidth = chartWidth;
     const optimalBarWidth = Math.min(availableWidth / Math.max(wards.length, 1), maxBarWidth);
     const totalBarWidth = wards.length * optimalBarWidth;
-    const startX = margin.left + (chartWidth - totalBarWidth) / 2; // Center the bars
+    const startX = margin.left + (chartWidth - totalBarWidth) / 2 + 10; // Reduced offset to 10px
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
     
@@ -289,27 +284,31 @@ export class ChartGenerator {
 
     // Legend - positioned closer to chart with better spacing
     if (showLegend) {
-      const maxItemsPerRow = 4;
-      const itemSpacing = 140; // Increased spacing between legend items
-      const rowHeight = 22; // Increased row height for better readability
+      const maxItemsPerRow = 3; // Reduced from 4 to 3 items per row
+      const itemSpacing = 120; // Reduced spacing between legend items
+      const rowHeight = 20; // Reduced row height
       
       const totalRows = Math.ceil(categories.length / maxItemsPerRow);
-      const legendStartY = height - legendHeight + 20; // Reduced top margin for legend
+      const legendStartY = height - legendHeight + 15; // Reduced top margin for legend
+      
+      // Calculate total width of legend items to center the container
+      const totalLegendWidth = Math.min(categories.length, maxItemsPerRow) * itemSpacing;
+      const legendContainerStartX = margin.left + (chartWidth - totalLegendWidth) / 2;
       
       categories.forEach((category, index) => {
         const row = Math.floor(index / maxItemsPerRow);
         const col = index % maxItemsPerRow;
         
-        const itemsInThisRow = Math.min(maxItemsPerRow, categories.length - row * maxItemsPerRow);
-        const totalRowWidth = itemsInThisRow * itemSpacing;
-        const rowStartX = (width - totalRowWidth) / 2;
-        
-        const x = rowStartX + col * itemSpacing;
+        // Left-align legend items within the centered container
+        const x = legendContainerStartX + col * itemSpacing;
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        svg += `<rect x="${x}" y="${y - 7}" width="12" height="12" fill="${color}"/>`;
-        svg += `<text x="${x + 18}" y="${y}" class="legend">${category}</text>`;
+        // Legend color box
+        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        
+        // Legend text - left-aligned within the container
+        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="12" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 
@@ -450,7 +449,7 @@ export class ChartGenerator {
     const availableWidth = chartWidth;
     const optimalBarWidth = Math.min(availableWidth / wards.length, maxBarWidth);
     const totalBarWidth = wards.length * optimalBarWidth;
-    const startX = margin.left + (chartWidth - totalBarWidth) / 2; // Center the bars
+    const startX = margin.left + (chartWidth - totalBarWidth) / 2 + 10; // Reduced offset to 10px
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
     
@@ -508,29 +507,33 @@ export class ChartGenerator {
       svg += `<line x1="${margin.left - 3}" y1="${y}" x2="${margin.left}" y2="${y}" stroke="black"/>`;
     }
 
-    // Legend - flexible layout with height adjustment
+    // Legend - positioned closer to chart with better spacing
     if (showLegend) {
-      const maxItemsPerRow = 4;
-      const itemSpacing = 120;
-      const rowHeight = 18;
+      const maxItemsPerRow = 3; // Reduced from 4 to 3 items per row
+      const itemSpacing = 120; // Reduced spacing between legend items
+      const rowHeight = 20; // Reduced row height
       
       const totalRows = Math.ceil(categories.length / maxItemsPerRow);
-      const legendStartY = height - legendHeight + 20;
+      const legendStartY = height - legendHeight + 15; // Reduced top margin for legend
+      
+      // Calculate total width of legend items to center the container
+      const totalLegendWidth = Math.min(categories.length, maxItemsPerRow) * itemSpacing;
+      const legendContainerStartX = margin.left + (chartWidth - totalLegendWidth) / 2;
       
       categories.forEach((category, index) => {
         const row = Math.floor(index / maxItemsPerRow);
         const col = index % maxItemsPerRow;
         
-        const itemsInThisRow = Math.min(maxItemsPerRow, categories.length - row * maxItemsPerRow);
-        const totalRowWidth = itemsInThisRow * itemSpacing;
-        const rowStartX = (width - totalRowWidth) / 2;
-        
-        const x = rowStartX + col * itemSpacing;
+        // Left-align legend items within the centered container
+        const x = legendContainerStartX + col * itemSpacing;
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        svg += `<rect x="${x}" y="${y - 6}" width="10" height="10" fill="${color}"/>`;
-        svg += `<text x="${x + 15}" y="${y}" class="legend">${category}</text>`;
+        // Legend color box
+        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        
+        // Legend text - left-aligned within the container
+        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="12" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 
