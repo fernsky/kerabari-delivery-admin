@@ -75,7 +75,7 @@ export default function WardWiseCookingFuelAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-clean-fuel-rate": cleanFuelPercentage.toFixed(2),
     "data-traditional-fuel-rate": traditionalFuelPercentage,

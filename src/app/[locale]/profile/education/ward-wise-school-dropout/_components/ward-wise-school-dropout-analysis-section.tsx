@@ -74,7 +74,7 @@ export default function WardWiseSchoolDropoutAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-dropouts": totalDropouts.toString(),
     "data-economic-dropout-rate": dropoutGroupPercentages.ECONOMIC.toFixed(2),
     "data-highest-economic-dropout-ward":

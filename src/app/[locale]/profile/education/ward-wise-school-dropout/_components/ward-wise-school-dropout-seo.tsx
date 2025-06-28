@@ -90,11 +90,11 @@ export default function WardWiseSchoolDropoutSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "School Dropout Causes in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "School Dropout Causes in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of school dropout causes across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalDropouts.toLocaleString()} dropouts. ${dropoutGroupTotals.ECONOMIC.toLocaleString()} students (${dropoutGroupPercentages.ECONOMIC.toFixed(2)}%) have left school due to economic-related reasons. The highest economic-related dropout rate is in Ward ${highestEconomicDropoutWard?.wardNumber || ""} with ${highestEconomicDropoutWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "School dropout",
         "Employment-related dropouts",
         "Ward-wise school dropout",
@@ -107,11 +107,11 @@ export default function WardWiseSchoolDropoutSEO({
         "Dropout distribution",
         "Education index",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/education/ward-wise-school-dropout",
+      url: "https://digital.buddhashantimun.gov.np/profile/education/ward-wise-school-dropout",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

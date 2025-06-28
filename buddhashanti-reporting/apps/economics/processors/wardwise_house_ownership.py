@@ -183,7 +183,7 @@ class WardWiseHouseOwnershipProcessor(BaseEconomicsProcessor):
             )
 
             lines = [
-                f"गढवा गाउँपालिकामा घरधुरी स्वामित्वको विश्लेषण गर्दा, कुल घरधुरीमध्ये {format_nepali_number(private_count)} ({private_pct}) निजी स्वामित्वमा रहेका छन्, जुन अत्यधिक बहुमत हो।",
+                f"बुद्धशान्ति गाउँपालिकामा घरधुरी स्वामित्वको विश्लेषण गर्दा, कुल घरधुरीमध्ये {format_nepali_number(private_count)} ({private_pct}) निजी स्वामित्वमा रहेका छन्, जुन अत्यधिक बहुमत हो।",
                 f"भाडामा बस्ने घरधुरी {format_nepali_number(rent_count)} ({rent_pct}) छन्, जसले शहरीकरण र आवासको पहुँचमा विविधता देखाउँछ।",
                 f"संस्थागत स्वामित्वमा रहेका घरधुरी {format_nepali_number(institutional_count)} ({institutional_pct}) मात्र छन्, जुन मुख्यतया केही वडामा सीमित छन्।",
                 "अन्य स्वामित्वका घरधुरी हालको तथ्याङ्कमा उल्लेखनीय रूपमा देखिएका छैनन्।",

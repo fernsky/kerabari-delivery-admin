@@ -1,14 +1,15 @@
 # Project Structure Design
 
 ## Directory Structure
+
 ```
-gadhawa-report/
+buddhashanti-report/
 ├── docs/                           # Documentation
 │   ├── api/                        # API Documentation
 │   ├── design/                     # Design Specifications
 │   ├── project-overview.md
 │   └── report-structure.md
-├── gadhawa_report/                 # Django Project Root
+├── buddhashanti_report/                 # Django Project Root
 │   ├── settings/                   # Environment-specific settings
 │   │   ├── __init__.py
 │   │   ├── base.py                # Common settings
@@ -91,6 +92,7 @@ gadhawa-report/
 ## Application Architecture
 
 ### Core Models Structure
+
 ```
 Municipality Information
 ├── Basic Info (Name, Location, Establishment Date)
@@ -147,6 +149,7 @@ Governance (Chapter 8)
 ```
 
 ### API Endpoints Structure
+
 ```
 /api/v1/
 ├── auth/                          # Authentication
@@ -167,6 +170,7 @@ Governance (Chapter 8)
 ## Database Design Principles
 
 ### Model Organization
+
 - **Modular Design**: Each chapter has its own app with related models
 - **Normalization**: Proper foreign key relationships
 - **Localization**: Support for Nepali text in all fields
@@ -174,12 +178,14 @@ Governance (Chapter 8)
 - **Validation**: Data integrity constraints
 
 ### Performance Considerations
+
 - **Indexing**: Strategic database indexes for query optimization
 - **Caching**: Redis for API response caching
 - **Pagination**: Efficient data loading for large datasets
 - **Lazy Loading**: Optimize template rendering
 
 ## Security & Data Protection
+
 - **Authentication**: Django's built-in user system
 - **Authorization**: Role-based access control
 - **Data Validation**: Input sanitization and validation

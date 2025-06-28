@@ -54,7 +54,7 @@ export default function IncomeSourcesAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-households",
@@ -256,7 +256,7 @@ export default function IncomeSourcesAnalysisSection({
               <span className="ml-3 text-sm font-medium">65%</span>
             </div>
             <p className="text-sm text-muted-foreground mt-2">
-              गढवा गाउँपालिकामा आयस्रोतको विविधिकरण अवस्था मध्यम छ
+              बुद्धशान्ति गाउँपालिकामा आयस्रोतको विविधिकरण अवस्था मध्यम छ
             </p>
           </div>
 
@@ -280,7 +280,7 @@ export default function IncomeSourcesAnalysisSection({
         <div className="bg-card p-3 rounded border mt-4">
           <h4 className="font-medium mb-1">निष्कर्ष</h4>
           <p className="text-sm mt-2">
-            गढवा गाउँपालिकामा घरपरिवारहरूको आयस्रोत विविधिकरणलाई थप
+            बुद्धशान्ति गाउँपालिकामा घरपरिवारहरूको आयस्रोत विविधिकरणलाई थप
             प्रवर्द्धन गर्न निम्न क्षेत्रहरूमा लगानी बढाउनु आवश्यक देखिन्छ:
           </p>
           <ul className="text-sm list-disc pl-5 mt-2">
@@ -291,8 +291,8 @@ export default function IncomeSourcesAnalysisSection({
         </div>
 
         <p className="mt-5">
-          गढवा गाउँपालिकाको आयस्रोत विविधिकरण रणनीति सम्बन्धी थप जानकारीको
-          लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको आयस्रोत विविधिकरण रणनीति सम्बन्धी थप
+          जानकारीको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

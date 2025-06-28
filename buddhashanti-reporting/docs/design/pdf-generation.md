@@ -20,16 +20,18 @@ This document outlines the approach for generating beautiful, professional A4 PD
 /* Nepali Font Stack */
 @font-face {
   font-family: "Mukti";
-  src: url("../fonts/mukti/Mukti.woff2") format("woff2"), url("../fonts/mukti/Mukti.woff")
-      format("woff");
+  src:
+    url("../fonts/mukti/Mukti.woff2") format("woff2"),
+    url("../fonts/mukti/Mukti.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Kalimati";
-  src: url("../fonts/kalimati/Kalimati.woff2") format("woff2"), url("../fonts/kalimati/Kalimati.woff")
-      format("woff");
+  src:
+    url("../fonts/kalimati/Kalimati.woff2") format("woff2"),
+    url("../fonts/kalimati/Kalimati.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -76,7 +78,7 @@ This document outlines the approach for generating beautiful, professional A4 PD
   }
 
   @bottom-center {
-    content: "गढवा नगरपालिका";
+    content: "बुद्धशान्ति नगरपालिका";
     font-size: 8pt;
     color: #666;
     font-family: "Mukti", serif;

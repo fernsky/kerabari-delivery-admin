@@ -53,11 +53,11 @@ export default function MigratedHouseholdSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Migrated Households in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Migrated Households in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Migrated household data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} migrated households. The most common origin is ${mostCommonMigratedFromEN} with ${mostCommonMigratedFrom?.households.toLocaleString()} households (${mostCommonMigratedFromPercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Migrated households",
         "Migration distribution",
         "Ward-wise migration data",
@@ -70,11 +70,11 @@ export default function MigratedHouseholdSEO({
           (name) => `${name} घरपरिवार तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-migrated-households",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-migrated-households",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

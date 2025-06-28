@@ -103,7 +103,7 @@ export default function HouseholdOuterWallAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-most-common-wall":
       overallSummary.length > 0

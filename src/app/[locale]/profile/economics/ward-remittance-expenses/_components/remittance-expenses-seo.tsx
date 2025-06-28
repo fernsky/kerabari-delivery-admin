@@ -38,11 +38,11 @@ export default function RemittanceExpensesSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Remittance Expense Patterns of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Remittance Expense Patterns of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Remittance expense distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with ${totalHouseholds.toLocaleString()} households receiving remittances.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Remittance expenses",
         "Remittance utilization",
         "Ward-wise remittance data",
@@ -53,11 +53,11 @@ export default function RemittanceExpensesSEO({
           (name) => `${name} विप्रेषण खर्च`,
         ),
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-remittance-expenses",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-remittance-expenses",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://gadhawa-rm.gov.np",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

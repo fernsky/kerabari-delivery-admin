@@ -94,11 +94,11 @@ export default function WardWiseEducationalLevelSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Educational Level Distribution in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Educational Level Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of educational levels across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()}. ${educationGroupTotals.HIGHER_EDUCATION.toLocaleString()} people (${educationGroupPercentages.HIGHER_EDUCATION.toFixed(2)}%) have attained higher education. The highest educational level is in Ward ${bestEducatedWard?.wardNumber || ""} with ${bestEducatedWard?.percentage.toFixed(2) || ""}% of people having higher education.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Educational level",
         "Higher education rate",
         "Ward-wise educational level",
@@ -112,11 +112,11 @@ export default function WardWiseEducationalLevelSEO({
         "Educational distribution",
         "Education index",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/education/ward-wise-educational-level",
+      url: "https://digital.buddhashantimun.gov.np/profile/education/ward-wise-educational-level",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

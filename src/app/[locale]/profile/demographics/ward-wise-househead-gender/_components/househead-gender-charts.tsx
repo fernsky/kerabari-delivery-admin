@@ -134,7 +134,7 @@ export default function HouseheadGenderCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            <strong>गढवा गाउँपालिका</strong>मा घरमूली लिङ्ग अनुसार वितरण
+            <strong>बुद्धशान्ति गाउँपालिका</strong>मा घरमूली लिङ्ग अनुसार वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             कुल घरमूली संख्या:{" "}
@@ -328,7 +328,8 @@ export default function HouseheadGenderCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            <strong>गढवा गाउँपालिका</strong>को वडा अनुसार घरमूली लिङ्ग वितरण
+            <strong>बुद्धशान्ति गाउँपालिका</strong>को वडा अनुसार घरमूली लिङ्ग
+            वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             वडा र लिङ्ग अनुसार घरमूली वितरण

@@ -116,7 +116,7 @@ export default function ReligionAnalysisSection({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-8">
         <h3 className="text-xl font-medium mb-4">
-          गढवा गाउँपालिकाको धार्मिक विविधता विश्लेषण
+          बुद्धशान्ति गाउँपालिकाको धार्मिक विविधता विश्लेषण
           <span className="sr-only">
             Religious Diversity Analysis of Khajura
           </span>
@@ -124,7 +124,7 @@ export default function ReligionAnalysisSection({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-card p-4 rounded border">
             <h4 className="font-medium mb-2">
-              गढवा गाउँपालिकाको प्रमुख धर्म
+              बुद्धशान्ति गाउँपालिकाको प्रमुख धर्म
               <span className="sr-only">
                 Main Religion in Khajura Rural Municipality
               </span>
@@ -146,7 +146,7 @@ export default function ReligionAnalysisSection({
 
           <div className="bg-card p-4 rounded border">
             <h4 className="font-medium mb-2">
-              गढवा गाउँपालिकाको प्रमुख-दोस्रो धर्म अनुपात
+              बुद्धशान्ति गाउँपालिकाको प्रमुख-दोस्रो धर्म अनुपात
               <span className="sr-only">
                 Primary to Secondary Religion Ratio in Khajura
               </span>

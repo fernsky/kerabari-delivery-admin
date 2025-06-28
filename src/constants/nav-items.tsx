@@ -14,7 +14,7 @@ import { NavItem } from "@/store/sidebar-nav-store";
 
 export const navItems: NavItem[] = [
   {
-    title: "गढवा प्रोफाइल",
+    title: "बुद्धशान्ति प्रोफाइल",
     href: "/profile",
     icon: <Layout className="w-4 h-4" />,
     items: [],

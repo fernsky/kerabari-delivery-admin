@@ -1,20 +1,9 @@
-{% extends 'reports/base.html' %}
-{% load static %}
-{% load nepali_filters %}
-
-{% block title %}
-चित्रहरूको सूची - गढवा गाउँपालिका
-{% endblock %}
-
-{% block description %}
-गढवाँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै चित्रहरू, आंकडाहरू र ग्राफहरूको सूची।
-{% endblock %}
-
-{% block keywords %}
-चित्रहरू, आंकडाहरू, ग्राफ, गढवाउँपालिका, प्रतिवेदन
-{% endblock %}
-
-{% block breadcrumb %}
+{% extends 'reports/base.html' %} {% load static %} {% load nepali_filters %} {%
+block title %} चित्रहरूको सूची - बुद्धशान्ति गाउँपालिका {% endblock %} {% block
+description %} बुद्धशान्तिँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग
+गरिएका सबै चित्रहरू, आंकडाहरू र ग्राफहरूको सूची। {% endblock %} {% block
+keywords %} चित्रहरू, आंकडाहरू, ग्राफ, बुद्धशान्तिउँपालिका, प्रतिवेदन {%
+endblock %} {% block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -23,36 +12,32 @@
     <li class="breadcrumb-item active">चित्रहरूको सूची</li>
   </ol>
 </nav>
-{% endblock %}
-
-{% block structured_data %}
+{% endblock %} {% block structured_data %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "चित्रहरूको सूची",
-    "description": "गढवाँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै चित्रहरूको सूची।",
+    "description": "बुद्धशान्तिँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदनमा प्रयोग गरिएका सबै चित्रहरूको सूची।",
     "url": "{{ request.build_absolute_uri }}",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "गढवाँपालिका",
+      "name": "बुद्धशान्तिँपालिका",
       "url": "{% url 'reports:home' %}"
     },
     "publisher": {
       "@type": "GovernmentOrganization",
-      "name": "गढवाँपालिका"
+      "name": "बुद्धशान्तिँपालिका"
     }
   }
 </script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="content-header">
   <div class="d-flex justify-content-between align-items-center">
     <div>
       <h1><i class="fas fa-images me-3"></i>चित्रहरूको सूची</h1>
       <p class="lead text-muted">
-        गढवाँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदन
+        बुद्धशान्तिँपालिका डिजिटल प्रोफाइल र वार्षिक प्रतिवेदन
       </p>
     </div>
     <div class="no-print">
@@ -77,8 +62,14 @@
   <div class="card-body">
     <div class="row align-items-center">
       <div class="col-md-4">
-        <label for="categoryFilter" class="form-label">विषयअनुसार फिल्टर:</label>
-        <select id="categoryFilter" class="form-select" onchange="filterFigures()">
+        <label for="categoryFilter" class="form-label"
+          >विषयअनुसार फिल्टर:</label
+        >
+        <select
+          id="categoryFilter"
+          class="form-select"
+          onchange="filterFigures()"
+        >
           <option value="">सबै विषयहरू</option>
           {% for category in categories %}
           <option value="{{ category.slug }}">{{ category.title }}</option>
@@ -98,7 +89,9 @@
       <div class="col-md-4">
         <label class="form-label">कुल चित्रहरू:</label>
         <p class="mb-0">
-          <span class="badge bg-primary fs-6" id="figureCount">{{ figures.count }}</span>
+          <span class="badge bg-primary fs-6" id="figureCount"
+            >{{ figures.count }}</span
+          >
         </p>
       </div>
     </div>
@@ -140,9 +133,12 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <h5 class="card-title">
-                चित्र {{ figure.figure_number|nepali_digits }}: {{ figure.title }}
+                चित्र {{ figure.figure_number|nepali_digits }}: {{ figure.title
+                }}
               </h5>
-              <span class="badge bg-secondary">{{ figure.section.category.title }}</span>
+              <span class="badge bg-secondary"
+                >{{ figure.section.category.title }}</span
+              >
             </div>
 
             {% if figure.caption %}
@@ -186,7 +182,8 @@
                 </a>
               </div>
               <small class="text-muted">
-                <i class="fas fa-clock me-1"></i>{{ figure.created_at|nepali_date:"Y F j" }}
+                <i class="fas fa-clock me-1"></i>{{
+                figure.created_at|nepali_date:"Y F j" }}
               </small>
             </div>
           </div>
@@ -215,9 +212,7 @@
               class="img-fluid mb-3"
               alt="{{ figure.caption }}"
             />
-            {% endif %}
-            
-            {% if figure.caption %}
+            {% endif %} {% if figure.caption %}
             <p class="lead">{{ figure.caption }}</p>
             {% endif %}
             <div class="row text-start">
@@ -229,7 +224,8 @@
                 {% if figure.source %}
                 <strong>स्रोत:</strong> {{ figure.source }}<br />
                 {% endif %}
-                <strong>मिति:</strong> {{ figure.created_at|nepali_date:"Y F j" }}
+                <strong>मिति:</strong> {{ figure.created_at|nepali_date:"Y F j"
+                }}
               </div>
             </div>
           </div>
@@ -275,7 +271,9 @@
               data-bs-target="#figureModal{{ figure.id }}"
             />
             <div class="position-absolute top-0 start-0 m-2">
-              <span class="badge bg-primary">{{ figure.figure_number|nepali_digits }}</span>
+              <span class="badge bg-primary"
+                >{{ figure.figure_number|nepali_digits }}</span
+              >
             </div>
             <div class="position-absolute top-0 end-0 m-2">
               <button
@@ -301,11 +299,14 @@
             <p class="card-text small">{{ figure.caption|truncatewords:15 }}</p>
             {% endif %}
             <div class="d-flex justify-content-between align-items-center">
-              <small class="text-muted">{{ figure.section.category.title }}</small>
+              <small class="text-muted"
+                >{{ figure.section.category.title }}</small
+              >
               <a
                 href="{% url 'reports:section' figure.section.category.slug figure.section.slug %}#figure-{{ figure.id }}"
                 class="btn btn-sm btn-outline-primary"
-              >हेर्नुहोस्</a>
+                >हेर्नुहोस्</a
+              >
             </div>
           </div>
         </div>
@@ -380,11 +381,7 @@
     </div>
   </div>
 </div>
-{% endif %}
-
-{% endblock %}
-
-{% block extra_js %}
+{% endif %} {% endblock %} {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   let currentView = "list";
@@ -524,7 +521,7 @@
   function updateChart() {
     // Update chart based on filtered data
     const visibleItems = document.querySelectorAll(
-      '.figure-item:not([style*="display: none"])'
+      '.figure-item:not([style*="display: none"])',
     );
     const categories = {};
 
@@ -545,7 +542,7 @@
   // Print specific figures
   function printFigures() {
     const visibleItems = document.querySelectorAll(
-      '.figure-item:not([style*="display: none"])'
+      '.figure-item:not([style*="display: none"])',
     );
     let printContent = "<h1>चित्रहरूको सूची</h1>";
 
@@ -571,7 +568,7 @@
     printWindow.document.write("<html><head><title>चित्रहरूको सूची</title>");
     printWindow.document.write("<style>");
     printWindow.document.write(
-      'body { font-family: "Noto Sans Devanagari", sans-serif; }'
+      'body { font-family: "Noto Sans Devanagari", sans-serif; }',
     );
     printWindow.document.write("img { max-width: 100%; height: auto; }");
     printWindow.document.write("</style></head><body>");
@@ -587,7 +584,7 @@
   function exportFiguresList() {
     const figures = [];
     const visibleItems = document.querySelectorAll(
-      '.figure-item:not([style*="display: none"])'
+      '.figure-item:not([style*="display: none"])',
     );
 
     visibleItems.forEach((item) => {

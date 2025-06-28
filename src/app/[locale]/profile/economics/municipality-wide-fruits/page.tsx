@@ -93,7 +93,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const fruitData =
       await api.profile.economics.municipalityWideFruits.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalProduction = fruitData.reduce(
@@ -133,14 +133,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका फलफूल बाली",
-      "गढवा फलफूलको उत्पादन",
+      "बुद्धशान्ति गाउँपालिका फलफूल बाली",
+      "बुद्धशान्ति फलफूलको उत्पादन",
       "पालिका स्तरीय फलफूल बाली तथ्याङ्क",
-      "आँप उत्पादन गढवा",
+      "आँप उत्पादन बुद्धशान्ति",
       "रुखकटहर उत्पादन तथ्याङ्क",
       "लिची उत्पादन",
-      `गढवा फलफूल बाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
-      `गढवा फलफूल बाली आय ${localizeNumber((totalRevenue / 1000000).toFixed(2), "ne")} मिलियन`,
+      `बुद्धशान्ति फलफूल बाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
+      `बुद्धशान्ति फलफूल बाली आय ${localizeNumber((totalRevenue / 1000000).toFixed(2), "ne")} मिलियन`,
     ];
 
     const keywordsEN = [
@@ -155,7 +155,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको फलफूल बाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन फलफूल बाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${FRUIT_TYPES[mostProducedFruit] || mostProducedFruit} रहेको छ। पालिका स्तरीय फलफूल बालीको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको फलफूल बाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन फलफूल बाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${FRUIT_TYPES[mostProducedFruit] || mostProducedFruit} रहेको छ। पालिका स्तरीय फलफूल बालीको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Analysis of fruit production and sales in Khajura Rural Municipality. Out of total ${totalProduction.toFixed(2)} metric tonnes of fruit production, ${mostProducedPercentage}% (${mostProducedAmount.toFixed(2)} tonnes) is ${FRUIT_TYPES_EN[mostProducedFruit] || mostProducedFruit}. Detailed analysis of municipality-wide fruit patterns.`;
 
@@ -188,7 +188,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "फलफूल बालीको प्रकार अनुसार उत्पादन र बिक्री | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+        "फलफूल बालीको प्रकार अनुसार उत्पादन र बिक्री | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय फलफूल बालीको प्रकार अनुसारको उत्पादन, बिक्री र आम्दानीको विश्लेषण।",
     };
@@ -364,7 +364,7 @@ export default async function MunicipalityWideFruitsPage() {
               src="/images/fruits.svg"
               width={1200}
               height={400}
-              alt="फलफूल बालीको प्रकार अनुसार उत्पादन र बिक्री - गढवा गाउँपालिका (Fruits by Production and Sales - Khajura Rural Municipality)"
+              alt="फलफूल बालीको प्रकार अनुसार उत्पादन र बिक्री - बुद्धशान्ति गाउँपालिका (Fruits by Production and Sales - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -372,20 +372,21 @@ export default async function MunicipalityWideFruitsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा फलफूल बालीको प्रकार अनुसार उत्पादन र बिक्री
+              बुद्धशान्ति गाउँपालिकामा फलफूल बालीको प्रकार अनुसार उत्पादन र
+              बिक्री
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              फलफूल बाली गढवा गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये एक
-              हो। यसका प्रमुख बालीहरूमा आँप, रुखकटहर, लिची, केरा र अन्य फलफूल
+              फलफूल बाली बुद्धशान्ति गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये
+              एक हो। यसका प्रमुख बालीहरूमा आँप, रुखकटहर, लिची, केरा र अन्य फलफूल
               बालीहरू पर्दछन्। यी फलफूल बालीहरूले पालिकाको पोषण सुरक्षा र आर्थिक
               स्थितिमा महत्त्वपूर्ण भूमिका खेल्दछन्।
             </p>
             <p>
-              गढवा गाउँपालिकाको फलफूल बाली सम्बन्धी तथ्याङ्क अनुसार, यस
+              बुद्धशान्ति गाउँपालिकाको फलफूल बाली सम्बन्धी तथ्याङ्क अनुसार, यस
               क्षेत्रमा वार्षिक कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               फलफूल बाली उत्पादन हुन्छ, जसमध्ये सबैभन्दा बढी{" "}
@@ -412,7 +413,7 @@ export default async function MunicipalityWideFruitsPage() {
               प्रमुख फलफूल बालीहरू
             </h2>
             <p>
-              गढवा गाउँपालिकामा उत्पादित प्रमुख फलफूल बालीहरू र तिनको
+              बुद्धशान्ति गाउँपालिकामा उत्पादित प्रमुख फलफूल बालीहरू र तिनको
               उत्पादन परिमाण निम्नानुसार रहेको छ:
             </p>
 
@@ -431,7 +432,7 @@ export default async function MunicipalityWideFruitsPage() {
             </ul>
 
             <p>
-              फलफूल बालीको विश्लेषण गर्दा, गढवा गाउँपालिकामा उत्पादित कुल
+              फलफूल बालीको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकामा उत्पादित कुल
               फलफूल बाली मध्ये {localizeNumber(soldPercentage, "ne")}% बिक्रीका
               लागि बजारमा जान्छ, जबकि{" "}
               {localizeNumber(selfConsumptionPercentage, "ne")}% घरायसी उपभोगमा
@@ -475,8 +476,8 @@ export default async function MunicipalityWideFruitsPage() {
               फलफूल बाली र स्थानीय अर्थतन्त्र
             </h2>
             <p>
-              गढवा गाउँपालिकामा फलफूल बालीको उत्पादनले स्थानीय अर्थतन्त्रमा
-              महत्त्वपूर्ण भूमिका खेल्दछ। कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा फलफूल बालीको उत्पादनले स्थानीय
+              अर्थतन्त्रमा महत्त्वपूर्ण भूमिका खेल्दछ। कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               फलफूल बाली उत्पादन मध्ये{" "}
               {localizeNumber(selfConsumption.toFixed(2), "ne")}
@@ -486,9 +487,10 @@ export default async function MunicipalityWideFruitsPage() {
             </p>
 
             <p>
-              गढवा गाउँपालिकाको प्रमुख फलफूल बालीको उत्पादकत्व र बजारीकरणको
-              विश्लेषण गर्दा {overallSummary[0]?.typeName || ""} सबैभन्दा
-              प्रभावकारी फलफूल बाली रहेको देखिन्छ, जसले कुल फलफूल बाली उत्पादनको{" "}
+              बुद्धशान्ति गाउँपालिकाको प्रमुख फलफूल बालीको उत्पादकत्व र
+              बजारीकरणको विश्लेषण गर्दा {overallSummary[0]?.typeName || ""}{" "}
+              सबैभन्दा प्रभावकारी फलफूल बाली रहेको देखिन्छ, जसले कुल फलफूल बाली
+              उत्पादनको{" "}
               {localizeNumber(
                 totalProduction > 0
                   ? (
@@ -523,7 +525,7 @@ export default async function MunicipalityWideFruitsPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकाको फलफूल बालीको अवस्थाको विश्लेषणबाट निम्न
+              बुद्धशान्ति गाउँपालिकाको फलफूल बालीको अवस्थाको विश्लेषणबाट निम्न
               निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -572,7 +574,7 @@ export default async function MunicipalityWideFruitsPage() {
             </div>
 
             <p className="mt-6">
-              गढवा गाउँपालिकामा फलफूल बालीको वर्तमान अवस्थाले अझै विकासको
+              बुद्धशान्ति गाउँपालिकामा फलफूल बालीको वर्तमान अवस्थाले अझै विकासको
               सम्भावना देखाउँछ। उत्पादकत्व वृद्धि, प्रशोधन प्रविधिमा आधुनिकीकरण
               र व्यावसायीकरण मार्फत पोषण सुरक्षा र आर्थिक समृद्धि हासिल गर्न
               सकिनेछ। यसका लागि स्थानीय सरकारले सक्रिय नीति निर्माण र प्रोत्साहन

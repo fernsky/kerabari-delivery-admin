@@ -409,20 +409,20 @@ class WardHouseholdProcessor(BaseDemographicsProcessor, SimpleChartProcessor):
         def generate_formal_report(self, data):
             """Generate comprehensive formal ward household report with detailed analysis"""
             if not data or not data.get("ward_data"):
-                return "गढवा गाउँपालिकाको वडागत घरपरिवारको तथ्याङ्क उपलब्ध छैन।"
+                return "बुद्धशान्ति गाउँपालिकाको वडागत घरपरिवारको तथ्याङ्क उपलब्ध छैन।"
 
             ward_data = data["ward_data"]
             summary_stats = data.get("summary_stats", {})
             latest_year = data.get("latest_year")
 
             if not summary_stats:
-                return "गढवा गाउँपालिकाको वडागत घरपरिवारको विश्लेषणका लागि पर्याप्त तथ्याङ्क उपलब्ध छैन।"
+                return "बुद्धशान्ति गाउँपालिकाको वडागत घरपरिवारको विश्लेषणका लागि पर्याप्त तथ्याङ्क उपलब्ध छैन।"
 
             analysis_parts = []
 
             # Overall introduction
             analysis_parts.append(
-                f"गढवा गाउँपालिकाका {format_nepali_number(len(ward_data))} वडामा वर्ष {format_nepali_number(latest_year)} को तथ्याङ्क अनुसार कुल "
+                f"बुद्धशान्ति गाउँपालिकाका {format_nepali_number(len(ward_data))} वडामा वर्ष {format_nepali_number(latest_year)} को तथ्याङ्क अनुसार कुल "
                 f"{format_nepali_number(summary_stats.get('total_population', 0))} जनसंख्या, "
                 f"{format_nepali_number(summary_stats.get('total_households', 0))} घरपरिवार, "
                 f"औसत घरपरिवार आकार {format_nepali_number(round(summary_stats.get('overall_avg_household_size', 2), 2))} व्यक्ति रहेको छ।"
@@ -522,6 +522,6 @@ class WardHouseholdProcessor(BaseDemographicsProcessor, SimpleChartProcessor):
                     )
 
             analysis_parts.append(
-                f"समग्रमा, गढवा गाउँपालिकाको वडागत घरपरिवार र जनसंख्या संरचनाले स्थानीय विकास, सेवा प्रवाह र योजना निर्माणमा महत्वपूर्ण आधार प्रदान गर्दछ। विस्तृत विवरण तलको तालिका र चित्रमा प्रस्तुत गरिएको छ।"
+                f"समग्रमा, बुद्धशान्ति गाउँपालिकाको वडागत घरपरिवार र जनसंख्या संरचनाले स्थानीय विकास, सेवा प्रवाह र योजना निर्माणमा महत्वपूर्ण आधार प्रदान गर्दछ। विस्तृत विवरण तलको तालिका र चित्रमा प्रस्तुत गरिएको छ।"
             )
             return " ".join(analysis_parts)

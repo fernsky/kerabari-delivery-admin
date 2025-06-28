@@ -40,11 +40,11 @@ export default function SkillsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Skills Distribution of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Skills Distribution of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Skills distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total skilled population of ${totalPopulation.toLocaleString()} people (${localizeNumber(totalPopulation.toString(), "ne")} व्यक्ति).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Skills distribution",
         "सीप वितरण",
         "Technical abilities",
@@ -58,18 +58,18 @@ export default function SkillsSEO({
         ...Object.values(SKILL_NAMES_EN).map((name) => `${name} population`),
         ...Object.values(skillLabels).map((name) => `${name} जनसंख्या`),
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-main-skills",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-main-skills",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        alternateName: "गढवा गाउँपालिका",
-        url: "https://gadhawa-rm.gov.np",
+        alternateName: "बुद्धशान्ति गाउँपालिका",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
         "@type": "Place",
         name: "Khajura Rural Municipality, Banke, Nepal",
-        alternateName: "गढवा गाउँपालिका, दाङ, नेपाल",
+        alternateName: "बुद्धशान्ति गाउँपालिका, झापा, नेपाल",
         geo: {
           "@type": "GeoCoordinates",
           latitude: "28.1356",

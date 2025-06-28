@@ -53,11 +53,11 @@ export default function EconomicallyActivePopulationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Economically Active Population of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Economically Active Population of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Age-wise economically active population data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people. The working age population (15-59 years) is ${economicallyActivePopulation.toLocaleString()} people (${((economicallyActivePopulation / totalPopulation) * 100).toFixed(2)}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Economically active population",
         "Age distribution",
         "Ward-wise population data",
@@ -69,11 +69,11 @@ export default function EconomicallyActivePopulationSEO({
         ),
         ...Object.values(AGE_GROUP_NAMES).map((name) => `${name} तथ्याङ्क`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-age-wise-economically-active-population",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-age-wise-economically-active-population",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

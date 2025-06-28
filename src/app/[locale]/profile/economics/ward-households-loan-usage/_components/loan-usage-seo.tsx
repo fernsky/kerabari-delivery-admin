@@ -50,11 +50,11 @@ export default function LoanUsageSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Loan Usage Patterns in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Loan Usage Patterns in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Loan usage purpose distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households with loans.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Loan usage purposes",
         "Credit utilization",
         "Ward-wise loan data",
@@ -63,11 +63,11 @@ export default function LoanUsageSEO({
         ...Object.values(LOAN_USE_NAMES_EN).map((name) => `${name} loans`),
         ...Object.values(loanUseLabels).map((name) => `${name} कर्जा`),
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-households-loan-usage",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-households-loan-usage",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://gadhawa-rm.gov.np",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

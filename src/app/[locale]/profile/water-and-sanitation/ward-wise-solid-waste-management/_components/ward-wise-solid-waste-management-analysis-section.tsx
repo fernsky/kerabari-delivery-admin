@@ -91,7 +91,7 @@ export default function WardWiseSolidWasteManagementAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-home-collection-rate": (
       wasteManagementPercentages["HOME_COLLECTION"] || 0

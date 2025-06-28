@@ -63,11 +63,11 @@ export default function PulseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Pulse Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Pulse Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Pulse production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(2)} tonnes and sales of ${totalSales.toFixed(2)} tonnes (${((totalSales / totalProduction) * 100).toFixed(2)}% of production). The most common pulse crop is ${mostProducedPulseEN} with ${mostProducedPulse?.production.toFixed(2)} tonnes (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from pulse sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Pulse production",
         "Pulse sales",
         "Lentil production",
@@ -79,11 +79,11 @@ export default function PulseSEO({
         ),
         ...Object.values(PULSE_TYPES).map((name) => `${name} उत्पादन तथ्याङ्क`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-pulses",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/municipality-wide-pulses",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

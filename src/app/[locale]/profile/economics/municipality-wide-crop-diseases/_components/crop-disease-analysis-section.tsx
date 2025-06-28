@@ -72,7 +72,7 @@ export default function CropDiseaseAnalysisSection({
 
   // SEO attributes
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-crops": totalCrops.toString(),
     "data-most-affected-crop":
       mostAffectedCrop &&

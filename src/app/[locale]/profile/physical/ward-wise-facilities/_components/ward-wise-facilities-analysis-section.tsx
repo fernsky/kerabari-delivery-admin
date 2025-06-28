@@ -67,7 +67,7 @@ export default function WardWiseFacilitiesAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": approximateUniqueHouseholds.toString(),
     "data-mobile-rate":
       facilityTypePercentages.MOBILE_PHONE?.toFixed(2) || "0.00",

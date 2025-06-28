@@ -63,7 +63,7 @@ export default function FruitSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Fruit Types in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Fruit Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Fruit production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(
         2,
       )} tonnes and sales of ${totalSales.toFixed(2)} tonnes (${(
@@ -76,7 +76,7 @@ export default function FruitSEO({
       )} tonnes (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from fruit sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Fruit production",
         "Fruit sales",
         "Mango production",
@@ -89,11 +89,11 @@ export default function FruitSEO({
         ),
         ...Object.values(FRUIT_TYPES).map((name) => `${name} उत्पादन तथ्याङ्क`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/municipality-wide-fruits",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/municipality-wide-fruits",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

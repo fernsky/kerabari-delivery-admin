@@ -84,7 +84,7 @@ const HistoryTimeline = () => {
             Our Journey Through Time
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Key milestones in the development of gadhawa Rural Municipality
+            Key milestones in the development of buddhashanti Rural Municipality
           </p>
         </div>
 

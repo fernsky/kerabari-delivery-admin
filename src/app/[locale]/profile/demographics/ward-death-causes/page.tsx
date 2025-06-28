@@ -73,7 +73,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const deathCauseData =
       await api.profile.demographics.wardWiseDeathCause.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalDeaths = deathCauseData.reduce(
@@ -97,17 +97,17 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका मृत्युका कारणहरू",
-      "गढवा मृत्युदर विश्लेषण",
-      `गढवा ${deathCauseLabels[topDeathCauses[0] as DeathCauseType]} मृत्यु संख्या`,
+      "बुद्धशान्ति गाउँपालिका मृत्युका कारणहरू",
+      "बुद्धशान्ति मृत्युदर विश्लेषण",
+      `बुद्धशान्ति ${deathCauseLabels[topDeathCauses[0] as DeathCauseType]} मृत्यु संख्या`,
       ...topDeathCauses.map(
         (r) =>
-          `${deathCauseLabels[r as DeathCauseType]} मृत्युको कारण गढवा`,
+          `${deathCauseLabels[r as DeathCauseType]} मृत्युको कारण बुद्धशान्ति`,
       ),
       "वडा अनुसार मृत्युका कारणहरू",
-      "स्वास्थ्य तथ्याङ्क गढवा",
-      "मृत्यु कारण सर्वेक्षण गढवा",
-      `गढवा कुल मृत्यु संख्या ${localizeNumber(totalDeaths.toString(), "ne")}`,
+      "स्वास्थ्य तथ्याङ्क बुद्धशान्ति",
+      "मृत्यु कारण सर्वेक्षण बुद्धशान्ति",
+      `बुद्धशान्ति कुल मृत्यु संख्या ${localizeNumber(totalDeaths.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -124,7 +124,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार मृत्युका प्रमुख कारण, प्रवृत्ति र विश्लेषण। कुल मृत्यु संख्या ${localizeNumber(totalDeaths.toString(), "ne")} मध्ये ${deathCauseLabels[topDeathCauses[0] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[0]].toString(), "ne")}) सबैभन्दा ठूलो कारण हो, त्यसपछि ${deathCauseLabels[topDeathCauses[1] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[1]].toString(), "ne")}) र ${deathCauseLabels[topDeathCauses[2] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[2]].toString(), "ne")})। विभिन्न मृत्युका कारणहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार मृत्युका प्रमुख कारण, प्रवृत्ति र विश्लेषण। कुल मृत्यु संख्या ${localizeNumber(totalDeaths.toString(), "ne")} मध्ये ${deathCauseLabels[topDeathCauses[0] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[0]].toString(), "ne")}) सबैभन्दा ठूलो कारण हो, त्यसपछि ${deathCauseLabels[topDeathCauses[1] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[1]].toString(), "ne")}) र ${deathCauseLabels[topDeathCauses[2] as DeathCauseType]} (${localizeNumber(deathCauseCounts[topDeathCauses[2]].toString(), "ne")})। विभिन्न मृत्युका कारणहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise main causes of death, trends and analysis for Khajura Rural Municipality. Out of a total deaths of ${totalDeaths}, ${DEATH_CAUSE_NAMES_EN[topDeathCauses[0] as DeathCauseType]} (${deathCauseCounts[topDeathCauses[0]]}) is the leading cause, followed by ${DEATH_CAUSE_NAMES_EN[topDeathCauses[1] as DeathCauseType]} (${deathCauseCounts[topDeathCauses[1]]}) and ${DEATH_CAUSE_NAMES_EN[topDeathCauses[2] as DeathCauseType]} (${deathCauseCounts[topDeathCauses[2]]})। Detailed statistics and visualizations of various causes of mortality.`;
 
@@ -156,7 +156,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "मृत्युका प्रमुख कारणहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "मृत्युका प्रमुख कारणहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार मृत्युका प्रमुख कारणहरू, प्रवृत्ति र विश्लेषण। विभिन्न मृत्युका कारणहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
@@ -301,7 +301,7 @@ export default async function WardDeathCausesPage() {
               src="/images/death-causes.svg"
               width={1200}
               height={400}
-              alt="मृत्युका प्रमुख कारणहरू - गढवा गाउँपालिका (Main Causes of Death - Khajura Rural Municipality)"
+              alt="मृत्युका प्रमुख कारणहरू - बुद्धशान्ति गाउँपालिका (Main Causes of Death - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -309,21 +309,21 @@ export default async function WardDeathCausesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा मृत्युका प्रमुख कारणहरू
+              बुद्धशान्ति गाउँपालिकामा मृत्युका प्रमुख कारणहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा मृत्युका प्रमुख
-              कारणहरू सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ। यो तथ्याङ्कले
-              स्वास्थ्य सेवाको अवस्था, रोगको प्रकोप र स्वास्थ्य चुनौतीहरूलाई
-              प्रतिबिम्बित गर्दछ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा मृत्युका
+              प्रमुख कारणहरू सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ। यो
+              तथ्याङ्कले स्वास्थ्य सेवाको अवस्था, रोगको प्रकोप र स्वास्थ्य
+              चुनौतीहरूलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिकामा विभिन्न प्रकारका कारणहरूले मृत्यु हुने गरेको
-              देखिन्छ। कुल मृत्यु संख्या{" "}
+              बुद्धशान्ति गाउँपालिकामा विभिन्न प्रकारका कारणहरूले मृत्यु हुने
+              गरेको देखिन्छ। कुल मृत्यु संख्या{" "}
               {localizeNumber(totalDeaths.toLocaleString(), "ne")} मध्ये{" "}
               {overallSummary[0]?.deathCauseName || ""} का कारणले{" "}
               {localizeNumber(
@@ -345,7 +345,7 @@ export default async function WardDeathCausesPage() {
               मृत्युका कारण अनुसार जनसंख्या
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न कारणहरूले हुने मृत्युको संख्या
+              बुद्धशान्ति गाउँपालिकामा विभिन्न कारणहरूले हुने मृत्युको संख्या
               निम्नानुसार छ:
             </p>
           </div>
@@ -366,7 +366,7 @@ export default async function WardDeathCausesPage() {
               प्रमुख मृत्युका कारणहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा निम्न मृत्युका कारणहरू प्रमुख रूपमा
+              बुद्धशान्ति गाउँपालिकामा निम्न मृत्युका कारणहरू प्रमुख रूपमा
               देखिन्छन्। यी कारणहरू मध्ये{" "}
               {deathCauseLabels[
                 overallSummary[0]?.deathCause as keyof typeof deathCauseLabels

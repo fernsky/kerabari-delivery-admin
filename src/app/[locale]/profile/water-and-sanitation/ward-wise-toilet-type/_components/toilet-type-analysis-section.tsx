@@ -67,7 +67,7 @@ export default function ToiletTypeAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-sanitation-percentage": sanitationPercentage,
     "data-no-toilet-percentage": noToiletPercentage,
@@ -188,7 +188,7 @@ export default function ToiletTypeAnalysisSection({
               <h5 className="text-sm font-medium">शौचालयको महत्त्व</h5>
               <div className="mt-2 space-y-2">
                 <p className="text-sm">
-                  गढवा गाउँपालिकामा{" "}
+                  बुद्धशान्ति गाउँपालिकामा{" "}
                   {localizeNumber(sanitationPercentage, "ne")}% घरधुरीमा शौचालय
                   उपलब्ध छ, जुन स्वच्छता र जनस्वास्थ्यका लागि महत्त्वपूर्ण छ।
                 </p>

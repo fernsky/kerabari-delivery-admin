@@ -81,11 +81,11 @@ export default function RemittanceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Ward-wise Remittance Distribution from Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Ward-wise Remittance Distribution from Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Remittance statistics across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalSendingPopulation.toLocaleString()} people sending remittances. The most common amount range is ${mostCommonGroup?.amountGroupLabel} with ${mostCommonGroup?.sendingPopulation.toLocaleString()} senders (${mostCommonGroupPercentage}%). High remittance senders (above Rs. 300,000) account for ${highRemittancePercentage}% of all remittance senders. The estimated annual remittance is NPR ${estimatedAnnualRemittanceCrores} crore with an average of NPR ${averageRemittance.toLocaleString()} per person.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Remittance distribution",
         "Ward-wise remittance",
         "Nepal remittance statistics",
@@ -96,11 +96,11 @@ export default function RemittanceSEO({
         "Remittance utilization",
         "Economic development through remittance",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-remittance",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-remittance",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

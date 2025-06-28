@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseLiteracyStatusData =
       await api.profile.education.wardWiseLiteracyStatus.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseLiteracyStatusData.reduce(
@@ -123,7 +123,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका साक्षरता दर",
+      "बुद्धशान्ति गाउँपालिका साक्षरता दर",
       "साक्षरताको अवस्था",
       "वडागत साक्षरता",
       "पढ्न लेख्न जान्ने",
@@ -143,7 +143,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषण। कुल ${localizeNumber(totalPopulation.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(bothReadingWritingPercentage, "ne")}% (${localizeNumber(bothReadingWritingTotal.toLocaleString(), "ne")}) जना पढ्न र लेख्न जान्दछन्। वडा ${localizeNumber(bestLiteracyWard, "ne")} मा सबैभन्दा राम्रो साक्षरता स्थिति छ, जहाँ ${localizeNumber(bestLiteracyPercentage.toFixed(2), "ne")}% नागरिकहरू साक्षर छन्।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषण। कुल ${localizeNumber(totalPopulation.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(bothReadingWritingPercentage, "ne")}% (${localizeNumber(bothReadingWritingTotal.toLocaleString(), "ne")}) जना पढ्न र लेख्न जान्दछन्। वडा ${localizeNumber(bestLiteracyWard, "ne")} मा सबैभन्दा राम्रो साक्षरता स्थिति छ, जहाँ ${localizeNumber(bestLiteracyPercentage.toFixed(2), "ne")}% नागरिकहरू साक्षर छन्।`;
 
     const descriptionEN = `Analysis of literacy status in Khajura Rural Municipality. Out of a total of ${totalPopulation.toLocaleString()} people, ${bothReadingWritingPercentage}% (${bothReadingWritingTotal.toLocaleString()}) can both read and write. Ward ${bestLiteracyWard} has the best literacy status, where ${bestLiteracyPercentage.toFixed(2)}% of citizens are literate.`;
 
@@ -175,7 +175,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "साक्षरताको अवस्था | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "साक्षरताको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार साक्षरताको अवस्था र विश्लेषण।",
     };
   }
@@ -383,7 +383,7 @@ export default async function WardWiseLiteracyStatusPage() {
               src="/images/literacy-status.svg"
               width={1200}
               height={400}
-              alt="साक्षरताको अवस्था - गढवा गाउँपालिका (Literacy Status - Khajura Rural Municipality)"
+              alt="साक्षरताको अवस्था - बुद्धशान्ति गाउँपालिका (Literacy Status - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -391,7 +391,7 @@ export default async function WardWiseLiteracyStatusPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा साक्षरताको अवस्था
+              बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -401,11 +401,11 @@ export default async function WardWiseLiteracyStatusPage() {
               साक्षरता एक आधारभूत मानव अधिकार हो र यो व्यक्तिगत, सामाजिक र
               आर्थिक विकासको महत्वपूर्ण आधारशिला हो। यसले नागरिकको जीवनस्तरमा
               सुधार ल्याउनुका साथै राष्ट्रिय विकासमा पनि प्रत्यक्ष योगदान
-              पुर्‍याउँछ। यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा
+              पुर्‍याउँछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा
               नागरिकहरूको साक्षरताको अवस्थाको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")}{" "}
               जनसंख्यामध्ये
               {localizeNumber(bothReadingWritingPercentage.toFixed(2), "ne")}%
@@ -427,8 +427,8 @@ export default async function WardWiseLiteracyStatusPage() {
               साक्षरताको अवस्थाको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा साक्षरताको अवस्थाको वितरण निम्नानुसार रहेको
-              छ:
+              बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्थाको वितरण निम्नानुसार
+              रहेको छ:
             </p>
           </div>
 
@@ -453,7 +453,8 @@ export default async function WardWiseLiteracyStatusPage() {
               साक्षरता विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषण गर्दा, समग्रमा
+              बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषण गर्दा,
+              समग्रमा
               {localizeNumber(
                 (bothReadingWritingPercentage + readingOnlyPercentage).toFixed(
                   2,
@@ -494,7 +495,7 @@ export default async function WardWiseLiteracyStatusPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा साक्षरताको अवस्थाको तथ्याङ्क विश्लेषणबाट
+              बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्थाको तथ्याङ्क विश्लेषणबाट
               निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -547,8 +548,8 @@ export default async function WardWiseLiteracyStatusPage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषणले पालिकामा
-              शैक्षिक विकासको अवस्था र भविष्यको शैक्षिक नीति निर्माणमा
+              यसरी बुद्धशान्ति गाउँपालिकामा साक्षरताको अवस्थाको विश्लेषणले
+              पालिकामा शैक्षिक विकासको अवस्था र भविष्यको शैक्षिक नीति निर्माणमा
               महत्वपूर्ण भूमिका खेल्दछ। यसका लागि वडागत विशेषताहरूलाई ध्यानमा
               राखी शिक्षा क्षेत्रको विस्तारका कार्यक्रमहरू तर्जुमा गर्नु आवश्यक
               देखिन्छ।

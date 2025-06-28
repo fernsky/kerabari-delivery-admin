@@ -39,11 +39,11 @@ export default function DeathCauseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Causes of Death in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Causes of Death in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Death cause distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalDeaths.toLocaleString()} recorded deaths.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Death causes",
         "Mortality statistics",
         "Ward-wise death cause data",
@@ -55,11 +55,11 @@ export default function DeathCauseSEO({
           (name) => `${name} मृत्यु तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-death-causes",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-death-causes",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

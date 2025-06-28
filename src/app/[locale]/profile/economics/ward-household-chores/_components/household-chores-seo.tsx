@@ -46,11 +46,11 @@ export default function HouseholdChoresSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Chores Time Distribution in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Chores Time Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Time spent on household chores distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalPopulation.toLocaleString()} people surveyed.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Household chores",
         "Time spent on household work",
         "Ward-wise household chores data",
@@ -64,11 +64,11 @@ export default function HouseholdChoresSEO({
           (name) => `घरायसी कामकाजमा ${name}`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-household-chores",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-household-chores",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
@@ -91,7 +91,7 @@ export default function HouseholdChoresSEO({
         "@type": "DataDownload",
         encodingFormat: "CSV",
         contentUrl:
-          "https://digital.gadhawamun.gov.np/data/household-chores-time-distribution.csv",
+          "https://digital.buddhashantimun.gov.np/data/household-chores-time-distribution.csv",
       },
     };
   };

@@ -188,7 +188,7 @@ export default function HouseholdCharts({
                 stroke="#6D28D9"
                 strokeDasharray="3 3"
                 label={{
-                  value: `गढवा गाउँपालिका औसत: ${localizeNumber(municipalityAverages.averageHouseholdSize.toFixed(2), "ne")}`,
+                  value: `बुद्धशान्ति गाउँपालिका औसत: ${localizeNumber(municipalityAverages.averageHouseholdSize.toFixed(2), "ne")}`,
                   position: "insideBottomRight",
                   fill: "#4C1D95",
                   fontSize: 12,

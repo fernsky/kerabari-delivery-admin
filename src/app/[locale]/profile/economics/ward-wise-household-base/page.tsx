@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const baseData =
       await api.profile.economics.wardWiseHouseholdBase.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = baseData.reduce(
@@ -77,13 +77,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका घरको जग",
-      "गढवा घरको जग वितरण",
+      "बुद्धशान्ति गाउँपालिका घरको जग",
+      "बुद्धशान्ति घरको जग वितरण",
       "वडा अनुसार घरको जग",
       "घरको जग विवरण",
       "ढलान पिल्लरसहितको घर",
       "माटोको जोडाइ भएको घरहरू",
-      `गढवा घरको जग संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति घरको जग संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -97,7 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार घरको जगको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${BASE_TYPE_NAMES[mostCommonType] || mostCommonType} प्रकारको जग भएका घरहरू रहेका छन्। विभिन्न वडाहरूमा घरको जगको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरको जगको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${BASE_TYPE_NAMES[mostCommonType] || mostCommonType} प्रकारको जग भएका घरहरू रहेका छन्। विभिन्न वडाहरूमा घरको जगको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of house foundation types in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) have ${BASE_TYPE_NAMES_EN[mostCommonType] || mostCommonType} foundation. Detailed analysis of house foundation types across various wards.`;
 
@@ -129,7 +129,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "घरको जगको वितरण | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "घरको जगको वितरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार घरको जगको वितरण र विश्लेषण।",
     };
   }
@@ -280,7 +280,7 @@ export default async function WardWiseHouseholdBasePage() {
               src="/images/house-foundation.svg"
               width={1200}
               height={400}
-              alt="घरको जगको वितरण - गढवा गाउँपालिका (House Foundation Distribution - Khajura Rural Municipality)"
+              alt="घरको जगको वितरण - बुद्धशान्ति गाउँपालिका (House Foundation Distribution - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -288,7 +288,7 @@ export default async function WardWiseHouseholdBasePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा घरको जगको वितरण
+              बुद्धशान्ति गाउँपालिकामा घरको जगको वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -296,12 +296,12 @@ export default async function WardWiseHouseholdBasePage() {
             </h2>
             <p>
               घरको जगको प्रकारले घरको संरचना, भौतिक गुणस्तर र विपद् जोखिम
-              न्यूनीकरणको स्थिति देखाउँछ। यस खण्डमा गढवा गाउँपालिकामा घरको
-              जगका प्रमुख प्रकारहरू र तिनको वडागत वितरणको विश्लेषण प्रस्तुत
+              न्यूनीकरणको स्थिति देखाउँछ। यस खण्डमा बुद्धशान्ति गाउँपालिकामा
+              घरको जगका प्रमुख प्रकारहरू र तिनको वडागत वितरणको विश्लेषण प्रस्तुत
               गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा घरको जगको तथ्याङ्क हेर्दा, कुल घरधुरी{" "}
+              बुद्धशान्ति गाउँपालिकामा घरको जगको तथ्याङ्क हेर्दा, कुल घरधुरी{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               मध्ये सबैभन्दा बढी {overallSummary[0]?.baseTypeName || ""}
               जग भएका घरहरू{" "}
@@ -319,7 +319,7 @@ export default async function WardWiseHouseholdBasePage() {
               घरको जगका प्रकारहरू
             </h2>
             <p>
-              गढवा गाउँपालिकामा घरको जगका प्रमुख प्रकारहरू र तिनको वितरण
+              बुद्धशान्ति गाउँपालिकामा घरको जगका प्रमुख प्रकारहरू र तिनको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -345,7 +345,7 @@ export default async function WardWiseHouseholdBasePage() {
               घरको जग विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा घरको जगको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा घरको जगको विश्लेषण गर्दा,
               {BASE_TYPE_NAMES[overallSummary[0]?.baseType || ""] ||
                 overallSummary[0]?.baseType}
               जग भएका घरहरू सबैभन्दा बढी

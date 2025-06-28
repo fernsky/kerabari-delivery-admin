@@ -45,11 +45,11 @@ export default function YearlyIncomeSustenanceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Yearly Income Sustenance in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Yearly Income Sustenance in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Yearly income sufficiency distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Yearly income sustenance",
         "Income sufficiency",
         "Food security",
@@ -60,11 +60,11 @@ export default function YearlyIncomeSustenanceSEO({
         "आय पर्याप्तता",
         "खाद्य सुरक्षा",
       ],
-      url: "https://gadhawa-rm.gov.np/profile/economics/ward-yearly-income-sustenance",
+      url: "https://buddhashanti-rm.gov.np/profile/economics/ward-yearly-income-sustenance",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://gadhawa-rm.gov.np",
+        url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

@@ -111,11 +111,11 @@ export default function WardWiseFacilitiesSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Facilities Usage in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Facilities Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of household facilities usage across ${wardNumbers.length} wards of Khajura Rural Municipality with approximately ${approximateUniqueHouseholds.toLocaleString()} households. ${facilityTypeTotals.MOBILE_PHONE?.toLocaleString() || 0} households (${mobilePercentage}%) have mobile phones, ${facilityTypeTotals.INTERNET?.toLocaleString() || 0} households (${internetPercentage}%) have internet access. The best digital access is in Ward ${bestDigitalWard?.wardNumber || ""} with ${bestDigitalWard?.score.toFixed(2) || ""}% digital access score.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Household facilities",
         "Mobile phone access",
         "Internet access",
@@ -127,11 +127,11 @@ export default function WardWiseFacilitiesSEO({
         "Rural development",
         "Domestic appliances",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/physical/ward-wise-facilities",
+      url: "https://digital.buddhashantimun.gov.np/profile/physical/ward-wise-facilities",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

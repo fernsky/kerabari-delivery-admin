@@ -96,7 +96,7 @@ export default function FarmersGroupSEO({
       description: `Comprehensive analysis of ${totalGroups} agriculture related farmers groups in Khajura Rural Municipality. The most common type is ${mostCommonGroupType} (${statistics.mostPopularGroupTypePercentage.toFixed(1)}%), and Ward ${statistics.wardWithMostGroups} has the highest concentration with ${statistics.maximumGroupsInAWard} groups. This dataset covers all 9 wards of the municipality.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Agriculture",
         "Farmers Groups",
         "Agricultural Development",
@@ -105,11 +105,11 @@ export default function FarmersGroupSEO({
         "Farming Groups",
         ...groupSummary.map((item) => item.type),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/agriculture-related-farmers-group",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/agriculture-related-farmers-group",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -170,7 +170,7 @@ export default function FarmersGroupSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
     };
   };

@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const wardData =
       await api.profile.demographics.wardWiseDemographicSummary.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = wardData.reduce(
@@ -98,18 +98,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका वडागत जनसंख्या",
-      "गढवा गाउँपालिका वडा विवरण",
-      "गढवा गाउँपालिका जनसांख्यिकी तथ्याङ्क",
-      "गढवा गाउँपालिका घरधुरी विवरण",
-      `गढवा गाउँपालिका जनसंख्या ${localizeNumber(totalPopulation, "ne")}`,
-      `गढवा गाउँपालिका घरधुरी ${localizeNumber(totalHouseholds, "ne")}`,
-      "गढवा गाउँपालिका लैङ्गिक अनुपात",
-      "गढवा गाउँपालिका वडागत विश्लेषण",
-      `गढवा गाउँपालिका वडा ${localizeNumber(highestWardNumber, "ne")} जनसंख्या ${localizeNumber(highestPopulation, "ne")}`,
-      `गढवा पुरुष जनसंख्या ${localizeNumber(malePopulation, "ne")}`,
-      `गढवा महिला जनसंख्या ${localizeNumber(femalePopulation, "ne")}`,
-      `गढवा औसत परिवार संख्या ${localizeNumber(averageHouseholdSize, "ne")}`,
+      "बुद्धशान्ति गाउँपालिका वडागत जनसंख्या",
+      "बुद्धशान्ति गाउँपालिका वडा विवरण",
+      "बुद्धशान्ति गाउँपालिका जनसांख्यिकी तथ्याङ्क",
+      "बुद्धशान्ति गाउँपालिका घरधुरी विवरण",
+      `बुद्धशान्ति गाउँपालिका जनसंख्या ${localizeNumber(totalPopulation, "ne")}`,
+      `बुद्धशान्ति गाउँपालिका घरधुरी ${localizeNumber(totalHouseholds, "ne")}`,
+      "बुद्धशान्ति गाउँपालिका लैङ्गिक अनुपात",
+      "बुद्धशान्ति गाउँपालिका वडागत विश्लेषण",
+      `बुद्धशान्ति गाउँपालिका वडा ${localizeNumber(highestWardNumber, "ne")} जनसंख्या ${localizeNumber(highestPopulation, "ne")}`,
+      `बुद्धशान्ति पुरुष जनसंख्या ${localizeNumber(malePopulation, "ne")}`,
+      `बुद्धशान्ति महिला जनसंख्या ${localizeNumber(femalePopulation, "ne")}`,
+      `बुद्धशान्ति औसत परिवार संख्या ${localizeNumber(averageHouseholdSize, "ne")}`,
     ];
 
     const keywordsEN = [
@@ -128,12 +128,12 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडागत जनसांख्यिकी सारांश। कुल जनसंख्या ${localizeNumber(totalPopulation, "ne")} (पुरुष: ${localizeNumber(malePopulation, "ne")}, महिला: ${localizeNumber(femalePopulation, "ne")}) र कुल घरधुरी ${localizeNumber(totalHouseholds, "ne")} रहेको छ। गढवा गाउँपालिकाका ${localizeNumber(wardCount, "ne")} वडाहरूमध्ये वडा ${localizeNumber(highestWardNumber, "ne")} मा सबैभन्दा बढी जनसंख्या (${localizeNumber(highestPopulation, "ne")}) रहेको छ। गढवा गाउँपालिकाको समग्र लैङ्गिक अनुपात ${localizeNumber(overallSexRatio, "ne")} र औसत परिवार संख्या ${localizeNumber(averageHouseholdSize, "ne")} रहेको छ। सबै वडाहरूको जनसंख्या वितरण, लैङ्गिक अनुपात, घरधुरी र परिवार संख्याको विस्तृत विश्लेषण प्रस्तुत गरिएको छ।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडागत जनसांख्यिकी सारांश। कुल जनसंख्या ${localizeNumber(totalPopulation, "ne")} (पुरुष: ${localizeNumber(malePopulation, "ne")}, महिला: ${localizeNumber(femalePopulation, "ne")}) र कुल घरधुरी ${localizeNumber(totalHouseholds, "ne")} रहेको छ। बुद्धशान्ति गाउँपालिकाका ${localizeNumber(wardCount, "ne")} वडाहरूमध्ये वडा ${localizeNumber(highestWardNumber, "ne")} मा सबैभन्दा बढी जनसंख्या (${localizeNumber(highestPopulation, "ne")}) रहेको छ। बुद्धशान्ति गाउँपालिकाको समग्र लैङ्गिक अनुपात ${localizeNumber(overallSexRatio, "ne")} र औसत परिवार संख्या ${localizeNumber(averageHouseholdSize, "ne")} रहेको छ। सबै वडाहरूको जनसंख्या वितरण, लैङ्गिक अनुपात, घरधुरी र परिवार संख्याको विस्तृत विश्लेषण प्रस्तुत गरिएको छ।`;
 
     const descriptionEN = `Ward-wise demographic summary for Khajura Rural Municipality. Total population of ${totalPopulation.toLocaleString()} (Male: ${malePopulation.toLocaleString()}, Female: ${femalePopulation.toLocaleString()}) and total households of ${totalHouseholds.toLocaleString()}. Among ${wardCount} wards of Khajura, Ward ${highestWardNumber} has the highest population (${highestPopulation.toLocaleString()}). The Khajura municipality's overall gender ratio is ${overallSexRatio} and average family size is ${averageHouseholdSize}. Detailed analysis of population distribution, gender ratio, households and family size across all wards of Khajura Rural Municipality.`;
 
     return {
-      title: `गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश | डिजिटल प्रोफाइल`,
+      title: `बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश | डिजिटल प्रोफाइल`,
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -144,25 +144,26 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश`,
+        title: `बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
         alternateLocale: "en_US",
-        siteName: `गढवा गाउँपालिका डिजिटल प्रोफाइल`,
+        siteName: `बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल`,
       },
       twitter: {
         card: "summary_large_image",
-        title: `गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश`,
+        title: `बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश | डिजिटल प्रोफाइल",
+      title:
+        "बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश | डिजिटल प्रोफाइल",
       description:
-        "गढवा गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकी विवरण, लिङ्ग अनुपात, घरधुरी र जनसंख्या वितरणको विश्लेषण।",
+        "बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकी विवरण, लिङ्ग अनुपात, घरधुरी र जनसंख्या वितरणको विश्लेषण।",
     };
   }
 }
@@ -321,7 +322,7 @@ export default async function WardWiseSummaryPage() {
               src="/images/ward-demographics.svg"
               width={1200}
               height={400}
-              alt="गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश (Khajura Rural Municipality Ward Demographics Summary)"
+              alt="बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश (Khajura Rural Municipality Ward Demographics Summary)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -329,20 +330,20 @@ export default async function WardWiseSummaryPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिका | वडागत जनसांख्यिकी सारांश
+              बुद्धशान्ति गाउँपालिका | वडागत जनसांख्यिकी सारांश
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकी विवरण
-              प्रस्तुत गरिएको छ। वडागत जनसंख्या वितरण, लिङ्ग अनुपात, घरधुरी
-              विवरण र अन्य महत्त्वपूर्ण जनसांख्यिकी सूचकहरू यहाँ विश्लेषण गरिएको
-              छ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकी
+              विवरण प्रस्तुत गरिएको छ। वडागत जनसंख्या वितरण, लिङ्ग अनुपात,
+              घरधुरी विवरण र अन्य महत्त्वपूर्ण जनसांख्यिकी सूचकहरू यहाँ विश्लेषण
+              गरिएको छ।
             </p>
             <p>
-              वडागत विश्लेषणले गढवा गाउँपालिकाभित्र रहेका विविधता र
+              वडागत विश्लेषणले बुद्धशान्ति गाउँपालिकाभित्र रहेका विविधता र
               असमानताहरू पहिचान गर्न मद्दत गर्दछ। यी तथ्याङ्कहरूले वडागत विकास
               योजना तर्जुमा, स्रोत साधन विनियोजन तथा अनुगमन मूल्याङ्कनमा
               महत्त्वपूर्ण भूमिका निर्वाह गर्दछन्।
@@ -352,10 +353,10 @@ export default async function WardWiseSummaryPage() {
               id="ward-population-distribution"
               className="scroll-m-20 border-b pb-2"
             >
-              गढवा गाउँपालिकाको वडागत जनसंख्या वितरण
+              बुद्धशान्ति गाउँपालिकाको वडागत जनसंख्या वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकाको कुल जनसंख्या{" "}
+              बुद्धशान्ति गाउँपालिकाको कुल जनसंख्या{" "}
               {localizeNumber(
                 municipalityStats.totalPopulation.toLocaleString(),
                 "ne",
@@ -375,8 +376,8 @@ export default async function WardWiseSummaryPage() {
                 municipalityStats.otherPopulation.toLocaleString(),
                 "ne",
               )}{" "}
-              अन्य लिङ्गका व्यक्तिहरू रहेका छन्। गढवा गाउँपालिकाका प्रत्येक
-              वडाको जनसंख्या वितरण निम्नानुसार छ:
+              अन्य लिङ्गका व्यक्तिहरू रहेका छन्। बुद्धशान्ति गाउँपालिकाका
+              प्रत्येक वडाको जनसंख्या वितरण निम्नानुसार छ:
             </p>
           </div>
 
@@ -395,7 +396,7 @@ export default async function WardWiseSummaryPage() {
               वडागत विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकीय संरचनाको
+              बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको जनसांख्यिकीय संरचनाको
               विश्लेषणबाट निम्न सूचकहरू प्राप्त हुन्छन्:
             </p>
 

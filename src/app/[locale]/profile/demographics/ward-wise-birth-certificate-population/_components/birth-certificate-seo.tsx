@@ -72,7 +72,7 @@ export default function BirthCertificateSEO({
       "@type": "Dataset",
       name: "Birth Certificate Status for Children Under 5 Years in Khajura Rural Municipality",
       description: `Ward-wise distribution of birth certificate status for children under 5 years in Khajura Rural Municipality. Total children: ${totalPopulation}, with certificates: ${totalWithCertificate}, without certificates: ${totalWithoutCertificate}`,
-      url: "https://Gadhawa.gov.np/profile/demographics/ward-wise-birth-certificate-population",
+      url: "https://buddhashanti.gov.np/profile/demographics/ward-wise-birth-certificate-population",
       spatialCoverage: {
         "@type": "Place",
         name: "Khajura Rural Municipality",
@@ -102,7 +102,7 @@ export default function BirthCertificateSEO({
           "@type": "DataDownload",
           encodingFormat: "application/json",
           contentUrl:
-            "https://Gadhawa.gov.np/api/profile/demographics/ward-wise-birth-certificate-population",
+            "https://buddhashanti.gov.np/api/profile/demographics/ward-wise-birth-certificate-population",
         },
       ],
       hasPart: wardSummaries.map((ward) => ({

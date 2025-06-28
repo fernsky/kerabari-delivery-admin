@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({
   const households = demographicData?.totalHouseholds || 7562;
 
   // SEO description with actual data
-  const seoDescription = `${municipalityName} (${municipalityNameEn}) - ${localizeNumber(totalArea.toString(), "ne")} वर्ग कि.मि. क्षेत्रफल, ${localizeNumber(wardCount.toString(), "ne")} प्रशासनिक वडाहरू, ${localizeNumber(population.toString(), "ne")} जनसंख्या। दाङ जिल्लाको प्राकृतिक सुन्दरता र समृद्ध संस्कृति। सम्पूर्ण जानकारी र नक्सा यहाँ उपलब्ध छ।`;
+  const seoDescription = `${municipalityName} (${municipalityNameEn}) - ${localizeNumber(totalArea.toString(), "ne")} वर्ग कि.मि. क्षेत्रफल, ${localizeNumber(wardCount.toString(), "ne")} प्रशासनिक वडाहरू, ${localizeNumber(population.toString(), "ne")} जनसंख्या। झापा जिल्लाको प्राकृतिक सुन्दरता र समृद्ध संस्कृति। सम्पूर्ण जानकारी र नक्सा यहाँ उपलब्ध छ।`;
 
   return (
     <>
@@ -67,8 +67,8 @@ const Hero: React.FC<HeroProps> = ({
             "@type": "GovernmentOrganization",
             name: municipalityName,
             alternateName: municipalityNameEn,
-            url: `https://${lng === "en" ? "en." : ""}digital.gadhawamun.gov.np`,
-            logo: "https://digital.gadhawamun.gov.np/logo.png",
+            url: `https://${lng === "en" ? "en." : ""}digital.buddhashantimun.gov.np`,
+            logo: "https://digital.buddhashantimun.gov.np/logo.png",
             areaServed: {
               "@type": "AdministrativeArea",
               name: "Khajura",
@@ -102,8 +102,8 @@ const Hero: React.FC<HeroProps> = ({
         {/* Pattern Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/terai_region_nepal.jpg"
-            alt="Gadhawa Municipality Background"
+            src="/images/buddhashanti.jpg"
+            alt="buddhashanti Municipality Background"
             fill
             priority={true}
             className="object-cover"
@@ -161,7 +161,7 @@ const Hero: React.FC<HeroProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              दाङ जिल्ला, लुम्बिनी प्रदेश
+              झापा जिल्ला, कोशी प्रदेश
               <div className="text-sm block"> </div>
             </motion.div>
 

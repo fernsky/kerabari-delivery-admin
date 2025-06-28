@@ -115,7 +115,7 @@ export default function HouseholdChoresAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-population",
@@ -245,7 +245,8 @@ export default function HouseholdChoresAnalysisSection({
           <div className="bg-card p-4 rounded border">
             <h4 className="font-medium mb-2">समय वितरण प्रवृत्ति</h4>
             <p className="text-sm mt-2">
-              गढवा गाउँपालिकामा अधिकांश जनसंख्या ({mostCommonPercentage}%)
+              बुद्धशान्ति गाउँपालिकामा अधिकांश जनसंख्या ({mostCommonPercentage}
+              %)
               {mostCommonTimeSpent?.timeSpentName} समय घरायसी कामकाजमा
               खर्चिन्छन्। यो तथ्याङ्कले स्थानीय समुदायमा घरायसी कामकाज बोझको
               अवस्था र समयको उपयोग सम्बन्धी महत्वपूर्ण जानकारी प्रदान गर्दछ।
@@ -283,7 +284,7 @@ export default function HouseholdChoresAnalysisSection({
           </span>
         </h3>
         <p className="mb-3">
-          गढवा गाउँपालिकामा घरायसी कामकाजको वितरण र त्यसको प्रभावहरू
+          बुद्धशान्ति गाउँपालिकामा घरायसी कामकाजको वितरण र त्यसको प्रभावहरू
           निम्नअनुसार छन्:
         </p>
         <ul className="list-disc pl-5 space-y-2">
@@ -324,8 +325,8 @@ export default function HouseholdChoresAnalysisSection({
           </span>
         </h3>
         <p>
-          गढवा गाउँपालिकाको घरायसी कामकाजमा खर्चिने समय सम्बन्धी थप जानकारी
-          वा विस्तृत तथ्याङ्कको लागि, कृपया{" "}
+          बुद्धशान्ति गाउँपालिकाको घरायसी कामकाजमा खर्चिने समय सम्बन्धी थप
+          जानकारी वा विस्तृत तथ्याङ्कको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

@@ -1,14 +1,14 @@
 #!/bin/bash
-# Activation script for Gadhawa Report System
+# Activation script for buddhashanti Report System
 # This ensures the correct Django settings module is loaded
 
-echo "🚀 Activating Gadhawa Report System environment..."
+echo "🚀 Activating buddhashanti Report System environment..."
 
 # Activate virtual environment
 source .venv/bin/activate
 
 # Set Django settings module
-export DJANGO_SETTINGS_MODULE=gadhawa_report.settings.development
+export DJANGO_SETTINGS_MODULE=buddhashanti_report.settings.development
 
 # Clear any cached Python files
 echo "🧹 Clearing Python cache..."

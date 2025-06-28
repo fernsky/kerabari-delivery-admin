@@ -63,7 +63,7 @@ export default function WaterPurificationAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-treating-percentage": treatingPercentage,
     "data-no-treatment-percentage": noTreatmentPercentage,
@@ -183,7 +183,7 @@ export default function WaterPurificationAnalysisSection({
               <h5 className="text-sm font-medium">पानी शुद्धिकरणको महत्त्व</h5>
               <div className="mt-2 space-y-2">
                 <p className="text-sm">
-                  गढवा गाउँपालिकामा{" "}
+                  बुद्धशान्ति गाउँपालिकामा{" "}
                   {localizeNumber(treatingPercentage, "ne")}% घरधुरीले मात्र
                   पानी शुद्धिकरण गर्ने गरेको पाइएको छ, जुन जनस्वास्थ्यका
                   दृष्टिकोणले अपर्याप्त देखिन्छ।

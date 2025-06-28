@@ -61,8 +61,8 @@ class ReportContextMixin:
                 pass
 
         # Municipality name - make dynamic
-        municipality_name = "गढवा गाउँपालिका"
-        municipality_name_english = "gadhawa Rural Municipality"
+        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name_english = "buddhashanti Rural Municipality"
 
         # Get publication settings
         publication_settings = PublicationSettings.objects.first()

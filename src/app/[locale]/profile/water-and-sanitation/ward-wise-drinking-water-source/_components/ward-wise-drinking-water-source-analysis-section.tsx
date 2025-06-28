@@ -72,7 +72,7 @@ export default function WardWiseDrinkingWaterSourceAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-piped-water-rate": waterSourceGroupPercentages.PIPED_WATER.toFixed(2),
     "data-highest-piped-water-ward":

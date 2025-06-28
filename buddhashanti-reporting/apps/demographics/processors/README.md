@@ -1,23 +1,27 @@
 # Demographics Processing System
 
-This system provides a unified, extensible pipeline for processing all demographic data categories in the Gadhawa Rural Municipality Digital Profile with enhanced image generation capabilities.
+This system provides a unified, extensible pipeline for processing all demographic data categories in the buddhashanti Rural Municipality Digital Profile with enhanced image generation capabilities.
 
 ## Architecture
 
 ### 1. Base Classes (`processors/base.py`)
+
 - **BaseDemographicsProcessor**: Abstract base class for all demographic processors
 - **BaseChartGenerator**: Common SVG chart generation functionality with Nepali text support
 - **BaseReportFormatter**: Common report formatting utilities
 
 ### 2. Specific Processors
+
 - **ReligionProcessor** (`processors/religion.py`): Handles religion demographics
-- **LanguageProcessor** (`processors/language.py`): Handles mother tongue demographics  
+- **LanguageProcessor** (`processors/language.py`): Handles mother tongue demographics
 - **CasteProcessor** (`processors/caste.py`): Handles caste demographics
 
 ### 3. Manager (`processors/manager.py`)
+
 - **DemographicsManager**: Coordinates all processors and provides unified interface
 
 ### 4. Templates
+
 - **`demographics/religion/religion_report_partial.html`**: Religion section template
 - **`demographics/language/language_report_partial.html`**: Language section template
 - **`demographics/caste/caste_report_partial.html`**: Caste section template
@@ -25,17 +29,20 @@ This system provides a unified, extensible pipeline for processing all demograph
 ## Key Features
 
 ### Enhanced Chart Generation
+
 - **Customizable Dimensions**: Each processor can specify custom width, height, and radius
 - **Nepali Text Support**: All charts display Nepali labels and numbers
 - **PNG Generation**: Automatic SVG to PNG conversion using Inkscape
 - **Fallback Support**: SVG fallback if PNG conversion fails
 
 ### Chart Specifications
+
 - **Religion Charts**: 900x450px with 130px radius
-- **Language Charts**: 950x450px with 125px radius  
+- **Language Charts**: 950x450px with 125px radius
 - **Caste Charts**: 900x450px with 130px radius
 
 ### Nepali Localization
+
 - All chart labels use Nepali text (`name_nepali` field)
 - Population numbers displayed in Nepali numerals
 - Percentages formatted in Nepali
@@ -44,6 +51,7 @@ This system provides a unified, extensible pipeline for processing all demograph
 ## Usage
 
 ### Basic Usage
+
 ```python
 from apps.demographics.processors.manager import get_demographics_manager
 
@@ -63,6 +71,7 @@ if 'pie_chart_png' in charts:
 ```
 
 ### Custom Chart Dimensions
+
 ```python
 class MyProcessor(BaseDemographicsProcessor):
     def __init__(self):
@@ -74,12 +83,20 @@ class MyProcessor(BaseDemographicsProcessor):
 ```
 
 ### Template Usage
+
 In your PDF templates, charts are automatically available:
+
 ```html
 {% if pdf_charts.religion.pie_chart_png %}
-    <img src="{% static pdf_charts.religion.pie_chart_png %}" alt="धर्म अनुसार जनसंख्या वितरण">
+<img
+  src="{% static pdf_charts.religion.pie_chart_png %}"
+  alt="धर्म अनुसार जनसंख्या वितरण"
+/>
 {% elif pdf_charts.religion.pie_chart_svg %}
-    <img src="{% static pdf_charts.religion.pie_chart_svg %}" alt="धर्म अनुसार जनसंख्या वितरण">
+<img
+  src="{% static pdf_charts.religion.pie_chart_svg %}"
+  alt="धर्म अनुसार जनसंख्या वितरण"
+/>
 {% endif %}
 ```
 
@@ -92,6 +109,7 @@ In your PDF templates, charts are automatically available:
 5. **URL Generation**: Both PNG and SVG URLs provided for template use
 
 ## File Structure
+
 ```
 static/images/charts/
 ├── religion_pie_chart.svg
@@ -105,25 +123,29 @@ static/images/charts/
 ## Requirements
 
 ### System Requirements
+
 - **Inkscape**: Required for PNG conversion
+
   ```bash
   # Windows (using Chocolatey)
   choco install inkscape
-  
+
   # Ubuntu/Debian
   sudo apt-get install inkscape
-  
+
   # macOS (using Homebrew)
   brew install inkscape
   ```
 
 ### Python Requirements
+
 - Django with Nepali number formatting utilities
 - Standard libraries: `xml.etree.ElementTree`, `subprocess`, `pathlib`
 
 ## Testing
 
 ### Test Scripts
+
 - **`test_sample_charts.py`**: Tests chart generation with sample data
 - **`test_chart_generation.py`**: Tests with actual database data
 
@@ -138,6 +160,7 @@ python test_chart_generation.py
 ## Adding New Processors
 
 1. **Create processor file** (`processors/your_category.py`):
+
 ```python
 from .base import BaseDemographicsProcessor, BaseChartGenerator
 
@@ -148,14 +171,14 @@ class YourCategoryProcessor(BaseDemographicsProcessor):
         self.pie_chart_width = 800
         self.pie_chart_height = 400
         self.chart_radius = 120
-    
+
     def get_section_title(self):
         return "Your Section Title"
-    
+
     def get_data(self):
         # Return processed data with 'name_nepali' field
         pass
-    
+
     def generate_chart_svg(self, data, chart_type="pie"):
         generator = self.YourChartGenerator(
             width=self.pie_chart_width,
@@ -163,10 +186,10 @@ class YourCategoryProcessor(BaseDemographicsProcessor):
             radius=self.chart_radius
         )
         return generator.generate_pie_chart_svg(data)
-    
+
     class YourChartGenerator(BaseChartGenerator):
         COLORS = {'KEY': '#color'}
-        
+
         def generate_pie_chart_svg(self, data):
             title = "Your Nepali Title"
             return self.generate_simple_pie_chart(data, self.COLORS, title)
@@ -179,16 +202,19 @@ class YourCategoryProcessor(BaseDemographicsProcessor):
 ## Troubleshooting
 
 ### PNG Conversion Issues
+
 - Ensure Inkscape is installed and in PATH
 - Check file permissions in static directory
 - SVG fallback will be used automatically
 
 ### Font Issues
+
 - Nepali fonts: Noto Sans Devanagari, Mangal, Kalimati
 - Fonts embedded in SVG for better rendering
 - Install Nepali fonts system-wide for best results
 
 ### Chart Not Displaying
+
 - Check static file configuration
 - Verify chart generation succeeded
 - Ensure template paths are correct

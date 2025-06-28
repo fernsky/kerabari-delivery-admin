@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const ownershipData =
       await api.profile.economics.wardWiseHouseOwnership.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = ownershipData.reduce(
@@ -76,13 +76,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका घर स्वामित्व",
-      "गढवा घर स्वामित्व वितरण",
+      "बुद्धशान्ति गाउँपालिका घर स्वामित्व",
+      "बुद्धशान्ति घर स्वामित्व वितरण",
       "वडा अनुसार घर स्वामित्व",
       "घर स्वामित्व विवरण",
-      "निजी घर स्वामित्व गढवा",
+      "निजी घर स्वामित्व बुद्धशान्ति",
       "भाडामा बस्नेको संख्या",
-      `गढवा घर स्वामित्व संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति घर स्वामित्व संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -96,7 +96,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार घर स्वामित्वको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${OWNERSHIP_TYPE_NAMES[mostCommonType] || mostCommonType} स्वामित्वमा रहेका छन्। विभिन्न वडाहरूमा घर स्वामित्वको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घर स्वामित्वको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${OWNERSHIP_TYPE_NAMES[mostCommonType] || mostCommonType} स्वामित्वमा रहेका छन्। विभिन्न वडाहरूमा घर स्वामित्वको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of house ownership in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) are under ${OWNERSHIP_TYPE_NAMES_EN[mostCommonType] || mostCommonType}. Detailed analysis of house ownership across various wards.`;
 
@@ -128,7 +128,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "घर स्वामित्वको वितरण | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "घर स्वामित्वको वितरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार घर स्वामित्वको वितरण र विश्लेषण।",
     };
   }
@@ -281,7 +281,7 @@ export default async function WardWiseHouseOwnershipPage() {
               src="/images/house-ownership.svg"
               width={1200}
               height={400}
-              alt="घर स्वामित्वको वितरण - गढवा गाउँपालिका (House Ownership Distribution - Khajura Rural Municipality)"
+              alt="घर स्वामित्वको वितरण - बुद्धशान्ति गाउँपालिका (House Ownership Distribution - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -289,7 +289,7 @@ export default async function WardWiseHouseOwnershipPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा घर स्वामित्वको वितरण
+              बुद्धशान्ति गाउँपालिकामा घर स्वामित्वको वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -297,13 +297,13 @@ export default async function WardWiseHouseOwnershipPage() {
             </h2>
             <p>
               घर स्वामित्वको आधारमा जनसंख्याको वर्गीकरण र विश्लेषण गर्दा थुप्रै
-              आर्थिक तथा सामाजिक सूचकहरू प्राप्त हुन्छन्। यस खण्डमा गढवा
+              आर्थिक तथा सामाजिक सूचकहरू प्राप्त हुन्छन्। यस खण्डमा बुद्धशान्ति
               गाउँपालिकामा घर स्वामित्वका प्रमुख प्रकारहरू र तिनको वडागत वितरणको
               विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा घर स्वामित्वको तथ्याङ्क हेर्दा, कुल घरधुरी{" "}
-              {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
+              बुद्धशान्ति गाउँपालिकामा घर स्वामित्वको तथ्याङ्क हेर्दा, कुल
+              घरधुरी {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               मध्ये सबैभन्दा बढी {overallSummary[0]?.ownershipTypeName || ""}
               स्वामित्वमा{" "}
               {localizeNumber(
@@ -323,7 +323,7 @@ export default async function WardWiseHouseOwnershipPage() {
               घर स्वामित्वका प्रकार
             </h2>
             <p>
-              गढवा गाउँपालिकामा घर स्वामित्वका प्रमुख प्रकारहरू र तिनको
+              बुद्धशान्ति गाउँपालिकामा घर स्वामित्वका प्रमुख प्रकारहरू र तिनको
               वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -348,7 +348,7 @@ export default async function WardWiseHouseOwnershipPage() {
               घर स्वामित्व विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा घर स्वामित्वको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा घर स्वामित्वको विश्लेषण गर्दा,
               {OWNERSHIP_TYPE_NAMES[overallSummary[0]?.ownershipType || ""] ||
                 overallSummary[0]?.ownershipType}
               स्वामित्वमा रहेका घरहरू सबैभन्दा बढी

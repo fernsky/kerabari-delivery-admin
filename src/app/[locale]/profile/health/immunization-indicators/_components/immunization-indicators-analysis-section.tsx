@@ -166,8 +166,8 @@ export default function ImmunizationIndicatorsAnalysisSection({
           <p className="flex gap-2">
             <span className="text-blue-500">•</span>
             <span>
-              <strong>कभरेज स्थिति:</strong> गढवा गाउँपालिकामा आर्थिक वर्ष{" "}
-              {fiscalYearLabel} मा समग्र खोप कभरेज{" "}
+              <strong>कभरेज स्थिति:</strong> बुद्धशान्ति गाउँपालिकामा आर्थिक
+              वर्ष {fiscalYearLabel} मा समग्र खोप कभरेज{" "}
               {localizeNumber(immunizationQualityIndex.toFixed(1), "ne")}% रहेको
               छ, जुन राष्ट्रिय औसतको{" "}
               {immunizationQualityIndex >= 90 ? "नजिक" : "तुलनामा कमजोर"}{" "}

@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const skillsData =
       await api.profile.economics.wardWiseMajorSkills.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = skillsData.reduce(
@@ -85,14 +85,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका सीप र दक्षता",
-      "गढवा स्थानीय सीप",
-      `गढवा ${skillLabels[topSkills[0]]} जनसंख्या`,
-      ...topSkills.map((s) => `${skillLabels[s]} सीप गढवा`),
+      "बुद्धशान्ति गाउँपालिका सीप र दक्षता",
+      "बुद्धशान्ति स्थानीय सीप",
+      `बुद्धशान्ति ${skillLabels[topSkills[0]]} जनसंख्या`,
+      ...topSkills.map((s) => `${skillLabels[s]} सीप बुद्धशान्ति`),
       "वडा अनुसार सीप वितरण",
       "आर्थिक दक्षता तथ्याङ्क",
-      "सीप सर्वेक्षण गढवा",
-      `गढवा कुल दक्ष जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      "सीप सर्वेक्षण बुद्धशान्ति",
+      `बुद्धशान्ति कुल दक्ष जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -107,7 +107,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार प्रमुख सीप र दक्षताहरूको वितरण, प्रवृत्ति र विश्लेषण। कुल दक्ष जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${skillLabels[topSkills[0]]} (${localizeNumber(skillCounts[topSkills[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${skillLabels[topSkills[1]]} (${localizeNumber(skillCounts[topSkills[1]].toString(), "ne")}) र ${skillLabels[topSkills[2]]} (${localizeNumber(skillCounts[topSkills[2]].toString(), "ne")})। विभिन्न सीपहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार प्रमुख सीप र दक्षताहरूको वितरण, प्रवृत्ति र विश्लेषण। कुल दक्ष जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${skillLabels[topSkills[0]]} (${localizeNumber(skillCounts[topSkills[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${skillLabels[topSkills[1]]} (${localizeNumber(skillCounts[topSkills[1]].toString(), "ne")}) र ${skillLabels[topSkills[2]]} (${localizeNumber(skillCounts[topSkills[2]].toString(), "ne")})। विभिन्न सीपहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise major skills distribution, trends and analysis for Khajura Rural Municipality. Out of a total skilled population of ${totalPopulation}, ${SKILL_NAMES_EN[topSkills[0]]} (${skillCounts[topSkills[0]]}) is the largest group, followed by ${SKILL_NAMES_EN[topSkills[1]]} (${skillCounts[topSkills[1]]}) and ${SKILL_NAMES_EN[topSkills[2]]} (${skillCounts[topSkills[2]]})। Detailed statistics and visualizations of various skills.`;
 
@@ -268,7 +268,7 @@ export default async function WardMainSkillsPage() {
               src="/images/skills-diversity.svg"
               width={1200}
               height={400}
-              alt="प्रमुख सीप र दक्षता - गढवा गाउँपालिका (Major Skills - Khajura Rural Municipality)"
+              alt="प्रमुख सीप र दक्षता - बुद्धशान्ति गाउँपालिका (Major Skills - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -276,21 +276,21 @@ export default async function WardMainSkillsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा प्रमुख सीप र दक्षता
+              बुद्धशान्ति गाउँपालिकामा प्रमुख सीप र दक्षता
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा रहेका नागरिकहरूको
-              प्रमुख सीप र दक्षता सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ।
-              यो तथ्याङ्कले स्थानीय रोजगार क्षमता, आर्थिक अवसर र सामानजिक
-              पूँजीको संरचनालाई प्रतिबिम्बित गर्दछ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
+              नागरिकहरूको प्रमुख सीप र दक्षता सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत
+              गरिएको छ। यो तथ्याङ्कले स्थानीय रोजगार क्षमता, आर्थिक अवसर र
+              सामानजिक पूँजीको संरचनालाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिकामा विभिन्न प्रकारका सीप र दक्षता भएका नागरिकहरू
-              बसोबास गर्दछन्। कुल जनसंख्या{" "}
+              बुद्धशान्ति गाउँपालिकामा विभिन्न प्रकारका सीप र दक्षता भएका
+              नागरिकहरू बसोबास गर्दछन्। कुल जनसंख्या{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")} मध्ये{" "}
               {overallSummary[0]?.skillName || ""} क्षेत्रमा सीप भएका व्यक्तिहरू{" "}
               {localizeNumber(
@@ -308,8 +308,8 @@ export default async function WardMainSkillsPage() {
               सीप अनुसार जनसंख्या
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न सीप र दक्षता भएका नागरिकहरूको संख्या
-              निम्नानुसार छ:
+              बुद्धशान्ति गाउँपालिकामा विभिन्न सीप र दक्षता भएका नागरिकहरूको
+              संख्या निम्नानुसार छ:
             </p>
           </div>
 
@@ -330,8 +330,8 @@ export default async function WardMainSkillsPage() {
               प्रमुख सीपहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न किसिमका सीपहरू उपलब्ध छन्। यी सीपहरू
-              मध्ये{" "}
+              बुद्धशान्ति गाउँपालिकामा विभिन्न किसिमका सीपहरू उपलब्ध छन्। यी
+              सीपहरू मध्ये{" "}
               {skillLabels[
                 overallSummary[0]?.skill as keyof typeof skillLabels
               ] || "कृषि"}{" "}

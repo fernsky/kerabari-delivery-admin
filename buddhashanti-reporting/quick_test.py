@@ -13,7 +13,7 @@ project_dir = Path(__file__).parent
 sys.path.insert(0, str(project_dir))
 
 # Set Django settings
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gadhawa_report.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "buddhashanti_report.settings.development")
 
 # Initialize Django
 django.setup()
@@ -34,7 +34,7 @@ def quick_test():
     )[:2]
 
     context = {
-        "municipality_name": "गढवा गाउँपालिका",
+        "municipality_name": "बुद्धशान्ति गाउँपालिका",
         "categories": categories,
         "figures": [],
         "tables": [],

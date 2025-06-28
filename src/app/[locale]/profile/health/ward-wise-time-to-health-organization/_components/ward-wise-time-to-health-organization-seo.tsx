@@ -92,11 +92,11 @@ export default function WardWiseTimeToHealthOrganizationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Time to Health Organization in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Time to Health Organization in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of time taken to reach health organizations across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${quickAccessTotal.toLocaleString()} households (${quickAccessPercentage}%) can reach a health facility within 30 minutes. The best accessibility is in Ward ${bestAccessWard?.wardNumber || ""} with ${bestAccessWard?.percentage.toFixed(2) || ""}% quick access rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Health facility access",
         "Healthcare accessibility",
         "Ward-wise health access",
@@ -108,11 +108,11 @@ export default function WardWiseTimeToHealthOrganizationSEO({
         "Healthcare proximity",
         "Healthcare access index",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/health/ward-wise-time-to-health-organization",
+      url: "https://digital.buddhashantimun.gov.np/profile/health/ward-wise-time-to-health-organization",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

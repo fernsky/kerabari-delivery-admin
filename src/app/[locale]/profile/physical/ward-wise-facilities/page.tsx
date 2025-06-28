@@ -104,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const facilitiesData =
       await api.profile.physical.wardWiseFacilities.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by facility type
     const facilityGroups = facilitiesData.reduce((acc: any, curr: any) => {
@@ -168,7 +168,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका घरायसी सुविधा",
+      "बुद्धशान्ति गाउँपालिका घरायसी सुविधा",
       "वडागत घरायसी सुविधाको प्रयोग",
       "मोबाइल फोन प्रयोग दर",
       "टेलिभिजन प्रयोग दर",
@@ -186,7 +186,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा घरायसी सुविधाको प्रयोगको विश्लेषण। ${localizeNumber(mobilePercentage, "ne")}% घरहरूमा मोबाइल फोन, ${localizeNumber(televisionPercentage, "ne")}% घरहरूमा टेलिभिजन र ${localizeNumber(internetPercentage, "ne")}% घरहरूमा इन्टरनेट सुविधा रहेको छ।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाको प्रयोगको विश्लेषण। ${localizeNumber(mobilePercentage, "ne")}% घरहरूमा मोबाइल फोन, ${localizeNumber(televisionPercentage, "ne")}% घरहरूमा टेलिभिजन र ${localizeNumber(internetPercentage, "ne")}% घरहरूमा इन्टरनेट सुविधा रहेको छ।`;
 
     const descriptionEN = `Analysis of household facilities usage in Khajura Rural Municipality. ${mobilePercentage}% of households have mobile phones, ${televisionPercentage}% have television and ${internetPercentage}% have internet access.`;
 
@@ -219,7 +219,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "घरायसी सुविधाको प्रयोगको अवस्था | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+        "घरायसी सुविधाको प्रयोगको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार घरायसी सुविधाको प्रयोगको अवस्था र विश्लेषण।",
     };
   }
@@ -464,7 +464,7 @@ export default async function WardWiseFacilitiesPage() {
               src="/images/household-facilities.svg"
               width={1200}
               height={400}
-              alt="घरायसी सुविधाको प्रयोगको अवस्था - गढवा गाउँपालिका (Household Facilities Usage - Khajura Rural Municipality)"
+              alt="घरायसी सुविधाको प्रयोगको अवस्था - बुद्धशान्ति गाउँपालिका (Household Facilities Usage - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -472,7 +472,7 @@ export default async function WardWiseFacilitiesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा घरायसी सुविधाको प्रयोगको अवस्था
+              बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाको प्रयोगको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -483,11 +483,11 @@ export default async function WardWiseFacilitiesPage() {
               आधुनिकीकरण र सामाजिक-आर्थिक विकासको अवस्थालाई प्रतिविम्बित गर्दछ।
               यी सुविधाहरूको पहुँचले परिवारको दैनिक जीवन, शिक्षा, सूचना
               प्रविधिको प्रयोग, यातायात र आरामदायी जीवनयापनमा प्रत्यक्ष प्रभाव
-              पार्दछ। यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा प्रयोग
+              पार्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा प्रयोग
               हुने घरायसी सुविधाहरूको विस्तृत विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा अनुमानित कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा अनुमानित कुल{" "}
               {localizeNumber(
                 approximateUniqueHouseholds.toLocaleString(),
                 "ne",
@@ -517,7 +517,7 @@ export default async function WardWiseFacilitiesPage() {
               घरायसी सुविधाको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको वितरण
+              बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -545,9 +545,9 @@ export default async function WardWiseFacilitiesPage() {
               घरायसी सुविधाको प्रयोगको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको विश्लेषण गर्दा,
-              समग्रमा सञ्चार सम्बन्धी सुविधाहरू (मोबाइल फोन, टेलिभिजन, इन्टरनेट)
-              को पहुँच
+              बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको विश्लेषण
+              गर्दा, समग्रमा सञ्चार सम्बन्धी सुविधाहरू (मोबाइल फोन, टेलिभिजन,
+              इन्टरनेट) को पहुँच
               {localizeNumber(
                 categoryStats.communication.percentage.toFixed(2),
                 "ne",
@@ -579,7 +579,7 @@ export default async function WardWiseFacilitiesPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा घरायसी सुविधाको प्रयोगको तथ्याङ्क
+              बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाको प्रयोगको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -633,12 +633,12 @@ export default async function WardWiseFacilitiesPage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको विश्लेषणले
-              पालिकाको सामाजिक-आर्थिक स्थिति र जीवनस्तरको अवस्था बुझ्न मद्दत
-              गर्दछ। आधुनिक घरायसी सुविधाहरूको पहुँचमा वृद्धि गर्न लक्षित
-              कार्यक्रम संचालन गरेर नागरिकहरूको सूचना, शिक्षा र स्वास्थ्यमा
-              सुधार ल्याउन सकिन्छ, जसले समग्र पालिकाको विकासमा योगदान
-              पुर्‍याउनेछ।
+              यसरी बुद्धशान्ति गाउँपालिकामा घरायसी सुविधाहरूको प्रयोगको
+              विश्लेषणले पालिकाको सामाजिक-आर्थिक स्थिति र जीवनस्तरको अवस्था
+              बुझ्न मद्दत गर्दछ। आधुनिक घरायसी सुविधाहरूको पहुँचमा वृद्धि गर्न
+              लक्षित कार्यक्रम संचालन गरेर नागरिकहरूको सूचना, शिक्षा र
+              स्वास्थ्यमा सुधार ल्याउन सकिन्छ, जसले समग्र पालिकाको विकासमा
+              योगदान पुर्‍याउनेछ।
             </p>
           </div>
         </section>

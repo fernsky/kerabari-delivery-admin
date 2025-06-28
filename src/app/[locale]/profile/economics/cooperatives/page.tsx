@@ -75,7 +75,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const cooperativesData =
       await api.profile.economics.cooperatives.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalCooperatives = cooperativesData.length;
@@ -122,13 +122,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका सहकारी",
-      "गढवा सहकारी संस्था",
+      "बुद्धशान्ति गाउँपालिका सहकारी",
+      "बुद्धशान्ति सहकारी संस्था",
       "पालिका स्तरीय सहकारी",
-      "गढवा बचत तथा ऋण सहकारी",
-      `गढवा ${COOPERATIVE_TYPES[mostCommonCooperativeType] || "सहकारी संस्था"}`,
+      "बुद्धशान्ति बचत तथा ऋण सहकारी",
+      `बुद्धशान्ति ${COOPERATIVE_TYPES[mostCommonCooperativeType] || "सहकारी संस्था"}`,
       `वडा ${localizeNumber(wardWithMostCooperatives.toString(), "ne")} सहकारी`,
-      `गढवा ${localizeNumber(totalCooperatives.toString(), "ne")} सहकारी संस्था`,
+      `बुद्धशान्ति ${localizeNumber(totalCooperatives.toString(), "ne")} सहकारी संस्था`,
       "महिला सहकारी संस्था",
     ];
 
@@ -144,7 +144,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकामा संचालित ${localizeNumber(totalCooperatives.toString(), "ne")} सहकारी संस्थाहरूको विस्तृत विश्लेषण। सबैभन्दा बढी ${COOPERATIVE_TYPES[mostCommonCooperativeType] || ""} संस्थाहरू (${localizeNumber(mostCommonCooperativeTypePercentage.toFixed(1), "ne")}%) रहेका छन्। वडा नं ${localizeNumber(wardWithMostCooperatives.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} सहकारी संस्थाहरू क्रियाशील छन्। पालिका स्तरीय सहकारी संस्थाहरूको विस्तृत जानकारी।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा संचालित ${localizeNumber(totalCooperatives.toString(), "ne")} सहकारी संस्थाहरूको विस्तृत विश्लेषण। सबैभन्दा बढी ${COOPERATIVE_TYPES[mostCommonCooperativeType] || ""} संस्थाहरू (${localizeNumber(mostCommonCooperativeTypePercentage.toFixed(1), "ne")}%) रहेका छन्। वडा नं ${localizeNumber(wardWithMostCooperatives.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} सहकारी संस्थाहरू क्रियाशील छन्। पालिका स्तरीय सहकारी संस्थाहरूको विस्तृत जानकारी।`;
 
     const descriptionEN = `Detailed analysis of ${totalCooperatives} cooperative institutions operating in Khajura Rural Municipality. ${COOPERATIVE_TYPES_EN[mostCommonCooperativeType] || "Cooperatives"} are most common (${mostCommonCooperativeTypePercentage.toFixed(1)}%). Ward ${wardWithMostCooperatives} has the highest concentration with ${wardMaxCount} active cooperatives. Comprehensive information on municipality-wide cooperatives.`;
 
@@ -176,7 +176,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "सहकारी संस्थाहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "सहकारी संस्थाहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "पालिका स्तरीय सहकारी संस्थाहरूको विवरण र विश्लेषण।",
     };
   }
@@ -374,7 +374,7 @@ export default async function CooperativesPage() {
               src="/images/cooperatives.svg"
               width={1200}
               height={400}
-              alt="सहकारी संस्थाहरू - गढवा गाउँपालिका (Cooperative Institutions - Khajura Rural Municipality)"
+              alt="सहकारी संस्थाहरू - बुद्धशान्ति गाउँपालिका (Cooperative Institutions - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -382,17 +382,17 @@ export default async function CooperativesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा सहकारी संस्थाहरू
+              बुद्धशान्ति गाउँपालिकामा सहकारी संस्थाहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              सहकारी संस्थाहरू गढवा गाउँपालिकाको आर्थिक विकासमा महत्त्वपूर्ण
-              भूमिका निर्वाह गरिरहेका छन्। बचत तथा ऋण, बहुउद्देश्यीय, कृषि,
-              महिला, समुदायिक लगायतका विभिन्न प्रकारका सहकारी संस्थाहरू पालिका
-              भरि क्रियाशील छन्।
+              सहकारी संस्थाहरू बुद्धशान्ति गाउँपालिकाको आर्थिक विकासमा
+              महत्त्वपूर्ण भूमिका निर्वाह गरिरहेका छन्। बचत तथा ऋण,
+              बहुउद्देश्यीय, कृषि, महिला, समुदायिक लगायतका विभिन्न प्रकारका
+              सहकारी संस्थाहरू पालिका भरि क्रियाशील छन्।
             </p>
             <p>
               यी सहकारी संस्थाहरूले सदस्यहरूको आर्थिक र सामाजिक उन्नति गर्न,
@@ -403,7 +403,7 @@ export default async function CooperativesPage() {
             </p>
 
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalCooperatives.toString(), "ne")} सहकारी
               संस्थाहरू रहेका छन्। सबैभन्दा बढी{" "}
               {cooperativeSummary[0]?.typeName || ""}(
@@ -433,8 +433,9 @@ export default async function CooperativesPage() {
               सहकारीको प्रकार र वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न प्रकारका सहकारी संस्थाहरू संचालनमा
-              छन्। मुख्य सहकारी प्रकार र तिनको वितरण निम्न अनुसार रहेको छ:
+              बुद्धशान्ति गाउँपालिकामा विभिन्न प्रकारका सहकारी संस्थाहरू
+              संचालनमा छन्। मुख्य सहकारी प्रकार र तिनको वितरण निम्न अनुसार रहेको
+              छ:
             </p>
 
             <ul>
@@ -481,7 +482,7 @@ export default async function CooperativesPage() {
               वडागत वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकाका विभिन्न वडाहरूमा सहकारी संस्थाहरूको वितरण
+              बुद्धशान्ति गाउँपालिकाका विभिन्न वडाहरूमा सहकारी संस्थाहरूको वितरण
               असमान रहेको छ। वडा नं.{" "}
               {localizeNumber(
                 statistics.wardWithMostCooperatives.toString(),
@@ -618,7 +619,7 @@ export default async function CooperativesPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा सहकारी संस्थाहरूको अवस्थाको विश्लेषणबाट
+              बुद्धशान्ति गाउँपालिकामा सहकारी संस्थाहरूको अवस्थाको विश्लेषणबाट
               निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गरिएका छन्:
             </p>
 
@@ -664,7 +665,7 @@ export default async function CooperativesPage() {
             </div>
 
             <p className="mt-6">
-              गढवा गाउँपालिकामा सहकारी संस्थाहरूको प्रभावकारी परिचालनले
+              बुद्धशान्ति गाउँपालिकामा सहकारी संस्थाहरूको प्रभावकारी परिचालनले
               स्थानीय अर्थतन्त्रलाई बलियो बनाउन, वित्तीय सेवाको पहुँच बढाउन र
               स्थानीय उद्यमशीलता प्रवर्द्धन गर्न महत्त्वपूर्ण योगदान पुर्‍याउने
               निश्चित छ। यसका लागि स्थानीय सरकार, नियामक निकाय र सहकारी

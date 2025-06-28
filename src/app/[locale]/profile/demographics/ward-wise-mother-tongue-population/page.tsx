@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const languageData =
       await api.profile.demographics.wardWiseMotherTonguePopulation.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = languageData.reduce(
@@ -96,14 +96,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data using localized numbers
     const keywordsNP = [
-      "गढवा गाउँपालिका मातृभाषा जनसंख्या",
-      "गढवा भाषिक विविधता",
-      `गढवा ${LANGUAGE_NAMES[topLanguages[0]]} भाषी जनसंख्या`,
-      ...topLanguages.map((l) => `${LANGUAGE_NAMES[l]} भाषी गढवा`),
+      "बुद्धशान्ति गाउँपालिका मातृभाषा जनसंख्या",
+      "बुद्धशान्ति भाषिक विविधता",
+      `बुद्धशान्ति ${LANGUAGE_NAMES[topLanguages[0]]} भाषी जनसंख्या`,
+      ...topLanguages.map((l) => `${LANGUAGE_NAMES[l]} भाषी बुद्धशान्ति`),
       "वडा अनुसार मातृभाषा जनसंख्या",
       "भाषिक विविधता तथ्याङ्क",
-      "मातृभाषा जनगणना गढवा",
-      `गढवा कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      "मातृभाषा जनगणना बुद्धशान्ति",
+      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -118,12 +118,13 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data using localized numbers
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार मातृभाषा जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${LANGUAGE_NAMES[topLanguages[0]]} (${localizeNumber(languageCounts[topLanguages[0]].toString(), "ne")}) सबैभन्दा ठूलो भाषिक समूह हो, त्यसपछि ${LANGUAGE_NAMES[topLanguages[1]]} (${localizeNumber(languageCounts[topLanguages[1]].toString(), "ne")}) र ${LANGUAGE_NAMES[topLanguages[2]]} (${localizeNumber(languageCounts[topLanguages[2]].toString(), "ne")})। विभिन्न भाषाभाषीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार मातृभाषा जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${LANGUAGE_NAMES[topLanguages[0]]} (${localizeNumber(languageCounts[topLanguages[0]].toString(), "ne")}) सबैभन्दा ठूलो भाषिक समूह हो, त्यसपछि ${LANGUAGE_NAMES[topLanguages[1]]} (${localizeNumber(languageCounts[topLanguages[1]].toString(), "ne")}) र ${LANGUAGE_NAMES[topLanguages[2]]} (${localizeNumber(languageCounts[topLanguages[2]].toString(), "ne")})। विभिन्न भाषाभाषीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise mother tongue population distribution, trends and analysis for Khajura Rural Municipality. Out of a total population of ${totalPopulation}, ${LANGUAGE_NAMES_EN[topLanguages[0]]} (${languageCounts[topLanguages[0]]}) is the largest language group, followed by ${LANGUAGE_NAMES_EN[topLanguages[1]]} (${languageCounts[topLanguages[1]]}) and ${LANGUAGE_NAMES_EN[topLanguages[2]]} (${languageCounts[topLanguages[2]]})। Detailed statistics and visualizations of various linguistic communities.`;
 
     return {
-      title: "गढवा गाउँपालिकामा मातृभाषा अनुसार जनसंख्या | पालिका प्रोफाइल",
+      title:
+        "बुद्धशान्ति गाउँपालिकामा मातृभाषा अनुसार जनसंख्या | पालिका प्रोफाइल",
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -150,9 +151,10 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "गढवा गाउँपालिकामा मातृभाषा अनुसार जनसंख्या | पालिका प्रोफाइल",
+      title:
+        "बुद्धशान्ति गाउँपालिकामा मातृभाषा अनुसार जनसंख्या | पालिका प्रोफाइल",
       description:
-        "गढवा गाउँपालिकामा वडा अनुसार मातृभाषा जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। विभिन्न भाषाभाषीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
+        "बुद्धशान्ति गाउँपालिकामा वडा अनुसार मातृभाषा जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। विभिन्न भाषाभाषीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
   }
 }
@@ -278,7 +280,7 @@ export default async function WardWiseMotherTonguePopulationPage() {
               src="/images/language-diversity.svg"
               width={1200}
               height={400}
-              alt="भाषिक विविधता - गढवा गाउँपालिका (Linguistic Diversity - Khajura Rural Municipality)"
+              alt="भाषिक विविधता - बुद्धशान्ति गाउँपालिका (Linguistic Diversity - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -286,23 +288,23 @@ export default async function WardWiseMotherTonguePopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              <span className="font-bold">गढवा गाउँपालिकामा</span> मातृभाषा
-              अनुसार जनसंख्या
+              <span className="font-bold">बुद्धशान्ति गाउँपालिकामा</span>{" "}
+              मातृभाषा अनुसार जनसंख्या
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा बोलिने मातृभाषाहरू र
-              तिनका वक्ताहरूको जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत
-              गरिएको छ। यो तथ्याङ्कले भाषिक विविधता, सांस्कृतिक पहिचान र स्थानीय
-              समुदायको भाषिक स्वरूपलाई प्रतिबिम्बित गर्दछ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा बोलिने
+              मातृभाषाहरू र तिनका वक्ताहरूको जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क
+              प्रस्तुत गरिएको छ। यो तथ्याङ्कले भाषिक विविधता, सांस्कृतिक पहिचान
+              र स्थानीय समुदायको भाषिक स्वरूपलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिका विभिन्न भाषाभाषी समुदायहरूको सद्भाव र सहिष्णुताको
-              नमूना हो, र यस पालिकामा पनि विविध भाषिक समुदायहरूको बसोबास रहेको
-              छ। कुल जनसंख्या{" "}
+              बुद्धशान्ति गाउँपालिका विभिन्न भाषाभाषी समुदायहरूको सद्भाव र
+              सहिष्णुताको नमूना हो, र यस पालिकामा पनि विविध भाषिक समुदायहरूको
+              बसोबास रहेको छ। कुल जनसंख्या{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")} मध्ये{" "}
               {overallSummary[0]?.languageName || ""} भाषा बोल्ने व्यक्तिहरू{" "}
               {localizeNumber(
@@ -323,7 +325,7 @@ export default async function WardWiseMotherTonguePopulationPage() {
               मातृभाषा अनुसार जनसंख्या
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न मातृभाषी वक्ताहरूको कुल जनसंख्या
+              बुद्धशान्ति गाउँपालिकामा विभिन्न मातृभाषी वक्ताहरूको कुल जनसंख्या
               निम्नानुसार छ:
             </p>
           </div>
@@ -344,7 +346,7 @@ export default async function WardWiseMotherTonguePopulationPage() {
               प्रमुख भाषाहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा निम्न भाषाहरू प्रमुख रूपमा बोलिन्छन्। यी
+              बुद्धशान्ति गाउँपालिकामा निम्न भाषाहरू प्रमुख रूपमा बोलिन्छन्। यी
               भाषाहरूमध्ये{" "}
               {LANGUAGE_NAMES[overallSummary[0]?.language] || "नेपाली"}
               सबैभन्दा धेरै व्यक्तिहरूले बोल्ने भाषा हो, जसलाई कुल जनसंख्याको{" "}

@@ -1,5 +1,5 @@
 """
-Core API views for gadhawa Report System.
+Core API views for buddhashanti Report System.
 """
 
 from rest_framework import status
@@ -24,8 +24,8 @@ class HealthCheckView(APIView):
             {
                 "status": "healthy",
                 "timestamp": timezone.now(),
-                "municipality": "गढवा गाउँपालिका",
-                "municipality_english": "GadhawaRural Municipality",
+                "municipality": "बुद्धशान्ति गाउँपालिका",
+                "municipality_english": "buddhashantiRural Municipality",
                 "system": "Digital Profile Report System",
                 "version": "1.0.0",
             }
@@ -48,11 +48,11 @@ class SystemInfoView(APIView):
                 "time_zone": settings.TIME_ZONE,
                 "language_code": settings.LANGUAGE_CODE,
                 "municipality": {
-                    "name_nepali": "गढवा गाउँपालिका",
-                    "name_english": "GadhawaRural Municipality",
+                    "name_nepali": "बुद्धशान्ति गाउँपालिका",
+                    "name_english": "buddhashantiRural Municipality",
                     "district": "कपिलवस्तु",
                     "district_english": "Kapilvastu",
-                    "province": "लुम्बिनी प्रदेश",
+                    "province": "कोशी प्रदेश",
                     "province_english": "Lumbini Province",
                     "total_wards": 8,
                 },
@@ -72,20 +72,20 @@ class MunicipalityInfoView(APIView):
         return Response(
             {
                 "municipality": {
-                    "name_nepali": "गढवा गाउँपालिका",
-                    "name_english": "GadhawaRural Municipality",
+                    "name_nepali": "बुद्धशान्ति गाउँपालिका",
+                    "name_english": "buddhashantiRural Municipality",
                     "district_nepali": "कपिलवस्तु",
                     "district_english": "Kapilvastu",
-                    "province_nepali": "लुम्बिनी प्रदेश",
+                    "province_nepali": "कोशी प्रदेश",
                     "province_english": "Lumbini Province",
                     "total_wards": 8,
                     "established_date": "2017-05-10",  # BS: 2074/01/27
-                    "website": "https://gadhawamun.gov.np",
+                    "website": "https://buddhashantimun.gov.np",
                     "contact": {
                         "phone": "+977-76-550123",
-                        "email": "info@gadhawamun.gov.np",
-                        "address_nepali": "गढवा गाउँपालिका, कपिलवस्तु",
-                        "address_english": "GadhawaRural Municipality, Kapilvastu",
+                        "email": "info@buddhashantimun.gov.np",
+                        "address_nepali": "बुद्धशान्ति गाउँपालिका, कपिलवस्तु",
+                        "address_english": "buddhashantiRural Municipality, Kapilvastu",
                     },
                     "coordinates": {"latitude": 27.5833, "longitude": 82.9167},
                 }

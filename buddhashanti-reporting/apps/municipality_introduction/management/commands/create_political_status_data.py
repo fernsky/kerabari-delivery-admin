@@ -99,7 +99,7 @@ class Command(BaseCommand):
             {
                 "id": "610d2f3d-f16d-4846-a1b3-fdcfd9321db9",
                 "ward_number": 6,
-                "ward_name": "गढवा(१,२,३,४,५)",
+                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
                 "year": 2078,
                 "total_population": 7847,
                 "male_population": 3819,
@@ -112,7 +112,7 @@ class Command(BaseCommand):
             {
                 "id": "7c7b50eb-b05d-49bf-a788-c35171142534",
                 "ward_number": 7,
-                "ward_name": "गढवा(६,७,८,९)",
+                "ward_name": "बुद्धशान्ति(६,७,८,९)",
                 "year": 2078,
                 "total_population": 6111,
                 "male_population": 2925,
@@ -203,7 +203,7 @@ class Command(BaseCommand):
             {
                 "id": "36d509a4-3e31-4c67-b500-1d1904c1be9b",
                 "ward_number": 6,
-                "ward_name": "गढवा(१,२,३,४,५)",
+                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
                 "year": 2081,
                 "total_population": 8069,
                 "male_population": 3926,
@@ -216,7 +216,7 @@ class Command(BaseCommand):
             {
                 "id": "a1fbdd9b-d6f5-4298-9158-757cfb56deb6",
                 "ward_number": 7,
-                "ward_name": "गढवा(६,७,८,९)",
+                "ward_name": "बुद्धशान्ति(६,७,८,९)",
                 "year": 2081,
                 "total_population": 6285,
                 "male_population": 3007,

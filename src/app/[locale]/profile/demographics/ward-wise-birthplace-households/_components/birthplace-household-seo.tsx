@@ -51,11 +51,11 @@ export default function BirthplaceHouseholdSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Birthplaces in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Household Birthplaces in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Household birthplace data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common origin is ${mostCommonBirthplaceEN} with ${mostCommonBirthplace?.households.toLocaleString()} households (${mostCommonBirthplacePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Household birthplaces",
         "Birthplace distribution",
         "Ward-wise birthplace data",
@@ -68,11 +68,11 @@ export default function BirthplaceHouseholdSEO({
           (name) => `${name} घरपरिवार तथ्याङ्क`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-birthplace-households",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-birthplace-households",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

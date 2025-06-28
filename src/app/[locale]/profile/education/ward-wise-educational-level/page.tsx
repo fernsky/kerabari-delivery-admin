@@ -72,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseEducationalLevelData =
       await api.profile.education.wardWiseEducationalLevel.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseEducationalLevelData.reduce(
@@ -109,7 +109,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका शैक्षिक स्तर",
+      "बुद्धशान्ति गाउँपालिका शैक्षिक स्तर",
       "शैक्षिक योग्यता",
       "वडागत शैक्षिक स्थिति",
       "शिक्षाको स्तर",
@@ -129,7 +129,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा शैक्षिक स्तरको विश्लेषण। कुल ${localizeNumber(totalPopulation.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(highestEducationPercentage, "ne")}% (${localizeNumber(highestEducationCount.toLocaleString(), "ne")}) जनाले उच्च शिक्षा हासिल गरेका छन्।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको विश्लेषण। कुल ${localizeNumber(totalPopulation.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(highestEducationPercentage, "ne")}% (${localizeNumber(highestEducationCount.toLocaleString(), "ne")}) जनाले उच्च शिक्षा हासिल गरेका छन्।`;
 
     const descriptionEN = `Analysis of educational levels in Khajura Rural Municipality. Out of a total of ${totalPopulation.toLocaleString()} people, ${highestEducationPercentage}% (${highestEducationCount.toLocaleString()}) have attained higher education.`;
 
@@ -161,7 +161,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "शैक्षिक स्तरको अवस्था | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "शैक्षिक स्तरको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार शैक्षिक स्तरको अवस्था र विश्लेषण।",
     };
   }
@@ -365,7 +365,7 @@ export default async function WardWiseEducationalLevelPage() {
               src="/images/educational-level-status.svg"
               width={1200}
               height={400}
-              alt="शैक्षिक स्तरको अवस्था - गढवा गाउँपालिका (Educational Level Status - Khajura Rural Municipality)"
+              alt="शैक्षिक स्तरको अवस्था - बुद्धशान्ति गाउँपालिका (Educational Level Status - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -373,7 +373,7 @@ export default async function WardWiseEducationalLevelPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा शैक्षिक स्तरको अवस्था
+              बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -383,11 +383,11 @@ export default async function WardWiseEducationalLevelPage() {
               शैक्षिक स्तर एक समाजको विकास र प्रगतिको महत्वपूर्ण सूचक हो।
               शिक्षाले व्यक्तिको ज्ञान, सीप र दक्षता बढाई समग्र जीवनस्तरमा सुधार
               ल्याउनका साथै सामाजिक र आर्थिक विकासमा महत्वपूर्ण भूमिका खेल्दछ।
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा नागरिकहरूको
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा नागरिकहरूको
               शैक्षिक स्तरको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")}{" "}
               जनसंख्यामध्ये
               {localizeNumber(
@@ -414,7 +414,7 @@ export default async function WardWiseEducationalLevelPage() {
               शैक्षिक स्तरको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा शैक्षिक स्तरको वितरण निम्नानुसार रहेको छ:
+              बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
 
@@ -440,7 +440,7 @@ export default async function WardWiseEducationalLevelPage() {
               शैक्षिक स्तर विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा शैक्षिक स्तरको विश्लेषण गर्दा, समग्रमा
+              बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको विश्लेषण गर्दा, समग्रमा
               {localizeNumber(
                 educationGroupPercentages.HIGHER_EDUCATION.toFixed(2),
                 "ne",
@@ -472,7 +472,7 @@ export default async function WardWiseEducationalLevelPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा शैक्षिक स्तरको तथ्याङ्क विश्लेषणबाट निम्न
+              बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको तथ्याङ्क विश्लेषणबाट निम्न
               रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -529,7 +529,7 @@ export default async function WardWiseEducationalLevelPage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा शैक्षिक स्तरको विश्लेषणले पालिकामा
+              यसरी बुद्धशान्ति गाउँपालिकामा शैक्षिक स्तरको विश्लेषणले पालिकामा
               शैक्षिक विकासको अवस्था र भविष्यको शैक्षिक नीति निर्माणमा
               महत्वपूर्ण भूमिका खेल्दछ। यसका लागि वडागत विशेषताहरूलाई ध्यानमा
               राखी शिक्षा क्षेत्रको विस्तार र गुणस्तर वृद्धिका कार्यक्रमहरू

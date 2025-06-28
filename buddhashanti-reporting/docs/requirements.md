@@ -3,6 +3,7 @@
 ## System Requirements
 
 ### Development Environment
+
 ```
 Operating System: Windows 10/11, macOS 10.15+, Ubuntu 20.04+
 Python: 3.9+ (Recommended: 3.11)
@@ -13,6 +14,7 @@ Storage: Minimum 2GB free space
 ```
 
 ### Production Environment
+
 ```
 CPU: 2+ cores, 2.4GHz+
 Memory: 8GB+ RAM
@@ -26,6 +28,7 @@ SSL Certificate: Required for production deployment
 ## Core Dependencies
 
 ### Base Requirements (requirements/base.txt)
+
 ```txt
 # Django Framework
 Django>=4.2.0,<5.0
@@ -64,6 +67,7 @@ python-dateutil>=2.8.0
 ```
 
 ### Development Requirements (requirements/development.txt)
+
 ```txt
 -r base.txt
 
@@ -97,6 +101,7 @@ mkdocs-material>=9.1.0
 ```
 
 ### Production Requirements (requirements/production.txt)
+
 ```txt
 -r base.txt
 
@@ -127,6 +132,7 @@ django-csp>=3.7
 ```
 
 ### Testing Requirements (requirements/testing.txt)
+
 ```txt
 -r base.txt
 
@@ -153,19 +159,30 @@ django-selenium>=0.9.8
 ## Frontend Dependencies
 
 ### CSS Framework (CDN)
+
 ```html
 <!-- Bootstrap 5.3 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
 
 <!-- Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
 ```
 
 ### JavaScript Libraries (CDN)
+
 ```html
 <!-- Core Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/htmx.org@1.9.2/dist/htmx.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"
+  defer
+></script>
 
 <!-- Charts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.min.js"></script>
@@ -175,11 +192,12 @@ django-selenium>=0.9.8
 ```
 
 ### Optional Node.js Dependencies (package.json)
+
 ```json
 {
-  "name": "gadhawa-report-frontend",
+  "name": "buddhashanti-report-frontend",
   "version": "1.0.0",
-  "description": "Frontend assets for gadhawa Report System",
+  "description": "Frontend assets for buddhashanti Report System",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
@@ -198,6 +216,7 @@ django-selenium>=0.9.8
 ## Font Dependencies
 
 ### Nepali Fonts
+
 ```
 Required Fonts for Nepali Language Support:
 - Mukti (Primary Devanagari font)
@@ -215,6 +234,7 @@ Installation:
 ```
 
 ### English Fonts
+
 ```
 Primary: Inter (Variable font)
 Source: https://fonts.google.com/specimen/Inter
@@ -229,26 +249,28 @@ Fallbacks:
 ## Database Setup
 
 ### PostgreSQL Configuration
+
 ```sql
 -- Create database
-CREATE DATABASE gadhawa_report;
-CREATE USER gadhawa_user WITH PASSWORD 'your_secure_password';
-GRANT ALL PRIVILEGES ON DATABASE gadhawa_report TO gadhawa_user;
+CREATE DATABASE buddhashanti_report;
+CREATE USER buddhashanti_user WITH PASSWORD 'your_secure_password';
+GRANT ALL PRIVILEGES ON DATABASE buddhashanti_report TO buddhashanti_user;
 
 -- Extensions
-\c gadhawa_report
+\c buddhashanti_report
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";  -- For text search
 ```
 
 ### Django Database Settings
+
 ```python
 # settings/base.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME', default='gadhawa_report'),
-        'USER': env('DB_USER', default='gadhawa_user'),
+        'NAME': env('DB_NAME', default='buddhashanti_report'),
+        'USER': env('DB_USER', default='buddhashanti_user'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST', default='localhost'),
         'PORT': env('DB_PORT', default='5432'),
@@ -262,6 +284,7 @@ DATABASES = {
 ## Environment Variables
 
 ### .env Template
+
 ```bash
 # Django Settings
 SECRET_KEY=your-super-secret-key-here
@@ -269,8 +292,8 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 
 # Database
-DB_NAME=gadhawa_report
-DB_USER=gadhawa_user
+DB_NAME=buddhashanti_report
+DB_USER=buddhashanti_user
 DB_PASSWORD=your_secure_password
 DB_HOST=localhost
 DB_PORT=5432
@@ -310,10 +333,11 @@ SENTRY_DSN=your-sentry-dsn-here
 ## Installation Scripts
 
 ### setup.py (Project Setup)
+
 ```python
 #!/usr/bin/env python3
 """
-gadhawa Report System Setup Script
+buddhashanti Report System Setup Script
 """
 import os
 import subprocess
@@ -324,8 +348,8 @@ def run_command(command, check=True):
     """Run shell command with error handling"""
     try:
         result = subprocess.run(
-            command, 
-            shell=True, 
+            command,
+            shell=True,
             check=check,
             capture_output=True,
             text=True
@@ -339,22 +363,22 @@ def run_command(command, check=True):
 def setup_virtual_environment():
     """Create and activate virtual environment"""
     print("Setting up virtual environment...")
-    
+
     if not Path("venv").exists():
         run_command("python -m venv venv")
-    
+
     # Activation command varies by OS
     if os.name == 'nt':  # Windows
         activate_cmd = "venv\\Scripts\\activate"
     else:  # Unix/Linux/macOS
         activate_cmd = "source venv/bin/activate"
-    
+
     print(f"Virtual environment created. Activate with: {activate_cmd}")
 
 def install_dependencies():
     """Install Python dependencies"""
     print("Installing dependencies...")
-    
+
     # Install base requirements
     run_command("pip install --upgrade pip")
     run_command("pip install -r requirements/development.txt")
@@ -362,17 +386,17 @@ def install_dependencies():
 def setup_database():
     """Setup database and run migrations"""
     print("Setting up database...")
-    
+
     # Check if .env exists
     if not Path(".env").exists():
         print("Creating .env file from template...")
         run_command("cp .env.example .env")
         print("Please edit .env file with your configuration before proceeding.")
         return
-    
+
     # Run migrations
     run_command("python manage.py migrate")
-    
+
     # Create superuser (optional)
     response = input("Create superuser account? (y/n): ")
     if response.lower() == 'y':
@@ -392,15 +416,15 @@ def load_sample_data():
 
 def main():
     """Main setup function"""
-    print("gadhawa Report System Setup")
+    print("buddhashanti Report System Setup")
     print("=" * 30)
-    
+
     setup_virtual_environment()
     install_dependencies()
     setup_database()
     collect_static()
     load_sample_data()
-    
+
     print("\nSetup completed successfully!")
     print("Start the development server with: python manage.py runserver")
 
@@ -409,9 +433,10 @@ if __name__ == "__main__":
 ```
 
 ### requirements-install.ps1 (Windows PowerShell)
+
 ```powershell
 # Windows Installation Script
-Write-Host "gadhawa Report System - Windows Setup" -ForegroundColor Green
+Write-Host "buddhashanti Report System - Windows Setup" -ForegroundColor Green
 
 # Check Python version
 $pythonVersion = python --version 2>&1
@@ -453,11 +478,12 @@ Write-Host "3. Run: python manage.py runserver" -ForegroundColor White
 ```
 
 ### install.sh (Linux/macOS Bash)
+
 ```bash
 #!/bin/bash
 # Linux/macOS Installation Script
 
-echo "gadhawa Report System - Linux/macOS Setup"
+echo "buddhashanti Report System - Linux/macOS Setup"
 echo "=========================================="
 
 # Check Python version
@@ -503,6 +529,7 @@ echo "4. Run: python manage.py runserver"
 ## Docker Configuration (Optional)
 
 ### Dockerfile
+
 ```dockerfile
 FROM python:3.11-slim
 
@@ -540,12 +567,13 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Run server
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "gadhawa_report.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "buddhashanti_report.wsgi:application"]
 ```
 
 ### docker-compose.yml
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   db:
@@ -553,8 +581,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_DB: gadhawa_report
-      POSTGRES_USER: gadhawa_user
+      POSTGRES_DB: buddhashanti_report
+      POSTGRES_USER: buddhashanti_user
       POSTGRES_PASSWORD: your_secure_password
 
   redis:
@@ -578,4 +606,4 @@ volumes:
   postgres_data:
 ```
 
-This comprehensive requirements specification provides everything needed to set up and run the gadhawa Digital Profile Report system across different environments and platforms.
+This comprehensive requirements specification provides everything needed to set up and run the buddhashanti Digital Profile Report system across different environments and platforms.

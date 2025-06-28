@@ -97,11 +97,11 @@ export default function WardWiseElectricitySourceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Electricity Source Usage in Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Electricity Source Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Analysis of electricity source usage across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${modernSourceTotal.toLocaleString()} households (${modernSourcePercentageValue}%) use modern electricity sources. The best adoption of modern sources is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}% modern electricity source usage rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Electricity source",
         "Grid electricity",
         "Solar power",
@@ -113,11 +113,11 @@ export default function WardWiseElectricitySourceSEO({
         "Energy transition",
         "Rural electrification",
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/physical/ward-wise-electricity-source",
+      url: "https://digital.buddhashantimun.gov.np/profile/physical/ward-wise-electricity-source",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

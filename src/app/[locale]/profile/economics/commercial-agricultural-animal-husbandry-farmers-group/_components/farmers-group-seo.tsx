@@ -109,7 +109,7 @@ export default function FarmersGroupSEO({
       description: `Comprehensive analysis of ${totalGroups} commercial agricultural and animal husbandry farmers groups in Khajura Rural Municipality. The most common type is ${mostCommonBusinessTypeEN} (${statistics.mostPopularBusinessTypePercentage.toFixed(1)}%), and Ward ${statistics.wardWithMostGroups} has the highest concentration with ${statistics.maximumGroupsInAWard} groups. This dataset covers all 9 wards of the municipality.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Commercial Agriculture",
         "Animal Husbandry",
         "Farmers Groups",
@@ -121,11 +121,11 @@ export default function FarmersGroupSEO({
           (item) => BUSINESS_TYPES_EN[item.type] || item.type,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/commercial-agricultural-animal-husbandry-farmers-group",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/commercial-agricultural-animal-husbandry-farmers-group",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2023",
       spatialCoverage: {
@@ -186,7 +186,7 @@ export default function FarmersGroupSEO({
       isPartOf: {
         "@type": "Dataset",
         name: "Khajura Rural Municipality Digital Profile",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
     };
   };

@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const migratedData =
       await api.profile.demographics.wardWiseMigratedHouseholds.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = migratedData.reduce(
@@ -73,13 +73,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका आप्रवासित घरपरिवार",
-      "गढवा बसाइँसराइ परिवार वितरण",
+      "बुद्धशान्ति गाउँपालिका आप्रवासित घरपरिवार",
+      "बुद्धशान्ति बसाइँसराइ परिवार वितरण",
       "वडा अनुसार आप्रवासित परिवार विवरण",
       "घरपरिवारको आप्रवासन विश्लेषण",
-      "स्थानांतरित परिवार गढवा",
+      "स्थानांतरित परिवार बुद्धशान्ति",
       "जिल्लान्तर आप्रवासन",
-      `गढवा आप्रवासित घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति आप्रवासित घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -93,7 +93,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार आप्रवासित घरपरिवारको वितरण र विश्लेषण। कुल आप्रवासित घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${MIGRATED_FROM_NAMES[mostCommonMigratedFrom] || mostCommonMigratedFrom} बाट आएका देखिन्छ। विभिन्न वडाहरूमा आप्रवासित घरपरिवारको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार आप्रवासित घरपरिवारको वितरण र विश्लेषण। कुल आप्रवासित घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${MIGRATED_FROM_NAMES[mostCommonMigratedFrom] || mostCommonMigratedFrom} बाट आएका देखिन्छ। विभिन्न वडाहरूमा आप्रवासित घरपरिवारको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of migrated households in Khajura Rural Municipality. Out of a total of ${totalHouseholds} migrated households, ${mostCommonPercentage}% (${mostCommonCount}) are from ${MIGRATED_FROM_NAMES_EN[mostCommonMigratedFrom] || mostCommonMigratedFrom}. Detailed analysis of migrated households across various wards.`;
 
@@ -125,7 +125,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "आप्रवासित घरपरिवार | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "आप्रवासित घरपरिवार | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार आप्रवासित घरपरिवारको वितरण र विश्लेषण।",
     };
   }
@@ -260,7 +260,7 @@ export default async function WardWiseMigratedHouseholdsPage() {
               src="/images/migrated-households.svg"
               width={1200}
               height={400}
-              alt="आप्रवासित घरपरिवार - गढवा गाउँपालिका (Migrated Households - Khajura Rural Municipality)"
+              alt="आप्रवासित घरपरिवार - बुद्धशान्ति गाउँपालिका (Migrated Households - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -268,7 +268,7 @@ export default async function WardWiseMigratedHouseholdsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा आप्रवासित घरपरिवार
+              बुद्धशान्ति गाउँपालिकामा आप्रवासित घरपरिवार
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -277,13 +277,13 @@ export default async function WardWiseMigratedHouseholdsPage() {
             <p>
               आप्रवासित घरपरिवारको तथ्याङ्कले गाउँपालिकामा बसोबास गर्ने
               आप्रवासित परिवारहरूको मूल स्थान, आप्रवासन प्रवृत्ति र जनसंख्या
-              गतिशीलताको विश्लेषण गर्न सहयोग गर्दछ। यस खण्डमा गढवा
+              गतिशीलताको विश्लेषण गर्न सहयोग गर्दछ। यस खण्डमा बुद्धशान्ति
               गाउँपालिकामा रहेका आप्रवासित घरपरिवारको स्थान अनुसारको वितरण र
               वडागत विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा रहेका आप्रवासित परिवारहरूको स्थानको तथ्याङ्क
-              हेर्दा, कुल घरपरिवार{" "}
+              बुद्धशान्ति गाउँपालिकामा रहेका आप्रवासित परिवारहरूको स्थानको
+              तथ्याङ्क हेर्दा, कुल घरपरिवार{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               मध्ये सबैभन्दा बढी {overallSummary[0]?.migratedFromName || ""}
               बाट{" "}
@@ -301,7 +301,7 @@ export default async function WardWiseMigratedHouseholdsPage() {
               आप्रवासित घरपरिवारको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा रहेका आप्रवासित परिवारहरूको वितरण
+              बुद्धशान्ति गाउँपालिकामा रहेका आप्रवासित परिवारहरूको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -323,7 +323,8 @@ export default async function WardWiseMigratedHouseholdsPage() {
               आप्रवासन विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा रहेका आप्रवासित परिवारहरूको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा रहेका आप्रवासित परिवारहरूको विश्लेषण
+              गर्दा,
               {MIGRATED_FROM_NAMES[overallSummary[0]?.migratedFrom || ""] ||
                 overallSummary[0]?.migratedFrom}
               बाट आएका परिवारहरू सबैभन्दा बढी

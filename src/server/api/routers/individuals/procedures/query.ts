@@ -41,7 +41,7 @@ export const getIndividualsProcedure = protectedProcedure
           educational_level,
           is_disabled,
           marital_status
-        FROM acme_gadhawa_individuals
+        FROM acme_buddhashanti_individuals
         WHERE 1=1
       `;
 
@@ -140,7 +140,7 @@ export const getIndividualsProcedure = protectedProcedure
       // Build count query with the same filters
       let countQuery = sql`
         SELECT COUNT(*) as total 
-        FROM acme_gadhawa_individuals
+        FROM acme_buddhashanti_individuals
         WHERE 1=1
       `;
       
@@ -370,7 +370,7 @@ export const getIndividualsByHouseholdIdProcedure = protectedProcedure
       
       // Query to get individuals with the specified parent_id
       const query = sql`
-        SELECT * FROM acme_gadhawa_individuals
+        SELECT * FROM acme_buddhashanti_individuals
         WHERE parent_id = ${formattedHouseholdId}
         ORDER BY 
           CASE 
@@ -387,7 +387,7 @@ export const getIndividualsByHouseholdIdProcedure = protectedProcedure
       // Get count for pagination
       const countQuery = sql`
         SELECT COUNT(*) as total 
-        FROM acme_gadhawa_individuals
+        FROM acme_buddhashanti_individuals
         WHERE parent_id = ${formattedHouseholdId}
       `;
       

@@ -40,7 +40,7 @@ class Command(BaseCommand):
         teacher_data = [
             {
                 "s_n": "१",
-                "school_name_full": "नेपाल राष्ट्रिय मा.वि., गढवा-१",
+                "school_name_full": "नेपाल राष्ट्रिय मा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -57,7 +57,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "२",
-                "school_name_full": "मा.वि., गढवा-१",
+                "school_name_full": "मा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -70,7 +70,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "३",
-                "school_name_full": "युवावर्ष मा.वि., गढवा-१",
+                "school_name_full": "युवावर्ष मा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -87,7 +87,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "४",
-                "school_name_full": "बालकल्याण प्रा.वि., गढवा-१",
+                "school_name_full": "बालकल्याण प्रा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "PRIMARY",
                 "staffing_by_level": {
@@ -98,7 +98,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "५",
-                "school_name_full": "देउराली शिवालय आ.वि., गढवा-१",
+                "school_name_full": "देउराली शिवालय आ.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "LOWER_SECONDARY",
                 "staffing_by_level": {
@@ -108,7 +108,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "६",
-                "school_name_full": "दुङ्खानी दोभान आ.वि., गढवा-१",
+                "school_name_full": "दुङ्खानी दोभान आ.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "LOWER_SECONDARY",
                 "staffing_by_level": {
@@ -118,7 +118,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "७",
-                "school_name_full": "हिमाल प्रा.वि., गढवा-१",
+                "school_name_full": "हिमाल प्रा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "PRIMARY",
                 "staffing_by_level": {
@@ -129,7 +129,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "८",
-                "school_name_full": "जन कल्याण प्रा.वि., गढवा-१",
+                "school_name_full": "जन कल्याण प्रा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "PRIMARY",
                 "staffing_by_level": {
@@ -140,7 +140,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "९",
-                "school_name_full": "जनजागृति आ.वि., गढवा-१",
+                "school_name_full": "जनजागृति आ.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "LOWER_SECONDARY",
                 "staffing_by_level": {
@@ -150,7 +150,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "१०",
-                "school_name_full": "सरस्वति मा.वि., गढवा-१",
+                "school_name_full": "सरस्वति मा.वि., बुद्धशान्ति-१",
                 "ward_number": 1,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -164,7 +164,7 @@ class Command(BaseCommand):
             # Ward 2 data
             {
                 "s_n": "१३",
-                "school_name_full": "झिमरुकलेस्वर मा.वि., गढवा-२",
+                "school_name_full": "झिमरुकलेस्वर मा.वि., बुद्धशान्ति-२",
                 "ward_number": 2,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -181,7 +181,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "१५",
-                "school_name_full": "गोकुल मा.वि., गढवा-२",
+                "school_name_full": "गोकुल मा.वि., बुद्धशान्ति-२",
                 "ward_number": 2,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -203,7 +203,7 @@ class Command(BaseCommand):
             # Ward 3 data
             {
                 "s_n": "२२",
-                "school_name_full": "सामाजिक मा.वि., गढवा-३",
+                "school_name_full": "सामाजिक मा.वि., बुद्धशान्ति-३",
                 "ward_number": 3,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -221,7 +221,7 @@ class Command(BaseCommand):
             # Ward 4 data
             {
                 "s_n": "२४",
-                "school_name_full": "विजयश्वरी मा.वि., गढवा-४",
+                "school_name_full": "विजयश्वरी मा.वि., बुद्धशान्ति-४",
                 "ward_number": 4,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -234,7 +234,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "२५",
-                "school_name_full": "गौरी शंकर मा.वि., गढवा-४",
+                "school_name_full": "गौरी शंकर मा.वि., बुद्धशान्ति-४",
                 "ward_number": 4,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -248,7 +248,7 @@ class Command(BaseCommand):
             # Ward 5 data
             {
                 "s_n": "२९",
-                "school_name_full": "बराहक्षेत्र मा.वि., गढवा-५",
+                "school_name_full": "बराहक्षेत्र मा.वि., बुद्धशान्ति-५",
                 "ward_number": 5,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -270,7 +270,7 @@ class Command(BaseCommand):
             # Ward 6 data
             {
                 "s_n": "३३",
-                "school_name_full": "जनज्योति मा.वि., गढवा-६",
+                "school_name_full": "जनज्योति मा.वि., बुद्धशान्ति-६",
                 "ward_number": 6,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -291,7 +291,7 @@ class Command(BaseCommand):
             },
             {
                 "s_n": "３७",
-                "school_name_full": "नेपाल राष्ट्रिय मा.वि., गढवा-६",
+                "school_name_full": "नेपाल राष्ट्रिय मा.वि., बुद्धशान्ति-६",
                 "ward_number": 6,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {
@@ -309,7 +309,7 @@ class Command(BaseCommand):
             # Ward 7 data
             {
                 "s_n": "३८",
-                "school_name_full": "नेपाल राष्ट्रिय मा.वि., गढवा-७",
+                "school_name_full": "नेपाल राष्ट्रिय मा.वि., बुद्धशान्ति-७",
                 "ward_number": 7,
                 "institution_level": "SECONDARY",
                 "staffing_by_level": {

@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseDrinkingWaterSourceData =
       await api.profile.waterAndSanitation.wardWiseDrinkingWaterSource.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseDrinkingWaterSourceData.reduce(
@@ -89,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका खानेपानी स्रोत",
+      "बुद्धशान्ति गाउँपालिका खानेपानी स्रोत",
       "वडागत खानेपानी स्रोत",
       "पाइपको पानी प्रयोग",
       `पाइपको पानी प्रयोग गर्ने ${pipedWaterPercentage}%`,
@@ -105,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको वडागत विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(pipedWaterPercentage, "ne")}% (${localizeNumber(pipedWaterHouseholds.toLocaleString(), "ne")}) घरधुरीले पाइपको पानी प्रयोग गर्दछन्।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको वडागत विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(pipedWaterPercentage, "ne")}% (${localizeNumber(pipedWaterHouseholds.toLocaleString(), "ne")}) घरधुरीले पाइपको पानी प्रयोग गर्दछन्।`;
 
     const descriptionEN = `Ward-wise analysis of drinking water sources in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${pipedWaterPercentage}% (${pipedWaterHouseholds.toLocaleString()}) households use piped water.`;
 
@@ -138,7 +138,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "खानेपानीका स्रोतहरू | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "खानेपानीका स्रोतहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार खानेपानीका स्रोतहरूको अवस्था र विश्लेषण।",
     };
   }
@@ -336,7 +336,7 @@ export default async function WardWiseDrinkingWaterSourcePage() {
               src="/images/drinking-water-source.svg"
               width={1200}
               height={400}
-              alt="खानेपानीका स्रोतहरू - गढवा गाउँपालिका (Drinking Water Sources - Khajura Rural Municipality)"
+              alt="खानेपानीका स्रोतहरू - बुद्धशान्ति गाउँपालिका (Drinking Water Sources - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -344,7 +344,7 @@ export default async function WardWiseDrinkingWaterSourcePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको अवस्था
+              बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -352,12 +352,12 @@ export default async function WardWiseDrinkingWaterSourcePage() {
             </h2>
             <p>
               खानेपानीको स्रोतहरूको अवस्था र पहुँच स्वास्थ्य, सरसफाइ र समग्र
-              जीवनस्तरको एक महत्वपूर्ण निर्धारक हो। यस खण्डमा गढवा
+              जीवनस्तरको एक महत्वपूर्ण निर्धारक हो। यस खण्डमा बुद्धशान्ति
               गाउँपालिकाको विभिन्न वडाहरूमा खानेपानीका स्रोतहरूको उपलब्धता र
               वितरणको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरीहरू
               मध्ये
               {localizeNumber(
@@ -384,7 +384,7 @@ export default async function WardWiseDrinkingWaterSourcePage() {
               खानेपानीका स्रोतहरूको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको वितरण निम्नानुसार
+              बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको वितरण निम्नानुसार
               रहेको छ:
             </p>
           </div>
@@ -411,7 +411,7 @@ export default async function WardWiseDrinkingWaterSourcePage() {
               खानेपानीका स्रोतहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको विश्लेषण गर्दा,
+              बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(
                 waterSourceGroupPercentages.PIPED_WATER.toFixed(2),
@@ -451,8 +451,8 @@ export default async function WardWiseDrinkingWaterSourcePage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको तथ्याङ्क विश्लेषणबाट
-              निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
+              बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको तथ्याङ्क
+              विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
             <div className="pl-6 space-y-4">
@@ -502,7 +502,7 @@ export default async function WardWiseDrinkingWaterSourcePage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा खानेपानीका स्रोतहरूको विश्लेषणले
+              यसरी बुद्धशान्ति गाउँपालिकामा खानेपानीका स्रोतहरूको विश्लेषणले
               पालिकामा खानेपानी नीति निर्माण र कार्यक्रम तर्जुमा गर्न महत्वपूर्ण
               भूमिका खेल्दछ। वडागत आवश्यकता र विशेषताहरूलाई ध्यानमा राखी
               सुरक्षित खानेपानीको पहुँच बढाउन विशेष कार्यक्रमहरू सञ्चालन

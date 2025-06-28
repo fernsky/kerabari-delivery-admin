@@ -91,7 +91,7 @@ export default function FarmersGroupAnalysisSection({
 
   // SEO attributes to include in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / गढवा गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
     "data-total-farms": totalGroups.toString(),
     "data-most-common-business":
       primaryBusiness &&
@@ -450,8 +450,8 @@ export default function FarmersGroupAnalysisSection({
         <div className="mt-6 pt-4 border-t">
           <h4 className="font-medium mb-4">समूह प्रोफाइल</h4>
           <p className="text-sm">
-            गढवा गाउँपालिकामा सञ्चालित व्यावसायिक कृषि तथा पशुपालन समूहहरूले
-            स्थानीय अर्थतन्त्रमा उल्लेखनीय योगदान पुर्‍याइरहेका छन्।{" "}
+            बुद्धशान्ति गाउँपालिकामा सञ्चालित व्यावसायिक कृषि तथा पशुपालन
+            समूहहरूले स्थानीय अर्थतन्त्रमा उल्लेखनीय योगदान पुर्‍याइरहेका छन्।{" "}
             {primaryBusiness?.typeName} समूहहरूले बजारमा उल्लेखनीय हिस्सा ओगटेका
             छन्। वडा नं.{" "}
             {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}
@@ -466,7 +466,7 @@ export default function FarmersGroupAnalysisSection({
         समूह प्रोफाइल
       </h2>
       <p className="mt-4">
-        गढवा गाउँपालिकाका व्यावसायिक कृषि तथा पशुपालन समूहहरूले विभिन्न
+        बुद्धशान्ति गाउँपालिकाका व्यावसायिक कृषि तथा पशुपालन समूहहरूले विभिन्न
         प्रकारका व्यावसायिक कृषि, पशुपालन र बागवानी क्षेत्रहरूमा काम गरिरहेका
         छन्। यी समूहहरूले उत्पादन, प्रशोधन, बजारीकरण र मूल्य श्रृंखला विकासमा
         महत्त्वपूर्ण भूमिका निर्वाह गर्दछन्।
@@ -481,7 +481,7 @@ export default function FarmersGroupAnalysisSection({
             {businessSummary[0]?.typeName || ""}
           </h3>
           <p className="text-muted-foreground text-sm mb-4">
-            गढवामा सबैभन्दा लोकप्रिय व्यावसायिक समूह, जुन कुल समूहको
+            बुद्धशान्तिमा सबैभन्दा लोकप्रिय व्यावसायिक समूह, जुन कुल समूहको
             {localizeNumber(
               businessSummary[0]?.percentage.toFixed(1) || "0",
               "ne",

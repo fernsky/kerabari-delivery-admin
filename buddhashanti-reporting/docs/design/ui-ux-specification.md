@@ -50,13 +50,17 @@
 /* Nepali Text */
 .nepali-text {
   font-family: "Mukti", "Kalimati", "Devanagari", serif;
-  font-feature-settings: "liga" 1, "kern" 1;
+  font-feature-settings:
+    "liga" 1,
+    "kern" 1;
 }
 
 /* English Text */
 .english-text {
   font-family: "Inter", "Segoe UI", "Roboto", sans-serif;
-  font-feature-settings: "liga" 1, "kern" 1;
+  font-feature-settings:
+    "liga" 1,
+    "kern" 1;
 }
 
 /* Monospace (Code/Data) */
@@ -172,9 +176,9 @@
 ```html
 <header class="main-header">
   <div class="header-brand">
-    <img src="logo.png" alt="गढवा नगरपालिका" class="logo" />
+    <img src="logo.png" alt="बुद्धशान्ति नगरपालिका" class="logo" />
     <div class="brand-text">
-      <h1 class="municipality-name nepali-text">गढवा नगरपालिका</h1>
+      <h1 class="municipality-name nepali-text">बुद्धशान्ति नगरपालिका</h1>
       <p class="tagline">डिजिटल प्रोफाइल प्रतिवेदन</p>
     </div>
   </div>
@@ -257,7 +261,7 @@
     margin: 2.5cm 2cm 2cm 2cm;
 
     @top-center {
-      content: "गढवा नगरपालिका - डिजिटल प्रोफाइल प्रतिवेदन";
+      content: "बुद्धशान्ति नगरपालिका - डिजिटल प्रोफाइल प्रतिवेदन";
       font-size: 10pt;
       color: #666;
     }

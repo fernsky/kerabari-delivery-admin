@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const birthplaceData =
       await api.profile.demographics.wardWiseBirthplaceHouseholds.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = birthplaceData.reduce(
@@ -75,13 +75,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका घरपरिवारको जन्मस्थान",
-      "गढवा परिवार जन्मस्थान वितरण",
+      "बुद्धशान्ति गाउँपालिका घरपरिवारको जन्मस्थान",
+      "बुद्धशान्ति परिवार जन्मस्थान वितरण",
       "वडा अनुसार जन्मस्थान विवरण",
       "घरपरिवारको जन्मस्थान विश्लेषण",
-      "स्थानीय घरपरिवार गढवा",
+      "स्थानीय घरपरिवार बुद्धशान्ति",
       "जिल्ला बाहिरका घर परिवार",
-      `गढवा घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      `बुद्धशान्ति घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार घरपरिवारको जन्मस्थानको वितरण र विश्लेषण। कुल घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${BIRTH_PLACE_NAMES[mostCommonBirthplace] || mostCommonBirthplace} बाट आएका देखिन्छ। विभिन्न वडाहरूमा घरपरिवारको जन्मस्थानको विस्तृत विश्लेषण।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरपरिवारको जन्मस्थानको वितरण र विश्लेषण। कुल घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${BIRTH_PLACE_NAMES[mostCommonBirthplace] || mostCommonBirthplace} बाट आएका देखिन्छ। विभिन्न वडाहरूमा घरपरिवारको जन्मस्थानको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of household birthplaces in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) are from ${BIRTH_PLACE_NAMES_EN[mostCommonBirthplace] || mostCommonBirthplace}. Detailed analysis of household birthplaces across various wards.`;
 
@@ -127,7 +127,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "घरपरिवारको जन्मस्थान | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "घरपरिवारको जन्मस्थान | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार घरपरिवारको जन्मस्थानको वितरण र विश्लेषण।",
     };
   }
@@ -261,7 +261,7 @@ export default async function WardWiseBirthplaceHouseholdsPage() {
               src="/images/birthplace-households.svg"
               width={1200}
               height={400}
-              alt="घरपरिवारको जन्मस्थान - गढवा गाउँपालिका (Household Birthplaces - Khajura Rural Municipality)"
+              alt="घरपरिवारको जन्मस्थान - बुद्धशान्ति गाउँपालिका (Household Birthplaces - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -269,7 +269,7 @@ export default async function WardWiseBirthplaceHouseholdsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा घरपरिवारको जन्मस्थान
+              बुद्धशान्ति गाउँपालिकामा घरपरिवारको जन्मस्थान
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -278,12 +278,12 @@ export default async function WardWiseBirthplaceHouseholdsPage() {
             <p>
               घरपरिवारको जन्मस्थान सम्बन्धी तथ्याङ्कले गाउँपालिकामा बसोबास गर्ने
               परिवारहरूको मूल स्थान, आप्रवासन प्रवृत्ति र जनसंख्या गतिशीलताको
-              विश्लेषण गर्न सहयोग गर्दछ। यस खण्डमा गढवा गाउँपालिकामा रहेका
-              घरपरिवारको जन्मस्थान अनुसारको वितरण र वडागत विश्लेषण प्रस्तुत
-              गरिएको छ।
+              विश्लेषण गर्न सहयोग गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकामा
+              रहेका घरपरिवारको जन्मस्थान अनुसारको वितरण र वडागत विश्लेषण
+              प्रस्तुत गरिएको छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको तथ्याङ्क
+              बुद्धशान्ति गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको तथ्याङ्क
               हेर्दा, कुल घरपरिवार{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               मध्ये सबैभन्दा बढी {overallSummary[0]?.birthPlaceName || ""}
@@ -305,8 +305,8 @@ export default async function WardWiseBirthplaceHouseholdsPage() {
               घरपरिवारको जन्मस्थान
             </h2>
             <p>
-              गढवा गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको विवरण र वितरण
-              निम्नानुसार रहेको छ:
+              बुद्धशान्ति गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको विवरण र
+              वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
 
@@ -327,7 +327,7 @@ export default async function WardWiseBirthplaceHouseholdsPage() {
               जन्मस्थान विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको विश्लेषण
+              बुद्धशान्ति गाउँपालिकामा रहेका परिवारहरूको जन्मस्थानको विश्लेषण
               गर्दा,
               {BIRTH_PLACE_NAMES[overallSummary[0]?.birthPlace || ""] ||
                 overallSummary[0]?.birthPlace}

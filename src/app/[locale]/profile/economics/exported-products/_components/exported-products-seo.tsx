@@ -44,11 +44,11 @@ export default function ExportedProductsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Exported Products Catalog of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Exported Products Catalog of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Comprehensive catalog of ${totalProducts.toLocaleString()} products exported from Khajura Rural Municipality, categorized by type and market potential.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Export catalog",
         "Economic profile",
         "Exported goods",
@@ -56,11 +56,11 @@ export default function ExportedProductsSEO({
         ...Object.values(CATEGORY_NAMES_EN).map((name) => `${name} exports`),
         ...categoryDistribution.map((cat) => `${cat.name} निर्यातित वस्तु`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/exported-products",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/exported-products",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

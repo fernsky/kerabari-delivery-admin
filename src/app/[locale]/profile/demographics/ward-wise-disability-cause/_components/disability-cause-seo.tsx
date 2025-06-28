@@ -55,11 +55,11 @@ export default function DisabilityCauseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Disability Cause Demographics of Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Disability Cause Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Disability cause distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population with disabilities of ${totalPopulationWithDisability.toLocaleString()} people. Main causes include ${topCausesDescription}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Disability cause demographics",
         "Disability statistics",
         "Ward-wise disability cause data",
@@ -71,11 +71,11 @@ export default function DisabilityCauseSEO({
           (name) => `${name} अपाङ्गता`,
         ),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/demographics/ward-wise-disability-cause",
+      url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-disability-cause",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

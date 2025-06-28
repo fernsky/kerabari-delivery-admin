@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseFinancialAccountsData =
       await api.profile.economics.wardWiseFinancialAccounts.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseFinancialAccountsData.reduce(
@@ -132,7 +132,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "गढवा गाउँपालिका वित्तीय पहुँच",
+      "बुद्धशान्ति गाउँपालिका वित्तीय पहुँच",
       "वित्तीय खाताको वितरण",
       "वडागत वित्तीय पहुँच",
       "बैंकमा पहुँच",
@@ -152,7 +152,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `गढवा गाउँपालिकामा वित्तीय खाताहरूको वितरणको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(bankPercentage, "ne")}% (${localizeNumber(bankTotal.toLocaleString(), "ne")}) घरधुरीले बैंकमा पहुँच राख्छन्। वडा ${localizeNumber(bestAccessWard, "ne")} मा सबैभन्दा राम्रो पहुँच छ, जहाँ ${localizeNumber(bestAccessPercentage.toFixed(2), "ne")}% घरधुरीले १५ मिनेट भित्र वित्तीय संस्था पुग्न सक्छन्।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वित्तीय खाताहरूको वितरणको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(bankPercentage, "ne")}% (${localizeNumber(bankTotal.toLocaleString(), "ne")}) घरधुरीले बैंकमा पहुँच राख्छन्। वडा ${localizeNumber(bestAccessWard, "ne")} मा सबैभन्दा राम्रो पहुँच छ, जहाँ ${localizeNumber(bestAccessPercentage.toFixed(2), "ne")}% घरधुरीले १५ मिनेट भित्र वित्तीय संस्था पुग्न सक्छन्।`;
 
     const descriptionEN = `Analysis of the distribution of financial accounts in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${bankPercentage}% (${bankTotal.toLocaleString()}) households have access to a bank. Ward ${bestAccessWard} has the best access, where ${bestAccessPercentage.toFixed(2)}% of households can reach a financial institution within 15 minutes.`;
 
@@ -184,7 +184,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "वित्तीय खाताको वितरण | गढवा गाउँपालिका डिजिटल प्रोफाइल",
+      title: "वित्तीय खाताको वितरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार वित्तीय खाताहरूको वितरण र विश्लेषण।",
     };
   }
@@ -436,7 +436,7 @@ export default async function WardWiseFinancialAccountsPage() {
               src="/images/financial-access.svg"
               width={1200}
               height={400}
-              alt="वित्तीय खाताको वितरण - गढवा गाउँपालिका (Distribution of Financial Accounts - Khajura Rural Municipality)"
+              alt="वित्तीय खाताको वितरण - बुद्धशान्ति गाउँपालिका (Distribution of Financial Accounts - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -444,7 +444,7 @@ export default async function WardWiseFinancialAccountsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा वित्तीय खाताहरूको वितरण
+              बुद्धशान्ति गाउँपालिकामा वित्तीय खाताहरूको वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -453,12 +453,12 @@ export default async function WardWiseFinancialAccountsPage() {
             <p>
               वित्तीय खाताहरूको वितरण आर्थिक विकासको महत्वपूर्ण सूचक हो र यसले
               नागरिकको वित्तीय समावेशीता र सशक्तिकरणमा प्रत्यक्ष प्रभाव पार्दछ।
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा नागरिकले वित्तीय
-              खातामा पहुँच बनाउन लाग्ने समयको विश्लेषण प्रस्तुत गरिएको छ, जसले
-              भविष्यको वित्तीय नीति निर्माणमा सहयोग पुर्याउने छ।
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा नागरिकले
+              वित्तीय खातामा पहुँच बनाउन लाग्ने समयको विश्लेषण प्रस्तुत गरिएको
+              छ, जसले भविष्यको वित्तीय नीति निर्माणमा सहयोग पुर्याउने छ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}{" "}
               घरधुरीमध्ये
               {localizeNumber(bankPercentage, "ne")}% अर्थात{" "}
@@ -476,7 +476,7 @@ export default async function WardWiseFinancialAccountsPage() {
               वित्तीय खाताको वितरण
             </h2>
             <p>
-              गढवा गाउँपालिकामा वित्तीय खाताको वितरण निम्नानुसार रहेको छ:
+              बुद्धशान्ति गाउँपालिकामा वित्तीय खाताको वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
 
@@ -509,7 +509,7 @@ export default async function WardWiseFinancialAccountsPage() {
               वित्तीय पहुँच विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा वित्तीय खाताहरूको विश्लेषण गर्दा, समग्रमा
+              बुद्धशान्ति गाउँपालिकामा वित्तीय खाताहरूको विश्लेषण गर्दा, समग्रमा
               {localizeNumber(bankPercentage, "ne")}% घरधुरीहरू बैंकमा पहुँच
               राख्छन् र{localizeNumber(financePercentage, "ne")}% घरधुरीहरू
               वित्तीय संस्थामा पहुँच राख्छन्। वडागत रूपमा हेर्दा वडा नं.{" "}
@@ -545,7 +545,7 @@ export default async function WardWiseFinancialAccountsPage() {
             </h2>
 
             <p>
-              गढवा गाउँपालिकामा वित्तीय खाताहरूको वितरणको तथ्याङ्क
+              बुद्धशान्ति गाउँपालिकामा वित्तीय खाताहरूको वितरणको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -598,7 +598,7 @@ export default async function WardWiseFinancialAccountsPage() {
             </div>
 
             <p className="mt-6">
-              यसरी गढवा गाउँपालिकामा वित्तीय खाताहरूको वितरणको विश्लेषणले
+              यसरी बुद्धशान्ति गाउँपालिकामा वित्तीय खाताहरूको वितरणको विश्लेषणले
               पालिकामा वित्तीय समावेशीकरणको अवस्था र भविष्यको रणनीति निर्माणमा
               महत्वपूर्ण भूमिका खेल्दछ। यसका लागि वडागत विशेषताहरूलाई ध्यानमा
               राखी वित्तीय सेवा विस्तारका कार्यक्रमहरू तर्जुमा गर्नु आवश्यक

@@ -153,7 +153,7 @@ export default function AgeAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / गढवा गाउँपालिका",
+        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-population",
@@ -491,7 +491,8 @@ export default function AgeAnalysisSection({
         </h3>
         <div className="prose prose-slate dark:prose-invert max-w-none">
           <p>
-            गढवा गाउँपालिकाको जनसंख्या संरचनाले निम्न नीतिगत निर्देशन गर्दछ:
+            बुद्धशान्ति गाउँपालिकाको जनसंख्या संरचनाले निम्न नीतिगत निर्देशन
+            गर्दछ:
           </p>
 
           <ul>

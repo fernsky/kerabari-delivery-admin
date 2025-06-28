@@ -1,5 +1,5 @@
 """
-Economics processors package for Gadhawa Rural Municipality.
+Economics processors package for buddhashanti Rural Municipality.
 """
 
 from .manager import (

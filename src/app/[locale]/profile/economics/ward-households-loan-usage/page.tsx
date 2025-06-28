@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const loanUsageData =
       await api.profile.economics.wardWiseHouseholdsLoanUse.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = loanUsageData.reduce(
@@ -51,16 +51,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका कर्जा उपयोग",
-      "गढवा ऋण प्रयोजन",
-      `गढवा ${loanUseLabels[topLoanUses[0]]} कर्जा`,
+      "बुद्धशान्ति गाउँपालिका कर्जा उपयोग",
+      "बुद्धशान्ति ऋण प्रयोजन",
+      `बुद्धशान्ति ${loanUseLabels[topLoanUses[0]]} कर्जा`,
       ...topLoanUses.map(
-        (r) => `${loanUseLabels[r]} उद्देश्यका लागि कर्जा गढवा`,
+        (r) => `${loanUseLabels[r]} उद्देश्यका लागि कर्जा बुद्धशान्ति`,
       ),
       "वडा अनुसार कर्जा उपयोग",
       "ऋण प्रयोजन तथ्याङ्क",
-      "कर्जा प्रयोजन सर्वेक्षण गढवा",
-      `गढवा कुल ऋणी घरपरिवार संख्या ${totalHouseholds}`,
+      "कर्जा प्रयोजन सर्वेक्षण बुद्धशान्ति",
+      `बुद्धशान्ति कुल ऋणी घरपरिवार संख्या ${totalHouseholds}`,
     ];
 
     const keywordsEN = [
@@ -75,7 +75,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकामा वडा अनुसार कर्जाको उपयोग प्रयोजन वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${totalHouseholds} मध्ये ${loanUseLabels[topLoanUses[0]]} (${loanUseCounts[topLoanUses[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${loanUseLabels[topLoanUses[1]]} (${loanUseCounts[topLoanUses[1]]}) र ${loanUseLabels[topLoanUses[2]]} (${loanUseCounts[topLoanUses[2]]})। विभिन्न ऋण उपयोग प्रयोजनको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वडा अनुसार कर्जाको उपयोग प्रयोजन वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${totalHouseholds} मध्ये ${loanUseLabels[topLoanUses[0]]} (${loanUseCounts[topLoanUses[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${loanUseLabels[topLoanUses[1]]} (${loanUseCounts[topLoanUses[1]]}) र ${loanUseLabels[topLoanUses[2]]} (${loanUseCounts[topLoanUses[2]]})। विभिन्न ऋण उपयोग प्रयोजनको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise loan usage distribution, trends and analysis for Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${loanUseLabels[topLoanUses[0]]} (${loanUseCounts[topLoanUses[0]]}) is the largest category, followed by ${loanUseLabels[topLoanUses[1]]} (${loanUseCounts[topLoanUses[1]]}) and ${loanUseLabels[topLoanUses[2]]} (${loanUseCounts[topLoanUses[2]]})। Detailed statistics and visualizations of various loan usage purposes.`;
 
@@ -243,7 +243,7 @@ export default async function WardHouseholdsLoanUsagePage() {
               src="/images/loan-usage.svg"
               width={1200}
               height={400}
-              alt="कर्जाको उपयोग प्रयोजन - गढवा गाउँपालिका (Loan Usage Purposes - Khajura Rural Municipality)"
+              alt="कर्जाको उपयोग प्रयोजन - बुद्धशान्ति गाउँपालिका (Loan Usage Purposes - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -251,20 +251,20 @@ export default async function WardHouseholdsLoanUsagePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा कर्जाको उपयोग प्रयोजन
+              बुद्धशान्ति गाउँपालिकामा कर्जाको उपयोग प्रयोजन
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा रहेका
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
               घरपरिवारहरूले लिएका कर्जाको उपयोग प्रयोजन सम्बन्धी विस्तृत
               तथ्याङ्क प्रस्तुत गरिएको छ। यो तथ्याङ्कले आर्थिक गतिविधि, लगानीको
               स्वरूप र आर्थिक विकासको प्रवृत्तिलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिकामा कुल {totalHouseholds.toLocaleString()}{" "}
+              बुद्धशान्ति गाउँपालिकामा कुल {totalHouseholds.toLocaleString()}{" "}
               घरपरिवारले विभिन्न प्रयोजनका लागि कर्जा लिएका छन्। यस तथ्याङ्कले
               स्थानीय अर्थतन्त्रको प्राथमिकताहरू बुझ्न र आर्थिक विकासका लागि
               लक्षित कार्यक्रमहरू निर्माण गर्न सहयोग गर्दछ।
@@ -277,7 +277,7 @@ export default async function WardHouseholdsLoanUsagePage() {
               कर्जाको प्रयोजन अनुसार घरपरिवार
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न प्रयोजनका लागि कर्जा लिएका
+              बुद्धशान्ति गाउँपालिकामा विभिन्न प्रयोजनका लागि कर्जा लिएका
               घरपरिवारहरूको संख्या निम्नानुसार छ:
             </p>
           </div>
@@ -298,9 +298,10 @@ export default async function WardHouseholdsLoanUsagePage() {
               प्रमुख कर्जा प्रयोजनहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा घरपरिवारहरूले विभिन्न प्रयोजनका लागि कर्जा
-              लिने गरेका छन्। यीमध्ये {overallSummary[0]?.loanUseName || ""}{" "}
-              सबैभन्दा प्रमुख प्रयोजन हो, जसका लागि कुल ऋणी घरपरिवारको{" "}
+              बुद्धशान्ति गाउँपालिकामा घरपरिवारहरूले विभिन्न प्रयोजनका लागि
+              कर्जा लिने गरेका छन्। यीमध्ये{" "}
+              {overallSummary[0]?.loanUseName || ""} सबैभन्दा प्रमुख प्रयोजन हो,
+              जसका लागि कुल ऋणी घरपरिवारको{" "}
               {(
                 ((overallSummary[0]?.households || 0) / totalHouseholds) *
                 100
@@ -319,7 +320,7 @@ export default async function WardHouseholdsLoanUsagePage() {
               तथ्याङ्क स्रोत
             </h2>
             <p>
-              माथि प्रस्तुत गरिएका तथ्याङ्कहरू गढवा गाउँपालिकाको घरधुरी
+              माथि प्रस्तुत गरिएका तथ्याङ्कहरू बुद्धशान्ति गाउँपालिकाको घरधुरी
               सर्वेक्षण र स्थानीय वित्तीय संस्थाहरूको रेकर्डबाट संकलन गरिएको हो।
               यी तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>

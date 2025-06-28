@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const incomeSourcesData =
       await api.profile.economics.wardWiseHouseholdIncomeSource.getAll.query();
-    const municipalityName = "गढवा गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = incomeSourcesData.reduce(
@@ -69,16 +69,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "गढवा गाउँपालिका आयस्रोत",
-      "गढवा घरपरिवार आय",
-      `गढवा ${INCOME_SOURCE_NAMES_NP[topIncomeSources[0]]} घरपरिवार`,
+      "बुद्धशान्ति गाउँपालिका आयस्रोत",
+      "बुद्धशान्ति घरपरिवार आय",
+      `बुद्धशान्ति ${INCOME_SOURCE_NAMES_NP[topIncomeSources[0]]} घरपरिवार`,
       ...topIncomeSources.map(
-        (r) => `${INCOME_SOURCE_NAMES_NP[r]} आय गढवा`,
+        (r) => `${INCOME_SOURCE_NAMES_NP[r]} आय बुद्धशान्ति`,
       ),
       "वडा अनुसार आयस्रोत",
       "आय विविधता तथ्याङ्क",
-      "आर्थिक जनगणना गढवा",
-      `गढवा कुल घरपरिवार ${totalHouseholds}`,
+      "आर्थिक जनगणना बुद्धशान्ति",
+      `बुद्धशान्ति कुल घरपरिवार ${totalHouseholds}`,
     ];
 
     const keywordsEN = [
@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `गढवा गाउँपालिकाको वडा अनुसार घरपरिवारको आयस्रोत वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार ${totalHouseholds} मध्ये ${INCOME_SOURCE_NAMES_NP[topIncomeSources[0]]} (${incomeCounts[topIncomeSources[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${INCOME_SOURCE_NAMES_NP[topIncomeSources[1]]} (${incomeCounts[topIncomeSources[1]]}) र ${INCOME_SOURCE_NAMES_NP[topIncomeSources[2]]} (${incomeCounts[topIncomeSources[2]]})। विभिन्न आयस्रोतहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरपरिवारको आयस्रोत वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार ${totalHouseholds} मध्ये ${INCOME_SOURCE_NAMES_NP[topIncomeSources[0]]} (${incomeCounts[topIncomeSources[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${INCOME_SOURCE_NAMES_NP[topIncomeSources[1]]} (${incomeCounts[topIncomeSources[1]]}) र ${INCOME_SOURCE_NAMES_NP[topIncomeSources[2]]} (${incomeCounts[topIncomeSources[2]]})। विभिन्न आयस्रोतहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise household income source distribution, trends and analysis for Khajura Rural Municipality. Out of total ${totalHouseholds} households, ${INCOME_SOURCE_NAMES_EN[topIncomeSources[0]]} (${incomeCounts[topIncomeSources[0]]}) is the largest group, followed by ${INCOME_SOURCE_NAMES_EN[topIncomeSources[1]]} (${incomeCounts[topIncomeSources[1]]}) and ${INCOME_SOURCE_NAMES_EN[topIncomeSources[2]]} (${incomeCounts[topIncomeSources[2]]})। Detailed statistics and visualizations of various income sources.`;
 
@@ -252,7 +252,7 @@ export default async function IncomeSourcesPage() {
               src="/images/income-sources.svg"
               width={1200}
               height={400}
-              alt="घरपरिवारको आयस्रोत - गढवा गाउँपालिका (Household Income Sources - Khajura Rural Municipality)"
+              alt="घरपरिवारको आयस्रोत - बुद्धशान्ति गाउँपालिका (Household Income Sources - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -260,20 +260,20 @@ export default async function IncomeSourcesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              गढवा गाउँपालिकामा घरपरिवारको आयस्रोत
+              बुद्धशान्ति गाउँपालिकामा घरपरिवारको आयस्रोत
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा बसोबास गर्ने
+              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा बसोबास गर्ने
               घरपरिवारहरूको प्रमुख आयस्रोतहरू सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत
               गरिएको छ। यो तथ्याङ्कले आर्थिक गतिविधि, रोजगारीको स्वरूप, र
               स्थानीय अर्थतन्त्रको संरचनालाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              गढवा गाउँपालिकामा विविध आयस्रोतमा निर्भर घरपरिवारहरू बसोबास
+              बुद्धशान्ति गाउँपालिकामा विविध आयस्रोतमा निर्भर घरपरिवारहरू बसोबास
               गर्दछन्। कुल घरपरिवार {totalHouseholds.toLocaleString()} मध्ये{" "}
               {overallSummary[0]?.incomeName || ""} बाट आय आर्जन गर्ने
               घरपरिवारहरू{" "}
@@ -292,7 +292,7 @@ export default async function IncomeSourcesPage() {
               आयस्रोत अनुसार घरपरिवार
             </h2>
             <p>
-              गढवा गाउँपालिकामा विभिन्न आयस्रोतमा निर्भर घरपरिवारहरूको
+              बुद्धशान्ति गाउँपालिकामा विभिन्न आयस्रोतमा निर्भर घरपरिवारहरूको
               संख्या निम्नानुसार छ:
             </p>
           </div>
@@ -313,8 +313,8 @@ export default async function IncomeSourcesPage() {
               प्रमुख आयस्रोतहरूको विश्लेषण
             </h2>
             <p>
-              गढवा गाउँपालिकामा निम्न आयस्रोतहरू प्रमुख रूपमा देखिएका छन्।
-              यी आयस्रोतहरूमध्ये{" "}
+              बुद्धशान्ति गाउँपालिकामा निम्न आयस्रोतहरू प्रमुख रूपमा देखिएका
+              छन्। यी आयस्रोतहरूमध्ये{" "}
               {INCOME_SOURCE_NAMES[overallSummary[0]?.incomeSource] || "कृषि"}
               सबैभन्दा धेरै घरपरिवारहरूको मुख्य आयस्रोत हो, जसलाई कुल घरपरिवारको{" "}
               {(
@@ -336,7 +336,7 @@ export default async function IncomeSourcesPage() {
             </h2>
             <p>
               माथि प्रस्तुत गरिएका तथ्याङ्कहरू नेपालको राष्ट्रिय जनगणना र
-              गढवा गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
+              बुद्धशान्ति गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
               तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>
 

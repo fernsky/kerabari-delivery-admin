@@ -24,11 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
     const demographicData = await api.profile.demographics.summary.get.query();
 
     // SEO metadata setup - municipality name and details
-    const municipalityName = "गढवा गाउँपालिका";
+    const municipalityName = "बुद्धशान्ति गाउँपालिका";
     const municipalityNameEn = "Khajura Rural Municipality";
-    const districtName = "दाङ";
+    const districtName = "झापा";
     const districtNameEn = "Banke";
-    const provinceName = "लुम्बिनी प्रदेश";
+    const provinceName = "कोशी प्रदेश";
     const provinceNameEn = "Lumbini Province";
 
     // Process demographic data for SEO
@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `${municipalityName} दाङ जिल्लाको एक प्रमुख स्थानीय तह हो। यहाँको कुल जनसंख्या ${totalPopulation.toLocaleString()} र कुल घरधुरी संख्या ${totalHouseholds.toLocaleString()} छ।  यस पालिकामा पुरुष जनसंख्या ${malePopulation.toLocaleString()}, महिला जनसंख्या ${femalePopulation.toLocaleString()} र साक्षरता दर ${literacyRate}% रहेको छ। ${municipalityName}को आधिकारिक वेबसाइटमा स्वागत छ।`;
+    const descriptionNP = `${municipalityName} झापा जिल्लाको एक प्रमुख स्थानीय तह हो। यहाँको कुल जनसंख्या ${totalPopulation.toLocaleString()} र कुल घरधुरी संख्या ${totalHouseholds.toLocaleString()} छ।  यस पालिकामा पुरुष जनसंख्या ${malePopulation.toLocaleString()}, महिला जनसंख्या ${femalePopulation.toLocaleString()} र साक्षरता दर ${literacyRate}% रहेको छ। ${municipalityName}को आधिकारिक वेबसाइटमा स्वागत छ।`;
 
     const descriptionEN = `${municipalityNameEn} is a major local body of ${districtNameEn} district. It has a total population of ${totalPopulation.toLocaleString()} and ${totalHouseholds.toLocaleString()} households. The municipality has ${malePopulation.toLocaleString()} male population, ${femalePopulation.toLocaleString()} female population, and a literacy rate of ${literacyRate}%. Welcome to the official website of ${municipalityNameEn}.`;
 
@@ -88,7 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: `${municipalityName} डिजिटल प्रोफाइल`,
         images: [
           {
-            url: "https://digital.gadhawamun.gov.np/images/municipality-logo.png",
+            url: "https://digital.buddhashantimun.gov.np/images/municipality-logo.png",
             width: 1200,
             height: 630,
             alt: municipalityName,
@@ -100,16 +100,16 @@ export async function generateMetadata(): Promise<Metadata> {
         title: `${municipalityName} | आधिकारिक वेबसाइट`,
         description: descriptionNP,
         images: [
-          "https://digital.gadhawamun.gov.np/images/municipality-logo.png",
+          "https://digital.buddhashantimun.gov.np/images/municipality-logo.png",
         ],
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "गढवा गाउँपालिका | आधिकारिक वेबसाइट",
+      title: "बुद्धशान्ति गाउँपालिका | आधिकारिक वेबसाइट",
       description:
-        "गढवा गाउँपालिका दाङ जिल्लाको एक प्रमुख स्थानीय तह हो। पालिकाको आधिकारिक वेबसाइटमा स्वागत छ।",
+        "बुद्धशान्ति गाउँपालिका झापा जिल्लाको एक प्रमुख स्थानीय तह हो। पालिकाको आधिकारिक वेबसाइटमा स्वागत छ।",
     };
   }
 }
@@ -125,11 +125,11 @@ export default async function Page({ params }: LanguageParams) {
     await api.profile.demographics.wardTimeSeries.summary.query();
 
   // SEO metadata setup - municipality name and details
-  const municipalityName = "गढवा गाउँपालिका";
+  const municipalityName = "बुद्धशान्ति गाउँपालिका";
   const municipalityNameEn = "Khajura Rural Municipality";
-  const districtName = "दाङ";
+  const districtName = "झापा";
   const provinceNumber = 5;
-  const provinceName = "लुम्बिनी प्रदेश";
+  const provinceName = "कोशी प्रदेश";
 
   return (
     <>

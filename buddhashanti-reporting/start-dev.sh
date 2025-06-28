@@ -1,7 +1,7 @@
 #!/bin/bash
-# Development server startup script for gadhawa Report System
+# Development server startup script for buddhashanti Report System
 
-echo "Starting gadhawa Digital Profile Report System..."
+echo "Starting buddhashanti Digital Profile Report System..."
 echo
 
 # Activate virtual environment

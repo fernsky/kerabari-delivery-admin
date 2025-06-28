@@ -73,11 +73,11 @@ export default function ForeignEmploymentSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Foreign Employment Destinations from Khajura Rural Municipality (गढवा गाउँपालिका)",
+      name: "Foreign Employment Destinations from Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
       description: `Foreign employment statistics across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalPopulation.toLocaleString()} migrant workers. The most common destination is ${mostCommonCountryEN} with ${mostCommonCountry?.population.toLocaleString()} workers (${mostCommonCountryPercentage}%). Gulf countries account for ${gulfCountriesPercentage}% of all foreign employment. Estimated annual remittance is NPR ${remittanceCrores} crore.`,
       keywords: [
         "Khajura Rural Municipality",
-        "गढवा गाउँपालिका",
+        "बुद्धशान्ति गाउँपालिका",
         "Foreign employment",
         "Migrant workers",
         "Destination countries",
@@ -90,13 +90,13 @@ export default function ForeignEmploymentSEO({
           .map((name) => `${name} Nepali workers statistics`),
         ...Object.values(COUNTRY_NAMES)
           .slice(0, 10)
-          .map((name) => `${name} मा कार्यरत गढवावासी`),
+          .map((name) => `${name} मा कार्यरत बुद्धशान्तिवासी`),
       ],
-      url: "https://digital.gadhawamun.gov.np/profile/economics/ward-wise-foreign-employment-countries",
+      url: "https://digital.buddhashantimun.gov.np/profile/economics/ward-wise-foreign-employment-countries",
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        url: "https://digital.gadhawamun.gov.np",
+        url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {

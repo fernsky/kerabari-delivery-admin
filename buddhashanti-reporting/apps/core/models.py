@@ -1,5 +1,5 @@
 """
-Base models for gadhawa Report System.
+Base models for buddhashanti Report System.
 
 This module contains abstract base models that provide common functionality
 for other models in the system.
@@ -57,8 +57,8 @@ class WardModel(BaseModel):
     ward_number = models.IntegerField(
         verbose_name=_("वडा नं"),  # Ward Number
         help_text=_(
-            "गढवा गाउँपालिकाको वडा नम्बर (१-८)"
-        ),  # Ward number of GadhawaRural Municipality (1-8)
+            "बुद्धशान्ति गाउँपालिकाको वडा नम्बर (१-८)"
+        ),  # Ward number of buddhashantiRural Municipality (1-8)
     )
 
     class Meta:
