@@ -66,8 +66,8 @@ export function RemittanceExpensesReport() {
       processedData.expenseData[key].households > 0
     ).length;
     
-    // Adjust legend height based on number of categories - reduced for better spacing
-    const legendHeight = Math.ceil(numCategories / 4) * 25 + 30; // Reduced padding
+    // Adjust legend height based on number of categories - increased for better spacing
+    const legendHeight = Math.ceil(numCategories / 4) * 30 + 40; // Increased padding for better spacing
     
     // Adjust max bar width based on number of wards - wider bars for better visibility
     const maxBarWidth = numWards <= 9 ? 70 : 60; // Increased bar width

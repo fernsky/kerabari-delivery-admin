@@ -218,11 +218,11 @@ export class ChartGenerator {
       </svg>`;
     }
 
-    // Calculate margins - reduced bottom margin to bring legend closer
+    // Calculate margins - increased bottom margin to prevent legend truncation
     const margin = { 
       top: 40, 
       right: 40, 
-      bottom: 80 + legendHeight, // Reduced bottom margin
+      bottom: 100 + legendHeight, // Increased bottom margin to prevent legend truncation
       left: 80 
     };
     
@@ -270,8 +270,8 @@ export class ChartGenerator {
         }
       });
 
-      // Ward labels - rotated for better fit
-      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 20}" text-anchor="middle" class="axis" transform="rotate(-45 ${x + optimalBarWidth / 2} ${margin.top + chartHeight + 20})">
+      // Ward labels - straight labels for better readability
+      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 25}" text-anchor="middle" class="axis">
         वडा ${ChartGenerator.formatNumber(parseInt(ward), nepaliNumbers)}
       </text>`;
     });
@@ -308,7 +308,7 @@ export class ChartGenerator {
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        svg += `<rect x="${x}" y="${y - 7}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        svg += `<rect x="${x}" y="${y - 7}" width="12" height="12" fill="${color}"/>`;
         svg += `<text x="${x + 18}" y="${y}" class="legend">${category}</text>`;
       });
     }
@@ -491,8 +491,8 @@ export class ChartGenerator {
         }
       });
 
-      // Ward labels - rotated for better fit
-      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 15}" text-anchor="middle" class="axis" transform="rotate(-45 ${x + optimalBarWidth / 2} ${margin.top + chartHeight + 15})">
+      // Ward labels - straight labels for better readability
+      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 25}" text-anchor="middle" class="axis">
         वडा ${ChartGenerator.formatNumber(parseInt(ward), nepaliNumbers)}
       </text>`;
     });
@@ -529,7 +529,7 @@ export class ChartGenerator {
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        svg += `<rect x="${x}" y="${y - 6}" width="10" height="10" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        svg += `<rect x="${x}" y="${y - 6}" width="10" height="10" fill="${color}"/>`;
         svg += `<text x="${x + 15}" y="${y}" class="legend">${category}</text>`;
       });
     }
