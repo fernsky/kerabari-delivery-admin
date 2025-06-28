@@ -66,11 +66,11 @@ export function RemittanceExpensesReport() {
       processedData.expenseData[key].households > 0
     ).length;
     
-    // Adjust legend height based on number of categories
-    const legendHeight = Math.ceil(numCategories / 4) * 20 + 20; // 20px per row + padding
+    // Adjust legend height based on number of categories - reduced for better spacing
+    const legendHeight = Math.ceil(numCategories / 4) * 25 + 30; // Reduced padding
     
-    // Adjust max bar width based on number of wards
-    const maxBarWidth = numWards <= 9 ? 60 : 45; // Wider bars for fewer wards
+    // Adjust max bar width based on number of wards - wider bars for better visibility
+    const maxBarWidth = numWards <= 9 ? 70 : 60; // Increased bar width
 
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
@@ -80,8 +80,8 @@ export function RemittanceExpensesReport() {
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 700,
-        height: 400,
+        width: 800, // Increased width for better spread
+        height: 600, // Increased height for better proportions
         showLegend: true,
         nepaliNumbers: true,
         legendHeight: legendHeight,
@@ -196,10 +196,12 @@ export function RemittanceExpensesReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "400px", 
+              height: "600px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "800px", // Ensure the chart can use the full width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
           />

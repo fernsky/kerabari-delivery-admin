@@ -68,10 +68,12 @@ export function ForeignEmploymentCountriesReport() {
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 700,
-        height: 400,
+        width: 800,
+        height: 500,
         showLegend: true,
-        nepaliNumbers: true
+        nepaliNumbers: true,
+        maxBarWidth: 45,
+        legendHeight: 100
       })
     };
   }, [processedData]);
@@ -149,10 +151,12 @@ export function ForeignEmploymentCountriesReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "400px", 
+              height: "500px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "800px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
           />

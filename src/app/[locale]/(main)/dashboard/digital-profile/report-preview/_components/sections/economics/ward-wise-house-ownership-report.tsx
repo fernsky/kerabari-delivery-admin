@@ -89,7 +89,9 @@ export function WardWiseHouseOwnershipReport() {
         width: 800,
         height: 500,
         showLegend: true,
-        nepaliNumbers: true
+        nepaliNumbers: true,
+        maxBarWidth: 45,
+        legendHeight: 100
       })
     };
   }, [processedData]);
@@ -155,8 +157,7 @@ export function WardWiseHouseOwnershipReport() {
               height: "450px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center",
-              backgroundColor: "#f9fafb"
+              justifyContent: "center"
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
@@ -174,7 +175,8 @@ export function WardWiseHouseOwnershipReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              backgroundColor: "#f9fafb"
+              maxWidth: "800px", // Ensure the chart can use the full width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
           />

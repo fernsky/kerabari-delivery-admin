@@ -181,13 +181,13 @@ export class ChartGenerator {
     config: ChartConfig = {}
   ): string {
     const {
-      width = 700,
-      height = 400,
+      width = 800,
+      height = 600, // Increased height for better proportions
       colors = ChartGenerator.defaultColors,
       showLegend = true,
       nepaliNumbers = true,
-      legendHeight = 60, // Default legend height
-      maxBarWidth = 50   // Maximum bar width in pixels
+      legendHeight = 80, // Reduced legend height to reduce gap
+      maxBarWidth = 60   // Increased bar width for better visibility
     } = config;
 
     // Handle empty data
@@ -218,20 +218,20 @@ export class ChartGenerator {
       </svg>`;
     }
 
-    // Calculate margins based on content
+    // Calculate margins - reduced bottom margin to bring legend closer
     const margin = { 
-      top: 30, 
-      right: 30, 
-      bottom: 80 + legendHeight, // Add legend height to bottom margin
-      left: 60 
+      top: 40, 
+      right: 40, 
+      bottom: 80 + legendHeight, // Reduced bottom margin
+      left: 80 
     };
     
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
-    // Calculate optimal bar width to use maximum available space
+    // Calculate optimal bar width - use more of available space
     const availableWidth = chartWidth;
-    const optimalBarWidth = Math.min(availableWidth / wards.length, maxBarWidth);
+    const optimalBarWidth = Math.min(availableWidth / Math.max(wards.length, 1), maxBarWidth);
     const totalBarWidth = wards.length * optimalBarWidth;
     const startX = margin.left + (chartWidth - totalBarWidth) / 2; // Center the bars
 
@@ -240,8 +240,8 @@ export class ChartGenerator {
     // Add styles - no background
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .axis { font-size: 10px; }
-      .legend { font-size: 10px; }
+      .axis { font-size: 11px; }
+      .legend { font-size: 11px; }
     </style>`;
 
     // Draw axes
@@ -264,13 +264,14 @@ export class ChartGenerator {
           const barHeight = (value / maxTotalValue) * chartHeight;
           const color = colors[categoryIndex % colors.length];
           
+          // Use wider bars with less padding for better appearance
           svg += `<rect x="${x + optimalBarWidth * 0.1}" y="${currentY - barHeight}" width="${optimalBarWidth * 0.8}" height="${barHeight}" fill="${color}"/>`;
           currentY -= barHeight;
         }
       });
 
       // Ward labels - rotated for better fit
-      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 15}" text-anchor="middle" class="axis" transform="rotate(-45 ${x + optimalBarWidth / 2} ${margin.top + chartHeight + 15})">
+      svg += `<text x="${x + optimalBarWidth / 2}" y="${margin.top + chartHeight + 20}" text-anchor="middle" class="axis" transform="rotate(-45 ${x + optimalBarWidth / 2} ${margin.top + chartHeight + 20})">
         वडा ${ChartGenerator.formatNumber(parseInt(ward), nepaliNumbers)}
       </text>`;
     });
@@ -280,20 +281,20 @@ export class ChartGenerator {
     for (let i = 0; i <= yAxisSteps; i++) {
       const value = (maxTotalValue / yAxisSteps) * i;
       const y = margin.top + chartHeight - (i * chartHeight / yAxisSteps);
-      svg += `<text x="${margin.left - 5}" y="${y}" text-anchor="end" class="axis">
+      svg += `<text x="${margin.left - 8}" y="${y}" text-anchor="end" class="axis">
         ${ChartGenerator.formatNumber(Math.round(value), nepaliNumbers)}
       </text>`;
-      svg += `<line x1="${margin.left - 3}" y1="${y}" x2="${margin.left}" y2="${y}" stroke="black"/>`;
+      svg += `<line x1="${margin.left - 5}" y1="${y}" x2="${margin.left}" y2="${y}" stroke="black"/>`;
     }
 
-    // Legend - flexible layout with height adjustment
+    // Legend - positioned closer to chart with better spacing
     if (showLegend) {
       const maxItemsPerRow = 4;
-      const itemSpacing = 120;
-      const rowHeight = 18;
+      const itemSpacing = 140; // Increased spacing between legend items
+      const rowHeight = 22; // Increased row height for better readability
       
       const totalRows = Math.ceil(categories.length / maxItemsPerRow);
-      const legendStartY = height - legendHeight + 20;
+      const legendStartY = height - legendHeight + 20; // Reduced top margin for legend
       
       categories.forEach((category, index) => {
         const row = Math.floor(index / maxItemsPerRow);
@@ -307,8 +308,8 @@ export class ChartGenerator {
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
-        svg += `<rect x="${x}" y="${y - 6}" width="10" height="10" fill="${color}" stroke="black" stroke-width="0.5"/>`;
-        svg += `<text x="${x + 15}" y="${y}" class="legend">${category}</text>`;
+        svg += `<rect x="${x}" y="${y - 7}" width="12" height="12" fill="${color}" stroke="black" stroke-width="0.5"/>`;
+        svg += `<text x="${x + 18}" y="${y}" class="legend">${category}</text>`;
       });
     }
 
