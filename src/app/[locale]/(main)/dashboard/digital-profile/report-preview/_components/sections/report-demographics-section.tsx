@@ -9,6 +9,12 @@ import { EconomicallyActiveReport } from "./demographics/economically-active-rep
 import { DisabilityCauseReport } from "./demographics/disability-cause-report";
 import { DeathCauseReport } from "./demographics/death-cause-report";
 import { DeathRegistrationReport } from "./demographics/death-registration-report";
+import { WardWiseMigratedHouseholdsReport } from "./demographics/ward-wise-migrated-households-report";
+import { WardWiseBirthplaceHouseholdsReport } from "./demographics/ward-wise-birthplace-households-report";
+import { WardWiseBirthCertificatePopulationReport } from "./demographics/ward-wise-birth-certificate-population-report";
+import { WardWiseAbsenteeEducationalLevelReport } from "./demographics/ward-wise-absentee-educational-level-report";
+import { WardAgeWiseMaritalStatusReport } from "./demographics/ward-age-wise-marital-status-report";
+import { WardAgeGenderWiseMarriedAgeReport } from "./demographics/ward-age-gender-wise-married-age-report";
 // import { FemalePropertyOwnershipReport } from "./demographics/female-property-ownership-report";
 
 export function ReportDemographicsSection() {
@@ -75,6 +81,36 @@ export function ReportDemographicsSection() {
       {/* Death Registration Section */}
       <div className="section-within-category">
         <DeathRegistrationReport />
+      </div>
+
+      {/* Ward Wise Migrated Households Section */}
+      <div className="section-within-category">
+        <WardWiseMigratedHouseholdsReport />
+      </div>
+
+      {/* Ward Wise Birthplace Households Section */}
+      <div className="section-within-category">
+        <WardWiseBirthplaceHouseholdsReport />
+      </div>
+
+      {/* Ward Wise Birth Certificate Population Section */}
+      <div className="section-within-category">
+        <WardWiseBirthCertificatePopulationReport />
+      </div>
+
+      {/* Ward Wise Absentee Educational Level Section */}
+      <div className="section-within-category">
+        <WardWiseAbsenteeEducationalLevelReport />
+      </div>
+
+      {/* Ward Age Wise Marital Status Section */}
+      <div className="section-within-category">
+        <WardAgeWiseMaritalStatusReport />
+      </div>
+
+      {/* Ward Age Gender Wise Married Age Section */}
+      <div className="section-within-category">
+        <WardAgeGenderWiseMarriedAgeReport />
       </div>
       </div>
     );
