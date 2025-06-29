@@ -93,34 +93,69 @@ export const getAllMunicipalityWideCastePopulation = publicProcedure
 export const getMunicipalityWideCastePopulationSummary = publicProcedure.query(
   async ({ ctx }) => {
     try {
-      // Get all caste population data
-      const casteData = await getAllMunicipalityWideCastePopulation.resolver({
-        ctx,
-        input: undefined,
-        type: 'query',
-        path: 'getMunicipalityWideCastePopulationSummary',
-        rawInput: undefined,
-      });
+      // Set UTF-8 encoding explicitly before running query
+      await ctx.db.execute(sql`SET client_encoding = 'UTF8'`);
+
+      // First try to get data from municipality-wide table
+      let data: any[];
+      try {
+        const baseQuery = ctx.db.select().from(municipalityWideCastePopulation);
+        data = await baseQuery.orderBy(municipalityWideCastePopulation.casteType);
+      } catch (err) {
+        console.log("Municipality-wide table not available, aggregating from ward-wise data:", err);
+        data = [];
+      }
+
+      // If no data from municipality-wide table, aggregate from ward-wise data
+      if (!data || data.length === 0) {
+        try {
+          const aggregatedData = await ctx.db
+            .select({
+              casteType: wardWiseCastePopulation.casteType,
+              population: sum(wardWiseCastePopulation.population).as('total_population'),
+            })
+            .from(wardWiseCastePopulation)
+            .groupBy(wardWiseCastePopulation.casteType)
+            .orderBy(wardWiseCastePopulation.casteType);
+
+          data = aggregatedData.map(item => ({
+            id: `aggregated_${item.casteType}`,
+            casteType: item.casteType,
+            population: parseInt(String(item.population || 0)),
+            updatedAt: new Date(),
+            createdAt: new Date(),
+          }));
+        } catch (aggregateErr) {
+          console.error("Failed to aggregate ward-wise data:", aggregateErr);
+          data = [];
+        }
+      }
+
+      // Transform the data to include Nepali caste names
+      const casteData = data.map(item => ({
+        ...item,
+        casteTypeDisplay: CasteTypes[item.casteType as keyof typeof CasteTypes] || item.casteType,
+      }));
 
       // Calculate total population
-      const totalPopulation = casteData.reduce((sum, item) => sum + (item.population || 0), 0);
+      const totalPopulation = casteData.reduce((sum: number, item: any) => sum + (item.population || 0), 0);
 
       // Process data with percentages and rankings
       const summaryData = casteData
-        .filter(item => (item.population || 0) > 0)
-        .map(item => ({
+        .filter((item: any) => (item.population || 0) > 0)
+        .map((item: any) => ({
           ...item,
           percentage: totalPopulation > 0 ? ((item.population || 0) / totalPopulation) * 100 : 0,
         }))
-        .sort((a, b) => (b.population || 0) - (a.population || 0));
+        .sort((a: any, b: any) => (b.population || 0) - (a.population || 0));
 
       return {
         totalPopulation,
         casteData: summaryData,
         totalCastes: summaryData.length,
-        majorCastes: summaryData.filter(item => item.percentage >= 5), // Castes with 5% or more
-        minorCastes: summaryData.filter(item => item.percentage < 5 && item.percentage >= 1), // 1-5%
-        otherCastes: summaryData.filter(item => item.percentage < 1), // Less than 1%
+        majorCastes: summaryData.filter((item: any) => item.percentage >= 5), // Castes with 5% or more
+        minorCastes: summaryData.filter((item: any) => item.percentage < 5 && item.percentage >= 1), // 1-5%
+        otherCastes: summaryData.filter((item: any) => item.percentage < 1), // Less than 1%
       };
     } catch (error) {
       console.error("Error in getMunicipalityWideCastePopulationSummary:", error);

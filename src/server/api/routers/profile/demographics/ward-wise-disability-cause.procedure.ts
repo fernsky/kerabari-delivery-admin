@@ -16,18 +16,18 @@ import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 
 // Function to normalize disability cause enum values
-function normalizeDisabilityCause(cause: string): string {
+function normalizeDisabilityCause(cause: string): "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER" {
   const normalized = cause.toLowerCase();
-  const mapping: Record<string, string> = {
+  const mapping: Record<string, "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER"> = {
     'congenital': 'CONGENITAL',
     'accident': 'ACCIDENT',
     'malnutrition': 'MALNUTRITION',
     'disease': 'DISEASE',
     'conflict': 'CONFLICT',
     'other': 'OTHER',
-    'unknown': 'UNKNOWN',
+    'unknown': 'OTHER', // Map unknown to OTHER
   };
-  return mapping[normalized] || cause.toUpperCase();
+  return mapping[normalized] || 'OTHER';
 }
 
 // Get all ward-wise disability cause data with optional filtering
@@ -61,7 +61,7 @@ export const getAllWardWiseDisabilityCause = publicProcedure
           conditions.push(
             eq(
               wardWiseDisabilityCause.disabilityCause,
-              input.disabilityCause,
+              input.disabilityCause as "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER",
             ),
           );
         }
@@ -172,7 +172,7 @@ export const createWardWiseDisabilityCause = protectedProcedure
           ),
           eq(
             wardWiseDisabilityCause.disabilityCause,
-            input.disabilityCause,
+            input.disabilityCause as "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER",
           ),
         ),
       )
@@ -191,7 +191,7 @@ export const createWardWiseDisabilityCause = protectedProcedure
       .values({
         id: input.id || uuidv4(),
         wardNumber: input.wardNumber,
-        disabilityCause: input.disabilityCause,
+        disabilityCause: input.disabilityCause as "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER",
         population: input.population,
       });
 
@@ -236,7 +236,7 @@ export const updateWardWiseDisabilityCause = protectedProcedure
       .update(wardWiseDisabilityCause)
       .set({
         wardNumber: input.wardNumber,
-        disabilityCause: input.disabilityCause,
+        disabilityCause: input.disabilityCause as "CONGENITAL" | "ACCIDENT" | "MALNUTRITION" | "DISEASE" | "CONFLICT" | "OTHER",
         population: input.population,
       })
       .where(eq(wardWiseDisabilityCause.id, input.id));
