@@ -109,7 +109,7 @@ const Hero: React.FC<HeroProps> = ({
             className="object-cover"
           />
           {/* Enhanced overlay with better contrast and gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f42]/60 via-[#123772]/50 to-[#1a4894]/40 z-10 backdrop-blur-[6px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f42]/60 via-[#123772]/50 to-[#1a4894]/40 z-10 backdrop-blur-[3px]"></div>
 
           {/* Additional subtle texture */}
           <div className="absolute inset-0 bg-[url('/patterns/topography.svg')] opacity-5 mix-blend-overlay z-10"></div>

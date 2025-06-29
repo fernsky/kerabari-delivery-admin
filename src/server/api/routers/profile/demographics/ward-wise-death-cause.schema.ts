@@ -85,8 +85,10 @@ export const deathCauseLabels: Record<string, string> = {
   DEATH_BY_OLD_AGE: "कालगतिले मर्नु",
   NOT_STATED: "उल्लेख गरिएको छैन",
   BLOOD_PRESSURE_HIGH_AND_LOW_BLOOD_PRESSURE: "रक्तचाप (उच्च तथा निम्न रक्तचाप)",
+  OTHER_INFECTIOUS_DISEASES_BIRD_FLU_SWINE_FLU_PLAGUE_ETC: "अन्य सरुवा रोग (बर्ड फ्लु /स्वाइन फ्लू/प्लेग आदि)",
+  BRAIN_RELATED_BRAIN_HEMORRHAGE: "टाउको सम्बन्धी (ब्रेन ह्यामरेज)",
   OTHER: "अन्य कारण",
-};
+};  
 
 // Schema for ward-wise death cause data
 export const wardWiseDeathCauseSchema = z.object({

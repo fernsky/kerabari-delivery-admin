@@ -44,6 +44,7 @@ const LANGUAGE_NAMES: Record<string, string> = {
   MUSALMAN: "मुसलमान",
   BOTE: "बोटे",
   KHAM: "खाम",
+  DHIMAL: "धिमाल",
 };
 
 // This function will generate metadata dynamically based on the actual data
