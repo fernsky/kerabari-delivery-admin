@@ -2,17 +2,12 @@ import { z } from "zod";
 
 // Define the remittance amount group enum - match database schema values
 export const RemittanceAmountGroupEnum = z.enum([
-  "RS_0_TO_49999",
-  "RS_50000_TO_99999",
-  "RS_100000_TO_149999",
-  "RS_150000_TO_199999",
-  "RS_200000_TO_249999",
-  "RS_250000_TO_299999",
-  "RS_300000_TO_349999",
-  "RS_350000_TO_399999",
-  "RS_400000_TO_449999",
-  "RS_450000_TO_499999",
-  "RS_500000_PLUS",
+  "200k_to_500k",
+  "100k_to_200k",
+  "above_500k",
+  "50k_to_100k",
+  "below_50k",
+  "no_remittance"
 ]);
 export type RemittanceAmountGroupType = z.infer<typeof RemittanceAmountGroupEnum>;
 
@@ -42,15 +37,10 @@ export type WardWiseRemittanceFilter = z.infer<
 
 // Export the remittance amount group options for use in UI components
 export const remittanceAmountGroupOptions = [
-  { value: "RS_0_TO_49999", label: "० देखि ४९,९९९ रुपैयाँ" },
-  { value: "RS_50000_TO_99999", label: "५०,००० देखि ९९,९९९ रुपैयाँ" },
-  { value: "RS_100000_TO_149999", label: "१,००,००० देखि १,४९,९९९ रुपैयाँ" },
-  { value: "RS_150000_TO_199999", label: "१,५०,००० देखि १,९९,९९९ रुपैयाँ" },
-  { value: "RS_200000_TO_249999", label: "२,००,००० देखि २,४९,९९९ रुपैयाँ" },
-  { value: "RS_250000_TO_299999", label: "२,५०,००० देखि २,९९,९९९ रुपैयाँ" },
-  { value: "RS_300000_TO_349999", label: "३,००,००० देखि ३,४९,९९९ रुपैयाँ" },
-  { value: "RS_350000_TO_399999", label: "३,५०,००० देखि ३,९९,९९९ रुपैयाँ" },
-  { value: "RS_400000_TO_449999", label: "४,००,००० देखि ४,४९,९९९ रुपैयाँ" },
-  { value: "RS_450000_TO_499999", label: "४,५०,००० देखि ४,९९,९९९ रुपैयाँ" },
-  { value: "RS_500000_PLUS", label: "५,००,००० रुपैयाँभन्दा बढी" },
+  { value: "200k_to_500k", label: "२ लाखदेखि ५ लाखसम्म" },
+  { value: "100k_to_200k", label: "१ लाखदेखि २ लाखसम्म" },
+  { value: "above_500k", label: "५ लाखभन्दा बढी" },
+  { value: "50k_to_100k", label: "५० हजारदेखि १ लाखसम्म" },
+  { value: "below_50k", label: "५० हजारभन्दा कम" },
+  { value: "no_remittance", label: "रेमिट्यान्स नभएको" },
 ];

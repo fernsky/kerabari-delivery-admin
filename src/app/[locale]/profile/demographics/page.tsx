@@ -188,8 +188,8 @@ export default async function DemographicsPage() {
   const sexRatio =
     municipalityStats && municipalityStats.malePopulation > 0
       ? (
-          (municipalityStats.femalePopulation /
-            municipalityStats.malePopulation) *
+          (municipalityStats.malePopulation /
+            municipalityStats.femalePopulation) *
           100
         ).toFixed(2)
       : null;
@@ -274,7 +274,11 @@ export default async function DemographicsPage() {
 
             <div className="bg-muted/20 border rounded-lg shadow-sm p-6">
               <h3 className="text-lg font-medium mb-2">वडा संख्या</h3>
-              <p className="text-3xl font-bold text-primary">८</p>
+              <p className="text-3xl font-bold text-primary">
+                {summaryData && summaryData.length
+                  ? localizeNumber(summaryData.length.toLocaleString(), "ne")
+                  : "लोड हुँदैछ..."}
+              </p>
             </div>
           </div>
         </section>

@@ -124,7 +124,7 @@ export default function SafeMotherhoodIndicatorsSEO({
         name: "Khajura Rural Municipality",
         url: "https://digital.buddhashantimun.gov.np",
       },
-      temporalCoverage: latestYear.toString(),
+      temporalCoverage: latestYear?.toString(),
       spatialCoverage: {
         "@type": "Place",
         name: "Khajura Rural Municipality, Banke, Nepal",
