@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// Define the disability cause enum for validation - handle both cases
+// Define the disability cause enum for validation - only include values supported by database
 export const DisabilityCauseEnum = z.enum([
   "CONGENITAL",
   "ACCIDENT",
@@ -8,16 +8,6 @@ export const DisabilityCauseEnum = z.enum([
   "DISEASE",
   "CONFLICT",
   "OTHER",
-  // Also handle lowercase versions
-  "congenital",
-  "accident",
-  "malnutrition",
-  "disease",
-  "conflict",
-  "other",
-  // Handle unknown case
-  "unknown",
-  "UNKNOWN",
 ]);
 export type DisabilityCause = z.infer<typeof DisabilityCauseEnum>;
 

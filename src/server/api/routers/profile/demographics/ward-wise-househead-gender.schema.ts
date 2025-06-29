@@ -3,7 +3,7 @@ import { z } from "zod";
 // Define the gender enum values
 export const GenderEnum = z.enum(["MALE", "FEMALE", "OTHER"]);
 export type Gender = z.infer<typeof GenderEnum>;
-
+export type GenderType = "MALE" | "FEMALE" | "OTHER";
 // Schema for ward-wise house head gender data
 export const wardWiseHouseHeadGenderSchema = z.object({
   id: z.string().optional(),

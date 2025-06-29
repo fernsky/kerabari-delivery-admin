@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// Define the remittance amount group enum
+// Define the remittance amount group enum - match database schema values
 export const RemittanceAmountGroupEnum = z.enum([
   "200k_to_500k",
   "100k_to_200k",

@@ -276,11 +276,7 @@ export default async function WardRemittanceExpensesPage() {
               src="/images/remittance-expenses.svg"
               width={1200}
               height={400}
-<<<<<<< HEAD
-              alt="रेमिटेन्स खर्च - गढवा गाउँपालिका (Remittance Expenses - Khajura Rural Municipality)"
-=======
               alt="रेमिट्यान्स खर्च - बुद्धशान्ति गाउँपालिका (Remittance Expenses - Khajura Rural Municipality)"
->>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -288,24 +284,15 @@ export default async function WardRemittanceExpensesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-<<<<<<< HEAD
-              गढवा गाउँपालिकामा रेमिटेन्स खर्च
-=======
               बुद्धशान्ति गाउँपालिकामा रेमिट्यान्स खर्च
->>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-<<<<<<< HEAD
-              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा रहेका
-              घरपरिवारहरूले विदेशबाट प्राप्त विप्रेषण (रेमिटेन्स) रकमलाई कसरी
-=======
               यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
               घरपरिवारहरूले विदेशबाट प्राप्त विप्रेषण (रेमिट्यान्स) रकमलाई कसरी
->>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
               खर्च गर्छन् भन्ने बारेमा विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ। यो
               तथ्याङ्कले स्थानीय आर्थिक गतिविधि, लगानीको प्राथमिकता र विकासको
               दिशालाई प्रतिबिम्बित गर्दछ।

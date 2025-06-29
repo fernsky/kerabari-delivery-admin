@@ -240,15 +240,17 @@ export function generateHouseheadGenderAnalysis(data: ProcessedHouseheadGenderDa
 
   // Gender ratio analysis
   if (indicators.genderRatio > 0) {
+    const genderRatioFixed = parseFloat(indicators.genderRatio.toFixed(1));
     analysisParts.push(
-      `लिङ्ग अनुपात ${convertToNepaliNumber(indicators.genderRatio.toFixed(1))}% रहेको छ (प्रति १०० महिला घरमुखीमा ${convertToNepaliNumber(indicators.genderRatio.toFixed(1))} पुरुष घरमुखी)।`
+      `लिङ्ग अनुपात ${convertToNepaliNumber(genderRatioFixed)}% रहेको छ (प्रति १०० महिला घरमुखीमा ${convertToNepaliNumber(genderRatioFixed)} पुरुष घरमुखी)।`
     );
   }
 
   // Female empowerment analysis
   if (indicators.femaleEmpowermentIndex > 0) {
+    const femaleEmpowermentFixed = parseFloat(indicators.femaleEmpowermentIndex.toFixed(1));
     analysisParts.push(
-      `महिला सशक्तिकरण सूचकांक ${convertToNepaliNumber(indicators.femaleEmpowermentIndex.toFixed(1))}% रहेको छ।`
+      `महिला सशक्तिकरण सूचकांक ${convertToNepaliNumber(femaleEmpowermentFixed)}% रहेको छ।`
     );
   }
 
@@ -286,12 +288,12 @@ export function generateHouseheadGenderAnalysis(data: ProcessedHouseheadGenderDa
     const lowestWard = wardAnalysis[wardAnalysis.length - 1];
     
     analysisParts.push(
-      `वडा अनुसार हेर्दा, वडा ${convertToNepaliNumber(highestWard[0])} मा सबैभन्दा बढी ${convertToNepaliNumber(highestWard[1].totalHouseheads)} घरमुखी रहेका छन्।`
+      `वडा अनुसार हेर्दा, वडा ${convertToNepaliNumber(parseInt(highestWard[0]))} मा सबैभन्दा बढी ${convertToNepaliNumber(highestWard[1].totalHouseheads)} घरमुखी रहेका छन्।`
     );
 
     if (lowestWard[0] !== highestWard[0]) {
       analysisParts.push(
-        `सबैभन्दा कम वडा ${convertToNepaliNumber(lowestWard[0])} मा ${convertToNepaliNumber(lowestWard[1].totalHouseheads)} घरमुखी रहेका छन्।`
+        `सबैभन्दा कम वडा ${convertToNepaliNumber(parseInt(lowestWard[0]))} मा ${convertToNepaliNumber(lowestWard[1].totalHouseheads)} घरमुखी रहेका छन्।`
       );
     }
 
@@ -301,7 +303,7 @@ export function generateHouseheadGenderAnalysis(data: ProcessedHouseheadGenderDa
     
     if (wardWithHighestFemales && wardWithHighestFemales[1].genders.FEMALE > 0) {
       analysisParts.push(
-        `सबैभन्दा बढी महिला घरमुखी वडा ${convertToNepaliNumber(wardWithHighestFemales[0])} मा ${convertToNepaliNumber(wardWithHighestFemales[1].genders.FEMALE)} जना रहेका छन्।`
+        `सबैभन्दा बढी महिला घरमुखी वडा ${convertToNepaliNumber(parseInt(wardWithHighestFemales[0]))} मा ${convertToNepaliNumber(wardWithHighestFemales[1].genders.FEMALE)} जना रहेका छन्।`
       );
     }
   }
@@ -330,5 +332,6 @@ export function convertToNepaliNumber(num: number): string {
 }
 
 export function formatNepaliPercentage(percentage: number): string {
-  return convertToNepaliNumber(percentage.toFixed(1)) + '%';
+  const percentageFixed = parseFloat(percentage.toFixed(1));
+  return convertToNepaliNumber(percentageFixed) + '%';
 } 
