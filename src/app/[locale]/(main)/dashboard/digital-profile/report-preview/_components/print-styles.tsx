@@ -7,6 +7,7 @@ export function PrintStyles() {
       /* ========================================
          BUDDHA SHANTI MUNICIPALITY PDF REPORT STYLES
          Clean, consolidated CSS for PDF generation
+         Optimized for A4 paper printing
          ======================================== */
 
       /* Custom Nepali counter style */
@@ -22,7 +23,8 @@ export function PrintStyles() {
 
       @page {
         size: A4;
-        margin: 2.5cm 2cm 2cm 2cm;
+        margin: 2cm 1.5cm 2cm 1.5cm;
+        background: white;
 
         @bottom-right {
           content: counter(page, nepali-numerals) " | बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१";
@@ -54,17 +56,23 @@ export function PrintStyles() {
       .report-document {
         font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;
         font-size: 11pt;
-        line-height: 1.5;
+        line-height: 1.4;
         color: #333;
         margin: 0;
         padding: 0;
+        background: white !important;
+      }
+
+      .report-document * {
+        background: white !important;
       }
 
       .report-document p {
-        margin: 0.5em 0;
+        margin: 0.4em 0;
         text-align: justify;
         orphans: 2;
         widows: 2;
+        background: white !important;
       }
 
       .report-document h1,
@@ -75,6 +83,8 @@ export function PrintStyles() {
       .report-document h6 {
         page-break-after: auto;
         page-break-inside: auto;
+        margin: 0.5em 0;
+        background: white !important;
       }
 
       .report-document h1 { font-size: 18pt; }
@@ -86,12 +96,14 @@ export function PrintStyles() {
 
       .report-document ul,
       .report-document ol {
-        margin: 0.5em 0 1em 0;
-        padding-left: 1.5em;
+        margin: 0.4em 0 0.8em 0;
+        padding-left: 1.2em;
+        background: white !important;
       }
 
       .report-document li {
-        margin-bottom: 0.3em;
+        margin-bottom: 0.2em;
+        background: white !important;
       }
 
       /* ========================================
@@ -106,15 +118,18 @@ export function PrintStyles() {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: white !important;
       }
 
       .toc-page {
         page-break-before: always;
         page-break-after: always;
+        background: white !important;
       }
 
       .main-content-start {
         page-break-before: always;
+        background: white !important;
       }
 
       .category-break {
@@ -122,6 +137,9 @@ export function PrintStyles() {
         page-break-after: auto;
         page-break-inside: auto;
         break-before: page;
+        margin-top: 0;
+        margin-bottom: 0;
+        background: white !important;
       }
 
       .main-content-start .category-break:first-child {
@@ -129,11 +147,15 @@ export function PrintStyles() {
       }
 
       .section-content {
-        margin-top: 1.5em;
+        margin-top: 1em;
+        margin-bottom: 0;
+        background: white !important;
       }
 
       .section-within-category {
-        margin-top: 2em;
+        margin-top: 1.5em;
+        margin-bottom: 0;
+        background: white !important;
       }
 
       /* ========================================
@@ -145,55 +167,62 @@ export function PrintStyles() {
         font-weight: 700;
         text-align: center;
         color: #dc2626;
-        margin: 1em 0 2em 0;
-        padding: 0.5em;
+        margin: 0.5em 0 1.5em 0;
+        padding: 0.3em;
         page-break-after: auto;
         page-break-before: avoid;
+        background: white !important;
       }
 
       .section-header.level-2 {
         font-size: 16pt;
         color: #1e40af;
         border-bottom: 2px solid #0ea5e9;
-        padding-bottom: 0.3em;
-        margin-top: 2em;
-        margin-bottom: 1em;
+        padding-bottom: 0.2em;
+        margin-top: 1.5em;
+        margin-bottom: 0.8em;
         page-break-after: auto;
+        background: white !important;
       }
 
       .section-header.level-3 {
         font-size: 14pt;
         color: #1e40af;
         border-bottom: 1px solid #0ea5e9;
-        padding-bottom: 0.2em;
-        margin-top: 1.5em;
-        margin-bottom: 0.8em;
+        padding-bottom: 0.15em;
+        margin-top: 1.2em;
+        margin-bottom: 0.6em;
         page-break-after: auto;
+        background: white !important;
       }
 
       .section-header.level-4 {
         font-size: 12pt;
         color: #1e40af;
         font-weight: 600;
-        margin-top: 1.2em;
-        margin-bottom: 0.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        background: white !important;
       }
 
       .content-section {
-        margin-bottom: 1.5em;
+        margin-bottom: 1em;
         page-break-inside: auto;
+        background: white !important;
       }
 
       .content-paragraph {
         font-size: 11pt;
-        line-height: 1.6;
-        margin-bottom: 1.5em;
+        line-height: 1.5;
+        margin-bottom: 1em;
         text-align: justify;
+        background: white !important;
       }
 
       .content-paragraph p {
-        margin-bottom: 1em;
-        text-indent: 1.5em;
+        margin-bottom: 0.8em;
+        text-indent: 1.2em;
+        background: white !important;
       }
 
       /* ========================================
@@ -205,45 +234,52 @@ export function PrintStyles() {
         font-weight: 700;
         text-align: center;
         color: #1e3a8a;
-        margin-bottom: 2em;
-        padding-bottom: 0.5em;
+        margin-bottom: 1.5em;
+        padding-bottom: 0.4em;
+        background: white !important;
       }
 
       .toc-item {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.5em;
-        line-height: 1.4;
+        margin-bottom: 0.4em;
+        line-height: 1.3;
+        background: white !important;
       }
 
       .toc-item .toc-link {
         flex: 1;
         padding-right: 1em;
+        background: white !important;
       }
 
       .toc-item.level-1 {
         font-weight: 700;
         font-size: 12pt;
-        margin-top: 1em;
-        margin-bottom: 0.8em;
+        margin-top: 0.8em;
+        margin-bottom: 0.6em;
         color: #1e40af;
+        background: white !important;
       }
 
       .toc-item.level-2 {
         font-weight: 600;
         margin-left: 1em;
         color: #374151;
+        background: white !important;
       }
 
       .toc-item.level-3 {
         margin-left: 2em;
         color: #6b7280;
+        background: white !important;
       }
 
       .toc-item.level-4 {
         margin-left: 3em;
         font-size: 10pt;
         color: #9ca3af;
+        background: white !important;
       }
 
       .page-ref {
@@ -251,6 +287,7 @@ export function PrintStyles() {
         color: #6b7280;
         min-width: 2em;
         text-align: right;
+        background: white !important;
       }
 
       /* ========================================
@@ -262,9 +299,10 @@ export function PrintStyles() {
       .demographic-summary-table {
         width: 100%;
         border-collapse: collapse;
-        margin: 1em 0;
+        margin: 0.8em 0;
         font-size: 9pt;
         page-break-inside: auto;
+        background: white !important;
       }
 
       .data-table th,
@@ -274,14 +312,15 @@ export function PrintStyles() {
       .demographic-summary-table th,
       .demographic-summary-table td {
         border: 1px solid #333;
-        padding: 4px 6px;
+        padding: 3px 5px;
         vertical-align: top;
+        background: white !important;
       }
 
       .data-table th,
       .pdf-data-table th,
       .demographic-summary-table th {
-        background-color: #f8fafc;
+        background-color: white !important;
         font-weight: bold;
         text-align: center;
         color: #1e40af;
@@ -290,99 +329,115 @@ export function PrintStyles() {
       .data-table tr:nth-child(even) td,
       .pdf-data-table tbody tr:nth-child(even) td,
       .demographic-summary-table tbody tr:nth-child(even) td {
-        background-color: #f9fafb;
+        background-color: white !important;
       }
 
       .demographic-summary-table td:first-child {
         text-align: left;
         font-weight: normal;
+        background: white !important;
       }
 
       .demographic-summary-table td:nth-child(2),
       .demographic-summary-table td:nth-child(3) {
         text-align: right;
         font-weight: bold;
+        background: white !important;
       }
 
       .age-group-header td {
-        background-color: #f5f5f5 !important;
+        background-color: white !important;
         font-weight: bold;
         text-align: center;
       }
 
       .total-row td {
-        background-color: #e2e8f0 !important;
+        background-color: white !important;
         font-weight: bold;
       }
 
       .total-label {
-        background-color: #cbd5e1 !important;
+        background-color: white !important;
         font-weight: bold;
         text-align: center;
       }
 
       .total-cell {
-        background-color: #f1f5f9 !important;
+        background-color: white !important;
         font-weight: bold;
       }
 
       .grand-total-cell {
-        background-color: #ddd6fe !important;
+        background-color: white !important;
         font-weight: bold;
         color: #5b21b6;
       }
 
       /* ========================================
-         CHARTS AND FIGURES
+         CHARTS AND FIGURES - OPTIMIZED FOR A4
          ======================================== */
 
       .chart-section {
-        margin-bottom: 1.5em;
+        margin-bottom: 1em;
         page-break-inside: avoid;
+        text-align: center;
+        background: white !important;
       }
 
       .chart-title,
       .table-title {
-        font-size: 12pt;
+        font-size: 11pt;
         font-weight: bold;
         color: #1e40af;
-        margin: 1em 0 0.5em 0;
+        margin: 0.8em 0 0.4em 0;
         text-align: center;
+        background: white !important;
       }
 
       .pdf-chart-container {
         border: none;
         text-align: center;
-        margin: 1em 0;
+        margin: 0.5em 0;
         page-break-inside: auto;
+        background: white !important;
+        padding: 0;
+      }
+
+      .pdf-chart-container svg {
+        max-width: 100%;
+        height: auto;
+        border: none;
+        background: white !important;
       }
 
       .pdf-chart-image {
         max-width: 100%;
         height: auto;
         border: none;
+        background: white !important;
       }
 
       .table-section {
-        margin-bottom: 1.5em;
+        margin-bottom: 1em;
         page-break-inside: auto;
+        background: white !important;
       }
 
       /* ========================================
          UTILITY CLASSES
          ======================================== */
 
-      .text-center { text-align: center; }
-      .text-right { text-align: right; }
-      .text-muted { color: #6b7280; }
-      .font-weight-bold { font-weight: bold; }
+      .text-center { text-align: center; background: white !important; }
+      .text-right { text-align: right; background: white !important; }
+      .text-muted { color: #6b7280; background: white !important; }
+      .font-weight-bold { font-weight: bold; background: white !important; }
 
-      .mt-1 { margin-top: 0.25em; }
-      .mt-2 { margin-top: 0.5em; }
-      .mt-3 { margin-top: 1em; }
-      .mb-1 { margin-bottom: 0.25em; }
-      .mb-2 { margin-bottom: 0.5em; }
-      .mb-3 { margin-bottom: 1em; }
+      .mt-1 { margin-top: 0.2em; background: white !important; }
+      .mt-2 { margin-top: 0.4em; background: white !important; }
+      .mt-3 { margin-top: 0.8em; background: white !important; }
+      .mb-1 { margin-bottom: 0.2em; background: white !important; }
+      .mb-2 { margin-bottom: 0.4em; background: white !important; }
+      .mb-3 { margin-bottom: 0.8em; background: white !important; }
 
       /* ========================================
          PRINT MEDIA QUERIES
@@ -396,24 +451,70 @@ export function PrintStyles() {
         * {
           -webkit-print-color-adjust: exact;
           color-adjust: exact;
+          background: white !important;
+        }
+
+        body, html {
+          background: white !important;
+        }
+
+        .report-document,
+        .report-document * {
+          background: white !important;
         }
 
         .pdf-data-table,
         .demographic-summary-table {
           font-size: 8pt;
+          background: white !important;
         }
 
         .pdf-data-table tr,
         .demographic-summary-table tr {
           page-break-inside: avoid;
+          background: white !important;
+        }
+
+        .pdf-data-table td,
+        .pdf-data-table th,
+        .demographic-summary-table td,
+        .demographic-summary-table th {
+          background: white !important;
         }
 
         .chart-section {
           page-break-inside: avoid;
+          margin-bottom: 0.8em;
+          background: white !important;
         }
 
         .table-section {
           page-break-inside: avoid;
+          margin-bottom: 0.8em;
+          background: white !important;
+        }
+
+        /* Remove any backgrounds from charts */
+        .pdf-chart-container,
+        .pdf-chart-container svg,
+        .pdf-chart-image {
+          background: white !important;
+        }
+
+        /* Optimize spacing for print */
+        .section-content {
+          margin-top: 0.8em;
+          background: white !important;
+        }
+
+        .section-within-category {
+          margin-top: 1.2em;
+          background: white !important;
+        }
+
+        .content-section {
+          margin-bottom: 0.8em;
+          background: white !important;
         }
       }
 
@@ -425,9 +526,13 @@ export function PrintStyles() {
         .report-document {
           max-width: 210mm;
           margin: 0 auto;
-          background: white;
+          background: white !important;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          padding: 2cm;
+          padding: 1.5cm;
+        }
+
+        .report-document * {
+          background: white !important;
         }
       }
     `}} />

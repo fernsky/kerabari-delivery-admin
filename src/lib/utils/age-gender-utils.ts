@@ -25,13 +25,24 @@ export interface ProcessedAgeGenderData {
     label: string;
   }>;
   wardData: Record<number, {
-    male: number;
-    female: number;
-    other: number;
-    total: number;
-    malePercentage: number;
-    femalePercentage: number;
-    otherPercentage: number;
+    totalPopulation: number;
+    genders: Record<string, number>;
+    primaryGender: string;
+    primaryGenderPercentage: number;
+    genderCount: number;
+    ageGroups: Record<AgeGroup, {
+      male: number;
+      female: number;
+      other: number;
+      total: number;
+    }>;
+  }>;
+  detailedWardData: Record<number, Record<AgeGroup, Record<Gender, number>>>;
+  topAgeGroups: Array<{
+    ageGroup: string;
+    population: number;
+    percentage: number;
+    label: string;
   }>;
   dependencyRatios: {
     childDependencyRatio: number;
@@ -89,10 +100,60 @@ export function formatNepaliPercentage(num: number): string {
 }
 
 export function processAgeGenderData(rawData: AgeGenderData[]): ProcessedAgeGenderData {
-  // Initialize data structures
-  const ageGroupData: Record<AgeGroup, any> = {} as any;
-  const wardData: Record<number, any> = {};
+  if (!rawData || rawData.length === 0) {
+    return {
+      totalPopulation: 0,
+      malePopulation: 0,
+      femalePopulation: 0,
+      otherPopulation: 0,
+      malePercentage: 0,
+      femalePercentage: 0,
+      otherPercentage: 0,
+      ageGroupData: {} as any,
+      wardData: {},
+      detailedWardData: {},
+      topAgeGroups: [],
+      dependencyRatios: {
+        childDependencyRatio: 0,
+        elderlyDependencyRatio: 0,
+        totalDependencyRatio: 0,
+        workingAgePopulation: 0,
+        childPopulation: 0,
+        elderlyPopulation: 0
+      },
+      demographicIndicators: {
+        genderRatio: 0,
+        youthPopulation: 0,
+        youthPercentage: 0,
+        reproductiveAgeWomen: 0,
+        reproductiveWomenPercentage: 0
+      }
+    };
+  }
 
+  // Calculate total population
+  const totalPopulation = rawData.reduce((sum, item) => sum + (item.population || 0), 0);
+
+  // Process gender data
+  const malePopulation = rawData
+    .filter(item => item.gender === 'MALE')
+    .reduce((sum, item) => sum + (item.population || 0), 0);
+  
+  const femalePopulation = rawData
+    .filter(item => item.gender === 'FEMALE')
+    .reduce((sum, item) => sum + (item.population || 0), 0);
+  
+  const otherPopulation = rawData
+    .filter(item => item.gender === 'OTHER')
+    .reduce((sum, item) => sum + (item.population || 0), 0);
+
+  const malePercentage = totalPopulation > 0 ? (malePopulation / totalPopulation) * 100 : 0;
+  const femalePercentage = totalPopulation > 0 ? (femalePopulation / totalPopulation) * 100 : 0;
+  const otherPercentage = totalPopulation > 0 ? (otherPopulation / totalPopulation) * 100 : 0;
+
+  // Process age group data
+  const ageGroupData: Record<AgeGroup, any> = {} as any;
+  
   // Initialize age groups
   Object.keys(AGE_GROUP_LABELS).forEach(ageGroup => {
     ageGroupData[ageGroup as AgeGroup] = {
@@ -105,54 +166,20 @@ export function processAgeGenderData(rawData: AgeGenderData[]): ProcessedAgeGend
     };
   });
 
-  // Initialize ward data
-  const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
-  uniqueWards.forEach(wardNum => {
-    wardData[wardNum] = {
-      male: 0,
-      female: 0,
-      other: 0,
-      total: 0,
-      malePercentage: 0,
-      femalePercentage: 0,
-      otherPercentage: 0
-    };
-  });
-
-  // Process raw data
-  let totalPopulation = 0;
-  let malePopulation = 0;
-  let femalePopulation = 0;
-  let otherPopulation = 0;
-
+  // Populate age group data
   rawData.forEach(item => {
-    const { ageGroup, gender, population, wardNumber } = item;
+    const { ageGroup, gender, population } = item;
     
-    totalPopulation += population;
-    
-    // Update totals by gender
     if (gender === 'MALE') {
-      malePopulation += population;
-      ageGroupData[ageGroup].male += population;
-      wardData[wardNumber].male += population;
+      ageGroupData[ageGroup].male += population || 0;
     } else if (gender === 'FEMALE') {
-      femalePopulation += population;
-      ageGroupData[ageGroup].female += population;
-      wardData[wardNumber].female += population;
+      ageGroupData[ageGroup].female += population || 0;
     } else {
-      otherPopulation += population;
-      ageGroupData[ageGroup].other += population;
-      wardData[wardNumber].other += population;
+      ageGroupData[ageGroup].other += population || 0;
     }
-
-    ageGroupData[ageGroup].total += population;
-    wardData[wardNumber].total += population;
+    
+    ageGroupData[ageGroup].total += population || 0;
   });
-
-  // Calculate percentages
-  const malePercentage = totalPopulation > 0 ? (malePopulation / totalPopulation) * 100 : 0;
-  const femalePercentage = totalPopulation > 0 ? (femalePopulation / totalPopulation) * 100 : 0;
-  const otherPercentage = totalPopulation > 0 ? (otherPopulation / totalPopulation) * 100 : 0;
 
   // Calculate age group percentages
   Object.keys(ageGroupData).forEach(ageGroup => {
@@ -160,14 +187,90 @@ export function processAgeGenderData(rawData: AgeGenderData[]): ProcessedAgeGend
     group.percentage = totalPopulation > 0 ? (group.total / totalPopulation) * 100 : 0;
   });
 
-  // Calculate ward percentages
-  Object.keys(wardData).forEach(wardNum => {
-    const ward = wardData[parseInt(wardNum)];
-    if (ward.total > 0) {
-      ward.malePercentage = (ward.male / ward.total) * 100;
-      ward.femalePercentage = (ward.female / ward.total) * 100;
-      ward.otherPercentage = (ward.other / ward.total) * 100;
-    }
+  // Get top age groups
+  const topAgeGroups = Object.entries(ageGroupData)
+    .filter(([_, data]) => data.total > 0)
+    .sort(([, a], [, b]) => b.total - a.total)
+    .slice(0, 5)
+    .map(([ageGroup, data], index) => ({
+      ageGroup,
+      population: data.total,
+      percentage: data.percentage,
+      label: data.label
+    }));
+
+  // Process ward data with detailed breakdown
+  const wardData: Record<number, any> = {};
+  const detailedWardData: Record<number, Record<AgeGroup, Record<Gender, number>>> = {};
+  const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
+  
+  uniqueWards.forEach(wardNum => {
+    const wardItems = rawData.filter(item => item.wardNumber === wardNum);
+    const wardTotalPopulation = wardItems.reduce((sum, item) => sum + (item.population || 0), 0);
+    const wardGenders: Record<string, number> = {};
+    const wardAgeGroups: Record<AgeGroup, any> = {} as any;
+    
+    // Initialize age groups for this ward
+    Object.keys(AGE_GROUP_LABELS).forEach(ageGroup => {
+      wardAgeGroups[ageGroup as AgeGroup] = {
+        male: 0,
+        female: 0,
+        other: 0,
+        total: 0
+      };
+    });
+    
+    // Initialize detailed ward data
+    detailedWardData[wardNum] = {} as any;
+    Object.keys(AGE_GROUP_LABELS).forEach(ageGroup => {
+      detailedWardData[wardNum][ageGroup as AgeGroup] = {
+        MALE: 0,
+        FEMALE: 0,
+        OTHER: 0
+      } as any;
+    });
+    
+    wardItems.forEach(item => {
+      const gender = item.gender;
+      const ageGroup = item.ageGroup;
+      const population = item.population || 0;
+      
+      // Update gender totals
+      if (wardGenders[gender]) {
+        wardGenders[gender] += population;
+      } else {
+        wardGenders[gender] = population;
+      }
+      
+      // Update age group totals
+      if (gender === 'MALE') {
+        wardAgeGroups[ageGroup].male += population;
+      } else if (gender === 'FEMALE') {
+        wardAgeGroups[ageGroup].female += population;
+      } else {
+        wardAgeGroups[ageGroup].other += population;
+      }
+      wardAgeGroups[ageGroup].total += population;
+      
+      // Update detailed ward data
+      detailedWardData[wardNum][ageGroup][gender] += population;
+    });
+
+    // Find primary gender for this ward
+    const sortedWardGenders = Object.entries(wardGenders).sort(([, a], [, b]) => b - a);
+    const primaryGender = sortedWardGenders[0]?.[0] || '';
+    const primaryGenderPercentage = wardTotalPopulation > 0 
+      ? (sortedWardGenders[0]?.[1] || 0) / wardTotalPopulation * 100 
+      : 0;
+
+    wardData[wardNum] = {
+      totalPopulation: wardTotalPopulation,
+      genders: wardGenders,
+      primaryGender,
+      primaryGenderPercentage,
+      genderCount: Object.keys(wardGenders).length,
+      ageGroups: wardAgeGroups
+    };
   });
 
   // Calculate dependency ratios
@@ -191,6 +294,8 @@ export function processAgeGenderData(rawData: AgeGenderData[]): ProcessedAgeGend
     otherPercentage,
     ageGroupData,
     wardData,
+    detailedWardData,
+    topAgeGroups,
     dependencyRatios,
     demographicIndicators
   };

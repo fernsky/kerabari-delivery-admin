@@ -71,55 +71,71 @@ export function processHouseheadGenderData(rawData: HouseheadGenderData[]): Proc
     };
   }
 
+  // Debug: Log raw data for troubleshooting
+  console.log("Raw househead gender data:", rawData);
+
   // Calculate total househeads
   const totalHouseheads = rawData.reduce((sum, item) => sum + (item.population || 0), 0);
 
-  // Process gender data
-  const genderData: Record<string, any> = {};
-  const allGenders: Array<any> = [];
+  // Process gender data - aggregate by gender across all wards
+  const genderAggregated: Record<string, number> = {};
+  rawData.forEach((item) => {
+    const gender = item.gender;
+    genderAggregated[gender] = (genderAggregated[gender] || 0) + (item.population || 0);
+  });
 
-  rawData.forEach((item, index) => {
-    const percentage = totalHouseheads > 0 ? (item.population / totalHouseheads) * 100 : 0;
-    const genderInfo = {
-      population: item.population,
+  // Debug: Log aggregated data
+  console.log("Gender aggregated data:", genderAggregated);
+
+  // Sort genders by population and create gender data
+  const sortedGenders = Object.entries(genderAggregated)
+    .sort(([, a], [, b]) => b - a);
+
+  const genderData: Record<string, any> = {};
+  sortedGenders.forEach(([gender, population], index) => {
+    const percentage = totalHouseheads > 0 ? (population / totalHouseheads) * 100 : 0;
+    genderData[gender] = {
+      population,
       percentage,
-      label: item.genderDisplay || GENDER_LABELS[item.gender] || item.gender,
+      label: GENDER_LABELS[gender] || gender,
       rank: index + 1,
     };
-
-    genderData[item.gender] = genderInfo;
-    allGenders.push({
-      gender: item.gender,
-      ...genderInfo,
-    });
   });
 
-  // Sort genders by population
-  allGenders.sort((a, b) => b.population - a.population);
-
-  // Update ranks after sorting
-  allGenders.forEach((gender, index) => {
-    genderData[gender.gender].rank = index + 1;
-  });
-
-  // Process ward data
+  // Process ward data - aggregate by gender and ward
   const wardData: Record<number, any> = {};
   const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
+  
+  // Debug: Log unique wards
+  console.log("Unique wards:", uniqueWards);
   
   uniqueWards.forEach(wardNum => {
     const wardItems = rawData.filter(item => item.wardNumber === wardNum);
     const wardTotalHouseheads = wardItems.reduce((sum, item) => sum + item.population, 0);
     const wardGenders: Record<string, number> = {};
     
+    // Debug: Log ward items
+    console.log(`Ward ${wardNum} items:`, wardItems);
+    
+    // Aggregate by gender for this ward
+    const wardGenderAggregated: Record<string, number> = {};
     wardItems.forEach(item => {
-      wardGenders[item.gender] = item.population;
+      wardGenderAggregated[item.gender] = (wardGenderAggregated[item.gender] || 0) + item.population;
     });
 
+    // Copy aggregated data to wardGenders
+    Object.entries(wardGenderAggregated).forEach(([gender, population]) => {
+      wardGenders[gender] = population;
+    });
+
+    // Debug: Log ward genders
+    console.log(`Ward ${wardNum} genders:`, wardGenders);
+
     // Find primary gender for this ward
-    const sortedWardGenders = wardItems.sort((a, b) => b.population - a.population);
-    const primaryGender = sortedWardGenders[0]?.gender || '';
+    const sortedWardGenders = Object.entries(wardGenderAggregated).sort(([, a], [, b]) => b - a);
+    const primaryGender = sortedWardGenders[0]?.[0] || '';
     const primaryGenderPercentage = wardTotalHouseheads > 0 
-      ? (sortedWardGenders[0]?.population || 0) / wardTotalHouseheads * 100 
+      ? (sortedWardGenders[0]?.[1] || 0) / wardTotalHouseheads * 100 
       : 0;
 
     wardData[wardNum] = {
@@ -129,6 +145,9 @@ export function processHouseheadGenderData(rawData: HouseheadGenderData[]): Proc
       primaryGenderPercentage,
     };
   });
+
+  // Debug: Log final ward data
+  console.log("Final ward data:", wardData);
 
   // Calculate gender indicators
   const maleHouseheads = genderData.MALE?.population || 0;

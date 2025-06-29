@@ -61,7 +61,7 @@ export default function RemittanceExpensesCharts({
       {/* Overall remittance expenses distribution - with pre-rendered table and client-side chart */}
       <div className="mb-12 border rounded-lg shadow-sm overflow-hidden bg-card">
         <div className="border-b px-4 py-3">
-          <h3 className="text-xl font-semibold">रेमिट्यान्स खर्च वितरण</h3>
+          <h3 className="text-xl font-semibold">रेमिटेन्स खर्च वितरण</h3>
           <p className="text-sm text-muted-foreground">
             कुल विप्रेषण प्राप्त घरपरिवार: {totalHouseholds.toLocaleString()}
           </p>
@@ -181,7 +181,7 @@ export default function RemittanceExpensesCharts({
       <div className="mt-12 border rounded-lg shadow-sm overflow-hidden bg-card">
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold">
-            वडा अनुसार रेमिट्यान्स खर्च वितरण
+            वडा अनुसार रेमिटेन्स खर्च वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             वडा र खर्च प्रकार अनुसार घरपरिवार वितरण
@@ -203,7 +203,7 @@ export default function RemittanceExpensesCharts({
       <div className="mt-12 border rounded-lg shadow-sm overflow-hidden bg-card">
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold">
-            वडा अनुसार विस्तृत रेमिट्यान्स खर्च विश्लेषण
+            वडा अनुसार विस्तृत रेमिटेन्स खर्च विश्लेषण
           </h3>
           <p className="text-sm text-muted-foreground">
             प्रत्येक वडाको विस्तृत विप्रेषण खर्च प्राथमिकता

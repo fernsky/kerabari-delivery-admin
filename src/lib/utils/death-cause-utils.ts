@@ -98,6 +98,9 @@ export const DEATH_CAUSE_LABELS: Record<string, string> = {
   NATURAL_DISASTER: "प्राकृतिक प्रकोप",
   DEATH_BY_OLD_AGE: "कालगतिले मर्नु",
   OTHER: "अन्य",
+  // Handle any additional death causes that might appear in data
+  BLOOD_PRESSURE_HIGH_AND_LOW_BLOOD_PRESSURE: "रक्तचाप (उच्च र निम्न)",
+  NOT_STATED: "उल्लेख नगरिएको",
 };
 
 export function processDeathCauseData(rawData: DeathCauseData[]): ProcessedDeathCauseData {
@@ -127,33 +130,60 @@ export function processDeathCauseData(rawData: DeathCauseData[]): ProcessedDeath
   // Calculate total deaths
   const totalDeaths = rawData.reduce((sum, item) => sum + (item.population || 0), 0);
 
-  // Process death cause data
+  // Process death cause data - aggregate by death cause
+  const deathCauseAggregated: Record<string, number> = {};
+  rawData.forEach((item) => {
+    const deathCause = item.deathCause;
+    deathCauseAggregated[deathCause] = (deathCauseAggregated[deathCause] || 0) + (item.population || 0);
+  });
+
+  // Sort death causes by population and take top 10
+  const sortedDeathCauses = Object.entries(deathCauseAggregated)
+    .sort(([, a], [, b]) => b - a);
+
+  const top10DeathCauses = sortedDeathCauses.slice(0, 10);
+  const otherDeathCausesRaw = sortedDeathCauses.slice(10);
+
+  // Calculate total for "other" category
+  const otherTotal = otherDeathCausesRaw.reduce((sum, [, population]) => sum + population, 0);
+
+  // Process death cause data with top 10 + other
   const deathCauseData: Record<string, any> = {};
   const allDeathCauses: Array<any> = [];
 
-  rawData.forEach((item, index) => {
-    const percentage = totalDeaths > 0 ? (item.population / totalDeaths) * 100 : 0;
+  // Add top 10 death causes
+  top10DeathCauses.forEach(([deathCause, population], index) => {
+    const percentage = totalDeaths > 0 ? (population / totalDeaths) * 100 : 0;
     const deathCauseInfo = {
-      population: item.population,
+      population,
       percentage,
-      label: item.deathCauseDisplay || DEATH_CAUSE_LABELS[item.deathCause] || item.deathCause,
+      label: DEATH_CAUSE_LABELS[deathCause] || deathCause,
       rank: index + 1,
     };
 
-    deathCauseData[item.deathCause] = deathCauseInfo;
+    deathCauseData[deathCause] = deathCauseInfo;
     allDeathCauses.push({
-      deathCause: item.deathCause,
+      deathCause,
       ...deathCauseInfo,
     });
   });
 
-  // Sort death causes by population
-  allDeathCauses.sort((a, b) => b.population - a.population);
+  // Add "other" category if there are other death causes
+  if (otherTotal > 0) {
+    const otherPercentage = totalDeaths > 0 ? (otherTotal / totalDeaths) * 100 : 0;
+    const otherInfo = {
+      population: otherTotal,
+      percentage: otherPercentage,
+      label: "अन्य",
+      rank: 11,
+    };
 
-  // Update ranks after sorting
-  allDeathCauses.forEach((deathCause, index) => {
-    deathCauseData[deathCause.deathCause].rank = index + 1;
-  });
+    deathCauseData["OTHER"] = otherInfo;
+    allDeathCauses.push({
+      deathCause: "OTHER",
+      ...otherInfo,
+    });
+  }
 
   // Categorize death causes
   const majorDeathCauses = allDeathCauses.filter(deathCause => deathCause.percentage >= 5);
@@ -171,7 +201,7 @@ export function processDeathCauseData(rawData: DeathCauseData[]): ProcessedDeath
   // Find dominant death cause
   const dominantDeathCause = allDeathCauses.length > 0 ? allDeathCauses[0] : null;
 
-  // Process ward data
+  // Process ward data with proper aggregation
   const wardData: Record<number, any> = {};
   const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
   
@@ -180,15 +210,35 @@ export function processDeathCauseData(rawData: DeathCauseData[]): ProcessedDeath
     const wardTotalDeaths = wardItems.reduce((sum, item) => sum + item.population, 0);
     const wardDeathCauses: Record<string, number> = {};
     
+    // Aggregate death causes for this ward
+    const wardDeathCauseAggregated: Record<string, number> = {};
     wardItems.forEach(item => {
-      wardDeathCauses[item.deathCause] = item.population;
+      wardDeathCauseAggregated[item.deathCause] = (wardDeathCauseAggregated[item.deathCause] || 0) + item.population;
     });
 
+    // Sort ward death causes and take top 10 + other
+    const sortedWardCauses = Object.entries(wardDeathCauseAggregated)
+      .sort(([, a], [, b]) => b - a);
+
+    const top10WardCauses = sortedWardCauses.slice(0, 10);
+    const otherWardCauses = sortedWardCauses.slice(10);
+    const otherWardTotal = otherWardCauses.reduce((sum, [, population]) => sum + population, 0);
+
+    // Add top 10 ward death causes
+    top10WardCauses.forEach(([deathCause, population]) => {
+      const label = DEATH_CAUSE_LABELS[deathCause] || deathCause;
+      wardDeathCauses[label] = population;
+    });
+
+    // Add "other" category if needed
+    if (otherWardTotal > 0) {
+      wardDeathCauses["अन्य"] = otherWardTotal;
+    }
+
     // Find primary death cause for this ward
-    const sortedWardCauses = wardItems.sort((a, b) => b.population - a.population);
-    const primaryDeathCause = sortedWardCauses[0]?.deathCause || '';
+    const primaryDeathCause = top10WardCauses[0]?.[0] || '';
     const primaryDeathCausePercentage = wardTotalDeaths > 0 
-      ? (sortedWardCauses[0]?.population || 0) / wardTotalDeaths * 100 
+      ? (top10WardCauses[0]?.[1] || 0) / wardTotalDeaths * 100 
       : 0;
 
     wardData[wardNum] = {
@@ -203,7 +253,7 @@ export function processDeathCauseData(rawData: DeathCauseData[]): ProcessedDeath
   const diseaseCategories = [
     "HEART_RELATED_DISEASES", "RESPIRATORY_DISEASES", "BRAIN_RELATED", "CANCER", 
     "DIABETES", "KIDNEY_RELATED_DISEASES", "LIVER_RELATED_DISEASES", "BLOOD_PRESSURE",
-    "GASTRIC_ULCER_INTESTINAL_DISEASE"
+    "GASTRIC_ULCER_INTESTINAL_DISEASE", "BLOOD_PRESSURE_HIGH_AND_LOW_BLOOD_PRESSURE"
   ];
 
   const infectiousCategories = [

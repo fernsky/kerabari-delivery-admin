@@ -68,7 +68,37 @@ export const DISABILITY_CAUSE_LABELS: Record<string, string> = {
   DISEASE: "रोग",
   CONFLICT: "द्वन्द्व",
   OTHER: "अन्य",
+  UNKNOWN: "अज्ञात",
+  congenital: "जन्मजात",
+  accident: "दुर्घटना",
+  malnutrition: "कुपोषण",
+  disease: "रोग",
+  conflict: "द्वन्द्व",
+  other: "अन्य",
+  unknown: "अज्ञात",
 };
+
+// Function to normalize disability cause enum values
+function normalizeDisabilityCause(cause: string): string {
+  const normalized = cause.toLowerCase();
+  // Map to standard enum values
+  const mapping: Record<string, string> = {
+    'congenital': 'CONGENITAL',
+    'accident': 'ACCIDENT',
+    'malnutrition': 'MALNUTRITION',
+    'disease': 'DISEASE',
+    'conflict': 'CONFLICT',
+    'other': 'OTHER',
+    'unknown': 'UNKNOWN',
+  };
+  return mapping[normalized] || cause;
+}
+
+// Function to get proper label for disability cause
+function getDisabilityCauseLabel(cause: string): string {
+  const normalized = normalizeDisabilityCause(cause);
+  return DISABILITY_CAUSE_LABELS[normalized] || DISABILITY_CAUSE_LABELS[cause] || cause;
+}
 
 export function processDisabilityCauseData(rawData: DisabilityCauseData[]): ProcessedDisabilityCauseData {
   if (!rawData || rawData.length === 0) {
@@ -99,38 +129,65 @@ export function processDisabilityCauseData(rawData: DisabilityCauseData[]): Proc
   // Calculate total population with disabilities
   const totalPopulationWithDisability = rawData.reduce((sum, item) => sum + (item.population || 0), 0);
 
-  // Process disability cause data
+  // Process disability cause data - aggregate by disability cause
+  const disabilityCauseAggregated: Record<string, number> = {};
+  rawData.forEach((item) => {
+    const disabilityCause = item.disabilityCause;
+    disabilityCauseAggregated[disabilityCause] = (disabilityCauseAggregated[disabilityCause] || 0) + (item.population || 0);
+  });
+
+  // Sort disability causes by population and take top 10
+  const sortedDisabilityCauses = Object.entries(disabilityCauseAggregated)
+    .sort(([, a], [, b]) => b - a);
+
+  const top10DisabilityCauses = sortedDisabilityCauses.slice(0, 10);
+  const otherDisabilityCausesRaw = sortedDisabilityCauses.slice(10);
+
+  // Calculate total for "other" category
+  const otherTotal = otherDisabilityCausesRaw.reduce((sum, [, population]) => sum + population, 0);
+
+  // Process disability cause data with top 10 + other
   const disabilityCauseData: Record<string, any> = {};
   const allDisabilityCauses: Array<any> = [];
 
-  rawData.forEach((item, index) => {
-    const percentage = totalPopulationWithDisability > 0 ? (item.population / totalPopulationWithDisability) * 100 : 0;
+  // Add top 10 disability causes
+  top10DisabilityCauses.forEach(([disabilityCause, population], index) => {
+    const percentage = totalPopulationWithDisability > 0 ? (population / totalPopulationWithDisability) * 100 : 0;
     const disabilityCauseInfo = {
-      population: item.population,
+      population,
       percentage,
-      label: item.disabilityCauseDisplay || DISABILITY_CAUSE_LABELS[item.disabilityCause] || item.disabilityCause,
+      label: getDisabilityCauseLabel(disabilityCause),
       rank: index + 1,
     };
 
-    disabilityCauseData[item.disabilityCause] = disabilityCauseInfo;
+    disabilityCauseData[disabilityCause] = disabilityCauseInfo;
     allDisabilityCauses.push({
-      disabilityCause: item.disabilityCause,
+      disabilityCause,
       ...disabilityCauseInfo,
     });
   });
 
-  // Sort disability causes by population
-  allDisabilityCauses.sort((a, b) => b.population - a.population);
+  // Add "other" category if there are other disability causes
+  if (otherTotal > 0) {
+    const otherPercentage = totalPopulationWithDisability > 0 ? (otherTotal / totalPopulationWithDisability) * 100 : 0;
+    const otherInfo = {
+      population: otherTotal,
+      percentage: otherPercentage,
+      label: "अन्य",
+      rank: 11,
+    };
 
-  // Update ranks after sorting
-  allDisabilityCauses.forEach((disabilityCause, index) => {
-    disabilityCauseData[disabilityCause.disabilityCause].rank = index + 1;
-  });
+    disabilityCauseData["OTHER"] = otherInfo;
+    allDisabilityCauses.push({
+      disabilityCause: "OTHER",
+      ...otherInfo,
+    });
+  }
 
   // Categorize disability causes
-  const majorDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage >= 10);
-  const minorDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage < 10 && disabilityCause.percentage >= 5);
-  const otherDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage < 5);
+  const majorDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage >= 5);
+  const minorDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage < 5 && disabilityCause.percentage >= 1);
+  const otherDisabilityCauses = allDisabilityCauses.filter(disabilityCause => disabilityCause.percentage < 1);
 
   // Calculate diversity index (Simpson's Diversity Index)
   const diversityIndex = totalPopulationWithDisability > 0 
@@ -143,7 +200,7 @@ export function processDisabilityCauseData(rawData: DisabilityCauseData[]): Proc
   // Find dominant disability cause
   const dominantDisabilityCause = allDisabilityCauses.length > 0 ? allDisabilityCauses[0] : null;
 
-  // Process ward data
+  // Process ward data with proper aggregation
   const wardData: Record<number, any> = {};
   const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
   
@@ -152,15 +209,35 @@ export function processDisabilityCauseData(rawData: DisabilityCauseData[]): Proc
     const wardTotalDisabilityPopulation = wardItems.reduce((sum, item) => sum + item.population, 0);
     const wardDisabilityCauses: Record<string, number> = {};
     
+    // Aggregate disability causes for this ward
+    const wardDisabilityCauseAggregated: Record<string, number> = {};
     wardItems.forEach(item => {
-      wardDisabilityCauses[item.disabilityCause] = item.population;
+      wardDisabilityCauseAggregated[item.disabilityCause] = (wardDisabilityCauseAggregated[item.disabilityCause] || 0) + item.population;
     });
 
+    // Sort ward disability causes and take top 10 + other
+    const sortedWardCauses = Object.entries(wardDisabilityCauseAggregated)
+      .sort(([, a], [, b]) => b - a);
+
+    const top10WardCauses = sortedWardCauses.slice(0, 10);
+    const otherWardCauses = sortedWardCauses.slice(10);
+    const otherWardTotal = otherWardCauses.reduce((sum, [, population]) => sum + population, 0);
+
+    // Add top 10 ward disability causes
+    top10WardCauses.forEach(([disabilityCause, population]) => {
+      const label = getDisabilityCauseLabel(disabilityCause);
+      wardDisabilityCauses[label] = population;
+    });
+
+    // Add "other" category if needed
+    if (otherWardTotal > 0) {
+      wardDisabilityCauses["अन्य"] = otherWardTotal;
+    }
+
     // Find primary disability cause for this ward
-    const sortedWardCauses = wardItems.sort((a, b) => b.population - a.population);
-    const primaryDisabilityCause = sortedWardCauses[0]?.disabilityCause || '';
+    const primaryDisabilityCause = top10WardCauses[0]?.[0] || '';
     const primaryDisabilityCausePercentage = wardTotalDisabilityPopulation > 0 
-      ? (sortedWardCauses[0]?.population || 0) / wardTotalDisabilityPopulation * 100 
+      ? (top10WardCauses[0]?.[1] || 0) / wardTotalDisabilityPopulation * 100 
       : 0;
 
     wardData[wardNum] = {
@@ -213,133 +290,74 @@ export function generateDisabilityCauseAnalysis(data: ProcessedDisabilityCauseDa
     return "अपाङ्गता सम्बन्धी तथ्याङ्क उपलब्ध छैन।";
   }
 
-  const analysisParts: string[] = [];
+  const analysis = [];
+  
+  // Constitutional and public health context
+  analysis.push("नेपालको संविधान २०७२ ले अपाङ्गता भएका व्यक्तिहरूको अधिकार र सुरक्षालाई मौलिक अधिकारको रूपमा मान्यता दिएको छ र सरकारलाई तिनको पुनर्स्थापना, शिक्षा र रोजगारीको अवसर प्रदान गर्ने जिम्मेवारी दिएको छ। बुद्धशान्ति गाउँपालिकामा अपाङ्गताका कारणहरूको विश्लेषणले स्थानीय स्वास्थ्य चुनौतीहरू र तिनको समाधानका लागि आवश्यक नीतिगत दिशानिर्देशहरू प्रदान गर्दछ।");
 
-  // Overall summary
-  analysisParts.push(
-    `गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalPopulationWithDisability)} जना अपाङ्गता भएका व्यक्तिहरू रहेका छन्।`
-  );
+  // Overall disability analysis
+  analysis.push(`गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalPopulationWithDisability)} जना अपाङ्गता भएका व्यक्तिहरू रहेका छन्, जसले स्थानीय स्वास्थ्य स्थिति र सामाजिक सुरक्षा चुनौतीहरूको महत्वपूर्ण सूचक हो। यी तथ्याङ्कहरूले अपाङ्गता निवारण, पुनर्स्थापना र सामाजिक सुरक्षा कार्यक्रमहरूको विकासका लागि आधारभूत जानकारी प्रदान गर्दछन्।`);
 
   // Dominant disability cause analysis
   if (data.dominantDisabilityCause) {
-    analysisParts.push(
-      `सबैभन्दा प्रमुख अपाङ्गताको कारण ${data.dominantDisabilityCause.label} रहेको छ, जसमा ${convertToNepaliNumber(data.dominantDisabilityCause.population)} जना (${formatNepaliPercentage(data.dominantDisabilityCause.percentage)}) रहेका छन्।`
-    );
-  }
-
-  // Major disability causes analysis
-  if (data.majorDisabilityCauses.length > 0) {
-    const majorCausesText = data.majorDisabilityCauses
-      .map(cause => `${cause.label} (${convertToNepaliNumber(cause.population)} जना, ${formatNepaliPercentage(cause.percentage)})`)
-      .join(', ');
-    analysisParts.push(
-      `प्रमुख अपाङ्गताका कारणहरूमा ${majorCausesText} समावेश छन्।`
-    );
-  }
-
-  // Minor disability causes analysis
-  if (data.minorDisabilityCauses.length > 0) {
-    const minorCausesText = data.minorDisabilityCauses
-      .map(cause => `${cause.label} (${convertToNepaliNumber(cause.population)} जना, ${formatNepaliPercentage(cause.percentage)})`)
-      .join(', ');
-    analysisParts.push(
-      `मध्यम अपाङ्गताका कारणहरूमा ${minorCausesText} समावेश छन्।`
-    );
-  }
-
-  // Other disability causes analysis
-  if (data.otherDisabilityCauses.length > 0) {
-    const otherCausesText = data.otherDisabilityCauses
-      .map(cause => `${cause.label} (${convertToNepaliNumber(cause.population)} जना, ${formatNepaliPercentage(cause.percentage)})`)
-      .join(', ');
-    analysisParts.push(
-      `अन्य अपाङ्गताका कारणहरूमा ${otherCausesText} समावेश छन्।`
-    );
-  }
-
-  // Diversity analysis
-  if (data.diversityIndex > 0.6) {
-    analysisParts.push(
-      "अपाङ्गताका कारणहरूमा धेरै विविधता रहेको छ (विविधता सूचकांक: " + 
-      convertToNepaliNumber(parseFloat((data.diversityIndex * 100).toFixed(1))) + "%)।"
-    );
-  } else if (data.diversityIndex > 0.4) {
-    analysisParts.push(
-      "अपाङ्गताका कारणहरूमा मध्यम विविधता रहेको छ (विविधता सूचकांक: " + 
-      convertToNepaliNumber(parseFloat((data.diversityIndex * 100).toFixed(1))) + "%)।"
-    );
-  } else {
-    analysisParts.push(
-      "अपाङ्गताका कारणहरूमा कम विविधता रहेको छ (विविधता सूचकांक: " + 
-      convertToNepaliNumber(parseFloat((data.diversityIndex * 100).toFixed(1))) + "%)।"
-    );
+    const dominancePercentage = data.dominantDisabilityCause.percentage;
+    let dominanceAnalysis = "";
+    
+    if (dominancePercentage > 40) {
+      dominanceAnalysis = `गाउँपालिकामा ${data.dominantDisabilityCause.label} को कारणले स्पष्ट प्रभुत्व (${formatNepaliPercentage(dominancePercentage)}) रहेको छ, जसले यस क्षेत्रमा विशेष स्वास्थ्य चुनौती रहेको संकेत गर्दछ। यस्तो उच्च एकाग्रताले लक्षित स्वास्थ्य हस्तक्षेप र रोग नियन्त्रण कार्यक्रमहरूको आवश्यकतालाई जनाउँछ।`;
+    } else if (dominancePercentage > 25) {
+      dominanceAnalysis = `${data.dominantDisabilityCause.label} को कारणले सापेक्षिक बहुमत (${formatNepaliPercentage(dominancePercentage)}) रहेको छ, तर अन्य कारणहरूको उपस्थितिले विविध स्वास्थ्य चुनौतीहरू रहेको देखाउँछ। यस अवस्थाले समग्र स्वास्थ्य सेवा र रोग नियन्त्रणमा सन्तुलित दृष्टिकोण अपनाउन आवश्यक छ।`;
+    } else {
+      dominanceAnalysis = `${data.dominantDisabilityCause.label} को कारणले सापेक्षिक बहुलता (${formatNepaliPercentage(dominancePercentage)}) रहेको छ, जसले अपेक्षाकृत विविध अपाङ्गताका कारणहरू रहेको संकेत गर्दछ।`;
+    }
+    
+    analysis.push(dominanceAnalysis);
   }
 
   // Disability indicators analysis
-  const indicators = data.disabilityIndicators;
-  if (indicators.congenitalDisabilities > 0) {
-    analysisParts.push(
-      `जन्मजात अपाङ्गता भएका व्यक्तिहरू ${convertToNepaliNumber(indicators.congenitalDisabilities)} जना (${formatNepaliPercentage(indicators.congenitalPercentage)}) रहेका छन्।`
-    );
-  }
+  const congenitalRate = data.disabilityIndicators.congenitalPercentage;
+  const accidentRate = data.disabilityIndicators.accidentPercentage;
+  const diseaseRate = data.disabilityIndicators.diseasePercentage;
+  const malnutritionRate = data.disabilityIndicators.malnutritionPercentage;
+  const conflictRate = data.disabilityIndicators.conflictPercentage;
 
-  if (indicators.accidentRelatedDisabilities > 0) {
-    analysisParts.push(
-      `दुर्घटना सम्बन्धी अपाङ्गता भएका व्यक्तिहरू ${convertToNepaliNumber(indicators.accidentRelatedDisabilities)} जना (${formatNepaliPercentage(indicators.accidentPercentage)}) रहेका छन्।`
-    );
-  }
+  analysis.push(`अपाङ्गता सूचकहरूको विश्लेषण गर्दा जन्मजात अपाङ्गता ${formatNepaliPercentage(congenitalRate)} रहेको छ, जसले मातृ स्वास्थ्य र प्रसवपूर्व देखभालमा सुधारको आवश्यकतालाई जनाउँछ। दुर्घटना सम्बन्धी अपाङ्गता ${formatNepaliPercentage(accidentRate)} रहेको छ, जसले सुरक्षा उपायहरू र दुर्घटना नियन्त्रण कार्यक्रमहरूको आवश्यकतालाई जनाउँछ। रोग सम्बन्धी अपाङ्गता ${formatNepaliPercentage(diseaseRate)} रहेको छ, जसले स्वास्थ्य सेवा र रोग नियन्त्रणमा विशेष ध्यान दिन आवश्यक छ। कुपोषण सम्बन्धी अपाङ्गता ${formatNepaliPercentage(malnutritionRate)} रहेको छ, जसले पोषण कार्यक्रमहरूको आवश्यकतालाई जनाउँछ। द्वन्द्व सम्बन्धी अपाङ्गता ${formatNepaliPercentage(conflictRate)} रहेको छ, जसले शान्ति र सुरक्षा कार्यक्रमहरूको महत्वलाई उजागर गर्दछ।`);
 
-  if (indicators.diseaseRelatedDisabilities > 0) {
-    analysisParts.push(
-      `रोग सम्बन्धी अपाङ्गता भएका व्यक्तिहरू ${convertToNepaliNumber(indicators.diseaseRelatedDisabilities)} जना (${formatNepaliPercentage(indicators.diseasePercentage)}) रहेका छन्।`
+  // Detailed disability cause analysis
+  if (data.majorDisabilityCauses.length > 0) {
+    const majorCausesList = data.majorDisabilityCauses.slice(1, 5).map(cause => 
+      `${cause.label} ${convertToNepaliNumber(cause.population)} (${formatNepaliPercentage(cause.percentage)})`
     );
-  }
-
-  if (indicators.malnutritionDisabilities > 0) {
-    analysisParts.push(
-      `कुपोषण सम्बन्धी अपाङ्गता भएका व्यक्तिहरू ${convertToNepaliNumber(indicators.malnutritionDisabilities)} जना (${formatNepaliPercentage(indicators.malnutritionPercentage)}) रहेका छन्।`
-    );
-  }
-
-  if (indicators.conflictRelatedDisabilities > 0) {
-    analysisParts.push(
-      `द्वन्द्व सम्बन्धी अपाङ्गता भएका व्यक्तिहरू ${convertToNepaliNumber(indicators.conflictRelatedDisabilities)} जना (${formatNepaliPercentage(indicators.conflictPercentage)}) रहेका छन्।`
-    );
-  }
-
-  // Ward-wise analysis
-  const wardEntries = Object.entries(data.wardData);
-  if (wardEntries.length > 0) {
-    const sortedWards = wardEntries.sort((a, b) => b[1].totalDisabilityPopulation - a[1].totalDisabilityPopulation);
-    const highestWard = sortedWards[0];
-    const lowestWard = sortedWards[sortedWards.length - 1];
     
-    analysisParts.push(
-      `वडा अनुसार हेर्दा, वडा ${convertToNepaliNumber(parseInt(highestWard[0]))} मा सबैभन्दा बढी ${convertToNepaliNumber(highestWard[1].totalDisabilityPopulation)} जना अपाङ्गता भएका व्यक्तिहरू रहेका छन्।`
-    );
-
-    if (lowestWard[0] !== highestWard[0]) {
-      analysisParts.push(
-        `सबैभन्दा कम वडा ${convertToNepaliNumber(parseInt(lowestWard[0]))} मा ${convertToNepaliNumber(lowestWard[1].totalDisabilityPopulation)} जना अपाङ्गता भएका व्यक्तिहरू रहेका छन्।`
-      );
+    if (majorCausesList.length > 0) {
+      analysis.push(`अन्य प्रमुख अपाङ्गताका कारणहरूमा ${majorCausesList.join(', ')} रहेका छन्। यी कारणहरूको विश्लेषणले स्थानीय स्वास्थ्य प्राथमिकताहरू र लक्षित हस्तक्षेपहरूको आवश्यकतालाई जनाउँछ।`);
     }
   }
 
-  // Policy implications
-  analysisParts.push(
-    "यी तथ्याङ्कहरू अपाङ्गता निवारण, पुनर्स्थापना र सामाजिक सुरक्षा कार्यक्रमहरूको योजना र कार्यान्वयनका लागि महत्त्वपूर्ण आधार हो।"
-  );
+  // Ward-wise variation analysis
+  const wardCount = Object.keys(data.wardData).length;
+  const wardVariations = Object.entries(data.wardData).map(([wardNum, wardInfo]) => {
+    const primaryCauseLabel = getDisabilityCauseLabel(wardInfo.primaryDisabilityCause);
+    return `वडा ${convertToNepaliNumber(parseInt(wardNum))} मा ${primaryCauseLabel} (${formatNepaliPercentage(wardInfo.primaryDisabilityCausePercentage)})`;
+  });
 
-  return analysisParts.join(' ');
+  analysis.push(`गाउँपालिकाका ${convertToNepaliNumber(wardCount)} वटा वडाहरूमा अपाङ्गताका कारणहरूको वितरणमा भिन्नता देखिन्छ: ${wardVariations.join(', ')}। यस्तो भिन्नताले स्थानीय स्तरमा विशिष्ट स्वास्थ्य चुनौतीहरू रहेको संकेत गर्दछ र वडागत स्वास्थ्य योजना र कार्यक्रमहरूको आवश्यकतालाई जनाउँछ।`);
+
+  // Public health implications
+  analysis.push("अपाङ्गताका कारणहरूको यस्तो विश्लेषणले सार्वजनिक स्वास्थ्य नीति र कार्यक्रमहरूको विकासमा महत्वपूर्ण भूमिका खेल्छ। जन्मजात अपाङ्गताको उच्च प्रतिशतले मातृ स्वास्थ्य सेवा, प्रसवपूर्व देखभाल र आनुवंशिक परामर्श कार्यक्रमहरूको आवश्यकतालाई जनाउँछ। दुर्घटना सम्बन्धी अपाङ्गताको उपस्थितिले सुरक्षा उपायहरू, यातायात सुरक्षा र कार्यस्थल सुरक्षा कार्यक्रमहरूको महत्वलाई उजागर गर्दछ। रोग सम्बन्धी अपाङ्गताको उच्च दरले स्वास्थ्य शिक्षा, रोग नियन्त्रण र पुनर्स्थापना सेवाहरूको आवश्यकतालाई जनाउँछ।");
+
+  // Healthcare infrastructure analysis
+  analysis.push("यस्तो तथ्याङ्कले स्वास्थ्य सेवा सुविधाहरूको विकास र सुधारमा महत्वपूर्ण निर्देशन प्रदान गर्दछ। पुनर्स्थापना केन्द्रहरूको सुदृढीकरण, विशेष शिक्षा सेवाहरूको विस्तार र सामाजिक सुरक्षा कार्यक्रमहरूको सुधार आवश्यक छ। साथै, स्वास्थ्य कर्मचारीहरूको क्षमता विकास, स्वास्थ्य सूचना प्रणालीको सुदृढीकरण र सामुदायिक स्वास्थ्य कार्यक्रमहरूको विस्तार गर्न आवश्यक छ।");
+
+  // Future recommendations
+  analysis.push("भविष्यमा अपाङ्गताका कारणहरूको नियमित निगरानी र विश्लेषण गर्ने प्रणाली विकास गर्न आवश्यक छ। यसले समयमै स्वास्थ्य चुनौतीहरू पहिचान गर्न र तिनको समाधानका लागि तत्काल कार्यवाही गर्न सहयोग गर्छ। साथै, सामुदायिक सहभागिता, स्वास्थ्य शिक्षा र रोकथाममूलक स्वास्थ्य कार्यक्रमहरूको विस्तार गर्दै स्वास्थ्य साक्षरता बढाउन आवश्यक छ। गाउँपालिका सबै नागरिकहरूको स्वास्थ्य र कल्याण सुनिश्चित गर्ने लक्ष्यमा निरन्तर कार्यरत रहनेछ।");
+
+  return analysis.join(" ");
 }
 
 export function convertToNepaliNumber(num: number): string {
-  const nepaliDigits: Record<string, string> = {
-    '0': '०', '1': '१', '2': '२', '3': '३', '4': '४',
-    '5': '५', '6': '६', '7': '७', '8': '८', '9': '९'
-  };
-  
-  return num.toString().replace(/[0-9]/g, (digit) => nepaliDigits[digit] || digit);
+  const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+  return num.toString().replace(/\d/g, (digit) => nepaliDigits[parseInt(digit)]);
 }
 
 export function formatNepaliPercentage(percentage: number): string {

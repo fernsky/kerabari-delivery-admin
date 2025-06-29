@@ -1,6 +1,7 @@
 /* ========================================
    buddhashanti MUNICIPALITY PDF REPORT STYLES
    Clean, consolidated CSS for PDF generation
+   Optimized for A4 paper printing
    ======================================== */
 
 /* Custom Nepali counter style */
@@ -17,21 +18,17 @@
 /* Simplified page setup with consistent Nepali numerals for target-counter compatibility */
 @page {
   size: A4;
-  margin: 2.5 2.5 2.5 2.5;
-  /* 1 inch margins */
+  margin: 2cm 1.5cm 2cm 1.5cm;
 
   @bottom-right {
-    content: counter(page, nepali-numerals)
-      " | बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१";
+    content: counter(page, nepali-numerals) " | बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१";
     font-size: 9pt;
     color: #666;
     font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;
   }
 
   @top-right {
-    content:
-      बुद्धशान्ति गाउँपालिका पार्श्वचित्र,
-      २०८१;
+    content: बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१;
     font-size: 9pt;
     color: #666;
     font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;
@@ -64,14 +61,15 @@
 body {
   font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;
   font-size: 11pt;
-  line-height: 1.5;
+  line-height: 1.4;
   color: #333;
   margin: 0;
   padding: 0;
+  background: white;
 }
 
 p {
-  margin: 0.5em 0;
+  margin: 0.4em 0;
   text-align: justify;
   orphans: 2;
   widows: 2;
@@ -85,6 +83,7 @@ h5,
 h6 {
   page-break-after: auto;
   page-break-inside: auto;
+  margin: 0.5em 0;
 }
 
 h1 {
@@ -110,12 +109,12 @@ h6 {
 
 ul,
 ol {
-  margin: 0.5em 0 1em 0;
-  padding-left: 1.5em;
+  margin: 0.4em 0 0.8em 0;
+  padding-left: 1.2em;
 }
 
 li {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.2em;
 }
 
 /* ========================================
@@ -148,6 +147,8 @@ li {
   page-break-after: auto;
   page-break-inside: auto;
   break-before: page;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* First category doesn't need extra space from main content start */
@@ -156,19 +157,14 @@ li {
 }
 
 .section-content {
-  /* page-break-inside: auto;
-  break-inside: auto;
-  orphans: 2;
-  widows: 2; */
-  margin-top: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 0;
 }
 
 /* Sections within categories should NOT break */
 .section-within-category {
-  /* page-break-before: auto;
-  page-break-after: avoid;
-  page-break-inside: auto; */
-  margin-top: 2em;
+  margin-top: 1.5em;
+  margin-bottom: 0;
 }
 
 /* ========================================
@@ -180,8 +176,8 @@ li {
   font-weight: 700;
   text-align: center;
   color: #dc2626;
-  margin: 1em 0 2em 0;
-  padding: 0.5em;
+  margin: 0.5em 0 1.5em 0;
+  padding: 0.3em;
   page-break-after: auto;
   page-break-before: avoid;
 }
@@ -191,9 +187,9 @@ li {
   font-size: 16pt;
   color: #1e40af;
   border-bottom: 2px solid #0ea5e9;
-  padding-bottom: 0.3em;
-  margin-top: 2em;
-  margin-bottom: 1em;
+  padding-bottom: 0.2em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
   page-break-after: auto;
 }
 
@@ -201,10 +197,10 @@ li {
   font-size: 14pt;
   color: #2563eb;
   border-bottom: 1px solid #60a5fa;
-  padding-bottom: 0.2em;
+  padding-bottom: 0.15em;
   margin-left: 1em;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
   page-break-after: auto;
 }
 
@@ -231,7 +227,7 @@ li {
   font-weight: 700;
   color: #1e3a8a;
   border-bottom: 3px solid #0ea5e9;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.4em;
   margin-bottom: 1.5em;
   text-align: center;
 }
@@ -256,7 +252,7 @@ li {
 .toc-item.level-1 {
   font-weight: 600;
   font-size: 12pt;
-  margin-top: 1em;
+  margin-top: 0.8em;
   margin-bottom: 0.5em;
   color: #1e40af;
 }
@@ -320,7 +316,7 @@ li {
   font-weight: 700;
   color: #1e3a8a;
   border-bottom: 3px solid #0ea5e9;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.4em;
   margin-bottom: 1.5em;
   text-align: center;
 }
@@ -329,8 +325,8 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 0.5em;
-  padding: 0.3em 0;
+  margin-bottom: 0.4em;
+  padding: 0.2em 0;
   border-bottom: 1px solid #e5e7eb;
   page-break-inside: auto;
 }
@@ -344,46 +340,48 @@ li {
 }
 
 /* ========================================
-   FIGURES AND TABLES
+   FIGURES AND TABLES - OPTIMIZED FOR A4
    ======================================== */
 
 .figure-container {
-  margin: 1.5em 0;
+  margin: 1em 0;
   page-break-inside: auto;
   text-align: center;
   border: none;
+  background: transparent;
 }
 
 .figure-container img {
   max-width: 100%;
   height: auto;
   border: none;
+  background: transparent;
 }
 
 .figure-caption {
   font-size: 10pt;
   color: #4b5563;
   font-style: italic;
-  margin-top: 0.5em;
+  margin-top: 0.4em;
   text-align: center;
 }
 
 .table-container {
-  margin: 1.5em 0;
+  margin: 1em 0;
   page-break-inside: auto;
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1em 0;
-  font-size: 10pt;
+  margin: 0.8em 0;
+  font-size: 9pt;
 }
 
 .data-table th,
 .data-table td {
   border: 1px solid #d1d5db;
-  padding: 0.5em;
+  padding: 3px 5px;
   text-align: left;
   vertical-align: top;
 }
@@ -402,7 +400,7 @@ li {
   font-size: 10pt;
   color: #4b5563;
   font-weight: bold;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.4em;
   text-align: left;
   caption-side: top;
 }
@@ -411,7 +409,54 @@ li {
   font-size: 10pt;
   color: #6b7280;
   font-style: italic;
-  margin-top: 0.5em;
+  margin-top: 0.4em;
+}
+
+/* ========================================
+   CHARTS AND FIGURES - OPTIMIZED FOR A4
+   ======================================== */
+
+.chart-section {
+  margin-bottom: 1em;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+.chart-title,
+.table-title {
+  font-size: 11pt;
+  font-weight: bold;
+  color: #1e40af;
+  margin: 0.8em 0 0.4em 0;
+  text-align: center;
+}
+
+.pdf-chart-container {
+  border: none;
+  text-align: center;
+  margin: 0.5em 0;
+  page-break-inside: auto;
+  background: transparent;
+  padding: 0;
+}
+
+.pdf-chart-container svg {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  background: transparent;
+}
+
+.pdf-chart-image {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  background: transparent;
+}
+
+.table-section {
+  margin-bottom: 1em;
+  page-break-inside: auto;
 }
 
 /* ========================================
@@ -456,27 +501,6 @@ li {
   text-align: right;
 }
 
-@media print {
-  .data-table,
-  .pdf-data-table,
-  .ward-household-table,
-  .ward-household-comparison-table {
-    font-size: 8pt !important;
-  }
-
-  .data-table th,
-  .data-table td,
-  .pdf-data-table th,
-  .pdf-data-table td,
-  .ward-household-table th,
-  .ward-household-table td,
-  .ward-household-comparison-table th,
-  .ward-household-comparison-table td {
-    padding: 2px 3px !important;
-    font-size: 8pt !important;
-  }
-}
-
 /* ========================================
    UTILITY CLASSES
    ======================================== */
@@ -502,27 +526,27 @@ li {
 }
 
 .mt-1 {
-  margin-top: 0.5em;
+  margin-top: 0.4em;
 }
 
 .mt-2 {
-  margin-top: 1em;
+  margin-top: 0.8em;
 }
 
 .mt-3 {
-  margin-top: 1.5em;
+  margin-top: 1.2em;
 }
 
 .mb-1 {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.4em;
 }
 
 .mb-2 {
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
 }
 
 .mb-3 {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
 }
 
 /* ========================================
@@ -533,8 +557,8 @@ li {
   background-color: #d4edda;
   border: 1px solid #c3e6cb;
   border-radius: 4px;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.8em;
+  margin: 0.8em 0;
   page-break-inside: auto;
 }
 
@@ -542,8 +566,8 @@ li {
   background-color: #d1ecf1;
   border: 1px solid #bee5eb;
   border-radius: 4px;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.8em;
+  margin: 0.8em 0;
   page-break-inside: auto;
 }
 
@@ -551,8 +575,8 @@ li {
   background-color: #fff3cd;
   border: 1px solid #ffeaa7;
   border-radius: 4px;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.8em;
+  margin: 0.8em 0;
   page-break-inside: auto;
 }
 
@@ -565,8 +589,8 @@ li {
 blockquote {
   border-left: 4px solid #3498db;
   background-color: #f8f9fa;
-  padding: 1em;
-  margin: 1em 0;
+  padding: 0.8em;
+  margin: 0.8em 0;
   font-style: italic;
   page-break-inside: auto;
 }
@@ -595,10 +619,51 @@ blockquote {
 
   .chart-section {
     page-break-inside: avoid;
+    margin-bottom: 0.8em;
   }
 
   .table-section {
     page-break-inside: auto;
+    margin-bottom: 0.8em;
+  }
+
+  /* Remove any backgrounds from charts */
+  .pdf-chart-container,
+  .pdf-chart-container svg,
+  .pdf-chart-image {
+    background: transparent !important;
+  }
+
+  /* Optimize spacing for print */
+  .section-content {
+    margin-top: 0.8em;
+  }
+
+  .section-within-category {
+    margin-top: 1.2em;
+  }
+
+  .content-section {
+    margin-bottom: 0.8em;
+  }
+
+  .data-table,
+  .pdf-data-table,
+  .ward-household-table,
+  .ward-household-comparison-table {
+    font-size: 8pt !important;
+  }
+
+  .data-table th,
+  .data-table td,
+  .pdf-data-table th,
+  .pdf-data-table td,
+  .ward-household-table th,
+  .ward-household-table td,
+  .ward-household-comparison-table th,
+  .ward-household-comparison-table td {
+    padding: 2px 3px !important;
+    font-size: 8pt !important;
   }
 }
 

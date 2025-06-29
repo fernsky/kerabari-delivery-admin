@@ -77,7 +77,7 @@ export async function generateMetadata(): Promise<Metadata> {
         (r) =>
           `${remittanceExpenseLabels[r as RemittanceExpenseType]} बुद्धशान्ति विप्रेषण`,
       ),
-      "वडा अनुसार रेमिट्यान्स खर्च",
+      "वडा अनुसार रेमिटेन्स खर्च",
       "विप्रेषण उपयोग तथ्याङ्क",
       "रेमिट्यान्स सर्वेक्षण बुद्धशान्ति",
       `बुद्धशान्ति विप्रेषण प्राप्त घरपरिवार संख्या ${totalHouseholds}`,
@@ -103,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const descriptionEN = `Ward-wise remittance expense distribution, trends and analysis for Khajura Rural Municipality. Out of ${totalHouseholds} households receiving remittances, ${EXPENSE_NAMES_EN[topExpenses[0] as RemittanceExpenseType]} (${expenseCounts[topExpenses[0]]}) is the largest expense category, followed by ${EXPENSE_NAMES_EN[topExpenses[1] as RemittanceExpenseType]} (${expenseCounts[topExpenses[1]]}) and ${EXPENSE_NAMES_EN[topExpenses[2] as RemittanceExpenseType]} (${expenseCounts[topExpenses[2]]})। Detailed statistics and visualizations of various remittance expense patterns.`;
 
     return {
-      title: `रेमिट्यान्स खर्च | ${municipalityName} पालिका प्रोफाइल`,
+      title: `रेमिटेन्स खर्च | ${municipalityName} पालिका प्रोफाइल`,
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -114,7 +114,7 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `रेमिट्यान्स खर्च | ${municipalityName}`,
+        title: `रेमिटेन्स खर्च | ${municipalityName}`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
@@ -123,16 +123,16 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title: `रेमिट्यान्स खर्च | ${municipalityName}`,
+        title: `रेमिटेन्स खर्च | ${municipalityName}`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "रेमिट्यान्स खर्च | पालिका प्रोफाइल",
+      title: "रेमिटेन्स खर्च | पालिका प्रोफाइल",
       description:
-        "वडा अनुसार रेमिट्यान्स खर्च वितरण, प्रवृत्ति र विश्लेषण। विभिन्न विप्रेषण खर्च प्रकारहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
+        "वडा अनुसार रेमिटेन्स खर्च वितरण, प्रवृत्ति र विश्लेषण। विभिन्न विप्रेषण खर्च प्रकारहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
   }
 }
@@ -141,12 +141,12 @@ const toc = [
   { level: 2, text: "परिचय", slug: "introduction" },
   {
     level: 2,
-    text: "रेमिट्यान्स खर्च प्रकार अनुसार घरपरिवार",
+    text: "रेमिटेन्स खर्च प्रकार अनुसार घरपरिवार",
     slug: "expenses-distribution",
   },
   {
     level: 2,
-    text: "वडा अनुसार रेमिट्यान्स खर्च विविधता",
+    text: "वडा अनुसार रेमिटेन्स खर्च विविधता",
     slug: "ward-wise-expenses",
   },
   {
@@ -276,7 +276,11 @@ export default async function WardRemittanceExpensesPage() {
               src="/images/remittance-expenses.svg"
               width={1200}
               height={400}
+<<<<<<< HEAD
+              alt="रेमिटेन्स खर्च - गढवा गाउँपालिका (Remittance Expenses - Khajura Rural Municipality)"
+=======
               alt="रेमिट्यान्स खर्च - बुद्धशान्ति गाउँपालिका (Remittance Expenses - Khajura Rural Municipality)"
+>>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -284,15 +288,24 @@ export default async function WardRemittanceExpensesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
+<<<<<<< HEAD
+              गढवा गाउँपालिकामा रेमिटेन्स खर्च
+=======
               बुद्धशान्ति गाउँपालिकामा रेमिट्यान्स खर्च
+>>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
+<<<<<<< HEAD
+              यस खण्डमा गढवा गाउँपालिकाको विभिन्न वडाहरूमा रहेका
+              घरपरिवारहरूले विदेशबाट प्राप्त विप्रेषण (रेमिटेन्स) रकमलाई कसरी
+=======
               यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
               घरपरिवारहरूले विदेशबाट प्राप्त विप्रेषण (रेमिट्यान्स) रकमलाई कसरी
+>>>>>>> e209687411d866e25999ab2e87b1aa3eab64840d
               खर्च गर्छन् भन्ने बारेमा विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ। यो
               तथ्याङ्कले स्थानीय आर्थिक गतिविधि, लगानीको प्राथमिकता र विकासको
               दिशालाई प्रतिबिम्बित गर्दछ।
@@ -315,7 +328,7 @@ export default async function WardRemittanceExpensesPage() {
               id="expenses-distribution"
               className="scroll-m-20 border-b pb-2"
             >
-              रेमिट्यान्स खर्च प्रकार अनुसार घरपरिवार
+              रेमिटेन्स खर्च प्रकार अनुसार घरपरिवार
             </h2>
             <p>
               बुद्धशान्ति गाउँपालिकामा विप्रेषण रकम प्राप्त गर्ने घरपरिवारहरूले

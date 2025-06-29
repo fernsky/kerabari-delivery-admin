@@ -8,11 +8,20 @@ export const EconomicallyActiveAgeGroupEnum = z.enum([
 ]);
 export type EconomicallyActiveAgeGroup = z.infer<typeof EconomicallyActiveAgeGroupEnum>;
 
+// Define the gender enum for validation
+export const GenderEnum = z.enum([
+  "MALE",
+  "FEMALE", 
+  "OTHER",
+]);
+export type Gender = z.infer<typeof GenderEnum>;
+
 // Schema for ward-age-wise economically active population data
 export const wardAgeWiseEconomicallyActivePopulationSchema = z.object({
   id: z.string().optional(),
   wardNumber: z.number().int().positive(),
   ageGroup: EconomicallyActiveAgeGroupEnum,
+  gender: GenderEnum,
   population: z.number().int().nonnegative(),
 });
 
@@ -20,6 +29,7 @@ export const wardAgeWiseEconomicallyActivePopulationSchema = z.object({
 export const wardAgeWiseEconomicallyActivePopulationFilterSchema = z.object({
   wardNumber: z.number().int().positive().optional(),
   ageGroup: EconomicallyActiveAgeGroupEnum.optional(),
+  gender: GenderEnum.optional(),
 });
 
 export const updateWardAgeWiseEconomicallyActivePopulationSchema = 

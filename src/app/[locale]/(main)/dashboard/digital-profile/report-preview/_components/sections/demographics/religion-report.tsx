@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { api } from "@/trpc/react";
 import { 
   processReligionData, 
@@ -13,7 +14,6 @@ import {
   ChartGenerator, 
   type ChartData 
 } from "@/lib/utils/chart-generator";
-import { useMemo } from "react";
 
 export function ReligionReport() {
   // Fetch data from TRPC API
@@ -33,7 +33,7 @@ export function ReligionReport() {
     return processReligionData(mappedData);
   }, [rawData]);
 
-  // Generate charts
+  // Generate charts with optimized dimensions and scaling for A4 printing
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '' };
 
@@ -52,8 +52,9 @@ export function ReligionReport() {
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
-        title: 'धार्मिक आधारमा जनसंख्या वितरण'
+        height: 350,
+        showLegend: true,
+        nepaliNumbers: true
       })
     };
   }, [processedData]);
@@ -67,28 +68,35 @@ export function ReligionReport() {
   if (isLoading) {
     return (
       <div className="section-content" id="section-religion">
-        <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
-          ३.७ धार्मिक आधारमा जनसंख्या विवरण
-        </h2>
-        <div className="content-section">
-          <p>डेटा लोड भइरहेको छ...</p>
+        <div className="loading-state">
+          <p>तथ्याङ्क लोड हुँदैछ...</p>
         </div>
       </div>
     );
   }
 
-  if (error || !processedData) {
+  if (error) {
+    return (
+      <div className="section-content" id="section-religion">
+        <div className="error-state">
+          <p>तथ्याङ्क लोड गर्न समस्या भयो।</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!processedData || processedData.totalPopulation === 0) {
     return (
       <div className="section-content" id="section-religion">
         <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
           ३.७ धार्मिक आधारमा जनसंख्या विवरण
         </h2>
-        <div className="content-section">
-          <p>डेटा लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।</p>
-        </div>
+        <p>धार्मिक तथ्याङ्क उपलब्ध छैन।</p>
       </div>
     );
   }
+
+  const totalPopulation = processedData.totalPopulation;
 
   return (
     <div className="section-content" id="section-religion">
@@ -97,9 +105,9 @@ export function ReligionReport() {
       </h2>
       
       <div className="content-section">
-        <div className="content-paragraph">
-          <p>{analysisText}</p>
-        </div>
+        <p style={{ textAlign: "justify", fontSize: "1.05em", lineHeight: 1.9, marginBottom: 32 }}>
+          {analysisText}
+        </p>
       </div>
 
       {/* Pie Chart */}
@@ -109,11 +117,12 @@ export function ReligionReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              backgroundColor: "#f9fafb"
+              maxWidth: "600px", // Match the chart width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
@@ -146,7 +155,7 @@ export function ReligionReport() {
               ))}
             <tr className="total-row">
               <td className="total-label" colSpan={2}>जम्मा</td>
-              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalPopulation)}</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(totalPopulation)}</td>
               <td className="total-cell">१००.०%</td>
             </tr>
           </tbody>
