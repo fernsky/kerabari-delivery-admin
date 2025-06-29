@@ -39,49 +39,49 @@ export const revalidate = 86400; // Revalidate once per day (in seconds)
 // Define remittance amount group options directly from family.ts enum values
 // Define remittance amount group options based on remittance_amount_group_enum
 const remittanceAmountGroupOptions = [
-  { value: "NO_REMITTANCE", label: "रेमिट्यान्स नभएको" },
-  { value: "BELOW_50K", label: "५० हजारभन्दा कम" },
-  { value: "RS_50K_TO_100K", label: "५० हजारदेखि १ लाखसम्म" },
-  { value: "RS_100K_TO_200K", label: "१ लाखदेखि २ लाखसम्म" },
-  { value: "RS_200K_TO_500K", label: "२ लाखदेखि ५ लाखसम्म" },
-  { value: "ABOVE_500K", label: "५ लाखभन्दा बढी" },
+  { value: "no_remittance", label: "रेमिट्यान्स नभएको" },
+  { value: "below_50k", label: "५० हजारभन्दा कम" },
+  { value: "50k_to_100k", label: "५० हजारदेखि १ लाखसम्म" },
+  { value: "100k_to_200k", label: "१ लाखदेखि २ लाखसम्म" },
+  { value: "200k_to_500k", label: "२ लाखदेखि ५ लाखसम्म" },
+  { value: "above_500k", label: "५ लाखभन्दा बढी" },
 ];
 // Define amount range mapping for analysis with Nepali labels based on provided enum
 const AMOUNT_RANGE_MAP: Record<
   string,
   { min: number; max: number | null; color: string; label: string }
 > = {
-  NO_REMITTANCE: {
+  no_remittance: {
     min: 0,
     max: 0,
     color: "#95a5a6", // Gray
     label: "रेमिट्यान्स नभएको",
   },
-  BELOW_50K: {
+  below_50k: {
     min: 1,
     max: 49999,
     color: "#e74c3c", // Red
     label: "५० हजारभन्दा कम",
   },
-  RS_50K_TO_100K: {
+  "50k_to_100k": {
     min: 50000,
     max: 99999,
     color: "#e67e22", // Orange
     label: "५० हजारदेखि १ लाखसम्म",
   },
-  RS_100K_TO_200K: {
+  "100k_to_200k": {
     min: 100000,
     max: 199999,
     color: "#f39c12", // Yellow
     label: "१ लाखदेखि २ लाखसम्म",
   },
-  RS_200K_TO_500K: {
+  "200k_to_500k": {
     min: 200000,
     max: 499999,
     color: "#2ecc71", // Green
     label: "२ लाखदेखि ५ लाखसम्म",
   },
-  ABOVE_500K: {
+  above_500k: {
     min: 500000,
     max: null,
     color: "#8e44ad", // Purple
@@ -355,7 +355,7 @@ export default async function WardWiseRemittancePage() {
           : "0";
 
       // Calculate high remittance groups (200,000+)
-      const highRemittanceGroups = ["RS_200K_TO_500K", "ABOVE_500K"];
+      const highRemittanceGroups = ["200k_to_500k", "above_500k"];
 
       const highRemittanceSendingPopulation = wardData
         .filter((item) => highRemittanceGroups.includes(item.amountGroup))
@@ -370,7 +370,7 @@ export default async function WardWiseRemittancePage() {
           : "0";
 
       // Calculate low remittance groups (under 100,000)
-      const lowRemittanceGroups = ["BELOW_50K", "RS_50K_TO_100K"];
+      const lowRemittanceGroups = ["below_50k", "50k_to_100k"];
 
       const lowRemittanceSendingPopulation = wardData
         .filter((item) => lowRemittanceGroups.includes(item.amountGroup))
@@ -385,7 +385,7 @@ export default async function WardWiseRemittancePage() {
           : "0";
 
       // Calculate medium remittance groups (100,000-200,000)
-      const mediumRemittanceGroups = ["RS_100K_TO_200K"];
+      const mediumRemittanceGroups = ["100k_to_200k"];
 
       const mediumRemittanceSendingPopulation = wardData
         .filter((item) => mediumRemittanceGroups.includes(item.amountGroup))
@@ -401,7 +401,7 @@ export default async function WardWiseRemittancePage() {
 
       // Calculate very high remittance (500,000+)
       const veryHighRemittanceSendingPopulation = wardData
-        .filter((item) => item.amountGroup === "ABOVE_500K")
+        .filter((item) => item.amountGroup === "above_500k")
         .reduce((sum, item) => sum + (item.sendingPopulation || 0), 0);
 
       const veryHighRemittancePercentage =
@@ -474,10 +474,10 @@ export default async function WardWiseRemittancePage() {
 
   // Group remittance data by remittance level
   const remittanceLevelGroups = {
-    low: ["BELOW_50K", "RS_50K_TO_100K"],
-    medium: ["RS_100K_TO_200K"],
-    high: ["RS_200K_TO_500K"],
-    veryHigh: ["ABOVE_500K"],
+    low: ["below_50k", "50k_to_100k"],
+    medium: ["100k_to_200k"],
+    high: ["200k_to_500k"],
+    veryHigh: ["above_500k"],
   };
 
   const remittanceLevelData = Object.entries(remittanceLevelGroups).map(

@@ -40,5 +40,6 @@ export const landOwnershipTypeOptions = [
   { value: "GUTHI", label: "गुठी" },
   { value: "PUBLIC_EILANI", label: "सार्वजनिक/ऐलानी" },
   { value: "VILLAGE_BLOCK", label: "गाउँ ब्लक" },
+  { value: "NOT_STATED", label: "उल्लेख नभएको" },
   { value: "OTHER", label: "अन्य (खुलाउने)" },
 ];

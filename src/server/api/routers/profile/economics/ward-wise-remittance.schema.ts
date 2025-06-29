@@ -2,12 +2,12 @@ import { z } from "zod";
 
 // Define the remittance amount group enum
 export const RemittanceAmountGroupEnum = z.enum([
-  "NO_REMITTANCE",
-  "BELOW_50K",
-  "RS_50K_TO_100K",
-  "RS_100K_TO_200K",
-  "RS_200K_TO_500K",
-  "ABOVE_500K",
+  "200k_to_500k",
+  "100k_to_200k",
+  "above_500k",
+  "50k_to_100k",
+  "below_50k",
+  "no_remittance"
 ]);
 export type RemittanceAmountGroupType = z.infer<typeof RemittanceAmountGroupEnum>;
 
@@ -37,10 +37,10 @@ export type WardWiseRemittanceFilter = z.infer<
 
 // Export the remittance amount group options for use in UI components
 export const remittanceAmountGroupOptions = [
-  { value: "NO_REMITTANCE", label: "रेमिट्यान्स नभएको" },
-  { value: "BELOW_50K", label: "५० हजारभन्दा कम" },
-  { value: "RS_50K_TO_100K", label: "५० हजारदेखि १ लाखसम्म" },
-  { value: "RS_100K_TO_200K", label: "१ लाखदेखि २ लाखसम्म" },
-  { value: "RS_200K_TO_500K", label: "२ लाखदेखि ५ लाखसम्म" },
-  { value: "ABOVE_500K", label: "५ लाखभन्दा बढी" },
+  { value: "200k_to_500k", label: "२ लाखदेखि ५ लाखसम्म" },
+  { value: "100k_to_200k", label: "१ लाखदेखि २ लाखसम्म" },
+  { value: "above_500k", label: "५ लाखभन्दा बढी" },
+  { value: "50k_to_100k", label: "५० हजारदेखि १ लाखसम्म" },
+  { value: "below_50k", label: "५० हजारभन्दा कम" },
+  { value: "no_remittance", label: "रेमिट्यान्स नभएको" },
 ];
