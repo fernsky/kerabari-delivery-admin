@@ -19,7 +19,7 @@ import { useMemo } from "react";
 export function WardWiseHouseOwnershipReport() {
   // Fetch data from TRPC API
   const { data: rawData, isLoading, error } = api.profile.economics.wardWiseHouseOwnership.getAll.useQuery();
-  console.log(rawData);
+  
   // Process the raw data
   const processedData: ProcessedWardWiseHouseOwnershipData | null = useMemo(() => {
     if (!rawData || rawData.length === 0) return null;
@@ -34,64 +34,58 @@ export function WardWiseHouseOwnershipReport() {
     return processWardWiseHouseOwnershipData(mappedData);
   }, [rawData]);
 
-  // Generate charts
+  // Generate charts with optimized dimensions and scaling for A4 printing
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '', barChart: '' };
 
-    // Pie Chart Data - overall ownership distribution
-    const totalOwned = processedData.ownershipData.PRIVATE?.households ?? 0;
-    const totalRented = processedData.ownershipData.RENT?.households ?? 0;
-    const totalInstitutional = processedData.ownershipData.INSTITUTIONAL?.households ?? 0;
-    const totalOther = processedData.ownershipData.OTHER?.households ?? 0;
-
-    const pieChartData: ChartData = {
-      owned: {
-        value: totalOwned,
-        label: HOUSE_OWNERSHIP_LABELS.PRIVATE,
-        color: "#10b981"
-      },
-      rented: {
-        value: totalRented,
-        label: HOUSE_OWNERSHIP_LABELS.RENT,
-        color: "#3b82f6"
-      },
-      institutional: {
-        value: totalInstitutional,
-        label: HOUSE_OWNERSHIP_LABELS.INSTITUTIONAL,
-        color: "#f59e0b"
-      },
-      other: {
-        value: totalOther,
-        label: HOUSE_OWNERSHIP_LABELS.OTHER,
-        color: "#6b7280"
-      }
-    };
+    // Pie Chart Data - only show ownership types with households > 0
+    const pieChartData: ChartData = {};
+    Object.entries(processedData.ownershipData)
+      .filter(([_, data]) => data.households > 0)
+      .forEach(([ownershipType, data]) => {
+        pieChartData[ownershipType] = {
+          value: data.households,
+          label: data.label,
+          color: `hsl(${(data.rank * 90) % 360}, 70%, 50%)`
+        };
+      });
 
     // Bar Chart Data for ward comparison
     const barChartData: WardData = {};
-    Object.entries(processedData.wardData).forEach(([wardNum, ward]) => {
-      barChartData[wardNum] = {
-        [HOUSE_OWNERSHIP_LABELS.PRIVATE]: ward.ownershipTypes.PRIVATE ?? 0,
-        [HOUSE_OWNERSHIP_LABELS.RENT]: ward.ownershipTypes.RENT ?? 0,
-        [HOUSE_OWNERSHIP_LABELS.INSTITUTIONAL]: ward.ownershipTypes.INSTITUTIONAL ?? 0,
-        [HOUSE_OWNERSHIP_LABELS.OTHER]: ward.ownershipTypes.OTHER ?? 0,
-      };
+    Object.entries(processedData.wardData).forEach(([wardNum, data]) => {
+      barChartData[wardNum] = {};
+      Object.entries(data.ownershipTypes).forEach(([ownershipType, households]) => {
+        const label = processedData.ownershipData[ownershipType]?.label || ownershipType;
+        barChartData[wardNum][label] = households;
+      });
     });
+
+    // Calculate optimal chart dimensions based on data
+    const numWards = Object.keys(processedData.wardData).length;
+    const numCategories = Object.keys(processedData.ownershipData).filter(key => 
+      processedData.ownershipData[key].households > 0
+    ).length;
+    
+    // Adjust legend height based on number of categories
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30;
+    
+    // Adjust max bar width based on number of wards
+    const maxBarWidth = numWards <= 9 ? 50 : 40;
 
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
+        height: 350,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800,
+        width: 700,
         height: 500,
         showLegend: true,
         nepaliNumbers: true,
-        maxBarWidth: 45,
-        legendHeight: 100
+        legendHeight: legendHeight,
+        maxBarWidth: maxBarWidth
       })
     };
   }, [processedData]);
@@ -133,8 +127,6 @@ export function WardWiseHouseOwnershipReport() {
     );
   }
 
-  const totalHouseholds = processedData.totalHouseholds;
-
   return (
     <div className="section-content" id="section-ward-wise-house-ownership">
       <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
@@ -154,14 +146,49 @@ export function WardWiseHouseOwnershipReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
         </div>
+      </div>
+
+      {/* Ownership Types Distribution Table */}
+      <div className="table-section">
+        <h3 className="table-title">तालिका ४.२.१: घर स्वामित्व प्रकार अनुसार परिवार विस्तृत विवरण</h3>
+        <table className="data-table house-ownership-table">
+          <thead>
+            <tr>
+              <th>क्र.सं.</th>
+              <th>स्वामित्व प्रकार</th>
+              <th>परिवार संख्या</th>
+              <th>प्रतिशत</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(processedData.ownershipData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([ownershipType, data], index) => (
+                <tr key={ownershipType}>
+                  <td>{convertToNepaliNumber(index + 1)}</td>
+                  <td>{data.label}</td>
+                  <td>{convertToNepaliNumber(data.households)}</td>
+                  <td>{formatNepaliPercentage(data.percentage)}</td>
+                </tr>
+              ))}
+            <tr className="total-row">
+              <td className="total-label" colSpan={2}>जम्मा</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalHouseholds)}</td>
+              <td className="total-cell">१००.०%</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* Bar Chart */}
@@ -175,8 +202,8 @@ export function WardWiseHouseOwnershipReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px", // Ensure the chart can use the full width
-              margin: "0 auto" // Center the chart
+              maxWidth: "700px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
           />
@@ -200,32 +227,30 @@ export function WardWiseHouseOwnershipReport() {
             </tr>
           </thead>
           <tbody>
-            {[
-              { type: 'PRIVATE', label: HOUSE_OWNERSHIP_LABELS.PRIVATE },
-              { type: 'RENT', label: HOUSE_OWNERSHIP_LABELS.RENT },
-              { type: 'INSTITUTIONAL', label: HOUSE_OWNERSHIP_LABELS.INSTITUTIONAL },
-              { type: 'OTHER', label: HOUSE_OWNERSHIP_LABELS.OTHER },
-            ]
-            .filter(item => (processedData.ownershipData[item.type]?.households ?? 0) > 0)
-            .map((item) => {
-              const ownershipTotals = Object.entries(processedData.wardData)
-                .sort(([a], [b]) => parseInt(a) - parseInt(b))
-                .map(([wardNum, wardData]) => wardData.ownershipTypes[item.type] ?? 0);
-              const totalForOwnership = ownershipTotals.reduce((sum, count) => sum + count, 0);
-              const percentageForOwnership = totalHouseholds > 0 
-                ? (totalForOwnership / totalHouseholds) * 100 
-                : 0;
-              return (
-                <tr key={item.type}>
-                  <td>{item.label}</td>
-                  {ownershipTotals.map((count, index) => (
-                    <td key={index}>{convertToNepaliNumber(count)}</td>
-                  ))}
-                  <td className="grand-total-cell">{convertToNepaliNumber(totalForOwnership)}</td>
-                  <td>{formatNepaliPercentage(percentageForOwnership)}</td>
-                </tr>
-              );
-            })}
+            {Object.entries(processedData.ownershipData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([ownershipType, ownershipData]) => {
+                const ownershipTotals = Object.entries(processedData.wardData)
+                  .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                  .map(([wardNum, wardData]) => wardData.ownershipTypes[ownershipType] || 0);
+                
+                const totalForOwnership = ownershipTotals.reduce((sum, count) => sum + count, 0);
+                const percentageForOwnership = processedData.totalHouseholds > 0 
+                  ? (totalForOwnership / processedData.totalHouseholds) * 100 
+                  : 0;
+
+                return (
+                  <tr key={ownershipType}>
+                    <td>{ownershipData.label}</td>
+                    {ownershipTotals.map((count, index) => (
+                      <td key={index}>{convertToNepaliNumber(count)}</td>
+                    ))}
+                    <td className="grand-total-cell">{convertToNepaliNumber(totalForOwnership)}</td>
+                    <td>{formatNepaliPercentage(percentageForOwnership)}</td>
+                  </tr>
+                );
+              })}
             <tr className="total-row">
               <td className="total-label">जम्मा</td>
               {Object.entries(processedData.wardData)
@@ -235,7 +260,7 @@ export function WardWiseHouseOwnershipReport() {
                     {convertToNepaliNumber(wardData.totalHouseholds)}
                   </td>
                 ))}
-              <td className="grand-total-cell">{convertToNepaliNumber(totalHouseholds)}</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalHouseholds)}</td>
               <td className="total-cell">१००.०%</td>
             </tr>
           </tbody>

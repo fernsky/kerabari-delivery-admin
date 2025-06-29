@@ -38,9 +38,9 @@ export function ForeignEmploymentCountriesReport() {
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '', barChart: '' };
 
-    // Pie Chart Data - only show countries with population > 0
+    // Pie Chart Data - only show top 10 + other
     const pieChartData: ChartData = {};
-    Object.entries(processedData.countryData)
+    Object.entries(processedData.displayCountryData)
       .filter(([_, data]) => data.population > 0)
       .forEach(([country, data]) => {
         pieChartData[country] = {
@@ -50,30 +50,42 @@ export function ForeignEmploymentCountriesReport() {
         };
       });
 
-    // Bar Chart Data for ward comparison
+    // Bar Chart Data for ward comparison (only top 10 + other)
     const barChartData: WardData = {};
     Object.entries(processedData.wardData).forEach(([wardNum, data]) => {
       barChartData[wardNum] = {};
-      Object.entries(data.countries).forEach(([country, population]) => {
-        const label = processedData.countryData[country]?.label || country;
-        barChartData[wardNum][label] = population;
+      Object.keys(processedData.displayCountryData).forEach((country) => {
+        const label = processedData.displayCountryData[country]?.label || country;
+        barChartData[wardNum][label] = data.countries[country] || 0;
       });
     });
 
+    // Calculate optimal chart dimensions based on data
+    const numWards = Object.keys(processedData.wardData).length;
+    const numCategories = Object.keys(processedData.displayCountryData).filter(key => 
+      processedData.displayCountryData[key].population > 0
+    ).length;
+    
+    // Adjust legend height based on number of categories - reduced for better fit
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30; // Reduced padding and items per row
+    
+    // Adjust max bar width based on number of wards - narrower bars for better spacing
+    const maxBarWidth = numWards <= 9 ? 50 : 40; // Reduced bar width
+
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
-        width: 500,
+        width: 600,
         height: 350,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800,
-        height: 500,
+        width: 700, // Reduced width to prevent truncation
+        height: 500, // Reduced height for better proportions
         showLegend: true,
         nepaliNumbers: true,
-        maxBarWidth: 45,
-        legendHeight: 100
+        legendHeight: legendHeight,
+        maxBarWidth: maxBarWidth
       })
     };
   }, [processedData]);
@@ -137,11 +149,66 @@ export function ForeignEmploymentCountriesReport() {
               height: "350px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
         </div>
+      </div>
+
+      {/* Countries Distribution Table */}
+      <div className="table-section">
+        <h3 className="table-title">तालिका ४.२.१: वैदेशिक रोजगारी देश अनुसार जनसंख्या विस्तृत विवरण</h3>
+        <table className="data-table foreign-employment-countries-table">
+          <thead>
+            <tr>
+              <th>क्र.सं.</th>
+              <th>देश</th>
+              <th>जनसंख्या</th>
+              <th>प्रतिशत</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(processedData.displayCountryData)
+              .filter(([_, data]) => data.population > 0)
+              .sort(([, a], [, b]) => b.population - a.population)
+              .map(([country, countryData]) => {
+                const countryTotals = Object.entries(processedData.wardData)
+                  .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                  .map(([wardNum, wardData]) => {
+                    if (country === "OTHER") {
+                      // For "OTHER", sum all countries not in top 10
+                      const top10Countries = processedData.topCountries.map(c => c.country);
+                      return Object.entries(wardData.countries)
+                        .filter(([c, _]) => !top10Countries.includes(c))
+                        .reduce((sum, [_, count]) => sum + count, 0);
+                    }
+                    return wardData.countries[country] || 0;
+                  });
+                
+                const totalForCountry = countryTotals.reduce((sum, count) => sum + count, 0);
+                const percentageForCountry = processedData.totalForeignEmploymentPopulation > 0 
+                  ? (totalForCountry / processedData.totalForeignEmploymentPopulation) * 100 
+                  : 0;
+
+                return (
+                  <tr key={country}>
+                    <td>{convertToNepaliNumber(countryData.rank)}</td>
+                    <td>{countryData.label}</td>
+                    <td>{convertToNepaliNumber(countryData.population)}</td>
+                    <td>{formatNepaliPercentage(countryData.percentage)}</td>
+                  </tr>
+                );
+              })}
+            <tr className="total-row">
+              <td className="total-label" colSpan={2}>जम्मा</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalForeignEmploymentPopulation)}</td>
+              <td className="total-cell">१००.०%</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* Bar Chart */}
@@ -155,7 +222,7 @@ export function ForeignEmploymentCountriesReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px",
+              maxWidth: "700px",
               margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
@@ -180,13 +247,22 @@ export function ForeignEmploymentCountriesReport() {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(processedData.countryData)
+            {Object.entries(processedData.displayCountryData)
               .filter(([_, data]) => data.population > 0)
               .sort(([, a], [, b]) => b.population - a.population)
               .map(([country, countryData]) => {
                 const countryTotals = Object.entries(processedData.wardData)
                   .sort(([a], [b]) => parseInt(a) - parseInt(b))
-                  .map(([wardNum, wardData]) => wardData.countries[country] || 0);
+                  .map(([wardNum, wardData]) => {
+                    if (country === "OTHER") {
+                      // For "OTHER", sum all countries not in top 10
+                      const top10Countries = processedData.topCountries.map(c => c.country);
+                      return Object.entries(wardData.countries)
+                        .filter(([c, _]) => !top10Countries.includes(c))
+                        .reduce((sum, [_, count]) => sum + count, 0);
+                    }
+                    return wardData.countries[country] || 0;
+                  });
                 
                 const totalForCountry = countryTotals.reduce((sum, count) => sum + count, 0);
                 const percentageForCountry = processedData.totalForeignEmploymentPopulation > 0 

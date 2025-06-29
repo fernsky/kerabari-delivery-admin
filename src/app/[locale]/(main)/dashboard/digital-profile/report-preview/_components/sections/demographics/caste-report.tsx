@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { api } from "@/trpc/react";
 import { 
   processCasteData, 
@@ -13,7 +14,26 @@ import {
   ChartGenerator, 
   type ChartData 
 } from "@/lib/utils/chart-generator";
-import { useMemo } from "react";
+
+// Function to get proper label for caste type (matching the utils)
+function getCasteTypeLabel(casteType: string): string {
+  const normalized = casteType.toUpperCase();
+  const mapping: Record<string, string> = {
+    'BRAHMIN': 'ब्राह्मण',
+    'CHHETRI': 'क्षेत्री',
+    'NEWAR': 'नेवार',
+    'MAGAR': 'मगर',
+    'THARU': 'थारु',
+    'TAMANG': 'तामाङ',
+    'RAI': 'राई',
+    'LIMBU': 'लिम्बु',
+    'GURUNG': 'गुरुङ',
+    'SHERPA': 'शेर्पा',
+    'OTHER': 'अन्य',
+  };
+  const standardCasteType = mapping[normalized] || casteType;
+  return CASTE_LABELS[standardCasteType] || CASTE_LABELS[casteType] || casteType;
+}
 
 export function CasteReport() {
   // Fetch data from TRPC API
@@ -23,6 +43,9 @@ export function CasteReport() {
   const processedData: ProcessedCasteData | null = useMemo(() => {
     if (!rawData || rawData.length === 0) return null;
     
+    // Debug: Log raw data
+    console.log("Raw caste data in report:", rawData);
+    
     const mappedData = rawData.map(item => ({
       id: item.id,
       casteType: item.casteType,
@@ -30,10 +53,18 @@ export function CasteReport() {
       casteTypeDisplay: item.casteTypeDisplay
     }));
     
-    return processCasteData(mappedData);
+    // Debug: Log mapped data
+    console.log("Mapped caste data:", mappedData);
+    
+    const processed = processCasteData(mappedData);
+    
+    // Debug: Log processed data
+    console.log("Processed caste data:", processed);
+    
+    return processed;
   }, [rawData]);
 
-  // Generate charts
+  // Generate charts with optimized dimensions and scaling for A4 printing
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '' };
 
@@ -52,8 +83,9 @@ export function CasteReport() {
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
-        title: 'जातिगत आधारमा जनसंख्या वितरण'
+        height: 350,
+        showLegend: true,
+        nepaliNumbers: true
       })
     };
   }, [processedData]);
@@ -67,28 +99,35 @@ export function CasteReport() {
   if (isLoading) {
     return (
       <div className="section-content" id="section-caste">
-        <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
-          ३.६ जातिगत आधारमा जनसंख्या विवरण
-        </h2>
-        <div className="content-section">
-          <p>डेटा लोड भइरहेको छ...</p>
+        <div className="loading-state">
+          <p>तथ्याङ्क लोड हुँदैछ...</p>
         </div>
       </div>
     );
   }
 
-  if (error || !processedData) {
+  if (error) {
+    return (
+      <div className="section-content" id="section-caste">
+        <div className="error-state">
+          <p>तथ्याङ्क लोड गर्न समस्या भयो।</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!processedData || processedData.totalPopulation === 0) {
     return (
       <div className="section-content" id="section-caste">
         <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
           ३.६ जातिगत आधारमा जनसंख्या विवरण
         </h2>
-        <div className="content-section">
-          <p>डेटा लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।</p>
-        </div>
+        <p>जातिगत तथ्याङ्क उपलब्ध छैन।</p>
       </div>
     );
   }
+
+  const totalPopulation = processedData.totalPopulation;
 
   return (
     <div className="section-content" id="section-caste">
@@ -97,9 +136,9 @@ export function CasteReport() {
       </h2>
       
       <div className="content-section">
-        <div className="content-paragraph">
-          <p>{analysisText}</p>
-        </div>
+        <p style={{ textAlign: "justify", fontSize: "1.05em", lineHeight: 1.9, marginBottom: 32 }}>
+          {analysisText}
+        </p>
       </div>
 
       {/* Pie Chart */}
@@ -109,11 +148,12 @@ export function CasteReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              backgroundColor: "#f9fafb"
+              maxWidth: "600px", // Match the chart width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
@@ -146,7 +186,7 @@ export function CasteReport() {
               ))}
             <tr className="total-row">
               <td className="total-label" colSpan={2}>जम्मा</td>
-              <td className="grand-total-cell">{convertToNepaliNumber(processedData.totalPopulation)}</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(totalPopulation)}</td>
               <td className="total-cell">१००.०%</td>
             </tr>
           </tbody>

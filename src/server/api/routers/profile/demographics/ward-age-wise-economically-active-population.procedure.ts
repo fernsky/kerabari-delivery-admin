@@ -15,6 +15,25 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 
+// Function to normalize age group values from ACME table
+function normalizeAgeGroupFromACME(ageGroup: unknown): string {
+  const ageGroupStr = String(ageGroup);
+  const normalized = ageGroupStr.toUpperCase();
+  // Map ACME table values to expected enum values
+  const mapping: Record<string, string> = {
+    'AGE_0_TO_14': 'AGE_0_TO_14',
+    'AGE_15_TO_59': 'AGE_15_TO_59',
+    'AGE_60_PLUS': 'AGE_60_PLUS',
+    '0_TO_14': 'AGE_0_TO_14',
+    '15_TO_59': 'AGE_15_TO_59',
+    '60_PLUS': 'AGE_60_PLUS',
+    '0-14': 'AGE_0_TO_14',
+    '15-59': 'AGE_15_TO_59',
+    '60+': 'AGE_60_PLUS',
+  };
+  return mapping[normalized] || ageGroupStr;
+}
+
 // Get all ward-age-wise economically active population data with optional filtering
 export const getAllWardAgeWiseEconomicallyActivePopulation = publicProcedure
   .input(wardAgeWiseEconomicallyActivePopulationFilterSchema.optional())
@@ -72,11 +91,12 @@ export const getAllWardAgeWiseEconomicallyActivePopulation = publicProcedure
             id,
             ward_number,
             age_group,
+            gender,
             population
           FROM 
             acme_ward_age_gender_wise_economically_active_population
           ORDER BY 
-            ward_number, age_group
+            ward_number, age_group, gender
         `;
         const acmeResult = await ctx.db.execute(acmeSql);
 
@@ -85,7 +105,8 @@ export const getAllWardAgeWiseEconomicallyActivePopulation = publicProcedure
           data = acmeResult.map((row) => ({
             id: row.id,
             wardNumber: parseInt(String(row.ward_number)),
-            ageGroup: row.age_group,
+            ageGroup: normalizeAgeGroupFromACME(row.age_group),
+            gender: String(row.gender || 'MALE'), // Default to MALE if gender is missing
             population: parseInt(String(row.population || "0")),
           }));
 
@@ -96,6 +117,10 @@ export const getAllWardAgeWiseEconomicallyActivePopulation = publicProcedure
 
           if (input?.ageGroup) {
             data = data.filter((item) => item.ageGroup === input.ageGroup);
+          }
+
+          if (input?.gender) {
+            data = data.filter((item) => item.gender === input.gender);
           }
         }
       }

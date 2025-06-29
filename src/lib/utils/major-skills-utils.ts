@@ -15,6 +15,12 @@ export interface ProcessedMajorSkillsData {
     label: string;
     rank: number;
   }>;
+  displaySkillData: Record<string, {
+    population: number;
+    percentage: number;
+    label: string;
+    rank: number;
+  }>;
   wardData: Record<number, {
     totalSkilledPopulation: number;
     skills: Record<string, number>;
@@ -52,6 +58,7 @@ export function processMajorSkillsData(rawData: MajorSkillsData[]): ProcessedMaj
     return {
       totalSkilledPopulation: 0,
       skillData: {},
+      displaySkillData: {},
       wardData: {},
       skillCategories: {
         technical: 0,
@@ -100,13 +107,37 @@ export function processMajorSkillsData(rawData: MajorSkillsData[]): ProcessedMaj
     skillData[skill.skill].rank = index + 1;
   });
 
-  // Get top 5 skills
-  const topSkills = allSkills.slice(0, 5).map(skill => ({
+  // Top 10 skills for display
+  const topSkills = allSkills.slice(0, 10).map(skill => ({
     skill: skill.skill,
     population: skill.population,
     percentage: skill.percentage,
     label: skill.label,
   }));
+
+  // Aggregate others
+  const otherSkills = allSkills.slice(10);
+  const otherPopulation = otherSkills.reduce((sum, s) => sum + s.population, 0);
+  const otherPercentage = totalSkilledPopulation > 0 ? (otherPopulation / totalSkilledPopulation) * 100 : 0;
+
+  // Build displaySkillData (top 10 + other)
+  const displaySkillData: Record<string, any> = {};
+  topSkills.forEach((s, i) => {
+    displaySkillData[s.skill] = {
+      population: s.population,
+      percentage: s.percentage,
+      label: s.label,
+      rank: i + 1,
+    };
+  });
+  if (otherPopulation > 0) {
+    displaySkillData["OTHER"] = {
+      population: otherPopulation,
+      percentage: otherPercentage,
+      label: "अन्य",
+      rank: 11,
+    };
+  }
 
   // Process ward data
   const wardData: Record<number, any> = {};
@@ -167,6 +198,7 @@ export function processMajorSkillsData(rawData: MajorSkillsData[]): ProcessedMaj
   return {
     totalSkilledPopulation,
     skillData,
+    displaySkillData,
     wardData,
     skillCategories,
     topSkills,

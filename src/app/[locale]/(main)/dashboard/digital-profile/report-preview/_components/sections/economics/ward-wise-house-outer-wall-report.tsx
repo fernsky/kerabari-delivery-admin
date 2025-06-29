@@ -31,38 +31,55 @@ export function WardWiseHouseOuterWallReport() {
   // Generate charts
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '', barChart: '' };
-    // Pie Chart Data
-    const totalByType = (type: string) => processedData.wallData[type]?.households ?? 0;
+    
+    // Pie Chart Data - only show wall types with households > 0
     const pieChartData: ChartData = {};
-    Object.keys(HOUSE_OUTER_WALL_LABELS).forEach(type => {
-      pieChartData[type] = {
-        value: totalByType(type),
-        label: HOUSE_OUTER_WALL_LABELS[type],
-        color: `hsl(${(Object.keys(HOUSE_OUTER_WALL_LABELS).indexOf(type) * 45) % 360}, 70%, 50%)`
-      };
-    });
+    Object.entries(processedData.wallData)
+      .filter(([_, data]) => data.households > 0)
+      .forEach(([wallType, data]) => {
+        pieChartData[wallType] = {
+          value: data.households,
+          label: data.label,
+          color: `hsl(${(data.rank * 45) % 360}, 70%, 50%)`
+        };
+      });
+
     // Bar Chart Data for ward comparison
     const barChartData: WardData = {};
-    Object.entries(processedData.wardData).forEach(([wardNum, ward]) => {
+    Object.entries(processedData.wardData).forEach(([wardNum, data]) => {
       barChartData[wardNum] = {};
-      Object.keys(HOUSE_OUTER_WALL_LABELS).forEach(type => {
-        barChartData[wardNum][HOUSE_OUTER_WALL_LABELS[type]] = ward.wallTypes[type] ?? 0;
+      Object.entries(data.wallTypes).forEach(([wallType, households]) => {
+        const label = processedData.wallData[wallType]?.label || wallType;
+        barChartData[wardNum][label] = households;
       });
     });
+
+    // Calculate optimal chart dimensions based on data
+    const numWards = Object.keys(processedData.wardData).length;
+    const numCategories = Object.keys(processedData.wallData).filter(key => 
+      processedData.wallData[key].households > 0
+    ).length;
+    
+    // Adjust legend height based on number of categories - reduced for better fit
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30; // Reduced padding and items per row
+    
+    // Adjust max bar width based on number of wards - narrower bars for better spacing
+    const maxBarWidth = numWards <= 9 ? 50 : 40; // Reduced bar width
+
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
+        height: 350,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800,
-        height: 500,
+        width: 700, // Reduced width to prevent truncation
+        height: 500, // Reduced height for better proportions
         showLegend: true,
         nepaliNumbers: true,
-        maxBarWidth: 45,
-        legendHeight: 100
+        legendHeight: legendHeight,
+        maxBarWidth: maxBarWidth
       })
     };
   }, [processedData]);
@@ -119,15 +136,60 @@ export function WardWiseHouseOuterWallReport() {
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px", // Match the new chart width
+              margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
         </div>
       </div>
+
+      {/* Wall Types Distribution Table */}
+      <div className="table-section">
+        <h3 className="table-title">तालिका ४.३.१: बाहिरी भित्ता प्रकार अनुसार परिवार विस्तृत विवरण</h3>
+        <table className="data-table house-outer-wall-table">
+          <thead>
+            <tr>
+              <th>क्र.सं.</th>
+              <th>बाहिरी भित्ता प्रकार</th>
+              <th>परिवार संख्या</th>
+              <th>प्रतिशत</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(processedData.wallData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([wallType, wallData]) => {
+                const wallTotals = Object.entries(processedData.wardData)
+                  .sort(([a], [b]) => parseInt(a) - parseInt(b))
+                  .map(([wardNum, wardData]) => wardData.wallTypes[wallType] ?? 0);
+                const totalForWall = wallTotals.reduce((sum, count) => sum + count, 0);
+                const percentageForWall = totalHouseholds > 0 
+                  ? (totalForWall / totalHouseholds) * 100 
+                  : 0;
+                return (
+                  <tr key={wallType}>
+                    <td>{convertToNepaliNumber(wallData.rank)}</td>
+                    <td>{wallData.label}</td>
+                    <td>{convertToNepaliNumber(wallData.households)}</td>
+                    <td>{formatNepaliPercentage(wallData.percentage)}</td>
+                  </tr>
+                );
+              })}
+            <tr className="total-row">
+              <td className="total-label" colSpan={2}>जम्मा</td>
+              <td className="grand-total-cell">{convertToNepaliNumber(totalHouseholds)}</td>
+              <td className="total-cell">१००.०%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* Bar Chart */}
       <div className="chart-section">
         <h3 className="chart-title">चित्र ४.३.२: वडा अनुसार बाहिरी भित्ता वितरण</h3>
@@ -139,7 +201,7 @@ export function WardWiseHouseOuterWallReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px", // Ensure the chart can use the full width
+              maxWidth: "700px", // Ensure the chart can use the full width
               margin: "0 auto" // Center the chart
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
@@ -152,7 +214,7 @@ export function WardWiseHouseOuterWallReport() {
         <table className="data-table ward-house-outer-wall-table">
           <thead>
             <tr>
-              <th>भित्ता प्रकार</th>
+              <th>बाहिरी भित्ता प्रकार</th>
               {Object.entries(processedData.wardData)
                 .sort(([a], [b]) => parseInt(a) - parseInt(b))
                 .map(([wardNum]) => (
@@ -163,19 +225,20 @@ export function WardWiseHouseOuterWallReport() {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(HOUSE_OUTER_WALL_LABELS)
-              .filter(type => (processedData.wallData[type]?.households ?? 0) > 0)
-              .map(type => {
+            {Object.entries(processedData.wallData)
+              .filter(([_, data]) => data.households > 0)
+              .sort(([, a], [, b]) => b.households - a.households)
+              .map(([wallType, wallData]) => {
                 const wallTotals = Object.entries(processedData.wardData)
                   .sort(([a], [b]) => parseInt(a) - parseInt(b))
-                  .map(([wardNum, wardData]) => wardData.wallTypes[type] ?? 0);
+                  .map(([wardNum, wardData]) => wardData.wallTypes[wallType] ?? 0);
                 const totalForWall = wallTotals.reduce((sum, count) => sum + count, 0);
                 const percentageForWall = totalHouseholds > 0 
                   ? (totalForWall / totalHouseholds) * 100 
                   : 0;
                 return (
-                  <tr key={type}>
-                    <td>{HOUSE_OUTER_WALL_LABELS[type]}</td>
+                  <tr key={wallType}>
+                    <td>{wallData.label}</td>
                     {wallTotals.map((count, index) => (
                       <td key={index}>{convertToNepaliNumber(count)}</td>
                     ))}

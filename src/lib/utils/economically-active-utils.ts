@@ -1,9 +1,10 @@
-import { EconomicallyActiveAgeGroup } from "@/server/api/routers/profile/demographics/ward-age-wise-economically-active-population.schema";
+import { EconomicallyActiveAgeGroup, Gender } from "@/server/api/routers/profile/demographics/ward-age-wise-economically-active-population.schema";
 
 export interface EconomicallyActiveData {
   id: string;
   wardNumber: number;
   ageGroup: EconomicallyActiveAgeGroup;
+  gender: Gender;
   population: number;
   ageGroupDisplay?: string;
 }
@@ -48,6 +49,27 @@ export const ECONOMICALLY_ACTIVE_AGE_GROUP_LABELS: Record<string, string> = {
   AGE_60_PLUS: "६०+ वर्ष",
 };
 
+// Function to normalize age group enum values
+function normalizeAgeGroup(ageGroup: string): string {
+  const normalized = ageGroup.toUpperCase();
+  // Map to standard enum values
+  const mapping: Record<string, string> = {
+    'AGE_0_TO_14': 'AGE_0_TO_14',
+    'AGE_15_TO_59': 'AGE_15_TO_59',
+    'AGE_60_PLUS': 'AGE_60_PLUS',
+    '0_TO_14': 'AGE_0_TO_14',
+    '15_TO_59': 'AGE_15_TO_59',
+    '60_PLUS': 'AGE_60_PLUS',
+  };
+  return mapping[normalized] || ageGroup;
+}
+
+// Function to get proper label for age group
+function getAgeGroupLabel(ageGroup: string): string {
+  const normalized = normalizeAgeGroup(ageGroup);
+  return ECONOMICALLY_ACTIVE_AGE_GROUP_LABELS[normalized] || ECONOMICALLY_ACTIVE_AGE_GROUP_LABELS[ageGroup] || ageGroup;
+}
+
 export function processEconomicallyActiveData(rawData: EconomicallyActiveData[]): ProcessedEconomicallyActiveData {
   if (!rawData || rawData.length === 0) {
     return {
@@ -75,55 +97,86 @@ export function processEconomicallyActiveData(rawData: EconomicallyActiveData[])
     };
   }
 
+  // Debug: Log raw data for troubleshooting
+  console.log("Raw economically active data:", rawData);
+
+  // Debug: Log gender distribution
+  const genderDistribution = rawData.reduce((acc, item) => {
+    acc[item.gender] = (acc[item.gender] || 0) + item.population;
+    return acc;
+  }, {} as Record<string, number>);
+  console.log("Gender distribution:", genderDistribution);
+
   // Calculate total economically active population
   const totalEconomicallyActivePopulation = rawData.reduce((sum, item) => sum + (item.population || 0), 0);
 
-  // Process age group data
-  const ageGroupData: Record<string, any> = {};
-  const allAgeGroups: Array<any> = [];
+  // Process age group data - aggregate by age group across all wards and genders
+  const ageGroupAggregated: Record<string, number> = {};
+  rawData.forEach((item) => {
+    const ageGroup = normalizeAgeGroup(item.ageGroup);
+    ageGroupAggregated[ageGroup] = (ageGroupAggregated[ageGroup] || 0) + (item.population || 0);
+  });
 
-  rawData.forEach((item, index) => {
-    const percentage = totalEconomicallyActivePopulation > 0 ? (item.population / totalEconomicallyActivePopulation) * 100 : 0;
-    const ageGroupInfo = {
-      population: item.population,
+  // Debug: Log aggregated data
+  console.log("Age group aggregated data:", ageGroupAggregated);
+
+  // Sort age groups by population and create age group data
+  const sortedAgeGroups = Object.entries(ageGroupAggregated)
+    .sort(([, a], [, b]) => b - a);
+
+  const ageGroupData: Record<string, any> = {};
+  sortedAgeGroups.forEach(([ageGroup, population], index) => {
+    const percentage = totalEconomicallyActivePopulation > 0 ? (population / totalEconomicallyActivePopulation) * 100 : 0;
+    ageGroupData[ageGroup] = {
+      population,
       percentage,
-      label: item.ageGroupDisplay || ECONOMICALLY_ACTIVE_AGE_GROUP_LABELS[item.ageGroup] || item.ageGroup,
+      label: getAgeGroupLabel(ageGroup),
       rank: index + 1,
     };
-
-    ageGroupData[item.ageGroup] = ageGroupInfo;
-    allAgeGroups.push({
-      ageGroup: item.ageGroup,
-      ...ageGroupInfo,
-    });
   });
 
-  // Sort age groups by population
-  allAgeGroups.sort((a, b) => b.population - a.population);
-
-  // Update ranks after sorting
-  allAgeGroups.forEach((ageGroup, index) => {
-    ageGroupData[ageGroup.ageGroup].rank = index + 1;
-  });
-
-  // Process ward data
+  // Process ward data - aggregate by age group and ward across all genders
   const wardData: Record<number, any> = {};
   const uniqueWards = Array.from(new Set(rawData.map(item => item.wardNumber))).sort((a, b) => a - b);
+  
+  // Debug: Log unique wards
+  console.log("Unique wards:", uniqueWards);
   
   uniqueWards.forEach(wardNum => {
     const wardItems = rawData.filter(item => item.wardNumber === wardNum);
     const wardTotalEconomicallyActivePopulation = wardItems.reduce((sum, item) => sum + item.population, 0);
     const wardAgeGroups: Record<string, number> = {};
     
+    // Debug: Log ward items
+    console.log(`Ward ${wardNum} items:`, wardItems);
+    
+    // Debug: Log ward gender distribution
+    const wardGenderDistribution = wardItems.reduce((acc, item) => {
+      acc[item.gender] = (acc[item.gender] || 0) + item.population;
+      return acc;
+    }, {} as Record<string, number>);
+    console.log(`Ward ${wardNum} gender distribution:`, wardGenderDistribution);
+    
+    // Aggregate by age group for this ward (summing all genders)
+    const wardAgeGroupAggregated: Record<string, number> = {};
     wardItems.forEach(item => {
-      wardAgeGroups[item.ageGroup] = item.population;
+      const normalizedAgeGroup = normalizeAgeGroup(item.ageGroup);
+      wardAgeGroupAggregated[normalizedAgeGroup] = (wardAgeGroupAggregated[normalizedAgeGroup] || 0) + item.population;
     });
 
+    // Copy aggregated data to wardAgeGroups
+    Object.entries(wardAgeGroupAggregated).forEach(([ageGroup, population]) => {
+      wardAgeGroups[ageGroup] = population;
+    });
+
+    // Debug: Log ward age groups
+    console.log(`Ward ${wardNum} age groups:`, wardAgeGroups);
+
     // Find primary age group for this ward
-    const sortedWardAgeGroups = wardItems.sort((a, b) => b.population - a.population);
-    const primaryAgeGroup = sortedWardAgeGroups[0]?.ageGroup || '';
+    const sortedWardAgeGroups = Object.entries(wardAgeGroupAggregated).sort(([, a], [, b]) => b - a);
+    const primaryAgeGroup = sortedWardAgeGroups[0]?.[0] || '';
     const primaryAgeGroupPercentage = wardTotalEconomicallyActivePopulation > 0 
-      ? (sortedWardAgeGroups[0]?.population || 0) / wardTotalEconomicallyActivePopulation * 100 
+      ? (sortedWardAgeGroups[0]?.[1] || 0) / wardTotalEconomicallyActivePopulation * 100 
       : 0;
 
     wardData[wardNum] = {
@@ -133,6 +186,9 @@ export function processEconomicallyActiveData(rawData: EconomicallyActiveData[])
       primaryAgeGroupPercentage,
     };
   });
+
+  // Debug: Log final ward data
+  console.log("Final ward data:", wardData);
 
   // Calculate economic indicators
   const workingAgePopulation = ageGroupData.AGE_15_TO_59?.population || 0;

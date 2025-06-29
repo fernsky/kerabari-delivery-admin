@@ -157,9 +157,9 @@ export class ChartGenerator {
           // Legend color box
           svg += `<rect x="${legendStartX}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
           
-          // Legend text - more compact
+          // Legend text - more compact with smaller font
           const legendText = `${item.label} (${ChartGenerator.formatNumber(value, nepaliNumbers)})`;
-          svg += `<text x="${legendStartX + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="11" fill="black" text-anchor="start">${legendText}</text>`;
+          svg += `<text x="${legendStartX + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="9" fill="black" text-anchor="start">${legendText}</text>`;
         }
       });
     }
@@ -284,31 +284,30 @@ export class ChartGenerator {
 
     // Legend - positioned closer to chart with better spacing
     if (showLegend) {
-      const maxItemsPerRow = 3; // Reduced from 4 to 3 items per row
-      const itemSpacing = 120; // Reduced spacing between legend items
-      const rowHeight = 20; // Reduced row height
+      const maxItemsPerRow = 3; // Back to 3 items per row
+      const itemSpacing = chartWidth / 3; // Use full chart width divided by 3
+      const rowHeight = 18; // Reduced row height for more compact layout
       
       const totalRows = Math.ceil(categories.length / maxItemsPerRow);
-      const legendStartY = height - legendHeight + 15; // Reduced top margin for legend
+      const legendStartY = height - legendHeight + 5; // Reduced top margin for legend
       
-      // Calculate total width of legend items to center the container
-      const totalLegendWidth = Math.min(categories.length, maxItemsPerRow) * itemSpacing;
-      const legendContainerStartX = margin.left + (chartWidth - totalLegendWidth) / 2;
+      // Use full chart width for legend distribution
+      const legendContainerStartX = margin.left;
       
       categories.forEach((category, index) => {
         const row = Math.floor(index / maxItemsPerRow);
         const col = index % maxItemsPerRow;
         
-        // Left-align legend items within the centered container
+        // Distribute items across full width
         const x = legendContainerStartX + col * itemSpacing;
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
         // Legend color box - removed border
-        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
+        svg += `<rect x="${x}" y="${y - 5}" width="10" height="10" fill="${color}"/>`;
         
         // Legend text - left-aligned within the container with smaller font
-        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="10" fill="black" text-anchor="start">${category}</text>`;
+        svg += `<text x="${x + 15}" y="${y + 3}" font-family="Arial, sans-serif" font-size="9" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 
@@ -317,16 +316,18 @@ export class ChartGenerator {
   }
 
   /**
-   * Generate SVG Population Pyramid - Optimized for A4 printing
+   * Generate SVG Population Pyramid - Optimized for A4 printing with proper scaling
    */
   static generatePopulationPyramid(
     data: PopulationPyramidData,
     config: ChartConfig = {}
   ): string {
     const {
-      width = 600,
-      height = 450,
-      nepaliNumbers = true
+      width = 800,
+      height = 600,
+      nepaliNumbers = true,
+      showLegend = true,
+      legendHeight = 60
     } = config;
 
     // Handle empty data
@@ -338,7 +339,8 @@ export class ChartGenerator {
       </svg>`;
     }
 
-    const margin = { top: 30, right: 40, bottom: 40, left: 80 };
+    // Calculate margins similar to bar chart for consistency
+    const margin = { top: 40, right: 40, bottom: 60 + legendHeight, left: 80 };
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
@@ -354,15 +356,20 @@ export class ChartGenerator {
       </svg>`;
     }
 
-    const barHeight = chartHeight / ageGroups.length;
+    // Calculate optimal bar height similar to bar chart scaling
+    const availableHeight = chartHeight;
+    const optimalBarHeight = Math.min(availableHeight / Math.max(ageGroups.length, 1), 25); // Max 25px per bar
+    const totalBarHeight = ageGroups.length * optimalBarHeight;
+    const startY = margin.top + (chartHeight - totalBarHeight) / 2;
 
     let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
     
-    // Add styles - no background
+    // Add styles - no background, consistent with bar chart
     svg += `<style>
       text { font-family: 'Noto Sans Devanagari', Arial, sans-serif; }
-      .axis { font-size: 10px; }
+      .axis { font-size: 11px; }
       .center-line { stroke: #333; stroke-width: 1; }
+      .legend { font-size: 10px; }
     </style>`;
 
     const centerX = width / 2;
@@ -370,46 +377,75 @@ export class ChartGenerator {
     // Draw center line
     svg += `<line x1="${centerX}" y1="${margin.top}" x2="${centerX}" y2="${margin.top + chartHeight}" class="center-line"/>`;
 
-    // Draw bars
+    // Draw bars with proper scaling
     ageGroups.forEach((ageGroup, index) => {
       const groupData = data[ageGroup];
-      const y = margin.top + index * barHeight;
+      const y = startY + index * optimalBarHeight;
       
       // Male bars (left side)
       const maleValue = groupData.male || 0;
       const maleWidth = (maleValue / maxValue) * (chartWidth / 2);
       if (maleValue > 0) {
-        svg += `<rect x="${centerX - maleWidth}" y="${y + barHeight * 0.1}" width="${maleWidth}" height="${barHeight * 0.8}" fill="#3498db"/>`;
+        svg += `<rect x="${centerX - maleWidth}" y="${y + optimalBarHeight * 0.1}" width="${maleWidth}" height="${optimalBarHeight * 0.8}" fill="#3498db"/>`;
       }
       
       // Female bars (right side)
       const femaleValue = groupData.female || 0;
       const femaleWidth = (femaleValue / maxValue) * (chartWidth / 2);
       if (femaleValue > 0) {
-        svg += `<rect x="${centerX}" y="${y + barHeight * 0.1}" width="${femaleWidth}" height="${barHeight * 0.8}" fill="#e74c3c"/>`;
+        svg += `<rect x="${centerX}" y="${y + optimalBarHeight * 0.1}" width="${femaleWidth}" height="${optimalBarHeight * 0.8}" fill="#e74c3c"/>`;
       }
       
-      // Age group labels
-      svg += `<text x="${margin.left - 5}" y="${y + barHeight / 2}" text-anchor="end" class="axis">${groupData.label}</text>`;
+      // Age group labels - positioned to the left
+      svg += `<text x="${margin.left - 5}" y="${y + optimalBarHeight / 2}" text-anchor="end" class="axis">${groupData.label}</text>`;
       
-      // Value labels
-      if (maleValue > 0) {
-        svg += `<text x="${centerX - maleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
+      // Value labels - only show if bar is wide enough
+      if (maleValue > 0 && maleWidth > 20) {
+        svg += `<text x="${centerX - maleWidth / 2}" y="${y + optimalBarHeight / 2}" text-anchor="middle" class="axis" fill="white">
           ${ChartGenerator.formatNumber(maleValue, nepaliNumbers)}
         </text>`;
       }
-      if (femaleValue > 0) {
-        svg += `<text x="${centerX + femaleWidth / 2}" y="${y + barHeight / 2}" text-anchor="middle" class="axis" fill="white">
+      if (femaleValue > 0 && femaleWidth > 20) {
+        svg += `<text x="${centerX + femaleWidth / 2}" y="${y + optimalBarHeight / 2}" text-anchor="middle" class="axis" fill="white">
           ${ChartGenerator.formatNumber(femaleValue, nepaliNumbers)}
         </text>`;
       }
     });
 
-    // Legend
-    svg += `<rect x="${centerX - 120}" y="${height - 30}" width="10" height="10" fill="#3498db"/>`;
-    svg += `<text x="${centerX - 105}" y="${height - 22}" class="axis">पुरुष</text>`;
-    svg += `<rect x="${centerX + 30}" y="${height - 30}" width="10" height="10" fill="#e74c3c"/>`;
-    svg += `<text x="${centerX + 45}" y="${height - 22}" class="axis">महिला</text>`;
+    // X-axis labels with proper scaling
+    const xAxisSteps = 5;
+    for (let i = 0; i <= xAxisSteps; i++) {
+      const value = (maxValue / xAxisSteps) * i;
+      const leftX = centerX - (value / maxValue) * (chartWidth / 2);
+      const rightX = centerX + (value / maxValue) * (chartWidth / 2);
+      
+      // Left side labels
+      svg += `<text x="${leftX}" y="${margin.top + chartHeight + 20}" text-anchor="middle" class="axis">
+        ${ChartGenerator.formatNumber(Math.round(value), nepaliNumbers)}
+      </text>`;
+      
+      // Right side labels
+      svg += `<text x="${rightX}" y="${margin.top + chartHeight + 20}" text-anchor="middle" class="axis">
+        ${ChartGenerator.formatNumber(Math.round(value), nepaliNumbers)}
+      </text>`;
+      
+      // Grid lines
+      if (i > 0) {
+        svg += `<line x1="${leftX}" y1="${margin.top}" x2="${leftX}" y2="${margin.top + chartHeight}" stroke="#e0e0e0" stroke-width="0.5"/>`;
+        svg += `<line x1="${rightX}" y1="${margin.top}" x2="${rightX}" y2="${margin.top + chartHeight}" stroke="#e0e0e0" stroke-width="0.5"/>`;
+      }
+    }
+
+    // Legend - positioned at bottom center like bar chart
+    if (showLegend) {
+      const legendY = height - legendHeight + 20;
+      const legendStartX = centerX - 120;
+      
+      svg += `<rect x="${legendStartX}" y="${legendY - 5}" width="10" height="10" fill="#3498db"/>`;
+      svg += `<text x="${legendStartX + 15}" y="${legendY + 3}" class="legend">पुरुष</text>`;
+      svg += `<rect x="${legendStartX + 80}" y="${legendY - 5}" width="10" height="10" fill="#e74c3c"/>`;
+      svg += `<text x="${legendStartX + 95}" y="${legendY + 3}" class="legend">महिला</text>`;
+    }
 
     svg += '</svg>';
     return svg;
@@ -509,31 +545,30 @@ export class ChartGenerator {
 
     // Legend - positioned closer to chart with better spacing
     if (showLegend) {
-      const maxItemsPerRow = 3; // Reduced from 4 to 3 items per row
-      const itemSpacing = 120; // Reduced spacing between legend items
-      const rowHeight = 20; // Reduced row height
+      const maxItemsPerRow = 3; // Back to 3 items per row
+      const itemSpacing = chartWidth / 3; // Use full chart width divided by 3
+      const rowHeight = 18; // Reduced row height for more compact layout
       
       const totalRows = Math.ceil(categories.length / maxItemsPerRow);
-      const legendStartY = height - legendHeight + 15; // Reduced top margin for legend
+      const legendStartY = height - legendHeight + 5; // Reduced top margin for legend
       
-      // Calculate total width of legend items to center the container
-      const totalLegendWidth = Math.min(categories.length, maxItemsPerRow) * itemSpacing;
-      const legendContainerStartX = margin.left + (chartWidth - totalLegendWidth) / 2;
+      // Use full chart width for legend distribution
+      const legendContainerStartX = margin.left;
       
       categories.forEach((category, index) => {
         const row = Math.floor(index / maxItemsPerRow);
         const col = index % maxItemsPerRow;
         
-        // Left-align legend items within the centered container
+        // Distribute items across full width
         const x = legendContainerStartX + col * itemSpacing;
         const y = legendStartY + row * rowHeight;
         const color = colors[index % colors.length];
         
         // Legend color box - removed border
-        svg += `<rect x="${x}" y="${y - 6}" width="12" height="12" fill="${color}"/>`;
+        svg += `<rect x="${x}" y="${y - 5}" width="10" height="10" fill="${color}"/>`;
         
         // Legend text - left-aligned within the container with smaller font
-        svg += `<text x="${x + 18}" y="${y + 4}" font-family="Arial, sans-serif" font-size="9" fill="black" text-anchor="start">${category}</text>`;
+        svg += `<text x="${x + 15}" y="${y + 3}" font-family="Arial, sans-serif" font-size="9" fill="black" text-anchor="start">${category}</text>`;
       });
     }
 

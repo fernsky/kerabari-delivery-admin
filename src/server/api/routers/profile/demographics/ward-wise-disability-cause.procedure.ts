@@ -15,6 +15,21 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 
+// Function to normalize disability cause enum values
+function normalizeDisabilityCause(cause: string): string {
+  const normalized = cause.toLowerCase();
+  const mapping: Record<string, string> = {
+    'congenital': 'CONGENITAL',
+    'accident': 'ACCIDENT',
+    'malnutrition': 'MALNUTRITION',
+    'disease': 'DISEASE',
+    'conflict': 'CONFLICT',
+    'other': 'OTHER',
+    'unknown': 'UNKNOWN',
+  };
+  return mapping[normalized] || cause.toUpperCase();
+}
+
 // Get all ward-wise disability cause data with optional filtering
 export const getAllWardWiseDisabilityCause = publicProcedure
   .input(wardWiseDisabilityCauseFilterSchema.optional())
@@ -85,7 +100,7 @@ export const getAllWardWiseDisabilityCause = publicProcedure
           data = acmeResult.map((row) => ({
             id: row.id,
             wardNumber: parseInt(String(row.ward_number)),
-            disabilityCause: row.disability_cause,
+            disabilityCause: normalizeDisabilityCause(String(row.disability_cause)),
             population: parseInt(String(row.population || "0")),
           }));
 

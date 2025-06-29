@@ -34,7 +34,7 @@ export function RemittanceAmountGroupReport() {
     return processRemittanceAmountGroupData(mappedData);
   }, [rawData]);
 
-  // Generate charts
+  // Generate charts with optimized dimensions and scaling for A4 printing
   const charts = useMemo(() => {
     if (!processedData) return { pieChart: '', barChart: '' };
 
@@ -46,7 +46,7 @@ export function RemittanceAmountGroupReport() {
         pieChartData[amountGroup] = {
           value: data.population,
           label: data.label,
-          color: `hsl(${(data.rank * 45) % 360}, 70%, 50%)`
+          color: `hsl(${(data.rank * 90) % 360}, 70%, 50%)`
         };
       });
 
@@ -60,20 +60,32 @@ export function RemittanceAmountGroupReport() {
       });
     });
 
+    // Calculate optimal chart dimensions based on data
+    const numWards = Object.keys(processedData.wardData).length;
+    const numCategories = Object.keys(processedData.amountGroupData).filter(key => 
+      processedData.amountGroupData[key].population > 0
+    ).length;
+    
+    // Adjust legend height based on number of categories
+    const legendHeight = Math.ceil(numCategories / 3) * 25 + 30;
+    
+    // Adjust max bar width based on number of wards
+    const maxBarWidth = numWards <= 9 ? 50 : 40;
+
     return {
       pieChart: ChartGenerator.generatePieChart(pieChartData, {
         width: 600,
-        height: 450,
+        height: 350,
         showLegend: true,
         nepaliNumbers: true
       }),
       barChart: ChartGenerator.generateBarChart(barChartData, {
-        width: 800,
+        width: 700,
         height: 500,
         showLegend: true,
         nepaliNumbers: true,
-        maxBarWidth: 45,
-        legendHeight: 100
+        legendHeight: legendHeight,
+        maxBarWidth: maxBarWidth
       })
     };
   }, [processedData]);
@@ -108,7 +120,7 @@ export function RemittanceAmountGroupReport() {
     return (
       <div className="section-content" id="section-remittance-amount-group">
         <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
-          ४.३ रेमिटेन्स रकम समूह विवरण
+          ४.५ रेमिटेन्स रकम समूह विवरण
         </h2>
         <p>रेमिटेन्स रकम समूह सम्बन्धी तथ्याङ्क उपलब्ध छैन।</p>
       </div>
@@ -118,7 +130,7 @@ export function RemittanceAmountGroupReport() {
   return (
     <div className="section-content" id="section-remittance-amount-group">
       <h2 className="section-header level-2" style={{ color: "#1e40af", borderBottom: "2px solid #0ea5e9", paddingBottom: "0.3em", fontSize: "16pt", marginTop: "2em" }}>
-        ४.३ रेमिटेन्स रकम समूह विवरण
+        ४.५ रेमिटेन्स रकम समूह विवरण
       </h2>
       
       <div className="content-section">
@@ -129,15 +141,17 @@ export function RemittanceAmountGroupReport() {
 
       {/* Pie Chart */}
       <div className="chart-section">
-        <h3 className="chart-title">चित्र ४.३.१: रेमिटेन्स रकम समूह अनुसार जनसंख्या वितरण</h3>
+        <h3 className="chart-title">चित्र ४.५.१: रेमिटेन्स रकम समूह अनुसार जनसंख्या वितरण</h3>
         <div className="pdf-chart-container">
           <div 
             style={{ 
               width: "100%", 
-              height: "450px", 
+              height: "350px", 
               display: "flex", 
               alignItems: "center", 
-              justifyContent: "center"
+              justifyContent: "center",
+              maxWidth: "600px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.pieChart }}
           />
@@ -146,7 +160,7 @@ export function RemittanceAmountGroupReport() {
 
       {/* Amount Groups Distribution Table */}
       <div className="table-section">
-        <h3 className="table-title">तालिका ४.३.१: रेमिटेन्स रकम समूह अनुसार जनसंख्या विस्तृत विवरण</h3>
+        <h3 className="table-title">तालिका ४.५.१: रेमिटेन्स रकम समूह अनुसार जनसंख्या विस्तृत विवरण</h3>
         <table className="data-table remittance-amount-group-table">
           <thead>
             <tr>
@@ -179,7 +193,7 @@ export function RemittanceAmountGroupReport() {
 
       {/* Bar Chart */}
       <div className="chart-section">
-        <h3 className="chart-title">चित्र ४.३.२: वडा अनुसार रेमिटेन्स रकम समूह वितरण</h3>
+        <h3 className="chart-title">चित्र ४.५.२: वडा अनुसार रेमिटेन्स रकम समूह वितरण</h3>
         <div className="pdf-chart-container">
           <div 
             style={{ 
@@ -188,8 +202,8 @@ export function RemittanceAmountGroupReport() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
-              maxWidth: "800px", // Ensure the chart can use the full width
-              margin: "0 auto" // Center the chart
+              maxWidth: "700px",
+              margin: "0 auto"
             }}
             dangerouslySetInnerHTML={{ __html: charts.barChart }}
           />
@@ -198,7 +212,7 @@ export function RemittanceAmountGroupReport() {
 
       {/* Ward-wise Table */}
       <div className="table-section">
-        <h3 className="table-title">तालिका ४.३.२: वडा अनुसार रेमिटेन्स रकम समूह विवरण</h3>
+        <h3 className="table-title">तालिका ४.५.२: वडा अनुसार रेमिटेन्स रकम समूह विवरण</h3>
         <table className="data-table ward-remittance-amount-group-table">
           <thead>
             <tr>
