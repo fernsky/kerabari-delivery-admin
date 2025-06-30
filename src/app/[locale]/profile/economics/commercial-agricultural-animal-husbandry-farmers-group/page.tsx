@@ -99,7 +99,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const farmersGroupData =
       await api.profile.economics.municipalityWideCommercialAgriculturalAnimalHusbandryFarmersGroup.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalGroups = farmersGroupData.length;
@@ -146,13 +146,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका कृषि समूह",
-      "बुद्धशान्ति व्यावसायिक पशुपालन",
+      "केराबारी गाउँपालिका कृषि समूह",
+      "केराबारी व्यावसायिक पशुपालन",
       "पालिका स्तरीय कृषि समूह",
-      "बुद्धशान्ति कृषि व्यवसाय",
-      `बुद्धशान्ति ${BUSINESS_TYPES[mostCommonBusinessType] || "व्यावसायिक कृषि"}`,
+      "केराबारी कृषि व्यवसाय",
+      `केराबारी ${BUSINESS_TYPES[mostCommonBusinessType] || "व्यावसायिक कृषि"}`,
       `वडा ${localizeNumber(wardWithMostGroups.toString(), "ne")} कृषि समूह`,
-      `बुद्धशान्ति ${localizeNumber(totalGroups.toString(), "ne")} कृषि समूह`,
+      `केराबारी ${localizeNumber(totalGroups.toString(), "ne")} कृषि समूह`,
       "व्यावसायिक पशुपालन समूह",
     ];
 
@@ -168,7 +168,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा संचालित ${localizeNumber(totalGroups.toString(), "ne")} व्यावसायिक कृषि तथा पशुपालन समूहहरूको विस्तृत विश्लेषण। सबैभन्दा बढी ${BUSINESS_TYPES[mostCommonBusinessType] || ""} व्यवसाय गर्ने समूहहरू (${localizeNumber(mostCommonBusinessTypePercentage.toFixed(1), "ne")}%) रहेका छन्। वडा नं ${localizeNumber(wardWithMostGroups.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} समूहहरू क्रियाशील छन्। पालिका स्तरीय कृषि तथा पशुपालन समूहहरूको विस्तृत जानकारी।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा संचालित ${localizeNumber(totalGroups.toString(), "ne")} व्यावसायिक कृषि तथा पशुपालन समूहहरूको विस्तृत विश्लेषण। सबैभन्दा बढी ${BUSINESS_TYPES[mostCommonBusinessType] || ""} व्यवसाय गर्ने समूहहरू (${localizeNumber(mostCommonBusinessTypePercentage.toFixed(1), "ne")}%) रहेका छन्। वडा नं ${localizeNumber(wardWithMostGroups.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} समूहहरू क्रियाशील छन्। पालिका स्तरीय कृषि तथा पशुपालन समूहहरूको विस्तृत जानकारी।`;
 
     const descriptionEN = `Detailed analysis of ${totalGroups} commercial agricultural and animal husbandry farmers groups operating in Khajura Rural Municipality. ${BUSINESS_TYPES_EN[mostCommonBusinessType] || "Agricultural business"} groups are most common (${mostCommonBusinessTypePercentage.toFixed(1)}%). Ward ${wardWithMostGroups} has the highest concentration with ${wardMaxCount} active groups. Comprehensive information on municipality-wide agricultural and livestock groups.`;
 
@@ -202,7 +202,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "व्यावसायिक कृषि तथा पशुपालन समूहहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "व्यावसायिक कृषि तथा पशुपालन समूहहरू | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय व्यावसायिक कृषि तथा पशुपालन समूहहरूको विवरण र विश्लेषण।",
     };
@@ -381,7 +381,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
               src="/images/farmers.svg"
               width={1200}
               height={400}
-              alt="व्यावसायिक कृषि तथा पशुपालन समूहहरू - बुद्धशान्ति गाउँपालिका (Commercial Agricultural and Animal Husbandry Farmers Groups - Khajura Rural Municipality)"
+              alt="व्यावसायिक कृषि तथा पशुपालन समूहहरू - केराबारी गाउँपालिका (Commercial Agricultural and Animal Husbandry Farmers Groups - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -389,14 +389,14 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरू
+              केराबारी गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              व्यावसायिक कृषि तथा पशुपालन समूहहरू बुद्धशान्ति गाउँपालिकाको
+              व्यावसायिक कृषि तथा पशुपालन समूहहरू केराबारी गाउँपालिकाको
               आर्थिक विकासमा महत्त्वपूर्ण भूमिका निर्वाह गरिरहेका छन्। यस
               क्षेत्रमा तरकारी खेती, बाख्रापालन, कुखुरा पालन, माछापालन, फलफूल
               खेती, मौरीपालन लगायतका विभिन्न प्रकारका व्यावसायिक कृषि तथा
@@ -410,7 +410,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
             </p>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalGroups.toString(), "ne")} व्यावसायिक कृषि तथा
               पशुपालन समूहहरू रहेका छन्। सबैभन्दा बढी{" "}
               {businessSummary[0]?.typeName || ""}(
@@ -434,7 +434,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
               व्यवसायको प्रकार र वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न प्रकारका व्यावसायिक कृषि तथा
+              केराबारी गाउँपालिकामा विभिन्न प्रकारका व्यावसायिक कृषि तथा
               पशुपालन समूहहरू संचालनमा छन्। मुख्य व्यवसायहरू र तिनको वितरण निम्न
               अनुसार रहेको छ:
             </p>
@@ -483,7 +483,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
               वडागत वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकाका विभिन्न वडाहरूमा व्यावसायिक कृषि तथा
+              केराबारी गाउँपालिकाका विभिन्न वडाहरूमा व्यावसायिक कृषि तथा
               पशुपालन समूहहरूको वितरण असमान रहेको छ। वडा नं.{" "}
               {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}{" "}
               मा सबैभन्दा बढी{" "}
@@ -610,7 +610,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरूको
+              केराबारी गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरूको
               अवस्थाको विश्लेषणबाट निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गरिएका
               छन्:
             </p>
@@ -659,7 +659,7 @@ export default async function CommercialAgriculturalAnimalHusbandryFarmersGroupP
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरूको
+              केराबारी गाउँपालिकामा व्यावसायिक कृषि तथा पशुपालन समूहहरूको
               विकास र प्रवर्द्धनले स्थानीय अर्थतन्त्रलाई बलियो बनाउन, रोजगारी
               सिर्जना गर्न र खाद्य सुरक्षा सुनिश्चित गर्न महत्त्वपूर्ण योगदान
               पुर्‍याउने निश्चित छ। यसका लागि स्थानीय सरकार, प्राविधिक संस्थाहरू

@@ -96,11 +96,11 @@ export default function WardWiseDeliveryPlaceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Childbirth Locations in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Childbirth Locations in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of childbirth locations across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalDeliveries.toLocaleString()} deliveries. ${institutionalTotal.toLocaleString()} deliveries (${institutionalPercentage}%) occurred in health institutions. The best institutional delivery rate is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Institutional delivery",
         "Home delivery",
         "Childbirth locations",

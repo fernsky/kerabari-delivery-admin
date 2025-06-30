@@ -71,7 +71,7 @@ export function DemographicSummaryReport() {
 
     // Overall population summary
     analysisPoints.push(
-      `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(processedAgeGenderData.totalPopulation)} जनसंख्या र ` +
+      `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(processedAgeGenderData.totalPopulation)} जनसंख्या र ` +
       `${convertToNepaliNumber(processedHouseholdData.totalHouseholds)} घरपरिवार रहेका छन्।`
     );
 

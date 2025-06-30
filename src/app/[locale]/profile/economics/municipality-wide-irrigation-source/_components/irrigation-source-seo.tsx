@@ -60,11 +60,11 @@ export default function IrrigationSourceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Irrigation Source Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Irrigation Source Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Irrigation source statistics of Khajura Rural Municipality with a total irrigation coverage of ${totalCoverage.toFixed(2)} hectares. The most common irrigation source is ${mostCommonSourceEN} with ${mostCommonSource?.coverage.toFixed(2)} hectares (${mostCommonSourcePercentage}%). Traditional irrigation methods account for ${traditionalSourcePercentage}% of all irrigated area. Irrigation sustainability score is ${sustainabilityScore}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Irrigation sources",
         "Irrigation source types",
         "Lake or reservoir irrigation",

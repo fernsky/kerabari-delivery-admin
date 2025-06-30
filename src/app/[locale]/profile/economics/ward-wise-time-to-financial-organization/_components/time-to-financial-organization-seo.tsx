@@ -95,11 +95,11 @@ export default function TimeToFinancialOrganizationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Financial Organization Access Time in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Financial Organization Access Time in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of time taken to reach financial organizations across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${under15MinTotal.toLocaleString()} households (${under15MinPercentage.toFixed(2)}%) can reach a financial institution within 15 minutes, while ${over1HourTotal.toLocaleString()} households (${over1HourPercentage.toFixed(2)}%) need more than 1 hour. The best financial access is in Ward ${bestAccessWard?.wardNumber || ""} with ${bestAccessWard?.under15MinPercent.toFixed(2) || ""}% of households having access within 15 minutes.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Financial access",
         "Time to financial organizations",
         "Banking access",

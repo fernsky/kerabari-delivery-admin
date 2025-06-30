@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const summaryData =
       await api.profile.economics.wardWiseIrrigatedArea.summary.query();
 
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Calculate total areas
     const totalIrrigatedArea = summaryData?.total_irrigated_area
@@ -60,10 +60,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका वडा अनुसार सिंचित क्षेत्रफल",
+      "केराबारी गाउँपालिका वडा अनुसार सिंचित क्षेत्रफल",
       "वडा अनुसार सिंचित र असिंचित क्षेत्रफल",
       "सिंचाई क्षेत्र विश्लेषण",
-      `बुद्धशान्ति सिंचित क्षेत्रफल ${localizeNumber(totalIrrigatedArea.toFixed(2), "ne")} हेक्टर`,
+      `केराबारी सिंचित क्षेत्रफल ${localizeNumber(totalIrrigatedArea.toFixed(2), "ne")} हेक्टर`,
       "वडागत सिंचाई विवरण",
       "कृषि सिंचाई",
     ];
@@ -78,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफलको विवरण र विश्लेषण। कुल ${localizeNumber(totalArea.toFixed(2), "ne")} हेक्टर क्षेत्रफल मध्ये ${localizeNumber(irrigatedPercentage, "ne")}% (${localizeNumber(totalIrrigatedArea.toFixed(2), "ne")}) हेक्टर क्षेत्रफल सिंचित र ${localizeNumber((100 - parseFloat(irrigatedPercentage)).toFixed(2), "ne")}% क्षेत्रफल असिंचित रहेको छ। वडा नं. ${localizeNumber(String(highestIrrigatedWard?.wardNumber || ""), "ne")} मा सबैभन्दा बढी सिंचित क्षेत्र रहेको छ।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफलको विवरण र विश्लेषण। कुल ${localizeNumber(totalArea.toFixed(2), "ne")} हेक्टर क्षेत्रफल मध्ये ${localizeNumber(irrigatedPercentage, "ne")}% (${localizeNumber(totalIrrigatedArea.toFixed(2), "ne")}) हेक्टर क्षेत्रफल सिंचित र ${localizeNumber((100 - parseFloat(irrigatedPercentage)).toFixed(2), "ne")}% क्षेत्रफल असिंचित रहेको छ। वडा नं. ${localizeNumber(String(highestIrrigatedWard?.wardNumber || ""), "ne")} मा सबैभन्दा बढी सिंचित क्षेत्र रहेको छ।`;
 
     const descriptionEN = `Details and analysis of irrigated and unirrigated area by ward in Khajura Rural Municipality. Out of a total of ${totalArea.toFixed(2)} hectares, ${irrigatedPercentage}% (${totalIrrigatedArea.toFixed(2)}) hectares are irrigated and ${(100 - parseFloat(irrigatedPercentage)).toFixed(2)}% area is unirrigated. Ward No. ${highestIrrigatedWard?.wardNumber || ""} has the highest irrigated area.`;
 
@@ -111,9 +111,9 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "वडा अनुसार सिंचित र असिंचित क्षेत्रफल | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "वडा अनुसार सिंचित र असिंचित क्षेत्रफल | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
-        "बुद्धशान्ति गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफलको विवरण र विश्लेषण।",
+        "केराबारी गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफलको विवरण र विश्लेषण।",
     };
   }
 }
@@ -219,7 +219,7 @@ export default async function WardWiseIrrigatedAreaPage() {
               src="/images/irrigation.svg"
               width={1200}
               height={400}
-              alt="वडा अनुसार सिंचित र असिंचित क्षेत्रफल - बुद्धशान्ति गाउँपालिका (Ward-wise Irrigated and Unirrigated Area - Khajura Rural Municipality)"
+              alt="वडा अनुसार सिंचित र असिंचित क्षेत्रफल - केराबारी गाउँपालिका (Ward-wise Irrigated and Unirrigated Area - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -227,7 +227,7 @@ export default async function WardWiseIrrigatedAreaPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफल
+              केराबारी गाउँपालिकामा वडा अनुसार सिंचित र असिंचित क्षेत्रफल
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -235,7 +235,7 @@ export default async function WardWiseIrrigatedAreaPage() {
             </h2>
             <p>
               सिंचाई कृषि उत्पादनलाई प्रभावकारी बनाउने महत्त्वपूर्ण पक्ष हो।
-              बुद्धशान्ति गाउँपालिकामा वडागत रूपमा सिंचित र असिंचित क्षेत्रफलको
+              केराबारी गाउँपालिकामा वडागत रूपमा सिंचित र असिंचित क्षेत्रफलको
               अवस्था विविध रहेको छ। सम्पूर्ण पालिकामा कुल{" "}
               {localizeNumber(totalArea.toFixed(2), "ne")} हेक्टर क्षेत्रफल
               मध्ये {localizeNumber(irrigatedPercentage, "ne")}% अर्थात्{" "}
@@ -276,7 +276,7 @@ export default async function WardWiseIrrigatedAreaPage() {
               वडागत सिंचित क्षेत्रफलको अवस्था
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकाका सबै वडाहरूमा सिंचाई सुविधाको वितरण असमान
+              केराबारी गाउँपालिकाका सबै वडाहरूमा सिंचाई सुविधाको वितरण असमान
               रहेको देखिन्छ। यहाँ वडागत रूपमा सिंचित र असिंचित क्षेत्रफलको
               विस्तृत विवरण प्रस्तुत गरिएको छ:
             </p>
@@ -356,7 +356,7 @@ export default async function WardWiseIrrigatedAreaPage() {
               सिंचाई अन्तराल र चुनौती
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा सिंचाईको अवस्था विश्लेषण गर्दा कुल
+              केराबारी गाउँपालिकामा सिंचाईको अवस्था विश्लेषण गर्दा कुल
               {localizeNumber(totalArea.toFixed(2), "ne")} हेक्टर क्षेत्रफल
               मध्ये
               {localizeNumber(totalUnirrigatedArea.toFixed(2), "ne")} हेक्टर (
@@ -399,7 +399,7 @@ export default async function WardWiseIrrigatedAreaPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको वडागत सिंचित र असिंचित क्षेत्रफलको
+              केराबारी गाउँपालिकाको वडागत सिंचित र असिंचित क्षेत्रफलको
               विश्लेषणबाट निम्न निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -453,7 +453,7 @@ export default async function WardWiseIrrigatedAreaPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा सिंचाईको अवस्थालाई सुधार गर्न सम्पूर्ण
+              केराबारी गाउँपालिकामा सिंचाईको अवस्थालाई सुधार गर्न सम्पूर्ण
               सरोकारवालाहरूको समन्वयात्मक प्रयास आवश्यक छ। वडागत स्तरमा सिंचाई
               पूर्वाधार विकासका लागि योजनाबद्ध कार्यक्रम संचालन गरी कृषि
               उत्पादकत्व वृद्धि गर्न सके पालिकाको समग्र आर्थिक विकासमा टेवा

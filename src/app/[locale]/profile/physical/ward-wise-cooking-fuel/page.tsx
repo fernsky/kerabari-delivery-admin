@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const cookingFuelData =
       await api.profile.physical.wardWiseCookingFuel.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by cooking fuel type
     const fuelGroups = cookingFuelData.reduce((acc: any, curr: any) => {
@@ -103,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका खाना पकाउने इन्धन",
+      "केराबारी गाउँपालिका खाना पकाउने इन्धन",
       "वडागत खाना पकाउने इन्धन प्रयोग",
       "दाउरा प्रयोग दर",
       "एलपी ग्यास प्रयोग दर",
@@ -121,7 +121,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धन प्रयोगको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(cleanFuelPercentage, "ne")}% घरधुरीले स्वच्छ इन्धन (एल.पी. ग्याँस, विद्युत, गोबर ग्याँस) प्रयोग गर्दछन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा खाना पकाउने इन्धन प्रयोगको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(cleanFuelPercentage, "ne")}% घरधुरीले स्वच्छ इन्धन (एल.पी. ग्याँस, विद्युत, गोबर ग्याँस) प्रयोग गर्दछन्।`;
 
     const descriptionEN = `Analysis of cooking fuel usage in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${cleanFuelPercentage}% use clean fuels (LP Gas, Electricity, Biogas).`;
 
@@ -154,7 +154,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "खाना पकाउने इन्धनको प्रयोगको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "खाना पकाउने इन्धनको प्रयोगको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार खाना पकाउने इन्धनको प्रयोगको अवस्था र विश्लेषण।",
     };
   }
@@ -364,7 +364,7 @@ export default async function WardWiseCookingFuelPage() {
               src="/images/cooking-fuel.svg"
               width={1200}
               height={400}
-              alt="खाना पकाउने इन्धनको प्रयोगको अवस्था - बुद्धशान्ति गाउँपालिका (Cooking Fuel Usage - Khajura Rural Municipality)"
+              alt="खाना पकाउने इन्धनको प्रयोगको अवस्था - केराबारी गाउँपालिका (Cooking Fuel Usage - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -372,7 +372,7 @@ export default async function WardWiseCookingFuelPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको अवस्था
+              केराबारी गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -384,11 +384,11 @@ export default async function WardWiseCookingFuelPage() {
               अवस्थालाई दर्शाउँछ। खाना पकाउनको लागि प्रयोग गरिने इन्धनको
               प्रकारले स्वास्थ्यमा प्रत्यक्ष प्रभाव पार्नुका साथै वातावरणीय
               दिगोपना र आर्थिक-सामाजिक अवस्थाको पनि संकेत गर्दछ। यस खण्डमा
-              बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा प्रयोग हुने खाना पकाउने
+              केराबारी गाउँपालिकाको विभिन्न वडाहरूमा प्रयोग हुने खाना पकाउने
               इन्धनको विस्तृत विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(
@@ -415,7 +415,7 @@ export default async function WardWiseCookingFuelPage() {
               खाना पकाउने इन्धनको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको वितरण
+              केराबारी गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -445,7 +445,7 @@ export default async function WardWiseCookingFuelPage() {
               खाना पकाउने इन्धनको प्रयोगको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको विश्लेषण
+              केराबारी गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको विश्लेषण
               गर्दा, समग्रमा
               {localizeNumber(cleanFuelPercentage.toFixed(2), "ne")}% घरधुरीले
               स्वच्छ इन्धन (एल.पी. ग्याँस, विद्युत, गोबर ग्याँस) प्रयोग गर्दछन्।
@@ -478,7 +478,7 @@ export default async function WardWiseCookingFuelPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको तथ्याङ्क
+              केराबारी गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -531,7 +531,7 @@ export default async function WardWiseCookingFuelPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको
+              यसरी केराबारी गाउँपालिकामा खाना पकाउने इन्धनको प्रयोगको
               विश्लेषणले पालिकामा स्वच्छ र वातावरणमैत्री इन्धनको पहुँच र प्रयोग
               बढाउनका लागि लक्षित कार्यक्रम संचालन गर्न आवश्यक सूचना उपलब्ध
               गराउँछ। यसले घरभित्रको वायु प्रदूषण कम गरी महिला तथा बालबालिकाको

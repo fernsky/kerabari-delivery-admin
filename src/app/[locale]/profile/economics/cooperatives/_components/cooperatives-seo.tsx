@@ -112,7 +112,7 @@ export default function CooperativesSEO({
       description: `Comprehensive analysis of ${totalCooperatives} cooperatives in Khajura Rural Municipality. The most common type is ${mostCommonCooperativeTypeEN} (${statistics.mostPopularCooperativeTypePercentage.toFixed(1)}%), and Ward ${statistics.wardWithMostCooperatives} has the highest concentration with ${statistics.maximumCooperativesInAWard} cooperatives. This dataset includes ${statistics.provinceLevelCooperatives} province-level cooperatives and covers all 9 wards of the municipality.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Cooperatives",
         "सहकारी संस्था",
         "Savings and Credit",

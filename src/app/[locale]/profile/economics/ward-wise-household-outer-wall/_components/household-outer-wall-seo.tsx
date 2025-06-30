@@ -62,11 +62,11 @@ export default function HouseholdOuterWallSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "House Outer Wall Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "House Outer Wall Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `House outer wall data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%). High quality walls account for ${highQualityPercentage}% of all households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "House outer wall",
         "Wall distribution",
         "Ward-wise wall data",

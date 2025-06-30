@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const economicallyActiveData =
       await api.profile.economics.wardAgeGenderWiseEconomicallyActivePopulation.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = economicallyActiveData.reduce(
@@ -84,14 +84,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका आर्थिक रूपमा सक्रिय जनसंख्या",
-      "बुद्धशान्ति वडागत आर्थिक जनसंख्या",
-      "जनसांख्यिकी वर्गीकरण बुद्धशान्ति",
+      "केराबारी गाउँपालिका आर्थिक रूपमा सक्रिय जनसंख्या",
+      "केराबारी वडागत आर्थिक जनसंख्या",
+      "जनसांख्यिकी वर्गीकरण केराबारी",
       "कार्यसक्षम उमेर समूह",
       "लिङ्ग अनुसार आर्थिक जनसंख्या",
       "आर्थिक सक्रियता विश्लेषण",
       "१५-५९ वर्ष उमेर जनसंख्या",
-      `बुद्धशान्ति कुल आर्थिक जनसंख्या ${totalPopulation}`,
+      `केराबारी कुल आर्थिक जनसंख्या ${totalPopulation}`,
     ];
 
     const keywordsEN = [
@@ -106,7 +106,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार आर्थिक रूपमा सक्रिय जनसंख्या वितरण, उमेर र लिङ्ग अनुसार वर्गीकरण तथा विश्लेषण। कुल ${totalPopulation} जनसंख्या मध्ये कार्यसक्षम उमेर समूह (१५-५९ वर्ष) ${workingAgePopulation} जना (${workingAgePercentage}%) छन्। लिङ्ग अनुसार ${GENDER_NAMES_NP["MALE"]} ${genderCounts["MALE"] || 0}, ${GENDER_NAMES_NP["FEMALE"]} ${genderCounts["FEMALE"] || 0}, र ${GENDER_NAMES_NP["OTHER"]} ${genderCounts["OTHER"] || 0} रहेका छन्। विस्तृत तथ्याङ्क र विजुअलाइजेसन सहित।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार आर्थिक रूपमा सक्रिय जनसंख्या वितरण, उमेर र लिङ्ग अनुसार वर्गीकरण तथा विश्लेषण। कुल ${totalPopulation} जनसंख्या मध्ये कार्यसक्षम उमेर समूह (१५-५९ वर्ष) ${workingAgePopulation} जना (${workingAgePercentage}%) छन्। लिङ्ग अनुसार ${GENDER_NAMES_NP["MALE"]} ${genderCounts["MALE"] || 0}, ${GENDER_NAMES_NP["FEMALE"]} ${genderCounts["FEMALE"] || 0}, र ${GENDER_NAMES_NP["OTHER"]} ${genderCounts["OTHER"] || 0} रहेका छन्। विस्तृत तथ्याङ्क र विजुअलाइजेसन सहित।`;
 
     const descriptionEN = `Ward-wise economically active population distribution, age and gender classification, and analysis for Khajura Rural Municipality. Out of a total ${totalPopulation} population, the working-age group (15-59 years) comprises ${workingAgePopulation} people (${workingAgePercentage}%). Gender distribution shows ${GENDER_NAMES_EN["MALE"]} ${genderCounts["MALE"] || 0}, ${GENDER_NAMES_EN["FEMALE"]} ${genderCounts["FEMALE"] || 0}, and ${GENDER_NAMES_EN["OTHER"]} ${genderCounts["OTHER"] || 0}. Includes detailed statistics and visualizations.`;
 
@@ -336,7 +336,7 @@ export default async function WardEconomicallyActivePopulationPage() {
               src="/images/economically-active.svg"
               width={1200}
               height={400}
-              alt="आर्थिक रूपमा सक्रिय जनसंख्या - बुद्धशान्ति गाउँपालिका (Economically Active Population - Khajura Rural Municipality)"
+              alt="आर्थिक रूपमा सक्रिय जनसंख्या - केराबारी गाउँपालिका (Economically Active Population - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -344,14 +344,14 @@ export default async function WardEconomicallyActivePopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा आर्थिक रूपमा सक्रिय जनसंख्या
+              केराबारी गाउँपालिकामा आर्थिक रूपमा सक्रिय जनसंख्या
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा आर्थिक रूपमा
+              यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा आर्थिक रूपमा
               सक्रिय जनसंख्याको वितरण, उमेर समूह र लिङ्ग अनुसारको विश्लेषण
               प्रस्तुत गरिएको छ। आर्थिक रूपमा सक्रिय जनसंख्या भन्नाले त्यस्तो
               जनसंख्या हो जो आर्थिक गतिविधिहरूमा संलग्न हुने उमेर समूहमा पर्दछ।
@@ -374,7 +374,7 @@ export default async function WardEconomicallyActivePopulationPage() {
               उमेर समूह अनुसार वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा उमेर समूह अनुसार आर्थिक रूपमा सक्रिय
+              केराबारी गाउँपालिकामा उमेर समूह अनुसार आर्थिक रूपमा सक्रिय
               जनसंख्याको वितरण निम्नानुसार छ:
             </p>
           </div>
@@ -400,7 +400,7 @@ export default async function WardEconomicallyActivePopulationPage() {
               विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा आर्थिक रूपमा सक्रिय जनसंख्याको अवस्था
+              केराबारी गाउँपालिकामा आर्थिक रूपमा सक्रिय जनसंख्याको अवस्था
               निम्नानुसार छ। मुख्य रूपमा नेपालका अन्य पालिकाहरू जस्तै, यहाँ पनि
               कार्यसक्षम उमेर समूह (१५-५९ वर्ष) ले कुल जनसंख्याको ठूलो हिस्सा{" "}
               {((workingAgePopulation / totalPopulation) * 100).toFixed(2)}%
@@ -424,7 +424,7 @@ export default async function WardEconomicallyActivePopulationPage() {
             </h2>
             <p>
               माथि प्रस्तुत गरिएका तथ्याङ्कहरू नेपालको राष्ट्रिय जनगणना र
-              बुद्धशान्ति गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
+              केराबारी गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
               तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>
 

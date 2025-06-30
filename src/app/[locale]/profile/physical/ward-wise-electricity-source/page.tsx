@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const electricitySourceData =
       await api.profile.physical.wardWiseElectricitySource.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by electricity source type
     const sourceGroups = electricitySourceData.reduce((acc: any, curr: any) => {
@@ -92,7 +92,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका विद्युत स्रोत",
+      "केराबारी गाउँपालिका विद्युत स्रोत",
       "वडागत विद्युत स्रोतको प्रयोग",
       "ग्रिड विद्युत प्रयोग दर",
       "सौर्य ऊर्जा प्रयोग दर",
@@ -110,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोत प्रयोगको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(mainGridPercentage, "ne")}% घरधुरीले केन्द्रीय विद्युत प्रणाली र ${localizeNumber(solarPercentage, "ne")}% घरधुरीले सौर्य ऊर्जा प्रयोग गर्दछन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा विद्युतको स्रोत प्रयोगको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(mainGridPercentage, "ne")}% घरधुरीले केन्द्रीय विद्युत प्रणाली र ${localizeNumber(solarPercentage, "ne")}% घरधुरीले सौर्य ऊर्जा प्रयोग गर्दछन्।`;
 
     const descriptionEN = `Analysis of electricity source usage in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${mainGridPercentage}% use central electricity grid and ${solarPercentage}% use solar energy.`;
 
@@ -143,7 +143,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "विद्युतको स्रोतको प्रयोगको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "विद्युतको स्रोतको प्रयोगको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार विद्युतको स्रोतको प्रयोगको अवस्था र विश्लेषण।",
     };
   }
@@ -352,7 +352,7 @@ export default async function WardWiseElectricitySourcePage() {
               src="/images/electricity-source.svg"
               width={1200}
               height={400}
-              alt="विद्युतको स्रोतको प्रयोगको अवस्था - बुद्धशान्ति गाउँपालिका (Electricity Source Usage - Khajura Rural Municipality)"
+              alt="विद्युतको स्रोतको प्रयोगको अवस्था - केराबारी गाउँपालिका (Electricity Source Usage - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -360,7 +360,7 @@ export default async function WardWiseElectricitySourcePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोतको प्रयोगको अवस्था
+              केराबारी गाउँपालिकामा विद्युतको स्रोतको प्रयोगको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -371,12 +371,12 @@ export default async function WardWiseElectricitySourcePage() {
               जीवनस्तर, आधुनिकीकरण र गुणस्तरीय ऊर्जामा पहुँचको अवस्थालाई
               दर्शाउँछ। विद्युतको उपलब्धता र त्यसको स्रोतको प्रकारले घरधुरीको
               जीवनयापन, स्वास्थ्य, शिक्षा, सूचना प्रविधिको पहुँच र व्यापारिक
-              गतिविधिमा प्रत्यक्ष प्रभाव पार्दछ। यस खण्डमा बुद्धशान्ति
+              गतिविधिमा प्रत्यक्ष प्रभाव पार्दछ। यस खण्डमा केराबारी
               गाउँपालिकाको विभिन्न वडाहरूमा प्रयोग हुने विद्युतको स्रोतको
               विस्तृत विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(
@@ -403,7 +403,7 @@ export default async function WardWiseElectricitySourcePage() {
               विद्युतको स्रोतको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोतको प्रयोगको वितरण
+              केराबारी गाउँपालिकामा विद्युतको स्रोतको प्रयोगको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -433,7 +433,7 @@ export default async function WardWiseElectricitySourcePage() {
               विद्युतको स्रोतको प्रयोगको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोतको प्रयोगको विश्लेषण
+              केराबारी गाउँपालिकामा विद्युतको स्रोतको प्रयोगको विश्लेषण
               गर्दा, समग्रमा
               {localizeNumber(modernSourcePercentage.toFixed(2), "ne")}%
               घरधुरीले आधुनिक विद्युतीय स्रोत (केन्द्रीय विद्युत प्रणाली, सौर्य
@@ -466,7 +466,7 @@ export default async function WardWiseElectricitySourcePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोतको प्रयोगको तथ्याङ्क
+              केराबारी गाउँपालिकामा विद्युतको स्रोतको प्रयोगको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -520,7 +520,7 @@ export default async function WardWiseElectricitySourcePage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा विद्युतको स्रोतको प्रयोगको
+              यसरी केराबारी गाउँपालिकामा विद्युतको स्रोतको प्रयोगको
               विश्लेषणले पालिकामा विद्युत पहुँच र विद्युतीय सेवाको गुणस्तर
               बढाउनका लागि लक्षित कार्यक्रम संचालन गर्न आवश्यक सूचना उपलब्ध
               गराउँछ। यसले मट्टितेल जस्ता परम्परागत स्रोतमा निर्भरता कम गरी

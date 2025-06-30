@@ -88,11 +88,11 @@ export default function WardWiseLiteracyStatusSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Literacy Status Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Literacy Status Distribution in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of literacy status across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()}. ${bothReadingWritingTotal.toLocaleString()} people (${bothReadingWritingPercentage.toFixed(2)}%) can both read and write, while ${illiterateTotal.toLocaleString()} people (${illiteratePercentage.toFixed(2)}%) are illiterate. The best literacy is in Ward ${bestLiteracyWard?.wardNumber || ""} with ${bestLiteracyWard?.bothReadingWritingPercent.toFixed(2) || ""}% of people who can read and write.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Literacy status",
         "Literacy rate",
         "Illiteracy rate",

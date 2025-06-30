@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const timeToMarketCenterData =
       await api.profile.physical.wardWiseTimeToMarketCenter.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = timeToMarketCenterData.reduce((acc: any, curr: any) => {
@@ -87,7 +87,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका बजार केन्द्र पहुँच",
+      "केराबारी गाउँपालिका बजार केन्द्र पहुँच",
       "बजार केन्द्र पहुँचको अवस्था",
       "वडागत बजार केन्द्र दूरी",
       "बजार केन्द्र पुग्न लाग्ने समय",
@@ -105,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा बजार केन्द्रसम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र बजार केन्द्र पुग्न सक्छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा बजार केन्द्रसम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र बजार केन्द्र पुग्न सक्छन्।`;
 
     const descriptionEN = `Analysis of time taken to reach market centers in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${under15MinPercentage}% (${under15MinHouseholds.toLocaleString()}) can reach a market center within 15 minutes.`;
 
@@ -138,7 +138,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "बजार केन्द्र पुग्न लाग्ने समयको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "बजार केन्द्र पुग्न लाग्ने समयको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार बजार केन्द्रमा पुग्न लाग्ने समयको अवस्था र विश्लेषण।",
     };
@@ -323,7 +323,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
               src="/images/market-access.svg"
               width={1200}
               height={400}
-              alt="बजार केन्द्र पुग्न लाग्ने समय - बुद्धशान्ति गाउँपालिका (Time to Market Center - Khajura Rural Municipality)"
+              alt="बजार केन्द्र पुग्न लाग्ने समय - केराबारी गाउँपालिका (Time to Market Center - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -331,7 +331,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको अवस्था
+              केराबारी गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -342,12 +342,12 @@ export default async function WardWiseTimeToMarketCenterPage() {
               आवश्यक वस्तु र सेवामा पहुँचको अवस्थालाई दर्शाउँछ। बजार केन्द्रसम्म
               पुग्न लाग्ने समयको अध्ययनले स्थानीय जनताको दैनिक जीवनयापन,
               व्यापार-व्यवसाय र आर्थिक गतिविधिहरूमा पहुँचको अवस्था बुझ्न मद्दत
-              पुर्‍याउँछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा
+              पुर्‍याउँछ। यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा
               बजार केन्द्रसम्म पुग्न लाग्ने समयको विस्तृत विश्लेषण प्रस्तुत
               गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(
@@ -374,7 +374,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
               बजार केन्द्र पुग्न लाग्ने समयको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा बजार केन्द्रसम्म पुग्न लाग्ने समयको वितरण
+              केराबारी गाउँपालिकामा बजार केन्द्रसम्म पुग्न लाग्ने समयको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -401,7 +401,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
               बजार केन्द्र पहुँचको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा बजार केन्द्र पहुँचको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा बजार केन्द्र पहुँचको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(
                 timeCategoryPercentages.UNDER_30_MIN.toFixed(2),
@@ -434,7 +434,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको तथ्याङ्क
+              केराबारी गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -490,7 +490,7 @@ export default async function WardWiseTimeToMarketCenterPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको
+              यसरी केराबारी गाउँपालिकामा बजार केन्द्र पुग्न लाग्ने समयको
               विश्लेषण र समग्र बजार पहुँचको अध्ययनले पालिकामा स्थानीय
               अर्थतन्त्रको विकास, बजार प्रणालीको सुदृढीकरण र आपूर्ति
               व्यवस्थापनका लागि रणनीतिक योजना बनाउन महत्वपूर्ण भूमिका खेल्दछ।

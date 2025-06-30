@@ -21,14 +21,14 @@ export const revalidate = 86400; // Revalidate once per day
 
 // Generate metadata
 export async function generateMetadata(): Promise<Metadata> {
-  const municipalityName = "बुद्धशान्ति गाउँपालिका";
+  const municipalityName = "केराबारी गाउँपालिका";
 
   return {
     title: `तापक्रम विश्लेषण | ${municipalityName} डिजिटल प्रोफाइल`,
-    description: "बुद्धशान्ति गाउँपालिकाको तापक्रम विश्लेषण र जलवायु परिवर्तन प्रभाव",
+    description: "केराबारी गाउँपालिकाको तापक्रम विश्लेषण र जलवायु परिवर्तन प्रभाव",
     keywords: [
-      "बुद्धशान्ति गाउँपालिका तापक्रम विश्लेषण",
-      "जलवायु परिवर्तन बुद्धशान्ति",
+      "केराबारी गाउँपालिका तापक्रम विश्लेषण",
+      "जलवायु परिवर्तन केराबारी",
       "तापक्रम प्रवृत्ति विश्लेषण",
       "जलवायु अनुकूलन रणनीति",
     ],
@@ -176,7 +176,7 @@ export default async function TemperatureAnalysisPage() {
               src="/images/temperature-analysis.svg"
               width={1200}
               height={400}
-              alt="तापक्रम विश्लेषण - बुद्धशान्ति गाउँपालिका"
+              alt="तापक्रम विश्लेषण - केराबारी गाउँपालिका"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -184,7 +184,7 @@ export default async function TemperatureAnalysisPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकाको तापक्रम विश्लेषण
+              केराबारी गाउँपालिकाको तापक्रम विश्लेषण
             </h1>
             <p>
               पिछ्लो १० वर्षको तापक्रम तथ्याङ्क आधारमा जलवायु प्रवृत्ति र विश्लेषण।

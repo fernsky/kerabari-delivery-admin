@@ -44,11 +44,11 @@ export default function ImportedProductsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Imported Products Catalog of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Imported Products Catalog of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Comprehensive catalog of ${totalProducts.toLocaleString()} products imported into Khajura Rural Municipality, categorized by type and usage.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Import catalog",
         "Economic profile",
         "Imported goods",

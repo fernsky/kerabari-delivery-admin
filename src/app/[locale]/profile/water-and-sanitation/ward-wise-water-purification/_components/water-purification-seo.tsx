@@ -74,11 +74,11 @@ export default function WaterPurificationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Water Purification Methods in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Water Purification Methods in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of water purification methods across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${treatingPercentage}% of households treat their water before drinking. The most common method is ${mostCommonTypeName} with ${mostCommonMethod?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Water purification",
         "Safe drinking water",
         "Household water treatment",

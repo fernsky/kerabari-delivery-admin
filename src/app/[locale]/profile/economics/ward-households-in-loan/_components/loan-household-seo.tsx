@@ -33,11 +33,11 @@ export default function LoanHouseholdSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Households with Loans in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Households with Loans in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Distribution of households with loans across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholdsOnLoan.toLocaleString()} households having loans.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Household loans",
         "Ward-wise loan data",
         "Nepal economic survey",

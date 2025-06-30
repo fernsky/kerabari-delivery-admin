@@ -63,7 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const farmersGroupData =
       await api.profile.economics.municipalityWideAgricultureRelatedFarmersGroup.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalGroups = farmersGroupData.length;
@@ -89,13 +89,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका कृषि समूह",
-      "बुद्धशान्ति कृषि समूह",
+      "केराबारी गाउँपालिका कृषि समूह",
+      "केराबारी कृषि समूह",
       "पालिका स्तरीय कृषि समूह",
-      "बुद्धशान्ति कृषक समुदाय",
-      `बुद्धशान्ति कृषि विकास`,
+      "केराबारी कृषक समुदाय",
+      `केराबारी कृषि विकास`,
       `वडा ${localizeNumber(wardWithMostGroups.toString(), "ne")} कृषि समूह`,
-      `बुद्धशान्ति ${localizeNumber(totalGroups.toString(), "ne")} कृषि समूह`,
+      `केराबारी ${localizeNumber(totalGroups.toString(), "ne")} कृषि समूह`,
       "कृषि सम्बन्धित समूह",
     ];
 
@@ -111,7 +111,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा संचालित ${localizeNumber(totalGroups.toString(), "ne")} कृषि सम्बन्धित समूहहरूको विस्तृत विश्लेषण। वडा नं ${localizeNumber(wardWithMostGroups.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} समूहहरू क्रियाशील छन्। पालिका स्तरीय कृषि समूहहरूको विस्तृत जानकारी।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा संचालित ${localizeNumber(totalGroups.toString(), "ne")} कृषि सम्बन्धित समूहहरूको विस्तृत विश्लेषण। वडा नं ${localizeNumber(wardWithMostGroups.toString(), "ne")} मा सबैभन्दा बढी ${localizeNumber(wardMaxCount.toString(), "ne")} समूहहरू क्रियाशील छन्। पालिका स्तरीय कृषि समूहहरूको विस्तृत जानकारी।`;
 
     const descriptionEN = `Detailed analysis of ${totalGroups} agriculture related farmers groups operating in Khajura Rural Municipality. Ward ${wardWithMostGroups} has the highest concentration with ${wardMaxCount} active groups. Comprehensive information on municipality-wide agricultural groups.`;
 
@@ -143,7 +143,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "कृषि सम्बन्धित समूहहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+      title: "कृषि सम्बन्धित समूहहरू | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "पालिका स्तरीय कृषि सम्बन्धित समूहहरूको विवरण र विश्लेषण।",
     };
   }
@@ -323,7 +323,7 @@ export default async function AgricultureRelatedFarmersGroupPage() {
               src="/images/agriculture.svg"
               width={1200}
               height={400}
-              alt="कृषि सम्बन्धित समूहहरू - बुद्धशान्ति गाउँपालिका (Agriculture Related Farmers Groups - Khajura Rural Municipality)"
+              alt="कृषि सम्बन्धित समूहहरू - केराबारी गाउँपालिका (Agriculture Related Farmers Groups - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -331,14 +331,14 @@ export default async function AgricultureRelatedFarmersGroupPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा कृषि सम्बन्धित समूहहरू
+              केराबारी गाउँपालिकामा कृषि सम्बन्धित समूहहरू
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              कृषि सम्बन्धित समूहहरू बुद्धशान्ति गाउँपालिकाको आर्थिक विकासमा
+              कृषि सम्बन्धित समूहहरू केराबारी गाउँपालिकाको आर्थिक विकासमा
               महत्त्वपूर्ण भूमिका निर्वाह गरिरहेका छन्। यस गाउँपालिकामा रहेका
               विभिन्न कृषक समूह, महिला कृषक समूह, दलित कृषक समूह लगायतका संगठित
               समूहहरूले कृषि उत्पादन र विकासमा योगदान पुर्‍याइरहेका छन्।
@@ -351,7 +351,7 @@ export default async function AgricultureRelatedFarmersGroupPage() {
             </p>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalGroups.toString(), "ne")} कृषि सम्बन्धित
               समूहहरू रहेका छन्, जसमध्ये वडा नं.{" "}
               {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}{" "}
@@ -364,7 +364,7 @@ export default async function AgricultureRelatedFarmersGroupPage() {
               वडागत वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकाका विभिन्न वडाहरूमा कृषि सम्बन्धित समूहहरूको
+              केराबारी गाउँपालिकाका विभिन्न वडाहरूमा कृषि सम्बन्धित समूहहरूको
               वितरण असमान रहेको छ। वडा नं.{" "}
               {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}{" "}
               मा सबैभन्दा बढी{" "}
@@ -495,7 +495,7 @@ export default async function AgricultureRelatedFarmersGroupPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा कृषि सम्बन्धित समूहहरूको अवस्थाको
+              केराबारी गाउँपालिकामा कृषि सम्बन्धित समूहहरूको अवस्थाको
               विश्लेषणबाट निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गरिएका छन्:
             </p>
 
@@ -541,7 +541,7 @@ export default async function AgricultureRelatedFarmersGroupPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा कृषि सम्बन्धित समूहहरूको सुदृढीकरण र
+              केराबारी गाउँपालिकामा कृषि सम्बन्धित समूहहरूको सुदृढीकरण र
               क्षमता विकासले स्थानीय कृषि उत्पादन वृद्धि, रोजगारी सिर्जना र
               खाद्य सुरक्षामा महत्त्वपूर्ण योगदान पुर्‍याउनेछ। यसका लागि स्थानीय
               सरकार, कृषि सेवा केन्द्र र कृषि समूहहरू बीच निरन्तर सहकार्य र

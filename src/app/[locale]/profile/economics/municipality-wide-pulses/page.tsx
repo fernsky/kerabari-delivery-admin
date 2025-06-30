@@ -67,7 +67,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const pulseData =
       await api.profile.economics.municipalityWidePulses.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalProduction = pulseData.reduce(
@@ -105,14 +105,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका दालबाली",
-      "बुद्धशान्ति दालहरुको उत्पादन",
+      "केराबारी गाउँपालिका दालबाली",
+      "केराबारी दालहरुको उत्पादन",
       "पालिका स्तरीय दालबाली तथ्याङ्क",
-      "मसुरो उत्पादन बुद्धशान्ति",
+      "मसुरो उत्पादन केराबारी",
       "चना उत्पादन तथ्याङ्क",
       "केराउ उत्पादन",
-      `बुद्धशान्ति दालबाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
-      `बुद्धशान्ति दालबाली आय ${localizeNumber((totalRevenue / 1000000).toFixed(2), "ne")} मिलियन`,
+      `केराबारी दालबाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
+      `केराबारी दालबाली आय ${localizeNumber((totalRevenue / 1000000).toFixed(2), "ne")} मिलियन`,
     ];
 
     const keywordsEN = [
@@ -127,7 +127,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको दालबाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन दालबाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${PULSE_TYPES[mostProducedPulse] || mostProducedPulse} रहेको छ। पालिका स्तरीय दालबालीको विस्तृत विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको दालबाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन दालबाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${PULSE_TYPES[mostProducedPulse] || mostProducedPulse} रहेको छ। पालिका स्तरीय दालबालीको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Analysis of pulse production and sales in Khajura Rural Municipality. Out of total ${totalProduction.toFixed(2)} metric tonnes of pulse production, ${mostProducedPercentage}% (${mostProducedAmount.toFixed(2)} tonnes) is ${PULSE_TYPES_EN[mostProducedPulse] || mostProducedPulse}. Detailed analysis of municipality-wide pulse patterns.`;
 
@@ -160,7 +160,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "दालबालीको प्रकार अनुसार उत्पादन र बिक्री | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "दालबालीको प्रकार अनुसार उत्पादन र बिक्री | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय दालबालीको प्रकार अनुसारको उत्पादन, बिक्री र आम्दानीको विश्लेषण।",
     };
@@ -334,7 +334,7 @@ export default async function MunicipalityWidePulsesPage() {
               src="/images/pulses.svg"
               width={1200}
               height={400}
-              alt="दालबालीको प्रकार अनुसार उत्पादन र बिक्री - बुद्धशान्ति गाउँपालिका (Pulses by Production and Sales - Khajura Rural Municipality)"
+              alt="दालबालीको प्रकार अनुसार उत्पादन र बिक्री - केराबारी गाउँपालिका (Pulses by Production and Sales - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -342,21 +342,21 @@ export default async function MunicipalityWidePulsesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा दालबालीको प्रकार अनुसार उत्पादन र बिक्री
+              केराबारी गाउँपालिकामा दालबालीको प्रकार अनुसार उत्पादन र बिक्री
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              दालबाली बुद्धशान्ति गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये एक
+              दालबाली केराबारी गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये एक
               हो। यसका प्रमुख बालीहरूमा मसुरो, चना, केराउ, रहर, मास, भटमास,
               बोडी, सिमी र गहत जस्ता प्रोटिनयुक्त दालहरू पर्दछन्। यी
               दालबालीहरूले पालिकाको पोषण सुरक्षा र आर्थिक स्थितिमा महत्त्वपूर्ण
               भूमिका खेल्दछन्।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको दालबाली सम्बन्धी तथ्याङ्क अनुसार, यस
+              केराबारी गाउँपालिकाको दालबाली सम्बन्धी तथ्याङ्क अनुसार, यस
               क्षेत्रमा वार्षिक कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               दालबाली उत्पादन हुन्छ, जसमध्ये सबैभन्दा बढी{" "}
@@ -383,7 +383,7 @@ export default async function MunicipalityWidePulsesPage() {
               प्रमुख दालबालीहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा उत्पादित प्रमुख दालबालीहरू र तिनको
+              केराबारी गाउँपालिकामा उत्पादित प्रमुख दालबालीहरू र तिनको
               उत्पादन परिमाण निम्नानुसार रहेको छ:
             </p>
 
@@ -402,7 +402,7 @@ export default async function MunicipalityWidePulsesPage() {
             </ul>
 
             <p>
-              दालबालीको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकामा उत्पादित कुल
+              दालबालीको विश्लेषण गर्दा, केराबारी गाउँपालिकामा उत्पादित कुल
               दालबाली मध्ये {localizeNumber(soldPercentage, "ne")}% बिक्रीका
               लागि बजारमा जान्छ, जबकि{" "}
               {localizeNumber(selfConsumptionPercentage, "ne")}% घरायसी उपभोगमा
@@ -446,7 +446,7 @@ export default async function MunicipalityWidePulsesPage() {
               पोषण सुरक्षा र चुनौतीहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा दालबालीको उत्पादनले पोषण सुरक्षामा
+              केराबारी गाउँपालिकामा दालबालीको उत्पादनले पोषण सुरक्षामा
               महत्त्वपूर्ण भूमिका खेल्दछ। कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               दालबाली उत्पादन मध्ये{" "}
@@ -456,7 +456,7 @@ export default async function MunicipalityWidePulsesPage() {
             </p>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको प्रमुख दालबालीको उत्पादकत्व र बजारीकरणको
+              केराबारी गाउँपालिकाको प्रमुख दालबालीको उत्पादकत्व र बजारीकरणको
               विश्लेषण गर्दा {overallSummary[0]?.typeName || ""} सबैभन्दा
               प्रभावकारी दालबाली रहेको देखिन्छ, जसले कुल दालबाली उत्पादनको{" "}
               {localizeNumber(
@@ -493,7 +493,7 @@ export default async function MunicipalityWidePulsesPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको दालबालीको अवस्थाको विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकाको दालबालीको अवस्थाको विश्लेषणबाट निम्न
               निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -544,7 +544,7 @@ export default async function MunicipalityWidePulsesPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा दालबालीको वर्तमान अवस्थाले अझै पनि कृषि
+              केराबारी गाउँपालिकामा दालबालीको वर्तमान अवस्थाले अझै पनि कृषि
               क्षेत्रमा सुधार गर्नुपर्ने आवश्यकता देखाउँछ। उत्पादकत्व वृद्धि,
               मूल्य श्रृंखला विकास, व्यावसायीकरण र आधुनिकीकरण मार्फत पोषण
               सुरक्षा र आर्थिक समृद्धि हासिल गर्न सकिनेछ।

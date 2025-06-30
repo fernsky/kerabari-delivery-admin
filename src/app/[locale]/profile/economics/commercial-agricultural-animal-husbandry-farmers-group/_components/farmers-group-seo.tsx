@@ -109,7 +109,7 @@ export default function FarmersGroupSEO({
       description: `Comprehensive analysis of ${totalGroups} commercial agricultural and animal husbandry farmers groups in Khajura Rural Municipality. The most common type is ${mostCommonBusinessTypeEN} (${statistics.mostPopularBusinessTypePercentage.toFixed(1)}%), and Ward ${statistics.wardWithMostGroups} has the highest concentration with ${statistics.maximumGroupsInAWard} groups. This dataset covers all 9 wards of the municipality.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Commercial Agriculture",
         "Animal Husbandry",
         "Farmers Groups",

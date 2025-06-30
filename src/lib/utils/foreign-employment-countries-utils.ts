@@ -247,7 +247,7 @@ export function generateForeignEmploymentCountriesAnalysis(data: ProcessedForeig
   const analysisParts: string[] = [];
   // Overall summary
   analysisParts.push(
-    `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalForeignEmploymentPopulation)} जना वैदेशिक रोजगारीमा रहेका छन्। यी तथ्याङ्कले गाउँपालिकाको आर्थिक, सामाजिक र क्षेत्रीय विविधता, जोखिम र अवसरहरूको विस्तृत चित्र प्रस्तुत गर्दछ।`
+    `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalForeignEmploymentPopulation)} जना वैदेशिक रोजगारीमा रहेका छन्। यी तथ्याङ्कले गाउँपालिकाको आर्थिक, सामाजिक र क्षेत्रीय विविधता, जोखिम र अवसरहरूको विस्तृत चित्र प्रस्तुत गर्दछ।`
   );
   // Top countries
   analysisParts.push(

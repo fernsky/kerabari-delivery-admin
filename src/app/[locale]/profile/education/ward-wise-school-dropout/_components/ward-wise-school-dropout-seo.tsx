@@ -90,11 +90,11 @@ export default function WardWiseSchoolDropoutSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "School Dropout Causes in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "School Dropout Causes in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of school dropout causes across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalDropouts.toLocaleString()} dropouts. ${dropoutGroupTotals.ECONOMIC.toLocaleString()} students (${dropoutGroupPercentages.ECONOMIC.toFixed(2)}%) have left school due to economic-related reasons. The highest economic-related dropout rate is in Ward ${highestEconomicDropoutWard?.wardNumber || ""} with ${highestEconomicDropoutWard?.percentage.toFixed(2) || ""}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "School dropout",
         "Employment-related dropouts",
         "Ward-wise school dropout",

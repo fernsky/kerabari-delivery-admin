@@ -102,11 +102,11 @@ export default function SafeMotherhoodIndicatorsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Safe Motherhood Indicators in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Safe Motherhood Indicators in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of safe motherhood services and indicators for year ${latestYear} in Khajura Rural Municipality. Key indicators include institutional delivery rate (${institutionalDeliveries.toFixed(1)}%), ANC checkups as per protocol (${ancCheckups.toFixed(1)}%), PNC home visits (${pncVisits.toFixed(1)}%), and newborn care (${newbornCare.toFixed(1)}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Safe motherhood",
         "Maternal health",
         "Antenatal care",

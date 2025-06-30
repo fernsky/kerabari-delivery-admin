@@ -75,7 +75,7 @@ export default function WardWiseElectricitySourceAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-modern-source-rate": modernSourcePercentage.toFixed(2),
     "data-traditional-source-rate": traditionalSourcePercentage,

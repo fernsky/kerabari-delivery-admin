@@ -40,11 +40,11 @@ export default function SkillsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Skills Distribution of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Skills Distribution of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Skills distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total skilled population of ${totalPopulation.toLocaleString()} people (${localizeNumber(totalPopulation.toString(), "ne")} व्यक्ति).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Skills distribution",
         "सीप वितरण",
         "Technical abilities",
@@ -62,14 +62,14 @@ export default function SkillsSEO({
       creator: {
         "@type": "Organization",
         name: "Khajura Rural Municipality",
-        alternateName: "बुद्धशान्ति गाउँपालिका",
+        alternateName: "केराबारी गाउँपालिका",
         url: "https://buddhashanti-rm.gov.np",
       },
       temporalCoverage: "2021/2023",
       spatialCoverage: {
         "@type": "Place",
         name: "Khajura Rural Municipality, Banke, Nepal",
-        alternateName: "बुद्धशान्ति गाउँपालिका, झापा, नेपाल",
+        alternateName: "केराबारी गाउँपालिका, मोरङ, नेपाल",
         geo: {
           "@type": "GeoCoordinates",
           latitude: "28.1356",

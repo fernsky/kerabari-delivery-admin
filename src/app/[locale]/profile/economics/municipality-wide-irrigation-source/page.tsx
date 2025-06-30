@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const irrigationSourceData =
       await api.profile.economics.municipalityWideIrrigationSource.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalCoverage = irrigationSourceData.reduce(
@@ -102,14 +102,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका सिंचाई स्रोत",
-      "बुद्धशान्ति सिंचाई स्रोत प्रकार",
+      "केराबारी गाउँपालिका सिंचाई स्रोत",
+      "केराबारी सिंचाई स्रोत प्रकार",
       "पालिका स्तरीय सिंचाई स्रोत",
       "ताल वा जलाशय सिंचाई",
       "सिंचाई नहर",
       "वर्षाको पानी संकलन",
       "विद्युतीय लिफ्ट सिंचाई",
-      `बुद्धशान्ति सिंचाई क्षेत्रफल ${localizeNumber(totalCoverage.toFixed(2), "ne")} हेक्टर`,
+      `केराबारी सिंचाई क्षेत्रफल ${localizeNumber(totalCoverage.toFixed(2), "ne")} हेक्टर`,
     ];
 
     const keywordsEN = [
@@ -124,7 +124,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको सिंचाई स्रोतको वितरण र विश्लेषण। कुल ${localizeNumber(totalCoverage.toFixed(2), "ne")} हेक्टर क्षेत्रफल मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCoverage.toFixed(2), "ne")}) हेक्टर क्षेत्रफल ${IRRIGATION_SOURCE_TYPES[mostCommonType] || mostCommonType} मार्फत सिंचाई हुने गर्दछ। पालिका स्तरीय सिंचाई स्रोतको विस्तृत विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको सिंचाई स्रोतको वितरण र विश्लेषण। कुल ${localizeNumber(totalCoverage.toFixed(2), "ne")} हेक्टर क्षेत्रफल मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCoverage.toFixed(2), "ne")}) हेक्टर क्षेत्रफल ${IRRIGATION_SOURCE_TYPES[mostCommonType] || mostCommonType} मार्फत सिंचाई हुने गर्दछ। पालिका स्तरीय सिंचाई स्रोतको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Distribution and analysis of irrigation sources in Khajura Rural Municipality. Out of a total of ${totalCoverage.toFixed(2)} hectares coverage, ${mostCommonPercentage}% (${mostCommonCoverage.toFixed(2)}) hectares are irrigated through ${IRRIGATION_SOURCE_TYPES_EN[mostCommonType] || mostCommonType}. Detailed analysis of municipality-wide irrigation source patterns.`;
 
@@ -157,7 +157,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय सिंचाई स्रोतको प्रकार अनुसारको क्षेत्रफल वितरण र विश्लेषण।",
     };
@@ -329,7 +329,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
               src="/images/irrigation-sources.svg"
               width={1200}
               height={400}
-              alt="सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल - बुद्धशान्ति गाउँपालिका (Irrigation Sources by Coverage Area - Khajura Rural Municipality)"
+              alt="सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल - केराबारी गाउँपालिका (Irrigation Sources by Coverage Area - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -337,7 +337,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल
+              केराबारी गाउँपालिकामा सिंचाई स्रोतको प्रकार अनुसार क्षेत्रफल
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -345,14 +345,14 @@ export default async function MunicipalityWideIrrigationSourcePage() {
             </h2>
             <p>
               सिंचाई स्रोत कृषि उत्पादनको लागि अत्यन्त महत्वपूर्ण पक्ष हो।
-              बुद्धशान्ति गाउँपालिकामा कृषि क्षेत्रलाई अझ उत्पादनशील बनाउनका
+              केराबारी गाउँपालिकामा कृषि क्षेत्रलाई अझ उत्पादनशील बनाउनका
               लागि विभिन्न प्रकारका सिंचाई स्रोतहरू प्रयोग गरिएको छ। यी सिंचाई
               स्रोतहरू मध्ये ताल वा जलाशय, सिंचाई नहर, वर्षाको पानी संकलन,
               विद्युतीय लिफ्ट सिंचाई, नहर, पम्पिङ सेट, भूमिगत सिंचाई लगायतका
               स्रोतहरू पर्दछन्।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको सिंचाई स्रोत सम्बन्धी तथ्याङ्क अनुसार,
+              केराबारी गाउँपालिकाको सिंचाई स्रोत सम्बन्धी तथ्याङ्क अनुसार,
               कुल {localizeNumber(totalCoverage.toFixed(2), "ne")}
               हेक्टर क्षेत्रफलमा सिंचाई सुविधा उपलब्ध छ, जसमध्ये सबैभन्दा बढी{" "}
               {overallSummary[0]?.typeName || ""}
@@ -381,7 +381,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
               सिंचाई स्रोतका प्रमुख प्रकारहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा सिंचाई स्रोतका प्रमुख प्रकारहरू र तिनको
+              केराबारी गाउँपालिकामा सिंचाई स्रोतका प्रमुख प्रकारहरू र तिनको
               कवरेज क्षेत्रफल निम्नानुसार रहेको छ:
             </p>
 
@@ -399,7 +399,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
             </ul>
 
             <p>
-              सिंचाई स्रोतको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकामा परम्परागत
+              सिंचाई स्रोतको विश्लेषण गर्दा, केराबारी गाउँपालिकामा परम्परागत
               सिंचाई स्रोतहरू (नहर, सिंचाई नहर) ले{" "}
               {localizeNumber(traditionalSourcePercentage, "ne")}% क्षेत्रफल
               ओगटेको देखिन्छ, जबकि आधुनिक सिंचाई प्रविधिहरू (विद्युतीय लिफ्ट
@@ -439,7 +439,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
               सिंचाई व्यवस्थापन र चुनौतीहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा सिंचाई स्रोतको प्रकारले सिंचाई व्यवस्थापन
+              केराबारी गाउँपालिकामा सिंचाई स्रोतको प्रकारले सिंचाई व्यवस्थापन
               र उत्पादकत्वमा प्रभाव पारेको देखिन्छ। कुल{" "}
               {localizeNumber(totalCoverage.toFixed(2), "ne")} हेक्टर सिंचाई
               क्षेत्रफलमध्ये{" "}
@@ -492,7 +492,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको सिंचाई स्रोतको अवस्थाको विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकाको सिंचाई स्रोतको अवस्थाको विश्लेषणबाट निम्न
               निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -542,7 +542,7 @@ export default async function MunicipalityWideIrrigationSourcePage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा सिंचाई स्रोतको वर्तमान अवस्थाले सिंचाई
+              केराबारी गाउँपालिकामा सिंचाई स्रोतको वर्तमान अवस्थाले सिंचाई
               व्यवस्थापनमा सुधार गर्नुपर्ने आवश्यकता देखाउँछ। आधुनिक प्रविधिको
               विकास र विस्तार, प्राकृतिक स्रोतको संरक्षण र दिगो व्यवस्थापन
               मार्फत कृषि उत्पादकत्व बढाउन आवश्यक देखिन्छ।

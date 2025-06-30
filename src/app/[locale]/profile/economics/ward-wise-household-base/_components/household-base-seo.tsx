@@ -49,11 +49,11 @@ export default function HouseholdBaseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "House Foundation Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "House Foundation Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `House foundation data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "House foundation",
         "Foundation distribution",
         "Ward-wise foundation data",

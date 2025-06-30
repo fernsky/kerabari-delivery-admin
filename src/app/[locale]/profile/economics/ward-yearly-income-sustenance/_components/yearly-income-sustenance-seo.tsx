@@ -45,11 +45,11 @@ export default function YearlyIncomeSustenanceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Yearly Income Sustenance in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Yearly Income Sustenance in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Yearly income sufficiency distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Yearly income sustenance",
         "Income sufficiency",
         "Food security",

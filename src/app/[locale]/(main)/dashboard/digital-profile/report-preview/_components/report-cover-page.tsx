@@ -43,7 +43,7 @@ export function ReportCoverPage() {
                 background: 'white'
               }}
             >
-              बुद्धशान्ति गाउँपालिका
+              केराबारी गाउँपालिका
             </div>
             <div
               style={{
@@ -64,7 +64,7 @@ export function ReportCoverPage() {
                 background: 'white'
               }}
             >
-              बुद्धशान्ति, झापा, कोशी प्रदेश
+              केराबारी, मोरङ, कोशी प्रदेश
             </div>
           </div>
           <div style={{ width: "80px", height: "80px", background: 'white' }}>

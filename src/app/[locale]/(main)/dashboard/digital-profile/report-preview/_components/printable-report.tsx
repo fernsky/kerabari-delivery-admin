@@ -55,7 +55,7 @@ export async function PrintableReport() {
               <h2 className="section-header level-2">२.१ भौगोलिक अवस्थिति</h2>
               <div className="content-section">
                 <p>
-                  केराबारी गाउँपालिका प्रदेश नं. १ को झापा जिल्लामा अवस्थित
+                  केराबारी गाउँपालिका प्रदेश नं. १ को मोरङ जिल्लामा अवस्थित
                   छ। यो गाउँपालिका कुल १० वटा वडाहरूमा विभाजित छ।
                 </p>
               </div>

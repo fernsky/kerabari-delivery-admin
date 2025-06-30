@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const deliveryPlaceData =
       await api.profile.fertility.wardWiseDeliveryPlaces.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
     console.log(deliveryPlaceData);
     // Group by ward number
     const wardGroups = deliveryPlaceData.reduce((acc: any, curr: any) => {
@@ -89,7 +89,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका प्रसूती स्थान",
+      "केराबारी गाउँपालिका प्रसूती स्थान",
       "संस्थागत प्रसूती",
       "वडागत प्रसूती स्थान तथ्याङ्क",
       "घरमा हुने प्रसूती दर",
@@ -107,7 +107,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा प्रसूती स्थान सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalDeliveries.toLocaleString(), "ne")} प्रसूती मध्ये ${localizeNumber(institutionalPercentage, "ne")}% (${localizeNumber(institutionalDeliveries.toLocaleString(), "ne")}) संस्थागत प्रसूती र ${localizeNumber(homePercentage, "ne")}% (${localizeNumber(homeDeliveries.toLocaleString(), "ne")}) घरमा भएका प्रसूती रहेका छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा प्रसूती स्थान सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalDeliveries.toLocaleString(), "ne")} प्रसूती मध्ये ${localizeNumber(institutionalPercentage, "ne")}% (${localizeNumber(institutionalDeliveries.toLocaleString(), "ne")}) संस्थागत प्रसूती र ${localizeNumber(homePercentage, "ne")}% (${localizeNumber(homeDeliveries.toLocaleString(), "ne")}) घरमा भएका प्रसूती रहेका छन्।`;
 
     const descriptionEN = `Analysis of childbirth locations in Khajura Rural Municipality. Out of a total of ${totalDeliveries.toLocaleString()} deliveries, ${institutionalPercentage}% (${institutionalDeliveries.toLocaleString()}) were institutional deliveries and ${homePercentage}% (${homeDeliveries.toLocaleString()}) were home deliveries.`;
 
@@ -139,7 +139,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "प्रसूती स्थानको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+      title: "प्रसूती स्थानको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार प्रसूती स्थानको अवस्था र विश्लेषण।",
     };
   }
@@ -360,7 +360,7 @@ export default async function WardWiseDeliveryPlacePage() {
               src="/images/delivery-place-statistics.svg"
               width={1200}
               height={400}
-              alt="प्रसूती स्थानको अवस्था - बुद्धशान्ति गाउँपालिका (Delivery Place Statistics - Khajura Rural Municipality)"
+              alt="प्रसूती स्थानको अवस्था - केराबारी गाउँपालिका (Delivery Place Statistics - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -368,7 +368,7 @@ export default async function WardWiseDeliveryPlacePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा प्रसूती स्थानको अवस्था
+              केराबारी गाउँपालिकामा प्रसूती स्थानको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -378,12 +378,12 @@ export default async function WardWiseDeliveryPlacePage() {
               प्रसूती स्थानको चयनले आमा र शिशुको स्वास्थ्य र सुरक्षामा
               महत्वपूर्ण भूमिका निर्वाह गर्दछ। संस्थागत प्रसूती (अस्पताल वा
               स्वास्थ्य केन्द्रमा हुने प्रसूती) ले मातृ तथा शिशु मृत्युदर कम
-              गर्न मद्दत गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न
+              गर्न मद्दत गर्दछ। यस खण्डमा केराबारी गाउँपालिकाको विभिन्न
               वडाहरूमा प्रसूती स्थानको अवस्था र त्यसको विश्लेषण प्रस्तुत गरिएको
               छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalDeliveries.toLocaleString(), "ne")} प्रसूती
               मध्ये
               {localizeNumber(
@@ -411,7 +411,7 @@ export default async function WardWiseDeliveryPlacePage() {
               प्रमुख तथ्यहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा प्रसूती स्थान सम्बन्धी महत्वपूर्ण
+              केराबारी गाउँपालिकामा प्रसूती स्थान सम्बन्धी महत्वपूर्ण
               तथ्यहरू:
             </p>
           </div>
@@ -487,7 +487,7 @@ export default async function WardWiseDeliveryPlacePage() {
               प्रसूती स्थानको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा प्रसूती स्थानको वितरण निम्नानुसार रहेको
+              केराबारी गाउँपालिकामा प्रसूती स्थानको वितरण निम्नानुसार रहेको
               छ:
             </p>
           </div>
@@ -514,7 +514,7 @@ export default async function WardWiseDeliveryPlacePage() {
               प्रसूती स्थानको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा प्रसूती स्थानको विश्लेषण गर्दा, समग्रमा
+              केराबारी गाउँपालिकामा प्रसूती स्थानको विश्लेषण गर्दा, समग्रमा
               {localizeNumber(
                 (
                   deliveryCategoryPercentages.GOVERNMENTAL_HEALTH_INSTITUTION +
@@ -548,7 +548,7 @@ export default async function WardWiseDeliveryPlacePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा संस्थागत प्रसूती प्रवर्धनका लागि निम्न
+              केराबारी गाउँपालिकामा संस्थागत प्रसूती प्रवर्धनका लागि निम्न
               रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -595,7 +595,7 @@ export default async function WardWiseDeliveryPlacePage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा प्रसूती स्थानको अवस्थाको विश्लेषणले
+              यसरी केराबारी गाउँपालिकामा प्रसूती स्थानको अवस्थाको विश्लेषणले
               स्वास्थ्य सेवा विस्तार र मातृ शिशु स्वास्थ्य नीति निर्माणमा
               महत्वपूर्ण भूमिका खेल्दछ। वडागत आवश्यकता अनुसार लक्षित कार्यक्रम र
               सेवा विस्तार गरेर संस्थागत प्रसूती दरमा सुधार ल्याउन आवश्यक छ।

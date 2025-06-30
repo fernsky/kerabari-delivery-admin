@@ -63,11 +63,11 @@ export default function CropDiseaseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Crop Diseases and Pests in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Crop Diseases and Pests in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Comprehensive analysis of crop diseases and pests affecting agriculture in Khajura Rural Municipality. The study covers ${totalCrops} different crop types with a total of ${totalDiseases + totalPests} identified issues: ${totalDiseases} diseases and ${totalPests} pests. The most affected crop is ${mostProblematicCropEN} with ${mostProblematicCrop?.totalIssues || 0} issues (${mostProblematicPercentage}% of all problems). Disease to pest ratio is ${(diseaseRatio * 100).toFixed(1)}% to ${(pestRatio * 100).toFixed(1)}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Crop diseases",
         "Agricultural pests",
         "Integrated Pest Management",

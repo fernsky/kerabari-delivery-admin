@@ -34,11 +34,11 @@ export default function TrainedPopulationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Trained Population Distribution of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Trained Population Distribution of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Trained population distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalTrainedPopulation.toLocaleString()} trained individuals.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Trained population",
         "Skills development",
         "Vocational training",

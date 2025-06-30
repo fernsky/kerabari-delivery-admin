@@ -383,7 +383,7 @@ export default function CooperativesCharts({
             </h4>
             <div className="prose prose-sm">
               <p>
-                पछिल्ला वर्षहरूमा बुद्धशान्ति गाउँपालिकामा सहकारी संस्थाहरूको
+                पछिल्ला वर्षहरूमा केराबारी गाउँपालिकामा सहकारी संस्थाहरूको
                 संख्यामा क्रमिक वृद्धि भएको देखिन्छ। विशेषगरी{" "}
                 {cooperativeSummary[0]?.typeName || ""} र{" "}
                 {cooperativeSummary[1]?.typeName || ""} जस्ता सहकारी संस्थाहरूमा

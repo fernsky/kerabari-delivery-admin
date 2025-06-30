@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const incomeSustenanceData =
       await api.profile.economics.wardWiseAnnualIncomeSustenance.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = incomeSustenanceData.reduce(
@@ -73,16 +73,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका वार्षिक आय",
+      "केराबारी गाउँपालिका वार्षिक आय",
       "वार्षिक उत्पादनको पर्याप्तता",
-      `बुद्धशान्ति ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[0]]} आय पर्याप्तता`,
+      `केराबारी ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[0]]} आय पर्याप्तता`,
       ...sortedMonthsSustained.map(
-        (r) => `${MONTHS_SUSTAINED_NAMES[r]} आय पर्याप्तता बुद्धशान्ति`,
+        (r) => `${MONTHS_SUSTAINED_NAMES[r]} आय पर्याप्तता केराबारी`,
       ),
       "वडा अनुसार वार्षिक आय",
       "आर्थिक स्वावलम्बन तथ्याङ्क",
-      "आय पर्याप्तता सर्वेक्षण बुद्धशान्ति",
-      `बुद्धशान्ति कुल घरपरिवार संख्या ${totalHouseholds}`,
+      "आय पर्याप्तता सर्वेक्षण केराबारी",
+      `केराबारी कुल घरपरिवार संख्या ${totalHouseholds}`,
     ];
 
     const keywordsEN = [
@@ -100,7 +100,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वडा अनुसार वार्षिक आयको पर्याप्तता वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${totalHouseholds} मध्ये ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[0]]} (${monthsSustainedCounts[sortedMonthsSustained[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[1]]} (${monthsSustainedCounts[sortedMonthsSustained[1]]})। वार्षिक आयको पर्याप्तताको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा वडा अनुसार वार्षिक आयको पर्याप्तता वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${totalHouseholds} मध्ये ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[0]]} (${monthsSustainedCounts[sortedMonthsSustained[0]]}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${MONTHS_SUSTAINED_NAMES[sortedMonthsSustained[1]]} (${monthsSustainedCounts[sortedMonthsSustained[1]]})। वार्षिक आयको पर्याप्तताको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise yearly income sustenance distribution, trends and analysis for Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${monthsSustainedLabels[sortedMonthsSustained[0] as keyof typeof monthsSustainedLabels]} (${monthsSustainedCounts[sortedMonthsSustained[0]]}) is the largest group, followed by ${monthsSustainedLabels[sortedMonthsSustained[1] as keyof typeof monthsSustainedLabels]} (${monthsSustainedCounts[sortedMonthsSustained[1]]})। Detailed statistics and visualizations of yearly income sufficiency.`;
 
@@ -274,7 +274,7 @@ export default async function WardYearlyIncomeSustenancePage() {
                   src="/images/income-sustenance.svg"
                   width={1200}
                   height={400}
-                  alt="वार्षिक आयको पर्याप्तता - बुद्धशान्ति गाउँपालिका (Yearly Income Sustenance - Khajura Rural Municipality)"
+                  alt="वार्षिक आयको पर्याप्तता - केराबारी गाउँपालिका (Yearly Income Sustenance - Khajura Rural Municipality)"
                   className="w-full h-[250px] object-cover rounded-sm"
                   priority
                 />
@@ -283,20 +283,20 @@ export default async function WardYearlyIncomeSustenancePage() {
               {/* Content with responsive max-width for readability */}
               <div className="prose prose-slate dark:prose-invert max-w-4xl">
                 <h1 className="scroll-m-20 tracking-tight mb-6">
-                  बुद्धशान्ति गाउँपालिकामा वार्षिक आयको पर्याप्तता
+                  केराबारी गाउँपालिकामा वार्षिक आयको पर्याप्तता
                 </h1>
 
                 <h2 id="introduction" className="scroll-m-20">
                   परिचय
                 </h2>
                 <p>
-                  यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
+                  यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा रहेका
                   घरपरिवारहरूको वार्षिक आयको पर्याप्तता सम्बन्धी विस्तृत
                   तथ्याङ्क प्रस्तुत गरिएको छ। यो तथ्याङ्कले घरपरिवारको आय, खर्च,
                   आर्थिक अवस्था र खाद्य सुरक्षाको अवस्थालाई प्रतिबिम्बित गर्दछ。
                 </p>
                 <p>
-                  बुद्धशान्ति गाउँपालिकामा कुल{" "}
+                  केराबारी गाउँपालिकामा कुल{" "}
                   {totalHouseholds.toLocaleString()} घरपरिवार मध्ये सबैभन्दा
                   धेरै{" "}
                   {(
@@ -321,7 +321,7 @@ export default async function WardYearlyIncomeSustenancePage() {
                   वार्षिक आयको पर्याप्तता
                 </h2>
                 <p>
-                  बुद्धशान्ति गाउँपालिकामा वार्षिक आयको पर्याप्तता अनुसार
+                  केराबारी गाउँपालिकामा वार्षिक आयको पर्याप्तता अनुसार
                   घरपरिवारहरूको वितरण निम्नानुसार रहेको छ:
                 </p>
               </div>
@@ -348,7 +348,7 @@ export default async function WardYearlyIncomeSustenancePage() {
                   आयको पर्याप्तताको विश्लेषण
                 </h2>
                 <p>
-                  बुद्धशान्ति गाउँपालिकाका घरपरिवारहरूको वार्षिक आयको पर्याप्तता
+                  केराबारी गाउँपालिकाका घरपरिवारहरूको वार्षिक आयको पर्याप्तता
                   विश्लेषण गर्दा, वर्षभरि लागि आफ्नै आय पुग्ने घरपरिवारको संख्या{" "}
                   {overallSummary
                     .find((item) => item.monthsSustained === "TWELVE_MONTHS")
@@ -361,7 +361,7 @@ export default async function WardYearlyIncomeSustenancePage() {
                       totalHouseholds) *
                     100
                   ).toFixed(1)}
-                  %) मात्र रहेको देखिन्छ। यसले बुद्धशान्तिमा खाद्य सुरक्षा,
+                  %) मात्र रहेको देखिन्छ। यसले केराबारीमा खाद्य सुरक्षा,
                   आर्थिक स्वावलम्बन र गरीबीको स्थितिलाई संकेत गर्दछ。
                 </p>
 
@@ -378,7 +378,7 @@ export default async function WardYearlyIncomeSustenancePage() {
                   तथ्याङ्क स्रोत
                 </h2>
                 <p>
-                  माथि प्रस्तुत गरिएका तथ्याङ्कहरू बुद्धशान्ति गाउँपालिकाको
+                  माथि प्रस्तुत गरिएका तथ्याङ्कहरू केराबारी गाउँपालिकाको
                   घरधुरी सर्वेक्षण र पालिकाको आर्थिक अध्ययनबाट संकलन गरिएको हो।
                   यी तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
                 </p>

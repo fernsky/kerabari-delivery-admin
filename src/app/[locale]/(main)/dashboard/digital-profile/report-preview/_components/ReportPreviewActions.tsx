@@ -19,7 +19,7 @@ export function ReportPreviewActions() {
                 <!DOCTYPE html>
                 <html>
                   <head>
-                    <title>बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन</title>
+                    <title>केराबारी गाउँपालिका - पूर्ण प्रतिवेदन</title>
                     <style>
                       ${document.getElementById("print-styles")?.innerHTML || ""}
                     </style>

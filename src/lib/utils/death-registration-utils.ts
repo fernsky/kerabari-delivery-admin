@@ -358,7 +358,7 @@ export function generateDeathRegistrationAnalysis(data: ProcessedDeathRegistrati
 
   // Overall summary
   analysisParts.push(
-    `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalDeaths)} मृतक दर्ता भएका छन् जसले गाउँपालिकाको जनसांख्यिकीय परिदृश्य र स्वास्थ्य स्थितिको महत्त्वपूर्ण जानकारी प्रदान गर्दछ।`
+    `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalDeaths)} मृतक दर्ता भएका छन् जसले गाउँपालिकाको जनसांख्यिकीय परिदृश्य र स्वास्थ्य स्थितिको महत्त्वपूर्ण जानकारी प्रदान गर्दछ।`
   );
 
   // Gender distribution analysis

@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const healthInsuredData =
       await api.profile.health.wardWiseHealthInsuredHouseholds.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Calculate total households and insured rates
     let totalInsuredHouseholds = 0;
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका स्वास्थ्य बीमा",
+      "केराबारी गाउँपालिका स्वास्थ्य बीमा",
       "स्वास्थ्य बीमा पहुँच",
       "वडागत स्वास्थ्य बीमा दर",
       `स्वास्थ्य बीमा गरेका घरधुरी ${insuredPercentage}%`,
@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमा सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(insuredPercentage, "ne")}% (${localizeNumber(totalInsuredHouseholds.toLocaleString(), "ne")}) घरधुरीले स्वास्थ्य बीमा गरेका छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा स्वास्थ्य बीमा सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(insuredPercentage, "ne")}% (${localizeNumber(totalInsuredHouseholds.toLocaleString(), "ne")}) घरधुरीले स्वास्थ्य बीमा गरेका छन्।`;
 
     const descriptionEN = `Analysis of health insurance coverage in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${insuredPercentage}% (${totalInsuredHouseholds.toLocaleString()}) households have health insurance.`;
 
@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "स्वास्थ्य बीमा गरेका घरधुरीको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "स्वास्थ्य बीमा गरेका घरधुरीको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार स्वास्थ्य बीमा गरेका घरधुरीको अवस्था र विश्लेषण।",
     };
@@ -242,7 +242,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
               src="/images/health-insurance.svg"
               width={1200}
               height={400}
-              alt="स्वास्थ्य बीमा गरेका घरधुरीको अवस्था - बुद्धशान्ति गाउँपालिका (Health Insured Households - Khajura Rural Municipality)"
+              alt="स्वास्थ्य बीमा गरेका घरधुरीको अवस्था - केराबारी गाउँपालिका (Health Insured Households - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -250,7 +250,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमा गरेका घरधुरीको अवस्था
+              केराबारी गाउँपालिकामा स्वास्थ्य बीमा गरेका घरधुरीको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -261,11 +261,11 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
               हो जसले नागरिकलाई उपचार खर्चको आर्थिक भारबाट बचाउन मद्दत गर्दछ।
               स्वास्थ्य बीमाले मानिसहरूलाई गुणस्तरीय स्वास्थ्य सेवामा पहुँच
               बढाउन र आकस्मिक स्वास्थ्य खर्चको जोखिमबाट सुरक्षित गर्न सहयोग
-              गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा
+              गर्दछ। यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा
               स्वास्थ्य बीमा गरेका घरधुरीको अवस्था र विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(insuredPercentage, "ne")}% घरधुरीले स्वास्थ्य बीमा
@@ -274,7 +274,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
                 totalInsuredHouseholds.toLocaleString(),
                 "ne",
               )}{" "}
-              घरधुरी हो। यसले बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमाको महत्व र
+              घरधुरी हो। यसले केराबारी गाउँपालिकामा स्वास्थ्य बीमाको महत्व र
               पहुँचको अवस्थालाई प्रस्तुत गर्दछ।
             </p>
 
@@ -285,7 +285,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
               स्वास्थ्य बीमा गरेका घरधुरीको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमा गरेका र नगरेका घरधुरीको
+              केराबारी गाउँपालिकामा स्वास्थ्य बीमा गरेका र नगरेका घरधुरीको
               वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -312,7 +312,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
               स्वास्थ्य बीमाको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमाको अवस्थाको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा स्वास्थ्य बीमाको अवस्थाको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(insuredPercentage, "ne")}% घरधुरीले स्वास्थ्य बीमा
               गरेको पाइन्छ। वडागत रूपमा हेर्दा वडा नं.{" "}
@@ -342,7 +342,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमाको अवस्था विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकामा स्वास्थ्य बीमाको अवस्था विश्लेषणबाट निम्न
               रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -393,7 +393,7 @@ export default async function WardWiseHealthInsuredHouseholdsPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा स्वास्थ्य बीमाको अवस्थाको विश्लेषणले
+              यसरी केराबारी गाउँपालिकामा स्वास्थ्य बीमाको अवस्थाको विश्लेषणले
               नीति निर्माण र कार्यक्रम तर्जुमा गर्न महत्वपूर्ण आधार प्रदान
               गर्दछ। स्वास्थ्य बीमाको दायरा बढाउँदै गुणस्तरीय स्वास्थ्य सेवामा
               सबै नागरिकको पहुँच सुनिश्चित गर्न आवश्यक कदम चाल्नु पर्ने देखिन्छ।

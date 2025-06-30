@@ -39,7 +39,7 @@ const WardInfo: React.FC<WardInfoProps> = ({
   wardData,
   isLoading,
   lng,
-  municipalityName = "बुद्धशान्ति गाउँपालिका",
+  municipalityName = "केराबारी गाउँपालिका",
 }) => {
   // State to track selected ward for mobile view
   const [selectedWard, setSelectedWard] = useState<number | null>(null);

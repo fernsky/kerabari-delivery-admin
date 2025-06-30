@@ -24,9 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
     const demographicData = await api.profile.demographics.summary.get.query();
 
     // SEO metadata setup - municipality name and details
-    const municipalityName = "बुद्धशान्ति गाउँपालिका";
+    const municipalityName = "केराबारी गाउँपालिका";
     const municipalityNameEn = "Khajura Rural Municipality";
-    const districtName = "झापा";
+    const districtName = "मोरङ";
     const districtNameEn = "Banke";
     const provinceName = "कोशी प्रदेश";
     const provinceNameEn = "Lumbini Province";
@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `${municipalityName} झापा जिल्लाको एक प्रमुख स्थानीय तह हो। यहाँको कुल जनसंख्या ${totalPopulation.toLocaleString()} र कुल घरधुरी संख्या ${totalHouseholds.toLocaleString()} छ।  यस पालिकामा पुरुष जनसंख्या ${malePopulation.toLocaleString()}, महिला जनसंख्या ${femalePopulation.toLocaleString()} र साक्षरता दर ${literacyRate}% रहेको छ। ${municipalityName}को आधिकारिक वेबसाइटमा स्वागत छ।`;
+    const descriptionNP = `${municipalityName} मोरङ जिल्लाको एक प्रमुख स्थानीय तह हो। यहाँको कुल जनसंख्या ${totalPopulation.toLocaleString()} र कुल घरधुरी संख्या ${totalHouseholds.toLocaleString()} छ।  यस पालिकामा पुरुष जनसंख्या ${malePopulation.toLocaleString()}, महिला जनसंख्या ${femalePopulation.toLocaleString()} र साक्षरता दर ${literacyRate}% रहेको छ। ${municipalityName}को आधिकारिक वेबसाइटमा स्वागत छ।`;
 
     const descriptionEN = `${municipalityNameEn} is a major local body of ${districtNameEn} district. It has a total population of ${totalPopulation.toLocaleString()} and ${totalHouseholds.toLocaleString()} households. The municipality has ${malePopulation.toLocaleString()} male population, ${femalePopulation.toLocaleString()} female population, and a literacy rate of ${literacyRate}%. Welcome to the official website of ${municipalityNameEn}.`;
 
@@ -107,9 +107,9 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "बुद्धशान्ति गाउँपालिका | आधिकारिक वेबसाइट",
+      title: "केराबारी गाउँपालिका | आधिकारिक वेबसाइट",
       description:
-        "बुद्धशान्ति गाउँपालिका झापा जिल्लाको एक प्रमुख स्थानीय तह हो। पालिकाको आधिकारिक वेबसाइटमा स्वागत छ।",
+        "केराबारी गाउँपालिका मोरङ जिल्लाको एक प्रमुख स्थानीय तह हो। पालिकाको आधिकारिक वेबसाइटमा स्वागत छ।",
     };
   }
 }
@@ -125,9 +125,9 @@ export default async function Page({ params }: LanguageParams) {
     await api.profile.demographics.wardTimeSeries.summary.query();
 
   // SEO metadata setup - municipality name and details
-  const municipalityName = "बुद्धशान्ति गाउँपालिका";
+  const municipalityName = "केराबारी गाउँपालिका";
   const municipalityNameEn = "Khajura Rural Municipality";
-  const districtName = "झापा";
+  const districtName = "मोरङ";
   const provinceNumber = 5;
   const provinceName = "कोशी प्रदेश";
 

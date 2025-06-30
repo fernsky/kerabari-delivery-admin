@@ -97,11 +97,11 @@ export default function WardWiseElectricitySourceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Electricity Source Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Electricity Source Usage in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of electricity source usage across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${modernSourceTotal.toLocaleString()} households (${modernSourcePercentageValue}%) use modern electricity sources. The best adoption of modern sources is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}% modern electricity source usage rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Electricity source",
         "Grid electricity",
         "Solar power",

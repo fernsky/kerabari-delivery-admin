@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const remittanceData =
       await api.profile.economics.wardWiseRemittance.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalSendingPopulation = remittanceData.reduce(
@@ -147,8 +147,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका रेमिट्यान्स",
-      "बुद्धशान्ति वडा अनुसार रेमिट्यान्स",
+      "केराबारी गाउँपालिका रेमिट्यान्स",
+      "केराबारी वडा अनुसार रेमिट्यान्स",
       "वैदेशिक रोजगारीबाट प्राप्त रेमिट्यान्स",
       `वार्षिक रेमिट्यान्स रु. ${localizeNumber(estimatedRemittanceCrores, "ne")} करोड`,
       mostCommonAmountGroupLabel,
@@ -168,7 +168,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार रेमिट्यान्स वितरणको विश्लेषण। कुल ${localizeNumber(totalSendingPopulation.toString(), "ne")} जनाले वैदेशिक रोजगारीबाट रेमिट्यान्स पठाउँछन्, जसमध्ये ${localizeNumber(mostCommonPercentage, "ne")}% ले ${mostCommonAmountGroupLabel} पठाउँछन्। वार्षिक अनुमानित रेमिट्यान्स रकम रु. ${localizeNumber(estimatedRemittanceCrores, "ne")} करोड रहेको छ।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार रेमिट्यान्स वितरणको विश्लेषण। कुल ${localizeNumber(totalSendingPopulation.toString(), "ne")} जनाले वैदेशिक रोजगारीबाट रेमिट्यान्स पठाउँछन्, जसमध्ये ${localizeNumber(mostCommonPercentage, "ne")}% ले ${mostCommonAmountGroupLabel} पठाउँछन्। वार्षिक अनुमानित रेमिट्यान्स रकम रु. ${localizeNumber(estimatedRemittanceCrores, "ne")} करोड रहेको छ।`;
 
     const descriptionEN = `Analysis of ward-wise remittance distribution in Khajura Rural Municipality. Out of a total of ${totalSendingPopulation} individuals sending remittances from foreign employment, ${mostCommonPercentage}% send in the range of ${mostCommonAmountGroupLabel}. The estimated annual remittance amounts to NPR ${estimatedRemittanceCrores} crore.`;
 
@@ -201,7 +201,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "वडा अनुसार रेमिट्यान्स वितरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "वडा अनुसार रेमिट्यान्स वितरण | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार रेमिट्यान्स वितरणको विश्लेषण।",
     };
   }
@@ -638,7 +638,7 @@ export default async function WardWiseRemittancePage() {
               src="/images/remittance.svg"
               width={1200}
               height={400}
-              alt="वडा अनुसार रेमिट्यान्स वितरण - बुद्धशान्ति गाउँपालिका (Ward-wise Remittance Distribution - Khajura Rural Municipality)"
+              alt="वडा अनुसार रेमिट्यान्स वितरण - केराबारी गाउँपालिका (Ward-wise Remittance Distribution - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -646,21 +646,21 @@ export default async function WardWiseRemittancePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा वडा अनुसार रेमिट्यान्स वितरण
+              केराबारी गाउँपालिकामा वडा अनुसार रेमिट्यान्स वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा वैदेशिक रोजगारीबाट प्राप्त हुने
+              केराबारी गाउँपालिकामा वैदेशिक रोजगारीबाट प्राप्त हुने
               रेमिट्यान्स स्थानीय अर्थतन्त्रको महत्वपूर्ण हिस्सा हो। यो
               आम्दानीले गरिबी निवारण, जीवनस्तर सुधार र सामाजिक-आर्थिक विकासमा
               महत्वपूर्ण योगदान पुर्‍याएको छ। यस अध्ययनले वडागत रुपमा
               रेमिट्यान्सको वितरण, प्रयोग र प्रभावको विश्लेषण गरेको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको रेमिट्यान्स सम्बन्धी तथ्याङ्क अनुसार, कुल{" "}
+              केराबारी गाउँपालिकाको रेमिट्यान्स सम्बन्धी तथ्याङ्क अनुसार, कुल{" "}
               {localizeNumber(totalSendingPopulation.toLocaleString(), "ne")}
               जनाले विभिन्न परिमाणमा रकम पठाउने गरेको पाइएको छ। यसमध्ये सबैभन्दा
               बढी{" "}
@@ -689,7 +689,7 @@ export default async function WardWiseRemittancePage() {
               रेमिट्यान्स वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा रेमिट्यान्स पठाउने व्यक्तिहरूको वितरण र
+              केराबारी गाउँपालिकामा रेमिट्यान्स पठाउने व्यक्तिहरूको वितरण र
               रकम परिमाण निम्नानुसार रहेको छ:
             </p>
 
@@ -782,7 +782,7 @@ export default async function WardWiseRemittancePage() {
               आर्थिक प्रभाव
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा वार्षिक रु.{" "}
+              केराबारी गाउँपालिकामा वार्षिक रु.{" "}
               {localizeNumber(totalData.estimatedAnnualRemittanceCrores, "ne")}{" "}
               करोड रेमिट्यान्स भित्रिने अनुमान गरिएको छ। यो रकम गाउँपालिकाको
               वार्षिक बजेटको तुलनामा उल्लेखनीय हो र स्थानीय अर्थतन्त्रमा
@@ -818,7 +818,7 @@ export default async function WardWiseRemittancePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा रेमिट्यान्सको अवस्था विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकामा रेमिट्यान्सको अवस्था विश्लेषणबाट निम्न
               निष्कर्ष र सुझावहरू गर्न सकिन्छ:
             </p>
 
@@ -899,7 +899,7 @@ export default async function WardWiseRemittancePage() {
 
             <p className="mt-6">
               रेमिट्यान्सलाई स्थानीय अर्थतन्त्रको विकासमा प्रभावकारी ढङ्गले
-              परिचालन गर्न सकेमा बुद्धशान्ति गाउँपालिकाको समृद्धि र आर्थिक
+              परिचालन गर्न सकेमा केराबारी गाउँपालिकाको समृद्धि र आर्थिक
               स्थिरतामा महत्वपूर्ण योगदान पुग्न सक्नेछ। यसका लागि स्थानीय सरकार,
               वित्तीय संस्था र समुदायको सहकार्य आवश्यक छ।
             </p>

@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const wardWiseSchoolDropoutData =
       await api.profile.education.wardWiseSchoolDropout.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = wardWiseSchoolDropoutData.reduce(
@@ -85,7 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका विद्यालय छाड्ने कारण",
+      "केराबारी गाउँपालिका विद्यालय छाड्ने कारण",
       "स्कूल ड्रपआउट",
       "वडागत शैक्षिक त्याग",
       "रोजगारीका लागि विद्यालय छाड्ने",
@@ -103,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्नुका कारणहरूको विश्लेषण। कुल ${localizeNumber(totalDropouts.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(economicDropoutPercentage, "ne")}% (${localizeNumber(economicDropouts.toLocaleString(), "ne")}) जनाले आर्थिक कारणले विद्यालय छोडेका छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा विद्यालय छाड्नुका कारणहरूको विश्लेषण। कुल ${localizeNumber(totalDropouts.toLocaleString(), "ne")} जनसंख्या मध्ये ${localizeNumber(economicDropoutPercentage, "ne")}% (${localizeNumber(economicDropouts.toLocaleString(), "ne")}) जनाले आर्थिक कारणले विद्यालय छोडेका छन्।`;
 
     const descriptionEN = `Analysis of school dropout causes in Khajura Rural Municipality. Out of a total of ${totalDropouts.toLocaleString()} dropouts, ${economicDropoutPercentage}% (${economicDropouts.toLocaleString()}) have left school for economic reasons.`;
 
@@ -136,7 +136,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "विद्यालय छाड्ने कारणहरूको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "विद्यालय छाड्ने कारणहरूको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार विद्यालय छाड्ने कारणहरूको अवस्था र विश्लेषण।",
     };
   }
@@ -329,7 +329,7 @@ export default async function WardWiseSchoolDropoutPage() {
               src="/images/school-dropout-causes.svg"
               width={1200}
               height={400}
-              alt="विद्यालय छाड्ने कारणहरू - बुद्धशान्ति गाउँपालिका (School Dropout Causes - Khajura Rural Municipality)"
+              alt="विद्यालय छाड्ने कारणहरू - केराबारी गाउँपालिका (School Dropout Causes - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -337,7 +337,7 @@ export default async function WardWiseSchoolDropoutPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्ने कारणहरूको अवस्था
+              केराबारी गाउँपालिकामा विद्यालय छाड्ने कारणहरूको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -347,12 +347,12 @@ export default async function WardWiseSchoolDropoutPage() {
               विद्यालय छाड्नुका कारणहरू र त्यसले समग्र शैक्षिक प्रणालीमा पार्ने
               प्रभावको अध्ययन एक महत्वपूर्ण पक्ष हो। विद्यालय छाड्नुका विभिन्न
               सामाजिक, आर्थिक र शैक्षिक कारणहरू हुन सक्छन् जुन समग्र शिक्षा
-              प्रणालीको सुधारका लागि महत्वपूर्ण छन्। यस खण्डमा बुद्धशान्ति
+              प्रणालीको सुधारका लागि महत्वपूर्ण छन्। यस खण्डमा केराबारी
               गाउँपालिकाको विभिन्न वडाहरूमा विद्यालय छाड्नुका कारणहरूको विश्लेषण
               प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalDropouts.toLocaleString(), "ne")}{" "}
               विद्यार्थीहरूले विविध कारणहरूले विद्यालय छोडेका छन्, जसमध्ये{" "}
               {localizeNumber(
@@ -376,7 +376,7 @@ export default async function WardWiseSchoolDropoutPage() {
               विद्यालय छाड्ने कारणहरूको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्ने कारणहरूको वितरण
+              केराबारी गाउँपालिकामा विद्यालय छाड्ने कारणहरूको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -403,7 +403,7 @@ export default async function WardWiseSchoolDropoutPage() {
               विद्यालय छाड्ने कारणहरूको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्ने कारणहरूको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा विद्यालय छाड्ने कारणहरूको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(
                 dropoutGroupPercentages.ECONOMIC.toFixed(2),
@@ -443,7 +443,7 @@ export default async function WardWiseSchoolDropoutPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्ने कारणहरूको तथ्याङ्क
+              केराबारी गाउँपालिकामा विद्यालय छाड्ने कारणहरूको तथ्याङ्क
               विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -499,7 +499,7 @@ export default async function WardWiseSchoolDropoutPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा विद्यालय छाड्ने कारणहरूको विश्लेषणले
+              यसरी केराबारी गाउँपालिकामा विद्यालय छाड्ने कारणहरूको विश्लेषणले
               पालिकामा शैक्षिक नीति निर्माण र कार्यक्रम तर्जुमा गर्न महत्वपूर्ण
               भूमिका खेल्दछ। विद्यालय छाड्ने दर घटाउन र विद्यार्थी संरक्षण
               गर्नका लागि वडागत आवश्यकता र विशेषताहरूलाई ध्यानमा राखी विशेष

@@ -50,11 +50,11 @@ export default function HouseOwnershipSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "House Ownership Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "House Ownership Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `House ownership data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "House ownership",
         "Ownership distribution",
         "Ward-wise ownership data",

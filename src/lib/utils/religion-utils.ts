@@ -139,7 +139,7 @@ export function generateReligionAnalysis(data: ProcessedReligionData): string {
   const analysis = [];
   
   // Constitutional and historical context with local analysis
-  analysis.push("नेपालको संविधान २०७२ ले धर्म निरपेक्षताको सिद्धान्त अपनाएको छ र सबै नागरिकलाई धार्मिक स्वतन्त्रताको अधिकार प्रदान गरेको छ। यस संवैधानिक प्रावधानको प्रतिबिम्ब बुद्धशान्ति गाउँपालिकामा पनि देख्न सकिन्छ, जहाँ विभिन्न धर्मावलम्बीहरूको सहअस्तित्व रहेको छ।");
+  analysis.push("नेपालको संविधान २०७२ ले धर्म निरपेक्षताको सिद्धान्त अपनाएको छ र सबै नागरिकलाई धार्मिक स्वतन्त्रताको अधिकार प्रदान गरेको छ। यस संवैधानिक प्रावधानको प्रतिबिम्ब केराबारी गाउँपालिकामा पनि देख्न सकिन्छ, जहाँ विभिन्न धर्मावलम्बीहरूको सहअस्तित्व रहेको छ।");
 
   // Detailed population analysis with critical perspective
   if (data.dominantReligion) {

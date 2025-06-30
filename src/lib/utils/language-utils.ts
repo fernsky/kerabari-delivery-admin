@@ -345,7 +345,7 @@ export function generateLanguageAnalysis(data: ProcessedLanguageData): string {
 
   // Overall summary
   analysisParts.push(
-    `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalPopulation)} जनाको मातृभाषा विविधता अत्यन्तै उल्लेखनीय छ। यहाँका बासिन्दाहरूले विभिन्न मातृभाषाहरू बोल्ने गरेका छन्, जसले गाउँपालिकाको सांस्कृतिक र भाषिक समृद्धिलाई झल्काउँछ।`
+    `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalPopulation)} जनाको मातृभाषा विविधता अत्यन्तै उल्लेखनीय छ। यहाँका बासिन्दाहरूले विभिन्न मातृभाषाहरू बोल्ने गरेका छन्, जसले गाउँपालिकाको सांस्कृतिक र भाषिक समृद्धिलाई झल्काउँछ।`
   );
 
   // Dominant language analysis

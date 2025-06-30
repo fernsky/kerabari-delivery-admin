@@ -463,7 +463,7 @@ export function generateAgeGenderAnalysis(data: ProcessedAgeGenderData): string 
 
   // Compose a comprehensive, verbose analysis in Nepali
   return (
-    `बुद्धशान्ति गाउँपालिकाको जनसंख्याको उमेर र लिङ्गीय संरचनाले जटिल जनसांख्यिकीय परिदृश्य प्रकट गर्दै सामाजिक र आर्थिक योजनाको लागि महत्त्वपूर्ण निहितार्थहरू प्रस्तुत गर्दछ । ` +
+    `केराबारी गाउँपालिकाको जनसंख्याको उमेर र लिङ्गीय संरचनाले जटिल जनसांख्यिकीय परिदृश्य प्रकट गर्दै सामाजिक र आर्थिक योजनाको लागि महत्त्वपूर्ण निहितार्थहरू प्रस्तुत गर्दछ । ` +
     `कुल जनसंख्या ${convertToNepaliNumber(totalPopulation)} रहेको छ, जसमा पुरुष जनसंख्या ${convertToNepaliNumber(malePopulation)} (${formatNepaliPercentage(malePercentage)}) र महिला जनसंख्या ${convertToNepaliNumber(femalePopulation)} (${formatNepaliPercentage(femalePercentage)}) रहेका छन् । ` +
     `${otherPopulation > 0 ? `अन्य लिङ्गीय श्रेणीका व्यक्तिहरू ${convertToNepaliNumber(otherPopulation)} (${formatNepaliPercentage(otherPercentage)}) रहेका छन्, जसले जनसांख्यिकीय रिपोर्टिङ्गमा समावेशिताको प्रतिबिम्ब देखाउँछ । ` : ''}` +
     `जनसंख्याको अनुमानित मध्यम उमेर लगभग ${convertToNepaliNumber(parseFloat(medianAge.toFixed(1)))} वर्ष रहेको छ, जसले ${medianAge < 30 ? 'अपेक्षाकृत युवा जनसंख्या र सम्भावित जनसांख्यिकीय लाभांशको अनुभव गर्दै रहेको' : 'जनसंख्या बुढो हुँदै गएको र बढ्दो सामाजिक र आर्थिक निर्भरता दबाबहरू देखिएको'} संकेत गर्दछ । ` +

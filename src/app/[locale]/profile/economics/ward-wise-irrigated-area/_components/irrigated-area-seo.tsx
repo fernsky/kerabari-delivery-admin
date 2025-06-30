@@ -77,11 +77,11 @@ export default function IrrigatedAreaSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Ward-wise Irrigated Area in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Ward-wise Irrigated Area in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Ward-wise irrigated and unirrigated area statistics of Khajura Rural Municipality with a total area of ${totalArea.toFixed(2)} hectares. ${irrigatedPercentage}% (${totalIrrigatedArea.toFixed(2)} hectares) of the total area is irrigated. Ward ${mostIrrigatedWard?.wardNumber || ""} has the highest irrigated area with ${mostIrrigatedWard?.irrigatedArea.toFixed(2) || "0"} hectares. Ward ${highestIrrigationCoverageWard?.wardNumber || ""} has the highest irrigation coverage percentage (${highestCoveragePercentage}%) and Ward ${lowestIrrigationCoverageWard?.wardNumber || ""} has the lowest (${lowestCoveragePercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Ward-wise irrigated area",
         "Irrigation coverage by ward",
         "Agricultural irrigation statistics",

@@ -45,10 +45,9 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Column */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">बुद्धशान्ति</h3>
+            <h3 className="text-lg font-semibold text-gray-900">केराबारी</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              स्वास्थ्य,पूर्वाधार ,लघुउद्यम र कृषिमा क्रान्ति:समृद्ध र
-              सुशासनयुक्त बुद्धशान्ति
+             कृषि पर्यटन सहितको पुर्ण पुर्वाधार, समृद्व केराबारी हाम्रो आधार
             </p>
             <div className="pt-2">
               <Link
@@ -82,7 +81,7 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900">सम्पर्क</h3>
             <div className="space-y-3 text-sm text-gray-600">
-              <p>बुद्धशान्ति, झापा</p>
+              <p>केराबारी, मोरङ</p>
               <p>नेपाल</p>
             </div>
           </div>
@@ -113,7 +112,7 @@ const Footer: React.FC<FooterProps> = ({ lng }) => {
             <div className="flex items-center gap-2">
               <Copyright className="w-4 h-4" />
               <span>
-                {localizeNumber(new Date().getFullYear(), "ne")} बुद्धशान्ति
+                {localizeNumber(new Date().getFullYear(), "ne")} केराबारी
                 गाउँपालिका । सर्वाधिकार सुरक्षित
               </span>
             </div>

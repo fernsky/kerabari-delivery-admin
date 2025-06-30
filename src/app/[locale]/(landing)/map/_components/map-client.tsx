@@ -45,7 +45,7 @@ const LoadingScreen = ({ progress }: { progress: number }) => (
           भूगोल डेटा लोड हुँदैछ
         </h3>
         <p className="text-base text-gray-600 max-w-sm mx-auto leading-relaxed">
-          <span className="font-medium text-green-600">बुद्धशान्ति</span> को
+          <span className="font-medium text-green-600">केराबारी</span> को
           विस्तृत नक्सा र स्थानिक जानकारी तयार गर्दै
         </p>
       </motion.div>

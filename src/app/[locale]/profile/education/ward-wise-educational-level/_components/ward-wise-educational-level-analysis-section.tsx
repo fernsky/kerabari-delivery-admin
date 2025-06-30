@@ -73,7 +73,7 @@ export default function WardWiseEducationalLevelAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-population": totalPopulation.toString(),
     "data-higher-education-rate":
       educationGroupPercentages.HIGHER_EDUCATION.toFixed(2),

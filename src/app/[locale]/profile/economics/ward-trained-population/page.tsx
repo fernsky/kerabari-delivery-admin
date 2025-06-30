@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const trainedPopulationData =
       await api.profile.economics.wardWiseTrainedPopulation.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = trainedPopulationData.reduce(
@@ -39,13 +39,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका तालिम प्राप्त जनसंख्या",
-      "बुद्धशान्ति सीप विकास",
-      "बुद्धशान्ति तालिम प्राप्त जनशक्ति",
+      "केराबारी गाउँपालिका तालिम प्राप्त जनसंख्या",
+      "केराबारी सीप विकास",
+      "केराबारी तालिम प्राप्त जनशक्ति",
       "वडा अनुसार तालिम प्राप्त जनसंख्या",
       "व्यावसायिक तालिम तथ्याङ्क",
-      "सीप विकास सर्वेक्षण बुद्धशान्ति",
-      `बुद्धशान्ति तालिम प्राप्त जनसंख्या ${totalPopulation}`,
+      "सीप विकास सर्वेक्षण केराबारी",
+      `केराबारी तालिम प्राप्त जनसंख्या ${totalPopulation}`,
     ];
 
     const keywordsEN = [
@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार तालिम प्राप्त जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल तालिम प्राप्त जनसंख्या ${totalPopulation} रहेको छ, जसमध्ये वडा नं. ${highestTrainedWard?.wardNumber || ""} मा सबैभन्दा धेरै ${highestTrainedWard?.trainedPopulation || 0} जना रहेका छन्। विभिन्न वडाहरूको तालिम प्राप्त जनसंख्याको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार तालिम प्राप्त जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल तालिम प्राप्त जनसंख्या ${totalPopulation} रहेको छ, जसमध्ये वडा नं. ${highestTrainedWard?.wardNumber || ""} मा सबैभन्दा धेरै ${highestTrainedWard?.trainedPopulation || 0} जना रहेका छन्। विभिन्न वडाहरूको तालिम प्राप्त जनसंख्याको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise trained population distribution, trends and analysis for Khajura Rural Municipality. Out of a total trained population of ${totalPopulation}, Ward No. ${highestTrainedWard?.wardNumber || ""} has the highest with ${highestTrainedWard?.trainedPopulation || 0} people. Detailed statistics and visualizations of trained population across various wards.`;
 
@@ -162,7 +162,7 @@ export default async function WardTrainedPopulationPage() {
               src="/images/trained-population.svg"
               width={1200}
               height={400}
-              alt="तालिम प्राप्त जनसंख्या - बुद्धशान्ति गाउँपालिका (Trained Population - Khajura Rural Municipality)"
+              alt="तालिम प्राप्त जनसंख्या - केराबारी गाउँपालिका (Trained Population - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -170,20 +170,20 @@ export default async function WardTrainedPopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा तालिम प्राप्त जनसंख्या
+              केराबारी गाउँपालिकामा तालिम प्राप्त जनसंख्या
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका तालिम
+              यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा रहेका तालिम
               प्राप्त जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको छ। यो
               तथ्याङ्कले स्थानीय सीप विकास, व्यावसायिक तालिम र रोजगार क्षमताको
               अवस्थालाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {totalTrainedPopulation.toLocaleString()} व्यक्तिले विभिन्न
               प्रकारका तालिमहरू प्राप्त गरेका छन्। यी तालिमहरूमा व्यावसायिक सीप,
               प्राविधिक ज्ञान, कृषि, र अन्य क्षेत्रसँग सम्बन्धित विषयहरू समावेश
@@ -195,7 +195,7 @@ export default async function WardTrainedPopulationPage() {
               तालिम प्राप्त जनसंख्या
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकाको वडागत रूपमा तालिम प्राप्त गरेका
+              केराबारी गाउँपालिकाको वडागत रूपमा तालिम प्राप्त गरेका
               व्यक्तिहरूको विवरण निम्नानुसार छ:
             </p>
           </div>
@@ -213,7 +213,7 @@ export default async function WardTrainedPopulationPage() {
               विश्लेषण तथा निष्कर्ष
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकाको वडागत रूपमा तालिम प्राप्त जनसंख्याको
+              केराबारी गाउँपालिकाको वडागत रूपमा तालिम प्राप्त जनसंख्याको
               विश्लेषण गर्दा विभिन्न प्रवृत्तिहरू देखिएका छन्। कुल तालिम प्राप्त
               जनसंख्या {totalTrainedPopulation.toLocaleString()} मध्ये विभिन्न
               वडाहरूको वितरणमा केही भिन्नता पाइएको छ।
@@ -231,7 +231,7 @@ export default async function WardTrainedPopulationPage() {
             </h2>
             <p>
               माथि प्रस्तुत गरिएका तथ्याङ्कहरू नेपालको राष्ट्रिय जनगणना र
-              बुद्धशान्ति गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
+              केराबारी गाउँपालिकाको आफ्नै सर्वेक्षणबाट संकलन गरिएको हो। यी
               तथ्याङ्कहरूको महत्व निम्न अनुसार छ:
             </p>
 

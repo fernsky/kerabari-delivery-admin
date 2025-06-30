@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const wallData =
       await api.profile.economics.wardWiseHouseholdOuterWall.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = wallData.reduce(
@@ -86,15 +86,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका घरको बाहिरी गारो",
-      "बुद्धशान्ति घरको बाहिरी गारो वितरण",
+      "केराबारी गाउँपालिका घरको बाहिरी गारो",
+      "केराबारी घरको बाहिरी गारो वितरण",
       "वडा अनुसार घरको बाहिरी गारो",
       "घरको बाहिरी गारो विवरण",
       "सिमेन्टको जोडाइ भएको इँटा/ढुङ्गा",
       "माटोको जोडाइ भएको घरहरू",
-      `बुद्धशान्ति घरको बाहिरी गारो संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
-      "बुद्धशान्ति गृह सुरक्षा",
-      "बुद्धशान्ति आवास संरचना",
+      `केराबारी घरको बाहिरी गारो संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      "केराबारी गृह सुरक्षा",
+      "केराबारी आवास संरचना",
     ];
 
     const keywordsEN = [
@@ -110,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरको बाहिरी गारोको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${WALL_TYPE_NAMES[mostCommonType] || mostCommonType} प्रकारको बाहिरी गारो भएका घरहरू रहेका छन्। विभिन्न वडाहरूमा घरको बाहिरी गारोको विस्तृत विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार घरको बाहिरी गारोको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(mostCommonCount.toString(), "ne")}) ${WALL_TYPE_NAMES[mostCommonType] || mostCommonType} प्रकारको बाहिरी गारो भएका घरहरू रहेका छन्। विभिन्न वडाहरूमा घरको बाहिरी गारोको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of house outer wall types in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${mostCommonPercentage}% (${mostCommonCount}) have ${WALL_TYPE_NAMES_EN[mostCommonType] || mostCommonType} outer walls. Detailed analysis of house outer wall types across various wards.`;
 
@@ -143,7 +143,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "घरको बाहिरी गारोको वितरण | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "घरको बाहिरी गारोको वितरण | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार घरको बाहिरी गारोको वितरण र विश्लेषण।",
     };
   }
@@ -353,7 +353,7 @@ export default async function WardWiseHouseholdOuterWallPage() {
               src="/images/house-wall.svg"
               width={1200}
               height={400}
-              alt="घरको बाहिरी गारोको वितरण - बुद्धशान्ति गाउँपालिका (House Outer Wall Distribution - Khajura Rural Municipality)"
+              alt="घरको बाहिरी गारोको वितरण - केराबारी गाउँपालिका (House Outer Wall Distribution - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -361,7 +361,7 @@ export default async function WardWiseHouseholdOuterWallPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा घरको बाहिरी गारोको वितरण
+              केराबारी गाउँपालिकामा घरको बाहिरी गारोको वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -370,11 +370,11 @@ export default async function WardWiseHouseholdOuterWallPage() {
             <p>
               घरको बाहिरी गारोको प्रकारले घरको संरचनागत बलियोपन, आवासीय गुणस्तर
               र प्राकृतिक प्रकोप प्रतिको सुरक्षाको स्तर निर्धारण गर्दछ। यस
-              खण्डमा बुद्धशान्ति गाउँपालिकामा घरको बाहिरी गारोका प्रमुख
+              खण्डमा केराबारी गाउँपालिकामा घरको बाहिरी गारोका प्रमुख
               प्रकारहरू र तिनको वडागत वितरणको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको घरको बाहिरी गारोको तथ्याङ्क अनुसार, कुल
+              केराबारी गाउँपालिकाको घरको बाहिरी गारोको तथ्याङ्क अनुसार, कुल
               घरधुरी {localizeNumber(totalHouseholds.toLocaleString(), "ne")}
               मध्ये सबैभन्दा बढी{" "}
               {overallSummary[0]?.wallTypeName.split("(")[0].trim() || ""}
@@ -397,7 +397,7 @@ export default async function WardWiseHouseholdOuterWallPage() {
               घरको बाहिरी गारोका प्रकारहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा घरको बाहिरी गारोका प्रमुख प्रकारहरू र
+              केराबारी गाउँपालिकामा घरको बाहिरी गारोका प्रमुख प्रकारहरू र
               तिनको वितरण निम्नानुसार रहेको छ:
             </p>
 
@@ -539,7 +539,7 @@ export default async function WardWiseHouseholdOuterWallPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा घरको बाहिरी गारोको वितरण विश्लेषणबाट
+              केराबारी गाउँपालिकामा घरको बाहिरी गारोको वितरण विश्लेषणबाट
               निम्न निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -606,7 +606,7 @@ export default async function WardWiseHouseholdOuterWallPage() {
             </div>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा घरको बाहिरी गारोको समग्र अवस्था मध्यम
+              केराबारी गाउँपालिकामा घरको बाहिरी गारोको समग्र अवस्था मध्यम
               स्तरको रहेको देखिन्छ। उच्च गुणस्तरका गारो भएका घरहरूको संख्या
               बढाउन र न्यून गुणस्तरका गारो भएका घरहरूको संरचनागत सुधार गर्न
               नीतिगत र कार्यक्रमगत पहलहरू आवश्यक छन्।

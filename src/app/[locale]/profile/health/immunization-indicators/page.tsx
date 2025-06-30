@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
         fiscalYear: latestFiscalYear,
       });
 
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
     const fiscalYearLabel =
       immunizationFiscalYearOptions.find(
         (opt) => opt.value === latestFiscalYear,
@@ -61,12 +61,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका खोप कभरेज",
+      "केराबारी गाउँपालिका खोप कभरेज",
       "बाल खोप कार्यक्रम",
       "आधारभूत खोप सेवा",
       `पूर्ण खोप कभरेज ${fullyImmunizedCoverage.toFixed(1)}%`,
       `DPT-HepB-Hib3 कभरेज ${dptHib3Coverage.toFixed(1)}%`,
-      "बुद्धशान्ति गाउँपालिकामा खोप सेवा",
+      "केराबारी गाउँपालिकामा खोप सेवा",
       "खोप कभरेज विश्लेषण",
     ];
 
@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा आधारभूत खोप सेवाको विश्लेषण। आर्थिक वर्ष ${fiscalYearLabel} मा पूर्ण खोप कभरेज ${localizeNumber(fullyImmunizedCoverage.toFixed(1), "ne")}%, DPT-HepB-Hib3 कभरेज ${localizeNumber(dptHib3Coverage.toFixed(1), "ne")}%, र दादुरा-रुबेला कभरेज ${localizeNumber(measlesRubella1Coverage.toFixed(1), "ne")}% रहेको छ।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा आधारभूत खोप सेवाको विश्लेषण। आर्थिक वर्ष ${fiscalYearLabel} मा पूर्ण खोप कभरेज ${localizeNumber(fullyImmunizedCoverage.toFixed(1), "ne")}%, DPT-HepB-Hib3 कभरेज ${localizeNumber(dptHib3Coverage.toFixed(1), "ne")}%, र दादुरा-रुबेला कभरेज ${localizeNumber(measlesRubella1Coverage.toFixed(1), "ne")}% रहेको छ।`;
 
     const descriptionEN = `Analysis of basic immunization services in Khajura Rural Municipality. In fiscal year ${fiscalYearLabel}, full immunization coverage was ${fullyImmunizedCoverage.toFixed(1)}%, DPT-HepB-Hib3 coverage was ${dptHib3Coverage.toFixed(1)}%, and measles-rubella coverage was ${measlesRubella1Coverage.toFixed(1)}%.`;
 
@@ -113,9 +113,9 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "खोप सेवा र कभरेज | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+      title: "खोप सेवा र कभरेज | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
-        "बुद्धशान्ति गाउँपालिकामा आधारभूत खोप सेवा र कभरेजको अवस्था र विश्लेषण।",
+        "केराबारी गाउँपालिकामा आधारभूत खोप सेवा र कभरेजको अवस्था र विश्लेषण।",
     };
   }
 }
@@ -366,7 +366,7 @@ export default async function ImmunizationIndicatorsPage() {
               src="/images/immunization-services.svg"
               width={1200}
               height={400}
-              alt="खोप सेवा र कभरेज - बुद्धशान्ति गाउँपालिका (Immunization Services and Coverage - Khajura Rural Municipality)"
+              alt="खोप सेवा र कभरेज - केराबारी गाउँपालिका (Immunization Services and Coverage - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -374,7 +374,7 @@ export default async function ImmunizationIndicatorsPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा खोप सेवा र कभरेजको अवस्था
+              केराबारी गाउँपालिकामा खोप सेवा र कभरेजको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -396,7 +396,7 @@ export default async function ImmunizationIndicatorsPage() {
               <span className="english-font">TD</span> समावेश छन्।
             </p>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको आर्थिक वर्ष{" "}
+              यस खण्डमा केराबारी गाउँपालिकाको आर्थिक वर्ष{" "}
               {localizeNumber(fiscalYearLabels[latestFiscalYear], "ne")} को खोप
               सेवाको अवस्था र विश्लेषण प्रस्तुत गरिएको छ। पालिकामा खोप कभरेज,
               ड्रपआउट दर, खोप खेर जाने दर, र अन्य महत्वपूर्ण सूचकहरूको अध्ययनबाट
@@ -410,7 +410,7 @@ export default async function ImmunizationIndicatorsPage() {
               प्रमुख खोप कभरेज सूचकहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा आर्थिक वर्ष{" "}
+              केराबारी गाउँपालिकामा आर्थिक वर्ष{" "}
               {localizeNumber(fiscalYearLabels[latestFiscalYear], "ne")} मा
               महत्वपूर्ण खोप सूचकहरूको अवस्था निम्नानुसार रहेको छ:
             </p>
@@ -443,7 +443,7 @@ export default async function ImmunizationIndicatorsPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा खोप सेवाको अवस्था विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकामा खोप सेवाको अवस्था विश्लेषणबाट निम्न
               रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -462,7 +462,7 @@ export default async function ImmunizationIndicatorsPage() {
             />
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकाको खोप सेवाको अवस्थामा सुधार ल्याउन
+              यसरी केराबारी गाउँपालिकाको खोप सेवाको अवस्थामा सुधार ल्याउन
               स्पष्ट लक्ष्य, वैज्ञानिक दृष्टिकोण र सामुदायिक सहभागिता आवश्यक छ।
               सबै बालबालिकाहरूले गुणस्तरीय खोप सेवा पाउन सक्ने वातावरण सुनिश्चित
               गर्न पालिकाले आफ्नो स्रोत-साधन र जनशक्तिको समुचित परिचालन

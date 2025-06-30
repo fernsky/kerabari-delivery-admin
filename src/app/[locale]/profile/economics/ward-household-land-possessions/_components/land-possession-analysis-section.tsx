@@ -58,7 +58,7 @@ export default function LandPossessionAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-landowner-households",
@@ -189,7 +189,7 @@ export default function LandPossessionAnalysisSection({
           <div className="bg-card p-4 rounded border">
             <h4 className="font-medium mb-2">जग्गाविहीन अवस्था</h4>
             <p className="mb-2">
-              बुद्धशान्ति गाउँपालिकामा अनुमानित{" "}
+              केराबारी गाउँपालिकामा अनुमानित{" "}
               <span className="font-medium">{landlessPercentage}%</span>
               घरपरिवार जग्गाविहीन रहेको अनुमान गरिएको छ। यो अनुमानित
               <span className="font-medium">
@@ -219,7 +219,7 @@ export default function LandPossessionAnalysisSection({
           गतिविधिलाई बढावा दिन्छ।
         </p>
         <p>
-          बुद्धशान्ति गाउँपालिकामा थप जानकारीको लागि{" "}
+          केराबारी गाउँपालिकामा थप जानकारीको लागि{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क
           </Link>{" "}

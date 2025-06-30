@@ -60,11 +60,11 @@ export default function LandOwnershipSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Land Ownership Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Land Ownership Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Land ownership statistics across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. The most common land ownership type is ${mostCommonTypeEN} with ${mostCommonType?.households.toLocaleString()} households (${mostCommonTypePercentage}%). Public/Eilani land accounts for ${publicLandPercentage}% of all households. Land security score is ${securityScore}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Land ownership",
         "Land ownership types",
         "Private land",

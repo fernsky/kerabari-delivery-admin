@@ -65,11 +65,11 @@ export default function AgricultureHouseholdsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Agricultural Households Distribution in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Agricultural Households Distribution in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Distribution of households involved in agriculture or animal husbandry across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${totalInvolved.toLocaleString()} households (${involvedPercentage.toFixed(2)}%) are involved in agriculture or animal husbandry. The highest agricultural involvement is in Ward ${highestInvolvementWard?.wardNumber || ""} with ${highestInvolvementWard?.involvedPercentage.toFixed(2) || ""}% involvement rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Agricultural households",
         "Farming families",
         "Animal husbandry",

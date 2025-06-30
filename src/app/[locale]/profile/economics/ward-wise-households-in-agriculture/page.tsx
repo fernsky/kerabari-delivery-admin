@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const agricultureHouseholdsData =
       await api.profile.economics.wardWiseHouseholdsInAgriculture.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Calculate summary statistics
     let totalHouseholds = 0;
@@ -75,13 +75,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका कृषि परिवार",
-      "बुद्धशान्ति कृषि पशुपालन घरधुरी",
+      "केराबारी गाउँपालिका कृषि परिवार",
+      "केराबारी कृषि पशुपालन घरधुरी",
       "वडा अनुसार कृषि परिवार",
       "कृषि पशुपालनमा संलग्न परिवार",
       "कृषि जनसंख्या वितरण",
-      `बुद्धशान्ति कृषि परिवार संख्या ${localizeNumber(totalInvolved.toString(), "ne")}`,
-      "बुद्धशान्ति गैरकृषि परिवार संख्या",
+      `केराबारी कृषि परिवार संख्या ${localizeNumber(totalInvolved.toString(), "ne")}`,
+      "केराबारी गैरकृषि परिवार संख्या",
     ];
 
     const keywordsEN = [
@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(involvedPercentage, "ne")}% (${localizeNumber(totalInvolved.toString(), "ne")}) परिवार कृषि वा पशुपालनमा आबद्ध रहेका छन्। सबैभन्दा बढी वडा ${localizeNumber(highestInvolvementWard?.wardNumber.toString() || "", "ne")} मा ${localizeNumber(highestInvolvementWard?.percentage.toFixed(2) || "", "ne")}% कृषि परिवार रहेका छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(totalHouseholds.toString(), "ne")} मध्ये ${localizeNumber(involvedPercentage, "ne")}% (${localizeNumber(totalInvolved.toString(), "ne")}) परिवार कृषि वा पशुपालनमा आबद्ध रहेका छन्। सबैभन्दा बढी वडा ${localizeNumber(highestInvolvementWard?.wardNumber.toString() || "", "ne")} मा ${localizeNumber(highestInvolvementWard?.percentage.toFixed(2) || "", "ne")}% कृषि परिवार रहेका छन्।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of households involved in agriculture or animal husbandry in Khajura Rural Municipality. Out of a total of ${totalHouseholds} households, ${involvedPercentage}% (${totalInvolved}) families are involved in agriculture or animal husbandry. Ward ${highestInvolvementWard?.wardNumber || ""} has the highest percentage of agricultural households at ${highestInvolvementWard?.percentage.toFixed(2) || ""}%.`;
 
@@ -128,7 +128,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "कृषि वा पशुपालनमा आबद्ध घरपरिवार | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "कृषि वा पशुपालनमा आबद्ध घरपरिवार | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण र विश्लेषण।",
     };
@@ -291,7 +291,7 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
               src="/images/agriculture-households.svg"
               width={1200}
               height={400}
-              alt="कृषि वा पशुपालनमा आबद्ध घरपरिवार - बुद्धशान्ति गाउँपालिका (Households Involved in Agriculture - Khajura Rural Municipality)"
+              alt="कृषि वा पशुपालनमा आबद्ध घरपरिवार - केराबारी गाउँपालिका (Households Involved in Agriculture - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -299,21 +299,21 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण
+              केराबारी गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              कृषि नेपालको अर्थतन्त्रको मेरुदण्ड हो र बुद्धशान्ति गाउँपालिकामा
+              कृषि नेपालको अर्थतन्त्रको मेरुदण्ड हो र केराबारी गाउँपालिकामा
               पनि यसको महत्वपूर्ण भूमिका रहेको छ। यस खण्डमा गाउँपालिकाको वडा
               अनुसार कृषि वा पशुपालनमा आबद्ध घरपरिवारको विश्लेषण प्रस्तुत गरिएको
               छ, जसले यस क्षेत्रमा कृषि तथा पशुपालनको वर्तमान अवस्था र भविष्यको
               विकासको लागि योजना तर्जुमा गर्न मद्दत पुर्याउँछ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}{" "}
               घरपरिवारमध्ये
               {localizeNumber(involvedPercentage, "ne")}% अर्थात{" "}
@@ -333,7 +333,7 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
               कृषि वा पशुपालनमा आबद्ध घरपरिवारको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध र आबद्ध नभएका
+              केराबारी गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध र आबद्ध नभएका
               घरपरिवारको वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -361,7 +361,7 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
               कृषि आबद्धता विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
+              केराबारी गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
               विश्लेषण गर्दा, समग्रमा
               {localizeNumber(involvedPercentage, "ne")}% घरपरिवारहरू कृषि वा
               पशुपालनमा आबद्ध रहेको पाइन्छ। वडागत रूपमा हेर्दा वडा नं.{" "}
@@ -397,7 +397,7 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
+              केराबारी गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
               तथ्याङ्क विश्लेषणबाट निम्न सम्भावनाहरू देखिन्छन्:
             </p>
 
@@ -445,7 +445,7 @@ export default async function WardWiseHouseholdsInAgriculturePage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
+              यसरी केराबारी गाउँपालिकामा कृषि वा पशुपालनमा आबद्ध घरपरिवारको
               वितरणको विश्लेषणले पालिकाको दिगो आर्थिक विकासका लागि कृषि
               क्षेत्रको महत्व र सम्भावनालाई उजागर गरेको छ। यसका लागि वडागत
               विशेषताहरूलाई ध्यानमा राखी कृषि विकासका रणनीतिहरू तर्जुमा गर्नु

@@ -55,7 +55,7 @@ export default function IncomeAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-households",
@@ -176,7 +176,7 @@ export default function IncomeAnalysisSection({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-8">
         <h3 className="text-xl font-medium mb-4">
-          बुद्धशान्ति गाउँपालिकाको आय स्रोत विविधता विश्लेषण
+          केराबारी गाउँपालिकाको आय स्रोत विविधता विश्लेषण
           <span className="sr-only">
             Income Source Diversity Analysis of Khajura Rural Municipality
           </span>

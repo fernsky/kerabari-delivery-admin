@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const vegetableFruitDiseaseData =
       await api.profile.economics.municipalityWideVegetablesAndFruitsDiseases.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalVegetableFruits = vegetableFruitDiseaseData.length;
@@ -80,15 +80,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका तरकारी फलफूल रोग कीट",
-      "बुद्धशान्ति तरकारी उत्पादन समस्या",
+      "केराबारी गाउँपालिका तरकारी फलफूल रोग कीट",
+      "केराबारी तरकारी उत्पादन समस्या",
       "पालिका स्तरीय तरकारी संरक्षण",
       "गोलभेडा रोग कीट",
       "काउली रोग कीट",
       "बन्दा रोग कीट",
       "आलु रोग कीट",
       "रायो रोग कीट",
-      `बुद्धशान्ति तरकारी संरक्षण ${localizeNumber(totalVegetableFruits.toString(), "ne")} प्रकार`,
+      `केराबारी तरकारी संरक्षण ${localizeNumber(totalVegetableFruits.toString(), "ne")} प्रकार`,
     ];
 
     const keywordsEN = [
@@ -104,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको तरकारी र फलफूलमा देखिने रोग र कीटको विश्लेषण। ${localizeNumber(totalVegetableFruits.toString(), "ne")} प्रकारका तरकारी फलफूलमा देखिने प्रमुख रोग र कीटहरूको विस्तृत अध्ययन। सबैभन्दा प्रभावित ${VEGETABLE_FRUIT_TYPES[mostAffectedVegetableFruit] || mostAffectedVegetableFruit} रहेको छ। पालिका स्तरीय तरकारी संरक्षण योजना र रणनीतिको विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको तरकारी र फलफूलमा देखिने रोग र कीटको विश्लेषण। ${localizeNumber(totalVegetableFruits.toString(), "ne")} प्रकारका तरकारी फलफूलमा देखिने प्रमुख रोग र कीटहरूको विस्तृत अध्ययन। सबैभन्दा प्रभावित ${VEGETABLE_FRUIT_TYPES[mostAffectedVegetableFruit] || mostAffectedVegetableFruit} रहेको छ। पालिका स्तरीय तरकारी संरक्षण योजना र रणनीतिको विश्लेषण।`;
 
     const descriptionEN = `Analysis of diseases and pests affecting vegetables and fruits in Khajura Rural Municipality. Detailed study of major diseases and pests affecting ${totalVegetableFruits} types of vegetables and fruits. Most affected crop is ${VEGETABLE_FRUIT_TYPES_EN[mostAffectedVegetableFruit] || mostAffectedVegetableFruit}. Municipality-wide vegetable and fruit protection planning and strategy analysis.`;
 
@@ -137,7 +137,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     return {
       title:
-        "तरकारी र फलफूलमा रोग कीटपतंग | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "तरकारी र फलफूलमा रोग कीटपतंग | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "पालिका स्तरीय तरकारी र फलफूलमा रोग कीटपतंगको विश्लेषण।",
     };
   }
@@ -239,7 +239,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
               src="/images/vegetable-diseases.svg"
               width={1200}
               height={400}
-              alt="तरकारी र फलफूलमा रोग कीटपतंग - बुद्धशान्ति गाउँपालिका (Vegetable and Fruit Diseases and Pests - Khajura Rural Municipality)"
+              alt="तरकारी र फलफूलमा रोग कीटपतंग - केराबारी गाउँपालिका (Vegetable and Fruit Diseases and Pests - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -247,21 +247,21 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंग
+              केराबारी गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंग
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              तरकारी र फलफूलमा देखिने रोग र कीटपतंग बुद्धशान्ति गाउँपालिकाको
+              तरकारी र फलफूलमा देखिने रोग र कीटपतंग केराबारी गाउँपालिकाको
               कृषि उत्पादनमा मुख्य चुनौती हो। यस क्षेत्रमा गोलभेडा, काउली,
               बन्दा, आलु, रायो लगायतका विभिन्न तरकारी र फलफूलहरूमा विभिन्न
               प्रकारका रोग र कीटपतंगहरूको समस्या देखिन्छ। यी समस्याहरूले
               कृषकहरूको उत्पादन र आम्दानीमा प्रत्यक्ष प्रभाव पारिरहेको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको तरकारी र फलफूलमा रोग र कीट सम्बन्धी
+              केराबारी गाउँपालिकाको तरकारी र फलफूलमा रोग र कीट सम्बन्धी
               तथ्याङ्क अनुसार, यस क्षेत्रमा कुल{" "}
               {localizeNumber(totalVegetableFruits.toString(), "ne")} प्रकारका
               तरकारी र फलफूलहरूमा
@@ -279,7 +279,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
               प्रमुख तरकारी र फलफूल रोगहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा देखिने प्रमुख तरकारी र फलफूल रोगहरू
+              केराबारी गाउँपालिकामा देखिने प्रमुख तरकारी र फलफूल रोगहरू
               निम्नानुसार रहेका छन्:
             </p>
 
@@ -297,7 +297,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
               प्रमुख कीटपतंगहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा देखिने प्रमुख कीटपतंगहरू निम्नानुसार
+              केराबारी गाउँपालिकामा देखिने प्रमुख कीटपतंगहरू निम्नानुसार
               रहेका छन्:
             </p>
 
@@ -345,7 +345,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
               तरकारी र फलफूल संरक्षण रणनीति
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंगको
+              केराबारी गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंगको
               प्रभावकारी व्यवस्थापनका लागि समेकित कीट व्यवस्थापन (Integrated
               Pest Management) को अवधारणालाई अपनाउनु आवश्यक छ। यसमा जैविक,
               रासायनिक र कृषि पद्धतिगत विधिहरूको संयोजन गरिन्छ।
@@ -371,7 +371,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको तरकारी र फलफूलमा रोग र कीटपतंगको अवस्थाको
+              केराबारी गाउँपालिकाको तरकारी र फलफूलमा रोग र कीटपतंगको अवस्थाको
               विश्लेषणबाट निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गर्न सकिन्छ:
             </p>
 
@@ -417,7 +417,7 @@ export default async function MunicipalityWideVegetablesAndFruitsDiseasesPage() 
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंगको
+              केराबारी गाउँपालिकामा तरकारी र फलफूलमा रोग र कीटपतंगको
               प्रभावकारी व्यवस्थापन मार्फत कृषि उत्पादकत्व वृद्धि र किसानको
               आम्दानी बढाउन सकिन्छ। यसका लागि स्थानीय सरकार, कृषि ज्ञान केन्द्र
               र किसानहरूको सक्रिय सहकार्य आवश्यक छ।

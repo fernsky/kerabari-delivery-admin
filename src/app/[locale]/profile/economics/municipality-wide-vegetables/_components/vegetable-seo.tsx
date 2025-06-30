@@ -66,7 +66,7 @@ export default function VegetableSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Vegetable Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Vegetable Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Vegetable production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(
         2,
       )} tonnes and sales of ${totalSales.toFixed(2)} tonnes (${(
@@ -79,7 +79,7 @@ export default function VegetableSEO({
       )} tonnes (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from vegetable sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Vegetable production",
         "Vegetable sales",
         "Potato production",

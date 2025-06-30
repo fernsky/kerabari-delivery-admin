@@ -50,11 +50,11 @@ export default function LoanUsageSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Loan Usage Patterns in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Loan Usage Patterns in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Loan usage purpose distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households with loans.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Loan usage purposes",
         "Credit utilization",
         "Ward-wise loan data",

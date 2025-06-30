@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const incomeSourceData =
       await api.profile.economics.wardWiseHouseholdIncomeSource.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = incomeSourceData.reduce(
@@ -54,17 +54,17 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका घरपरिवार आय स्रोत",
-      "बुद्धशान्ति आर्थिक गतिविधि",
-      `बुद्धशान्ति ${incomeSourceLabels[topIncomeSources[0] as keyof typeof incomeSourceLabels]}`,
+      "केराबारी गाउँपालिका घरपरिवार आय स्रोत",
+      "केराबारी आर्थिक गतिविधि",
+      `केराबारी ${incomeSourceLabels[topIncomeSources[0] as keyof typeof incomeSourceLabels]}`,
       ...topIncomeSources.map(
         (r) =>
-          `${incomeSourceLabels[r as keyof typeof incomeSourceLabels]} बुद्धशान्ति`,
+          `${incomeSourceLabels[r as keyof typeof incomeSourceLabels]} केराबारी`,
       ),
       "वडा अनुसार आय स्रोत",
       "आर्थिक गतिविधि तथ्याङ्क",
-      "आय स्रोत सर्वेक्षण बुद्धशान्ति",
-      `बुद्धशान्ति कुल घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
+      "आय स्रोत सर्वेक्षण केराबारी",
+      `केराबारी कुल घरपरिवार संख्या ${localizeNumber(totalHouseholds.toString(), "ne")}`,
     ];
     const keywordsEN = [
       "Khajura Rural Municipality household income sources",
@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार घरपरिवारको आय स्रोत वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${localizeNumber(
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार घरपरिवारको आय स्रोत वितरण, प्रवृत्ति र विश्लेषण। कुल घरपरिवार संख्या ${localizeNumber(
       totalHouseholds.toString(),
       "ne",
     )} मध्ये ${
@@ -138,7 +138,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "घरपरिवारको आय स्रोत | बुद्धशान्ति गाउँपालिका प्रोफाइल",
+      title: "घरपरिवारको आय स्रोत | केराबारी गाउँपालिका प्रोफाइल",
       description:
         "वडा अनुसार घरपरिवारको आय स्रोत वितरण, प्रवृत्ति र विश्लेषण। विभिन्न आय स्रोतहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
@@ -283,7 +283,7 @@ export default async function WardWiseHouseholdIncomeSourcePage() {
               src="/images/income-sources.svg"
               width={1200}
               height={400}
-              alt="घरपरिवारको आय स्रोत - बुद्धशान्ति गाउँपालिका (Household Income Sources - Khajura Rural Municipality)"
+              alt="घरपरिवारको आय स्रोत - केराबारी गाउँपालिका (Household Income Sources - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -291,20 +291,20 @@ export default async function WardWiseHouseholdIncomeSourcePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा घरपरिवारको आय स्रोत
+              केराबारी गाउँपालिकामा घरपरिवारको आय स्रोत
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा रहेका
+              यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा रहेका
               घरपरिवारहरूको प्रमुख आय स्रोत सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत
               गरिएको छ। यो तथ्याङ्कले आर्थिक गतिविधि, रोजगारी र जीविकोपार्जनको
               स्वरूपलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न आय स्रोतहरू मार्फत घरपरिवारहरू
+              केराबारी गाउँपालिकामा विभिन्न आय स्रोतहरू मार्फत घरपरिवारहरू
               आफ्नो जीविकोपार्जन गर्दछन्। कुल घरपरिवार संख्या{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} मध्ये{" "}
               {overallSummary[0]?.incomeSourceName || ""} प्रमुख आय स्रोत भएका
@@ -327,7 +327,7 @@ export default async function WardWiseHouseholdIncomeSourcePage() {
               आय स्रोत अनुसार घरपरिवार
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न आय स्रोत भएका घरपरिवारहरूको
+              केराबारी गाउँपालिकामा विभिन्न आय स्रोत भएका घरपरिवारहरूको
               संख्या निम्नानुसार छ:
             </p>
           </div>
@@ -348,7 +348,7 @@ export default async function WardWiseHouseholdIncomeSourcePage() {
               प्रमुख आय स्रोतहरूको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा निम्न आय स्रोतहरू प्रमुख रूपमा देखिन्छन्।
+              केराबारी गाउँपालिकामा निम्न आय स्रोतहरू प्रमुख रूपमा देखिन्छन्।
               यी आय स्रोतहरू मध्ये{" "}
               {incomeSourceLabels[
                 overallSummary[0]

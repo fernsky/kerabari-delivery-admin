@@ -99,7 +99,7 @@ export default function RemittanceExpensesAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-remittance-households",
@@ -299,7 +299,7 @@ export default function RemittanceExpensesAnalysisSection({
           </span>
         </h3>
         <p>
-          बुद्धशान्ति गाउँपालिकाको विप्रेषण खर्च सम्बन्धी थप जानकारी वा विस्तृत
+          केराबारी गाउँपालिकाको विप्रेषण खर्च सम्बन्धी थप जानकारी वा विस्तृत
           तथ्याङ्कको लागि, कृपया{" "}
           <Link href="/contact" className="text-primary hover:underline">
             हामीलाई सम्पर्क

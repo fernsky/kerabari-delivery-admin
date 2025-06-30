@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const toiletTypeData =
       await api.profile.waterAndSanitation.wardWiseToiletType.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalHouseholds = toiletTypeData.reduce(
@@ -72,12 +72,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका शौचालय प्रकार",
+      "केराबारी गाउँपालिका शौचालय प्रकार",
       "वडागत शौचालय प्रकारहरू",
       "फ्लस शौचालय भएका घरधुरी",
       "सार्वजनिक शौचालय प्रयोग",
       "शौचालय नभएका घरधुरी",
-      `बुद्धशान्ति शौचालय तथ्याङ्क ${localizeNumber(
+      `केराबारी शौचालय तथ्याङ्क ${localizeNumber(
         totalHouseholds.toString(),
         "ne",
       )}`,
@@ -93,7 +93,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा वडा अनुसार शौचालय प्रकारहरूको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(
+    const descriptionNP = `केराबारी गाउँपालिकामा वडा अनुसार शौचालय प्रकारहरूको वितरण र विश्लेषण। कुल घरधुरी संख्या ${localizeNumber(
       totalHouseholds.toString(),
       "ne",
     )} मध्ये ${localizeNumber(mostCommonPercentage, "ne")}% (${localizeNumber(
@@ -131,7 +131,7 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "शौचालय प्रकारहरू | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+      title: "शौचालय प्रकारहरू | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार शौचालय प्रकारहरूको वितरण र विश्लेषण।",
     };
   }
@@ -384,7 +384,7 @@ export default async function WardWiseToiletTypePage() {
               src="/images/toilet-types.svg"
               width={1200}
               height={400}
-              alt="शौचालय प्रकारहरू - बुद्धशान्ति गाउँपालिका (Toilet Types - Khajura Rural Municipality)"
+              alt="शौचालय प्रकारहरू - केराबारी गाउँपालिका (Toilet Types - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -392,7 +392,7 @@ export default async function WardWiseToiletTypePage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा शौचालय प्रकारहरूको अवस्था
+              केराबारी गाउँपालिकामा शौचालय प्रकारहरूको अवस्था
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -401,12 +401,12 @@ export default async function WardWiseToiletTypePage() {
             <p>
               शौचालय सुविधा स्वस्थ जीवनयापन र वातावरणीय सरसफाइको एक महत्वपूर्ण
               पक्ष हो। यसले जनस्वास्थ्यलाई सुधार गर्न र विभिन्न रोगहरूबाट बच्न
-              मद्दत गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाका विभिन्न वडाहरूमा
+              मद्दत गर्दछ। यस खण्डमा केराबारी गाउँपालिकाका विभिन्न वडाहरूमा
               प्रयोग गरिने शौचालय प्रकारहरूको वितरण र विश्लेषण प्रस्तुत गरिएको
               छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {overallSummary[0] &&
@@ -426,7 +426,7 @@ export default async function WardWiseToiletTypePage() {
               शौचालय प्रकारहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा शौचालयका प्रमुख प्रकारहरू र तिनको वितरण
+              केराबारी गाउँपालिकामा शौचालयका प्रमुख प्रकारहरू र तिनको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -455,7 +455,7 @@ export default async function WardWiseToiletTypePage() {
               शौचालय प्रकारहरूको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा शौचालय प्रकारहरूको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा शौचालय प्रकारहरूको विश्लेषण गर्दा,
               {overallSummary[0]?.toiletTypeName || ""} प्रकारको शौचालय सबैभन्दा
               बढी
               {overallSummary[0]
@@ -506,7 +506,7 @@ export default async function WardWiseToiletTypePage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा शौचालय सुविधाहरू सुधार गर्न निम्न
+              केराबारी गाउँपालिकामा शौचालय सुविधाहरू सुधार गर्न निम्न
               सिफारिसहरू प्रस्तुत गरिएका छन्:
             </p>
 
@@ -556,7 +556,7 @@ export default async function WardWiseToiletTypePage() {
             </div>
 
             <p className="mt-6">
-              यी सिफारिसहरू कार्यान्वयन गरेर, बुद्धशान्ति गाउँपालिकामा शौचालय
+              यी सिफारिसहरू कार्यान्वयन गरेर, केराबारी गाउँपालिकामा शौचालय
               सुविधाहरूको अवस्थामा उल्लेखनीय सुधार ल्याउन सकिन्छ, जसले
               जनस्वास्थ्य सुधार र रोगहरू न्यूनीकरणमा महत्त्वपूर्ण योगदान
               पुर्याउनेछ।

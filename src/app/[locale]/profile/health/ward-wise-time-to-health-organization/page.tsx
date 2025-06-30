@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const timeToHealthOrganizationData =
       await api.profile.health.wardWiseTimeToHealthOrganization.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = timeToHealthOrganizationData.reduce(
@@ -90,7 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका स्वास्थ्य संस्था पहुँच",
+      "केराबारी गाउँपालिका स्वास्थ्य संस्था पहुँच",
       "स्वास्थ्य सेवा पहुँच",
       "वडागत स्वास्थ्य संस्था दूरी",
       "स्वास्थ्य संस्था पुग्न लाग्ने समय",
@@ -108,7 +108,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्थासम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र स्वास्थ्य संस्था पुग्न सक्छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा स्वास्थ्य संस्थासम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र स्वास्थ्य संस्था पुग्न सक्छन्।`;
 
     const descriptionEN = `Analysis of time taken to reach healthcare facilities in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${under15MinPercentage}% (${under15MinHouseholds.toLocaleString()}) can reach a health facility within 15 minutes.`;
 
@@ -141,7 +141,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "स्वास्थ्य संस्था पुग्न लाग्ने समयको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "स्वास्थ्य संस्था पुग्न लाग्ने समयको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार स्वास्थ्य संस्थामा पुग्न लाग्ने समयको अवस्था र विश्लेषण।",
     };
@@ -329,7 +329,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
               src="/images/health-facility-access.svg"
               width={1200}
               height={400}
-              alt="स्वास्थ्य संस्था पुग्न लाग्ने समय - बुद्धशान्ति गाउँपालिका (Time to Health Organization - Khajura Rural Municipality)"
+              alt="स्वास्थ्य संस्था पुग्न लाग्ने समय - केराबारी गाउँपालिका (Time to Health Organization - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -337,7 +337,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
               अवस्था
             </h1>
 
@@ -349,11 +349,11 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
               स्वास्थ्य सेवामा पहुँचको अवस्थालाई इंगित गर्दछ। स्वास्थ्य
               संस्थासम्म पुग्न लाग्ने समयको अध्ययनले स्वास्थ्य सेवाको विस्तार र
               स्थानीय जनताको पहुँचको अवस्था बुझ्न मद्दत पुर्‍याउँछ। यस खण्डमा
-              बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा स्वास्थ्य संस्थासम्म
+              केराबारी गाउँपालिकाको विभिन्न वडाहरूमा स्वास्थ्य संस्थासम्म
               पुग्न लाग्ने समयको विश्लेषण प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(
@@ -380,7 +380,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
               स्वास्थ्य संस्था पुग्न लाग्ने समयको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्थासम्म पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा स्वास्थ्य संस्थासम्म पुग्न लाग्ने समयको
               वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -407,7 +407,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
               स्वास्थ्य संस्था पहुँचको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्था पहुँचको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा स्वास्थ्य संस्था पहुँचको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(
                 timeCategoryPercentages.UNDER_30_MIN.toFixed(2),
@@ -440,7 +440,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
               तथ्याङ्क विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -493,7 +493,7 @@ export default async function WardWiseTimeToHealthOrganizationPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
+              यसरी केराबारी गाउँपालिकामा स्वास्थ्य संस्था पुग्न लाग्ने समयको
               विश्लेषणले पालिकामा स्वास्थ्य सेवा विस्तार र स्वास्थ्य नीति
               निर्माण गर्न महत्वपूर्ण भूमिका खेल्दछ। वडागत आवश्यकता अनुसार
               लक्षित कार्यक्रम र पूर्वाधार विकास गरेर स्वास्थ्य सेवाको पहुँचमा

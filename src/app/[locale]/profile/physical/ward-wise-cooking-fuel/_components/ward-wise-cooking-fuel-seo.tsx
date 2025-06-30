@@ -97,11 +97,11 @@ export default function WardWiseCookingFuelSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Cooking Fuel Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Cooking Fuel Usage in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of cooking fuel usage across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${cleanFuelTotal.toLocaleString()} households (${cleanFuelPercentageValue}%) use clean cooking fuels. The best adoption of clean fuel is in Ward ${bestWard?.wardNumber || ""} with ${bestWard?.percentage.toFixed(2) || ""}% clean fuel usage rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Cooking fuel",
         "Clean energy",
         "Ward-wise energy usage",

@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const timeToPublicTransportData =
       await api.profile.physical.wardWiseTimeToPublicTransport.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = timeToPublicTransportData.reduce(
@@ -90,7 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका सार्वजनिक यातायात पहुँच",
+      "केराबारी गाउँपालिका सार्वजनिक यातायात पहुँच",
       "सार्वजनिक यातायात सेवा पहुँच",
       "वडागत सार्वजनिक यातायात दूरी",
       "सार्वजनिक यातायात पुग्न लाग्ने समय",
@@ -108,7 +108,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायातसम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र सार्वजनिक यातायात पुग्न सक्छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकामा सार्वजनिक यातायातसम्म पुग्ने समय सम्बन्धी विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinHouseholds.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र सार्वजनिक यातायात पुग्न सक्छन्।`;
 
     const descriptionEN = `Analysis of time taken to reach public transportation in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${under15MinPercentage}% (${under15MinHouseholds.toLocaleString()}) can reach public transport within 15 minutes.`;
 
@@ -141,7 +141,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "सार्वजनिक यातायात पुग्न लाग्ने समयको अवस्था | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "सार्वजनिक यातायात पुग्न लाग्ने समयको अवस्था | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार सार्वजनिक यातायातमा पुग्न लाग्ने समयको अवस्था र विश्लेषण।",
     };
@@ -326,7 +326,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
               src="/images/public-transport-access.svg"
               width={1200}
               height={400}
-              alt="सार्वजनिक यातायात पुग्न लाग्ने समय - बुद्धशान्ति गाउँपालिका (Time to Public Transport - Khajura Rural Municipality)"
+              alt="सार्वजनिक यातायात पुग्न लाग्ने समय - केराबारी गाउँपालिका (Time to Public Transport - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -334,7 +334,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
               अवस्था
             </h1>
 
@@ -346,12 +346,12 @@ export default async function WardWiseTimeToPublicTransportPage() {
               समुदायको आवागमन र सामाजिक-आर्थिक गतिविधिमा पहुँचको अवस्थालाई
               दर्शाउँछ। सार्वजनिक यातायातसम्म पुग्न लाग्ने समयको अध्ययनले
               स्थानीय जनताको गतिशीलता, बजार पहुँच, र सेवा सुविधाहरूमा पहुँचको
-              अवस्था बुझ्न मद्दत पुर्‍याउँछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको
+              अवस्था बुझ्न मद्दत पुर्‍याउँछ। यस खण्डमा केराबारी गाउँपालिकाको
               विभिन्न वडाहरूमा सार्वजनिक यातायातसम्म पुग्न लाग्ने समयको विश्लेषण
               प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी
               मध्ये
               {localizeNumber(
@@ -378,7 +378,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
               सार्वजनिक यातायात पुग्न लाग्ने समयको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायातसम्म पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा सार्वजनिक यातायातसम्म पुग्न लाग्ने समयको
               वितरण निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -405,7 +405,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
               सार्वजनिक यातायात पहुँचको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायात पहुँचको विश्लेषण गर्दा,
+              केराबारी गाउँपालिकामा सार्वजनिक यातायात पहुँचको विश्लेषण गर्दा,
               समग्रमा
               {localizeNumber(
                 timeCategoryPercentages.UNDER_30_MIN.toFixed(2),
@@ -438,7 +438,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
               तथ्याङ्क विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -492,7 +492,7 @@ export default async function WardWiseTimeToPublicTransportPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
+              यसरी केराबारी गाउँपालिकामा सार्वजनिक यातायात पुग्न लाग्ने समयको
               विश्लेषण र समग्र यातायात पहुँचको अध्ययनले पालिकामा भौतिक पूर्वाधार
               विकास, यातायात सेवा विस्तार र सुधारका लागि रणनीतिक योजना बनाउन
               महत्वपूर्ण भूमिका खेल्दछ। वडागत आवश्यकता र प्राथमिकताका आधारमा

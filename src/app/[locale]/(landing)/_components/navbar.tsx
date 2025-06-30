@@ -66,13 +66,13 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
             >
               <div className="flex items-center gap-2">
                 <div className="p-2.5 rounded-xl bg-gradient-to-br  text-white group-hover:shadow-lg group-hover:shadow-[#123772]/25 transition-all duration-300 flex items-center justify-center">
-                  {/* <TreePalm className="w-5 h-5" /> */}
-                  <Image
-                    src="/images/buddhashanti_logo.png"
+                  <TreePalm className="w-5 h-5" />
+                  {/* <Image
+                    src="/images/coat_of_arms.png"
                     alt="logo"
                     width={70}
                     height={70}
-                  />
+                  /> */}
                 </div>
                 <div className="flex flex-col justify-center">
                   <span
@@ -80,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ lng }) => {
                       scrolled ? "text-gray-800" : "text-white"
                     }`}
                   >
-                    बुद्धशान्ति
+                    केराबारी
                   </span>
                   <Badge
                     variant="outline"

@@ -41,7 +41,7 @@ export function SiteHeader() {
             </div>
             <div className="flex flex-col">
               <span className="font-bold tracking-tight text-gray-900">
-                बुद्धशान्ति
+                केराबारी
               </span>
               <Badge
                 variant="outline"

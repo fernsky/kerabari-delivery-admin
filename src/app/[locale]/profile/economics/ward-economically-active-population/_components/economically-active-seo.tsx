@@ -78,11 +78,11 @@ export default function EconomicallyActiveSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Economically Active Population of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Economically Active Population of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Economically active population distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalPopulation.toLocaleString()} people, categorized by age groups and gender.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Economically active population",
         "Working age population",
         "Demographic distribution",

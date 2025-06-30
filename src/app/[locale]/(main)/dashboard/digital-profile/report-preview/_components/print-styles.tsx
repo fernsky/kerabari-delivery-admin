@@ -27,14 +27,14 @@ export function PrintStyles() {
         background: white;
 
         @bottom-right {
-          content: counter(page, nepali-numerals) " | बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१";
+          content: counter(page, nepali-numerals) " | केराबारी गाउँपालिका पार्श्वचित्र, २०८१";
           font-size: 9pt;
           color: #666;
           font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;
         }
 
         @top-right {
-          content: "बुद्धशान्ति गाउँपालिका पार्श्वचित्र, २०८१";
+          content: "केराबारी गाउँपालिका पार्श्वचित्र, २०८१";
           font-size: 9pt;
           color: #666;
           font-family: "Noto Sans Devanagari", "DejaVu Sans", sans-serif;

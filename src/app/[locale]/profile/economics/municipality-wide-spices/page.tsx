@@ -69,7 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const spiceData =
       await api.profile.economics.municipalityWideSpices.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalProduction = spiceData.reduce(
@@ -109,14 +109,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका मसलाबाली",
-      "बुद्धशान्ति मसलाको उत्पादन",
+      "केराबारी गाउँपालिका मसलाबाली",
+      "केराबारी मसलाको उत्पादन",
       "पालिका स्तरीय मसलाबाली तथ्याङ्क",
-      "लसुन उत्पादन बुद्धशान्ति",
+      "लसुन उत्पादन केराबारी",
       "खुर्सानी उत्पादन तथ्याङ्क",
       "धनिया उत्पादन",
-      `बुद्धशान्ति मसलाबाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
-      `बुद्धशान्ति मसलाबाली आय ${localizeNumber(
+      `केराबारी मसलाबाली बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
+      `केराबारी मसलाबाली आय ${localizeNumber(
         (totalRevenue / 1000).toFixed(2),
         "ne",
       )} हजार`,
@@ -134,7 +134,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको मसलाबाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन मसलाबाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${SPICE_TYPES[mostProducedSpice] || mostProducedSpice} रहेको छ। पालिका स्तरीय मसलाबालीको विस्तृत विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको मसलाबाली उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन मसलाबाली उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${SPICE_TYPES[mostProducedSpice] || mostProducedSpice} रहेको छ। पालिका स्तरीय मसलाबालीको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Analysis of spice production and sales in Khajura Rural Municipality. Out of total ${totalProduction.toFixed(2)} metric tonnes of spice production, ${mostProducedPercentage}% (${mostProducedAmount.toFixed(2)} tonnes) is ${SPICE_TYPES_EN[mostProducedSpice] || mostProducedSpice}. Detailed analysis of municipality-wide spice patterns.`;
 
@@ -167,7 +167,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय मसलाबालीको प्रकार अनुसारको उत्पादन, बिक्री र आम्दानीको विश्लेषण।",
     };
@@ -343,7 +343,7 @@ export default async function MunicipalityWideSpicesPage() {
               src="/images/spices.svg"
               width={1200}
               height={400}
-              alt="मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री - बुद्धशान्ति गाउँपालिका (Spices by Production and Sales - Khajura Rural Municipality)"
+              alt="मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री - केराबारी गाउँपालिका (Spices by Production and Sales - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -351,20 +351,20 @@ export default async function MunicipalityWideSpicesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री
+              केराबारी गाउँपालिकामा मसलाबालीको प्रकार अनुसार उत्पादन र बिक्री
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              मसलाबाली बुद्धशान्ति गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये एक
+              मसलाबाली केराबारी गाउँपालिकाको प्रमुख कृषि उत्पादनहरू मध्ये एक
               हो। यसका प्रमुख बालीहरूमा लसुन, खुर्सानी, धनिया र अन्य मसलाबालीहरू
               पर्दछन्। यी मसलाबालीहरूले पालिकाको पोषण सुरक्षा र आर्थिक स्थितिमा
               महत्त्वपूर्ण भूमिका खेल्दछन्।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको मसलाबाली सम्बन्धी तथ्याङ्क अनुसार, यस
+              केराबारी गाउँपालिकाको मसलाबाली सम्बन्धी तथ्याङ्क अनुसार, यस
               क्षेत्रमा वार्षिक कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               मसलाबाली उत्पादन हुन्छ, जसमध्ये सबैभन्दा बढी{" "}
@@ -391,7 +391,7 @@ export default async function MunicipalityWideSpicesPage() {
               प्रमुख मसलाबालीहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा उत्पादित प्रमुख मसलाबालीहरू र तिनको
+              केराबारी गाउँपालिकामा उत्पादित प्रमुख मसलाबालीहरू र तिनको
               उत्पादन परिमाण निम्नानुसार रहेको छ:
             </p>
 
@@ -410,7 +410,7 @@ export default async function MunicipalityWideSpicesPage() {
             </ul>
 
             <p>
-              मसलाबालीको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकामा उत्पादित कुल
+              मसलाबालीको विश्लेषण गर्दा, केराबारी गाउँपालिकामा उत्पादित कुल
               मसलाबाली मध्ये {localizeNumber(soldPercentage, "ne")}% बिक्रीका
               लागि बजारमा जान्छ, जबकि{" "}
               {localizeNumber(selfConsumptionPercentage, "ne")}% घरायसी उपभोगमा
@@ -454,7 +454,7 @@ export default async function MunicipalityWideSpicesPage() {
               मसलाबाली र स्थानीय अर्थतन्त्र
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा मसलाबालीको उत्पादनले स्थानीय अर्थतन्त्रमा
+              केराबारी गाउँपालिकामा मसलाबालीको उत्पादनले स्थानीय अर्थतन्त्रमा
               महत्त्वपूर्ण भूमिका खेल्दछ। कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               मसलाबाली उत्पादन मध्ये{" "}
@@ -465,7 +465,7 @@ export default async function MunicipalityWideSpicesPage() {
             </p>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको प्रमुख मसलाबालीको उत्पादकत्व र बजारीकरणको
+              केराबारी गाउँपालिकाको प्रमुख मसलाबालीको उत्पादकत्व र बजारीकरणको
               विश्लेषण गर्दा {overallSummary[0]?.typeName || ""} सबैभन्दा
               प्रभावकारी मसलाबाली रहेको देखिन्छ, जसले कुल मसलाबाली उत्पादनको{" "}
               {localizeNumber(
@@ -502,7 +502,7 @@ export default async function MunicipalityWideSpicesPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको मसलाबालीको अवस्थाको विश्लेषणबाट निम्न
+              केराबारी गाउँपालिकाको मसलाबालीको अवस्थाको विश्लेषणबाट निम्न
               निष्कर्ष र सिफारिसहरू गर्न सकिन्छ:
             </p>
 
@@ -552,7 +552,7 @@ export default async function MunicipalityWideSpicesPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा मसलाबालीको वर्तमान अवस्थाले अझै विकासको
+              केराबारी गाउँपालिकामा मसलाबालीको वर्तमान अवस्थाले अझै विकासको
               सम्भावना देखाउँछ। उत्पादकत्व वृद्धि, प्रशोधन प्रविधिमा आधुनिकीकरण
               र व्यावसायीकरण मार्फत मसला बाली उत्पादनलाई प्रोत्साहित गर्न
               सकिनेछ। यसका लागि स्थानीय सरकारले सक्रिय नीति निर्माण र प्रोत्साहन

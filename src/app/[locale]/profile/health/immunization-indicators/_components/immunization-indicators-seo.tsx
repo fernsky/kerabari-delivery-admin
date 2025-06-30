@@ -100,11 +100,11 @@ export default function ImmunizationIndicatorsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Immunization Indicators in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Immunization Indicators in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of immunization coverage and indicators for fiscal year ${fiscalYearLabel} in Khajura Rural Municipality. Key indicators include BCG coverage (${bcgCoverage.toFixed(1)}%), DPT-HepB-Hib3 coverage (${dpt3Coverage.toFixed(1)}%), Measles-Rubella coverage (${measlesRubella1Coverage.toFixed(1)}%), and full immunization rate (${fullyImmunized.toFixed(1)}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Immunization coverage",
         "Vaccination program",
         "Child immunization",

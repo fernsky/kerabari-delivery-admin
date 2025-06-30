@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({
   const households = demographicData?.totalHouseholds || 7562;
 
   // SEO description with actual data
-  const seoDescription = `${municipalityName} (${municipalityNameEn}) - ${localizeNumber(totalArea.toString(), "ne")} वर्ग कि.मि. क्षेत्रफल, ${localizeNumber(wardCount.toString(), "ne")} प्रशासनिक वडाहरू, ${localizeNumber(population.toString(), "ne")} जनसंख्या। झापा जिल्लाको प्राकृतिक सुन्दरता र समृद्ध संस्कृति। सम्पूर्ण जानकारी र नक्सा यहाँ उपलब्ध छ।`;
+  const seoDescription = `${municipalityName} (${municipalityNameEn}) - ${localizeNumber(totalArea.toString(), "ne")} वर्ग कि.मि. क्षेत्रफल, ${localizeNumber(wardCount.toString(), "ne")} प्रशासनिक वडाहरू, ${localizeNumber(population.toString(), "ne")} जनसंख्या। मोरङ जिल्लाको प्राकृतिक सुन्दरता र समृद्ध संस्कृति। सम्पूर्ण जानकारी र नक्सा यहाँ उपलब्ध छ।`;
 
   return (
     <>
@@ -161,7 +161,7 @@ const Hero: React.FC<HeroProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              झापा जिल्ला, कोशी प्रदेश
+              मोरङ जिल्ला, कोशी प्रदेश
               <div className="text-sm block"> </div>
             </motion.div>
 

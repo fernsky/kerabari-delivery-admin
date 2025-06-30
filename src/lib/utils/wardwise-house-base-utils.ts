@@ -182,7 +182,7 @@ export function generateWardWiseHouseBaseAnalysis(data: ProcessedWardWiseHouseBa
 
   // Overall summary with detailed context
   analysisParts.push(
-    `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalHouseholds)} घरपरिवार रहेका छन् जसमा विभिन्न प्रकारका जग प्रयोग गरिएका छन्। यी तथ्याङ्कले गाउँपालिकाको आवासीय निर्माण जगको वितरण, आर्थिक अवस्था र सुरक्षा स्तरको विस्तृत चित्र प्रस्तुत गर्दछ।`
+    `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalHouseholds)} घरपरिवार रहेका छन् जसमा विभिन्न प्रकारका जग प्रयोग गरिएका छन्। यी तथ्याङ्कले गाउँपालिकाको आवासीय निर्माण जगको वितरण, आर्थिक अवस्था र सुरक्षा स्तरको विस्तृत चित्र प्रस्तुत गर्दछ।`
   );
 
   // Calculate quality scores and metrics

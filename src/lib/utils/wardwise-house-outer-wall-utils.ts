@@ -185,7 +185,7 @@ export function generateWardWiseHouseOuterWallAnalysis(data: ProcessedWardWiseHo
 
   // Overall summary with detailed context
   analysisParts.push(
-    `बुद्धशान्ति गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalHouseholds)} घरपरिवार रहेका छन् जसमा विभिन्न प्रकारका बाहिरी गारो प्रयोग गरिएका छन्। यी तथ्याङ्कले गाउँपालिकाको आवासीय निर्माण गुणस्तर, आर्थिक अवस्था र सुरक्षा स्तरको विस्तृत चित्र प्रस्तुत गर्दछ।`
+    `केराबारी गाउँपालिकामा कुल ${convertToNepaliNumber(data.totalHouseholds)} घरपरिवार रहेका छन् जसमा विभिन्न प्रकारका बाहिरी गारो प्रयोग गरिएका छन्। यी तथ्याङ्कले गाउँपालिकाको आवासीय निर्माण गुणस्तर, आर्थिक अवस्था र सुरक्षा स्तरको विस्तृत चित्र प्रस्तुत गर्दछ।`
   );
 
   // Calculate quality scores and metrics

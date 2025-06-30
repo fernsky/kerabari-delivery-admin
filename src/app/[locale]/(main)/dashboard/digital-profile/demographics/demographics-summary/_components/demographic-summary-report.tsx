@@ -67,7 +67,7 @@ export default function DemographicSummaryReport({
           जनसांख्यिकीय सारांश
         </h1>
         <p className="text-lg text-gray-600">
-          बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन
+          केराबारी गाउँपालिका - पूर्ण प्रतिवेदन
         </p>
         <p className="text-sm text-gray-500 mt-2">२०८१ मस्यौदा प्रतिवेदन</p>
       </div>
@@ -343,7 +343,7 @@ export default function DemographicSummaryReport({
               <div>
                 <h4 className="font-medium text-lg mb-2">जनसंख्या संरचना</h4>
                 <p className="text-gray-700">
-                  बुद्धशान्ति गाउँपालिकामा कुल{" "}
+                  केराबारी गाउँपालिकामा कुल{" "}
                   {localizeNumber(data.totalPopulation || 0, locale)} जनसंख्या
                   छन्, जसमा {localizeNumber(data.populationMale || 0, locale)}{" "}
                   पुरुष ({malePct.toFixed(1)}%) र

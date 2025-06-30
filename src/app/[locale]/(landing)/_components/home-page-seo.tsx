@@ -53,7 +53,7 @@ export default function HomePageSEO({
     logo: "https://digital.buddhashantimun.gov.np/images/municipality-logo.png",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "बुद्धशान्ति",
+      addressLocality: "केराबारी",
       addressRegion: provinceName,
       addressCountry: "नेपाल",
     },
@@ -90,10 +90,10 @@ export default function HomePageSEO({
     description: `${municipalityName}को प्रमुख जनसांख्यिकीय तथ्याङ्क, जनगणना अनुसार`,
     url: "https://digital.buddhashantimun.gov.np/profile/demographics",
     keywords: [
-      "बुद्धशान्ति गाउँपालिका जनसंख्या",
+      "केराबारी गाउँपालिका जनसंख्या",
       "Khajura Rural Municipality demographics",
-      "बुद्धशान्ति जनगणना",
-      "झापा जनसंख्या",
+      "केराबारी जनगणना",
+      "मोरङ जनसंख्या",
       "नेपालको जनसंख्या",
     ],
     creator: {

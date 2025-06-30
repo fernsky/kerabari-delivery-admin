@@ -38,11 +38,11 @@ export default function RemittanceExpensesSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Remittance Expense Patterns of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Remittance Expense Patterns of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Remittance expense distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with ${totalHouseholds.toLocaleString()} households receiving remittances.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Remittance expenses",
         "Remittance utilization",
         "Ward-wise remittance data",

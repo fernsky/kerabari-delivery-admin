@@ -48,11 +48,11 @@ export default function IncomeSourceSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Income Sources of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Household Income Sources of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Household income source distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Household income sources",
         "Ward-wise economic data",
         "Nepal household survey",

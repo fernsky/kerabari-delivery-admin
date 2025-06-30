@@ -111,11 +111,11 @@ export default function WardWiseFacilitiesSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Household Facilities Usage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Household Facilities Usage in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of household facilities usage across ${wardNumbers.length} wards of Khajura Rural Municipality with approximately ${approximateUniqueHouseholds.toLocaleString()} households. ${facilityTypeTotals.MOBILE_PHONE?.toLocaleString() || 0} households (${mobilePercentage}%) have mobile phones, ${facilityTypeTotals.INTERNET?.toLocaleString() || 0} households (${internetPercentage}%) have internet access. The best digital access is in Ward ${bestDigitalWard?.wardNumber || ""} with ${bestDigitalWard?.score.toFixed(2) || ""}% digital access score.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Household facilities",
         "Mobile phone access",
         "Internet access",

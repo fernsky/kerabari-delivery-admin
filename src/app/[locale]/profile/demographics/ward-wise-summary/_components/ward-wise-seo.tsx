@@ -117,7 +117,7 @@ export default function WardWiseSEO({
         "केराबारी जनसंख्या वितरण",
         "केराबारी लैङ्गिक अनुपात",
         "केराबारी घरधुरी तथ्याङ्क",
-        "झापा जिल्ला जनसंख्या",
+        "मोरङ जिल्ला जनसंख्या",
       ],
       url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-summary",
       creator: {

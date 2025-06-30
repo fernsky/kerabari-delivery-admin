@@ -56,11 +56,11 @@ export default function WardWiseHealthInsuredHouseholdsSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Health Insurance Coverage in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Health Insurance Coverage in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of health insurance coverage across wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${totalInsuredHouseholds.toLocaleString()} households (${insuredPercentage.toFixed(2)}%) have health insurance coverage. The highest coverage is in Ward ${bestInsuranceWard?.wardNumber || ""} with ${bestInsuranceWard?.percentage.toFixed(2) || ""}% insurance rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Health insurance",
         "स्वास्थ्य बीमा",
         "Ward-wise health insurance",

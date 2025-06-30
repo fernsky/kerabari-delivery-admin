@@ -358,7 +358,7 @@ export default function FarmersGroupCharts({
             </h4>
             <div className="prose prose-sm">
               <p>
-                पछिल्ला वर्षहरूमा बुद्धशान्ति गाउँपालिकामा कृषि सम्बन्धित
+                पछिल्ला वर्षहरूमा केराबारी गाउँपालिकामा कृषि सम्बन्धित
                 समूहहरूको संख्यामा क्रमिक वृद्धि भएको देखिन्छ। विशेषगरी वडा नं.{" "}
                 {localizeNumber(statistics.wardWithMostGroups.toString(), "ne")}{" "}
                 मा समूह दर्ता र सक्रियता बढेको पाइन्छ।

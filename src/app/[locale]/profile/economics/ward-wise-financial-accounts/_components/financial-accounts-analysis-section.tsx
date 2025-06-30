@@ -80,7 +80,7 @@ export default function FinancialAccountsAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-bank-account-percentage": bankPercentage.toFixed(2),
     "data-no-account-percentage": noAccountPercentage.toFixed(2),
@@ -454,7 +454,7 @@ export default function FinancialAccountsAnalysisSection({
 
             <div>
               <h5 className="text-sm font-medium">
-                बुद्धशान्ति गाउँपालिका वित्तीय समावेशीकरणको स्थिति
+                केराबारी गाउँपालिका वित्तीय समावेशीकरणको स्थिति
               </h5>
               <div className="mt-2 space-y-3">
                 {/* Account presence percentage */}

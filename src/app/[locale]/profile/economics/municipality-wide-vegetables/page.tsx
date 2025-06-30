@@ -103,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const vegetableData =
       await api.profile.economics.municipalityWideVegetables.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalProduction = vegetableData.reduce(
@@ -143,14 +143,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका तरकारी",
-      "बुद्धशान्ति तरकारी उत्पादन",
+      "केराबारी गाउँपालिका तरकारी",
+      "केराबारी तरकारी उत्पादन",
       "पालिका स्तरीय तरकारी तथ्याङ्क",
-      "आलु उत्पादन बुद्धशान्ति",
+      "आलु उत्पादन केराबारी",
       "गोलभेडा उत्पादन तथ्याङ्क",
       "काउली उत्पादन",
-      `बुद्धशान्ति तरकारी बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
-      `बुद्धशान्ति तरकारी आय ${localizeNumber(
+      `केराबारी तरकारी बिक्री ${localizeNumber(totalSales.toFixed(2), "ne")} टन`,
+      `केराबारी तरकारी आय ${localizeNumber(
         (totalRevenue / 1000).toFixed(2),
         "ne",
       )} हजार`,
@@ -168,7 +168,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको तरकारी उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन तरकारी उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${VEGETABLE_TYPES[mostProducedVegetable] || mostProducedVegetable} रहेको छ। पालिका स्तरीय तरकारी उत्पादन र बिक्रीको विस्तृत विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको तरकारी उत्पादन र बिक्री विश्लेषण। कुल ${localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन तरकारी उत्पादन मध्ये ${localizeNumber(mostProducedPercentage, "ne")}% (${localizeNumber(mostProducedAmount.toFixed(2), "ne")} टन) ${VEGETABLE_TYPES[mostProducedVegetable] || mostProducedVegetable} रहेको छ। पालिका स्तरीय तरकारी उत्पादन र बिक्रीको विस्तृत विश्लेषण।`;
 
     const descriptionEN = `Analysis of vegetable production and sales in Khajura Rural Municipality. Out of total ${totalProduction.toFixed(2)} metric tonnes of vegetable production, ${mostProducedPercentage}% (${mostProducedAmount.toFixed(2)} tonnes) is ${VEGETABLE_TYPES_EN[mostProducedVegetable] || mostProducedVegetable}. Detailed analysis of municipality-wide vegetable patterns.`;
 
@@ -201,7 +201,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "तरकारीको प्रकार अनुसार उत्पादन र बिक्री | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "तरकारीको प्रकार अनुसार उत्पादन र बिक्री | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "पालिका स्तरीय तरकारी बालीको प्रकार अनुसारको उत्पादन, बिक्री र आम्दानीको विश्लेषण।",
     };
@@ -377,7 +377,7 @@ export default async function MunicipalityWideVegetablesPage() {
               src="/images/vegetables.svg"
               width={1200}
               height={400}
-              alt="तरकारीको प्रकार अनुसार उत्पादन र बिक्री - बुद्धशान्ति गाउँपालिका (Vegetables by Production and Sales - Khajura Rural Municipality)"
+              alt="तरकारीको प्रकार अनुसार उत्पादन र बिक्री - केराबारी गाउँपालिका (Vegetables by Production and Sales - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -385,20 +385,20 @@ export default async function MunicipalityWideVegetablesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा तरकारीको प्रकार अनुसार उत्पादन र बिक्री
+              केराबारी गाउँपालिकामा तरकारीको प्रकार अनुसार उत्पादन र बिक्री
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              तरकारी बुद्धशान्ति गाउँपालिकाको महत्त्वपूर्ण कृषि उत्पादन हो। यस
+              तरकारी केराबारी गाउँपालिकाको महत्त्वपूर्ण कृषि उत्पादन हो। यस
               क्षेत्रमा आलु, काउली, बन्दा, गोलभेडा, मूला, र अन्य विभिन्न
               प्रकारका तरकारीहरू उत्पादन गरिन्छ। यी तरकारीहरूले पालिकाको पोषण
               सुरक्षा र आर्थिक स्थितिमा उल्लेखनीय योगदान पुर्‍याउँछन्।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको तरकारी सम्बन्धी तथ्याङ्क अनुसार, यस
+              केराबारी गाउँपालिकाको तरकारी सम्बन्धी तथ्याङ्क अनुसार, यस
               क्षेत्रमा वार्षिक कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               तरकारी उत्पादन हुन्छ, जसमध्ये सबैभन्दा बढी{" "}
@@ -425,7 +425,7 @@ export default async function MunicipalityWideVegetablesPage() {
               प्रमुख तरकारीहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा उत्पादित प्रमुख तरकारीहरू र तिनको उत्पादन
+              केराबारी गाउँपालिकामा उत्पादित प्रमुख तरकारीहरू र तिनको उत्पादन
               परिमाण निम्नानुसार रहेको छ:
             </p>
 
@@ -444,7 +444,7 @@ export default async function MunicipalityWideVegetablesPage() {
             </ul>
 
             <p>
-              तरकारी उत्पादनको विश्लेषण गर्दा, बुद्धशान्ति गाउँपालिकामा उत्पादित
+              तरकारी उत्पादनको विश्लेषण गर्दा, केराबारी गाउँपालिकामा उत्पादित
               कुल तरकारी मध्ये {localizeNumber(soldPercentage, "ne")}% बिक्रीका
               लागि बजारमा जान्छ, जबकि{" "}
               {localizeNumber(selfConsumptionPercentage, "ne")}% घरायसी उपभोगमा
@@ -488,7 +488,7 @@ export default async function MunicipalityWideVegetablesPage() {
               तरकारी र स्थानीय अर्थतन्त्र
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा तरकारी उत्पादनले स्थानीय अर्थतन्त्रमा
+              केराबारी गाउँपालिकामा तरकारी उत्पादनले स्थानीय अर्थतन्त्रमा
               महत्त्वपूर्ण भूमिका खेल्दछ। कुल{" "}
               {localizeNumber(totalProduction.toFixed(2), "ne")} मेट्रिक टन
               तरकारी उत्पादन मध्ये{" "}
@@ -499,7 +499,7 @@ export default async function MunicipalityWideVegetablesPage() {
             </p>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको प्रमुख तरकारी उत्पादनको विश्लेषण गर्दा{" "}
+              केराबारी गाउँपालिकाको प्रमुख तरकारी उत्पादनको विश्लेषण गर्दा{" "}
               {overallSummary[0]?.typeName || ""} सबैभन्दा प्रभावकारी तरकारी
               बाली रहेको देखिन्छ, जसले कुल तरकारी उत्पादनको{" "}
               {localizeNumber(
@@ -536,7 +536,7 @@ export default async function MunicipalityWideVegetablesPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको तरकारी उत्पादनको अवस्थाको विश्लेषणबाट
+              केराबारी गाउँपालिकाको तरकारी उत्पादनको अवस्थाको विश्लेषणबाट
               निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गर्न सकिन्छ:
             </p>
 
@@ -585,7 +585,7 @@ export default async function MunicipalityWideVegetablesPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा तरकारी उत्पादनको वर्तमान अवस्थाले अझै
+              केराबारी गाउँपालिकामा तरकारी उत्पादनको वर्तमान अवस्थाले अझै
               विकासको प्रचुर सम्भावना देखाउँछ। उत्पादकत्व वृद्धि, प्रशोधन
               प्रविधिमा आधुनिकीकरण र व्यावसायीकरण मार्फत तरकारी उत्पादनलाई
               प्रोत्साहन गरी किसानको आय-आर्जनमा वृद्धि र खाद्य सुरक्षामा योगदान

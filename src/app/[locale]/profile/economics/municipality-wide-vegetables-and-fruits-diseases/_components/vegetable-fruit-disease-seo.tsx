@@ -65,11 +65,11 @@ export default function VegetableFruitDiseaseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Vegetable and Fruit Diseases and Pests in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Vegetable and Fruit Diseases and Pests in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Comprehensive analysis of vegetable and fruit diseases and pests affecting agriculture in Khajura Rural Municipality. The study covers ${totalVegetableFruits} different vegetable and fruit types with a total of ${totalDiseases + totalPests} identified issues: ${totalDiseases} diseases and ${totalPests} pests. The most affected vegetable/fruit is ${mostProblematicVegetableFruitEN} with ${mostProblematicVegetableFruit?.totalIssues || 0} issues (${mostProblematicPercentage}% of all problems). Disease to pest ratio is ${(diseaseRatio * 100).toFixed(1)}% to ${(pestRatio * 100).toFixed(1)}%.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Vegetable diseases",
         "Fruit diseases",
         "Agricultural pests",

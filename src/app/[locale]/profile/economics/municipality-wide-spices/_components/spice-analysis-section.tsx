@@ -55,7 +55,7 @@ export default function SpiceAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-production": totalProduction.toString(),
     "data-most-common-spice":
       overallSummary.length > 0

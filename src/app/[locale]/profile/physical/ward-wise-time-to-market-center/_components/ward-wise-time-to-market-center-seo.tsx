@@ -92,11 +92,11 @@ export default function WardWiseTimeToMarketCenterSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Time to Market Center in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Time to Market Center in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of time taken to reach market centers across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${quickAccessTotal.toLocaleString()} households (${quickAccessPercentage}%) can reach market centers within 30 minutes. The best accessibility is in Ward ${bestAccessWard?.wardNumber || ""} with ${bestAccessWard?.percentage.toFixed(2) || ""}% quick access rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Market center access",
         "Market accessibility",
         "Ward-wise market access",

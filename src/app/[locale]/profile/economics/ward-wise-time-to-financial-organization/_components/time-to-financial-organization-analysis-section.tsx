@@ -71,7 +71,7 @@ export default function TimeToFinancialOrganizationAnalysisSection({
 
   // SEO attributes to include directly in JSX
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-households": totalHouseholds.toString(),
     "data-quick-access-percentage": quickAccessPercentage.toFixed(2),
     "data-best-access-ward": bestAccessWard?.wardNumber.toString() || "",
@@ -420,7 +420,7 @@ export default function TimeToFinancialOrganizationAnalysisSection({
 
             <div>
               <h5 className="text-sm font-medium">
-                बुद्धशान्ति गाउँपालिका वित्तीय पहुँचको स्थिति
+                केराबारी गाउँपालिका वित्तीय पहुँचको स्थिति
               </h5>
               <div className="mt-2 space-y-3">
                 {/* Quick access percentage (under 30 min) */}

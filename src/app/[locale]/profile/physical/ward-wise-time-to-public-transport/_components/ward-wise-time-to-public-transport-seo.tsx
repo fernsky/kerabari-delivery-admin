@@ -92,11 +92,11 @@ export default function WardWiseTimeToPublicTransportSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Time to Public Transport in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Time to Public Transport in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Analysis of time taken to reach public transportation across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} households. ${quickAccessTotal.toLocaleString()} households (${quickAccessPercentage}%) can reach public transportation within 30 minutes. The best accessibility is in Ward ${bestAccessWard?.wardNumber || ""} with ${bestAccessWard?.percentage.toFixed(2) || ""}% quick access rate.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Public transport access",
         "Transportation accessibility",
         "Ward-wise transport access",

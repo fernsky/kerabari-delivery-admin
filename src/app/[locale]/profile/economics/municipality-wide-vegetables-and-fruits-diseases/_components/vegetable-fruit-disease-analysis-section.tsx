@@ -73,7 +73,7 @@ export default function VegetableFruitDiseaseAnalysisSection({
 
   // SEO attributes
   const seoAttributes = {
-    "data-municipality": "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+    "data-municipality": "Khajura Rural Municipality / केराबारी गाउँपालिका",
     "data-total-vegetables-fruits": totalVegetableFruits.toString(),
     "data-most-affected-vegetable-fruit":
       mostAffectedVegetableFruit &&

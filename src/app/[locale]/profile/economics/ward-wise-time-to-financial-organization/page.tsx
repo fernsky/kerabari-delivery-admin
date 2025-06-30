@@ -47,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const timeToFinancialOrgData =
       await api.profile.economics.wardWiseTimeToFinancialOrganization.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Group by ward number
     const wardGroups = timeToFinancialOrgData.reduce((acc: any, curr: any) => {
@@ -128,7 +128,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका वित्तीय पहुँच",
+      "केराबारी गाउँपालिका वित्तीय पहुँच",
       "वित्तीय संस्थामा पुग्न लाग्ने समय",
       "वडागत वित्तीय पहुँच",
       "बैंकमा पुग्न लाग्ने समय",
@@ -148,7 +148,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार वित्तीय संस्थासम्मको पहुँचको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinTotal.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र वित्तीय संस्था पुग्न सक्छन्। वडा ${localizeNumber(bestAccessWard, "ne")} मा सबैभन्दा राम्रो पहुँच छ, जहाँ ${localizeNumber(bestAccessPercentage.toFixed(2), "ne")}% घरधुरीले १५ मिनेट भित्र वित्तीय संस्था पुग्न सक्छन्।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार वित्तीय संस्थासम्मको पहुँचको विश्लेषण। कुल ${localizeNumber(totalHouseholds.toLocaleString(), "ne")} घरधुरी मध्ये ${localizeNumber(under15MinPercentage, "ne")}% (${localizeNumber(under15MinTotal.toLocaleString(), "ne")}) घरधुरीले १५ मिनेटभित्र वित्तीय संस्था पुग्न सक्छन्। वडा ${localizeNumber(bestAccessWard, "ne")} मा सबैभन्दा राम्रो पहुँच छ, जहाँ ${localizeNumber(bestAccessPercentage.toFixed(2), "ne")}% घरधुरीले १५ मिनेट भित्र वित्तीय संस्था पुग्न सक्छन्।`;
 
     const descriptionEN = `Analysis of access to financial organizations across wards in Khajura Rural Municipality. Out of a total of ${totalHouseholds.toLocaleString()} households, ${under15MinPercentage}% (${under15MinTotal.toLocaleString()}) households can reach a financial institution within 15 minutes. Ward ${bestAccessWard} has the best access, where ${bestAccessPercentage.toFixed(2)}% households can reach a financial institution within 15 minutes.`;
 
@@ -182,7 +182,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "वित्तीय संस्थामा पुग्न लाग्ने समय | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "वित्तीय संस्थामा पुग्न लाग्ने समय | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "वडा अनुसार वित्तीय संस्थामा पुग्ने समयको वितरण र विश्लेषण।",
     };
   }
@@ -421,7 +421,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
               src="/images/financial-access.svg"
               width={1200}
               height={400}
-              alt="वित्तीय संस्थामा पुग्न लाग्ने समय - बुद्धशान्ति गाउँपालिका (Time to Financial Organizations - Khajura Rural Municipality)"
+              alt="वित्तीय संस्थामा पुग्न लाग्ने समय - केराबारी गाउँपालिका (Time to Financial Organizations - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -429,7 +429,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा वित्तीय संस्थासम्मको पहुँच
+              केराबारी गाउँपालिकामा वित्तीय संस्थासम्मको पहुँच
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -438,12 +438,12 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
             <p>
               वित्तीय संस्थासम्मको पहुँच आर्थिक विकासको महत्वपूर्ण सूचक हो र
               यसले नागरिकको वित्तीय समावेशीता र सशक्तिकरणमा प्रत्यक्ष प्रभाव
-              पार्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा
+              पार्दछ। यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा
               नागरिकले वित्तीय संस्थामा पुग्न लाग्ने समयको विश्लेषण प्रस्तुत
               गरिएको छ, जसले भविष्यको वित्तीय नीति निर्माणमा सहयोग पुर्याउने छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा कुल{" "}
+              केराबारी गाउँपालिकामा कुल{" "}
               {localizeNumber(totalHouseholds.toLocaleString(), "ne")}{" "}
               घरधुरीमध्ये
               {localizeNumber(under15MinPercentage, "ne")}% अर्थात{" "}
@@ -467,7 +467,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
               वित्तीय संस्थामा पुग्न लाग्ने समयको वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको वितरण
+              केराबारी गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको वितरण
               निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -499,7 +499,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
               वित्तीय पहुँच विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा वित्तीय संस्थामा पुग्ने समयको विश्लेषण
+              केराबारी गाउँपालिकामा वित्तीय संस्थामा पुग्ने समयको विश्लेषण
               गर्दा, समग्रमा
               {localizeNumber(under15MinPercentage, "ne")}% घरधुरीहरू १५
               मिनेटभित्र र{localizeNumber(under30MinPercentage, "ne")}%
@@ -538,7 +538,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको
+              केराबारी गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको
               तथ्याङ्क विश्लेषणबाट निम्न रणनीतिहरू अवलम्बन गर्न सकिन्छ:
             </p>
 
@@ -588,7 +588,7 @@ export default async function WardWiseTimeToFinancialOrganizationPage() {
             </div>
 
             <p className="mt-6">
-              यसरी बुद्धशान्ति गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको
+              यसरी केराबारी गाउँपालिकामा वित्तीय संस्थामा पुग्न लाग्ने समयको
               वितरणको विश्लेषणले पालिकामा वित्तीय समावेशीकरणको अवस्था र भविष्यको
               रणनीति निर्माणमा महत्वपूर्ण भूमिका खेल्दछ। यसका लागि वडागत
               विशेषताहरूलाई ध्यानमा राखी वित्तीय सेवा विस्तारका कार्यक्रमहरू

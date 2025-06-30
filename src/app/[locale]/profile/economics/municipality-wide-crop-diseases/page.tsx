@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const cropDiseaseData =
       await api.profile.economics.municipalityWideCropDiseases.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalCrops = cropDiseaseData.length;
@@ -79,15 +79,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका बाली रोग कीट",
-      "बुद्धशान्ति कृषि समस्या",
+      "केराबारी गाउँपालिका बाली रोग कीट",
+      "केराबारी कृषि समस्या",
       "पालिका स्तरीय बाली संरक्षण",
       "धान रोग कीट",
       "गहुँ रोग कीट",
       "मकै रोग कीट",
       "तरकारी रोग कीट",
       "फलफूल रोग कीट",
-      `बुद्धशान्ति बाली संरक्षण ${localizeNumber(totalCrops.toString(), "ne")} प्रकार`,
+      `केराबारी बाली संरक्षण ${localizeNumber(totalCrops.toString(), "ne")} प्रकार`,
     ];
 
     const keywordsEN = [
@@ -103,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create description
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको बाली रोग र कीटको विश्लेषण। ${localizeNumber(totalCrops.toString(), "ne")} प्रकारका बालीमा देखिने प्रमुख रोग र कीटहरूको विस्तृत अध्ययन। सबैभन्दा प्रभावित बाली ${CROP_TYPES[mostAffectedCrop] || mostAffectedCrop} रहेको छ। पालिका स्तरीय बाली संरक्षण योजना र रणनीतिको विश्लेषण।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको बाली रोग र कीटको विश्लेषण। ${localizeNumber(totalCrops.toString(), "ne")} प्रकारका बालीमा देखिने प्रमुख रोग र कीटहरूको विस्तृत अध्ययन। सबैभन्दा प्रभावित बाली ${CROP_TYPES[mostAffectedCrop] || mostAffectedCrop} रहेको छ। पालिका स्तरीय बाली संरक्षण योजना र रणनीतिको विश्लेषण।`;
 
     const descriptionEN = `Analysis of crop diseases and pests in Khajura Rural Municipality. Detailed study of major diseases and pests affecting ${totalCrops} types of crops. Most affected crop is ${CROP_TYPES_EN[mostAffectedCrop] || mostAffectedCrop}. Municipality-wide crop protection planning and strategy analysis.`;
 
@@ -134,7 +134,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   } catch (error) {
     return {
-      title: "बाली रोग र कीटपतंग | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+      title: "बाली रोग र कीटपतंग | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description: "पालिका स्तरीय बाली रोग र कीटपतंगको विश्लेषण।",
     };
   }
@@ -230,7 +230,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
               src="/images/crop-diseases.svg"
               width={1200}
               height={400}
-              alt="बाली रोग र कीटपतंग - बुद्धशान्ति गाउँपालिका (Crop Diseases and Pests - Khajura Rural Municipality)"
+              alt="बाली रोग र कीटपतंग - केराबारी गाउँपालिका (Crop Diseases and Pests - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -238,21 +238,21 @@ export default async function MunicipalityWideCropDiseasesPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा बाली रोग र कीटपतंग
+              केराबारी गाउँपालिकामा बाली रोग र कीटपतंग
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              बाली रोग र कीटपतंग बुद्धशान्ति गाउँपालिकाको कृषि उत्पादनमा मुख्य
+              बाली रोग र कीटपतंग केराबारी गाउँपालिकाको कृषि उत्पादनमा मुख्य
               चुनौती हो। यस क्षेत्रमा धान, गहुँ, मकै, तरकारी र फलफूल लगायतका
               विभिन्न बालीहरूमा विभिन्न प्रकारका रोग र कीटपतंगहरूको समस्या
               देखिन्छ। यी समस्याहरूले कृषकहरूको उत्पादन र आम्दानीमा प्रत्यक्ष
               प्रभाव पारिरहेको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाको बाली रोग र कीट सम्बन्धी तथ्याङ्क अनुसार,
+              केराबारी गाउँपालिकाको बाली रोग र कीट सम्बन्धी तथ्याङ्क अनुसार,
               यस क्षेत्रमा कुल {localizeNumber(totalCrops.toString(), "ne")}{" "}
               प्रकारका बालीहरूमा
               {localizeNumber(totalIssues.toString(), "ne")} प्रकारका रोग र
@@ -266,7 +266,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
               प्रमुख बाली रोगहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा देखिने प्रमुख बाली रोगहरू निम्नानुसार
+              केराबारी गाउँपालिकामा देखिने प्रमुख बाली रोगहरू निम्नानुसार
               रहेका छन्:
             </p>
 
@@ -284,7 +284,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
               प्रमुख कीटपतंगहरू
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा देखिने प्रमुख कीटपतंगहरू निम्नानुसार
+              केराबारी गाउँपालिकामा देखिने प्रमुख कीटपतंगहरू निम्नानुसार
               रहेका छन्:
             </p>
 
@@ -331,7 +331,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
               बाली संरक्षण रणनीति
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा बाली रोग र कीटपतंगको प्रभावकारी
+              केराबारी गाउँपालिकामा बाली रोग र कीटपतंगको प्रभावकारी
               व्यवस्थापनका लागि समेकित बाली व्यवस्थापन (Integrated Pest
               Management) को अवधारणालाई अपनाउनु आवश्यक छ। यसमा जैविक, रासायनिक र
               कृषि पद्धतिगत विधिहरूको संयोजन गरिन्छ।
@@ -357,7 +357,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
             </h2>
 
             <p>
-              बुद्धशान्ति गाउँपालिकाको बाली रोग र कीटपतंगको अवस्थाको विश्लेषणबाट
+              केराबारी गाउँपालिकाको बाली रोग र कीटपतंगको अवस्थाको विश्लेषणबाट
               निम्न निष्कर्ष र सिफारिसहरू प्रस्तुत गर्न सकिन्छ:
             </p>
 
@@ -403,7 +403,7 @@ export default async function MunicipalityWideCropDiseasesPage() {
             </div>
 
             <p className="mt-6">
-              बुद्धशान्ति गाउँपालिकामा बाली रोग र कीटपतंगको प्रभावकारी
+              केराबारी गाउँपालिकामा बाली रोग र कीटपतंगको प्रभावकारी
               व्यवस्थापन मार्फत कृषि उत्पादकत्व वृद्धि र किसानको आम्दानी बढाउन
               सकिन्छ। यसका लागि स्थानीय सरकार, कृषि ज्ञान केन्द्र र किसानहरूको
               सक्रिय सहकार्य आवश्यक छ।

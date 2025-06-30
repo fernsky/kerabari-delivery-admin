@@ -44,7 +44,7 @@ export function Sidebar() {
                   : "translate-x-0 opacity-100",
               )}
             >
-              बुद्धशान्ति प्रोफाइल
+              केराबारी प्रोफाइल
             </h1>
           </Link>
         </Button>

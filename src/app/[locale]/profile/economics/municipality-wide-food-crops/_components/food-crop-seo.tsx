@@ -63,11 +63,11 @@ export default function FoodCropSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Food Crop Types in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Food Crop Types in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Food crop production and sales statistics of Khajura Rural Municipality with a total production of ${totalProduction.toFixed(2)} tonnes and sales of ${totalSales.toFixed(2)} tonnes (${((totalSales / totalProduction) * 100).toFixed(2)}% of production). The most common food crop is ${mostProducedCropEN} with ${mostProducedCrop?.production.toFixed(2)} tonnes (${mostProducedPercentage}%). Self-consumption represents ${selfConsumptionPercentage}% of total production. Total revenue from food crop sales is NPR ${totalRevenue.toLocaleString()}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Food crop production",
         "Food crop sales",
         "Paddy production",
