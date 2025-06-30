@@ -1,6 +1,10 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { localizeNumber } from "@/lib/utils/localize-number";
+
+// Dynamically import ApexCharts to avoid SSR issues
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 interface TemperatureHeatmapChartProps {
   heatmapData: Array<{
@@ -22,165 +26,183 @@ export default function TemperatureHeatmapChart({
   heatmapData,
   temperatureRange,
 }: TemperatureHeatmapChartProps) {
-  // Define temperature categories and colors
-  const temperatureCategories = {
-    very_cold: { name: "धेरै चिसो", color: "#1e3a8a", min: -Infinity, max: temperatureRange.mean - 2 },
-    cold: { name: "चिसो", color: "#3b82f6", min: temperatureRange.mean - 2, max: temperatureRange.mean - 1 },
-    normal: { name: "सामान्य", color: "#10b981", min: temperatureRange.mean - 1, max: temperatureRange.mean + 1 },
-    warm: { name: "तातो", color: "#f59e0b", min: temperatureRange.mean + 1, max: temperatureRange.mean + 2 },
-    very_warm: { name: "धेरै तातो", color: "#ef4444", min: temperatureRange.mean + 2, max: temperatureRange.mean + 3 },
-    hot: { name: "गर्मी", color: "#7c2d12", min: temperatureRange.mean + 3, max: Infinity },
-  };
-
-  // Get unique years and months
-  const years = Array.from(new Set(heatmapData.map(d => d.year))).sort();
-  const months = Array.from(new Set(heatmapData.map(d => d.month))).sort();
-
-  // Create month names
   const monthNames = [
-    "जनवरी", "फेब्रुअरी", "मार्च", "अप्रिल", "मे", "जुन",
-    "जुलाई", "अगस्ट", "सेप्टेम्बर", "अक्टोबर", "नोभेम्बर", "डिसेम्बर"
+    "जन", "फेब", "मार्च", "अप्रिल", "मे", "जुन",
+    "जुलाई", "अग", "सेप्ट", "अक्टो", "नोभ", "डिसे"
   ];
 
-  // Get category color
-  const getCategoryColor = (category: string) => {
-    return temperatureCategories[category as keyof typeof temperatureCategories]?.color || "#6b7280";
-  };
+  const years = Array.from(new Set(heatmapData.map(d => d.year))).sort();
+  
+  // Prepare data for ApexCharts heatmap
+  const series = years.map(year => ({
+    name: year.toString(),
+    data: monthNames.map((month, monthIndex) => {
+      const data = heatmapData.find(d => d.year === year && d.month === monthIndex + 1);
+      return {
+        x: month,
+        y: data ? data.temperature : null,
+        value: data ? data.temperature : null,
+        anomaly: data ? data.anomaly : null,
+        category: data ? data.category : null
+      };
+    })
+  }));
 
-  // Get category name
-  const getCategoryName = (category: string) => {
-    return temperatureCategories[category as keyof typeof temperatureCategories]?.name || "अज्ञात";
+  const options = {
+    chart: {
+      type: 'heatmap' as const,
+      height: 400,
+      toolbar: {
+        show: false
+      }
+    },
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontSize: '10px',
+        colors: ['#fff']
+      },
+      formatter: function(val: any, opts: any) {
+        if (opts.dataPointIndex !== undefined && opts.seriesIndex !== undefined) {
+          const dataPoint = series[opts.seriesIndex]?.data[opts.dataPointIndex];
+          return dataPoint?.y ? localizeNumber(dataPoint.y.toFixed(0), "ne") : '';
+        }
+        return '';
+      }
+    },
+    colors: ['#1e3a8a', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#7c2d12'],
+    xaxis: {
+      categories: monthNames,
+      labels: {
+        style: {
+          fontSize: '12px'
+        }
+      }
+    },
+    yaxis: {
+      labels: {
+        style: {
+          fontSize: '12px'
+        }
+      }
+    },
+    plotOptions: {
+      heatmap: {
+        shadeIntensity: 0.5,
+        radius: 0,
+        enableShades: true,
+        colorScale: {
+          ranges: [
+            {
+              from: temperatureRange.min,
+              to: temperatureRange.mean - 2,
+              color: '#1e3a8a',
+              name: 'धेरै चिसो'
+            },
+            {
+              from: temperatureRange.mean - 2,
+              to: temperatureRange.mean - 1,
+              color: '#3b82f6',
+              name: 'चिसो'
+            },
+            {
+              from: temperatureRange.mean - 1,
+              to: temperatureRange.mean + 1,
+              color: '#10b981',
+              name: 'सामान्य'
+            },
+            {
+              from: temperatureRange.mean + 1,
+              to: temperatureRange.mean + 2,
+              color: '#f59e0b',
+              name: 'तातो'
+            },
+            {
+              from: temperatureRange.mean + 2,
+              to: temperatureRange.mean + 3,
+              color: '#ef4444',
+              name: 'धेरै तातो'
+            },
+            {
+              from: temperatureRange.mean + 3,
+              to: temperatureRange.max,
+              color: '#7c2d12',
+              name: 'गर्मी'
+            }
+          ]
+        }
+      }
+    },
+    tooltip: {
+      custom: function({ series, seriesIndex, dataPointIndex, w }: any) {
+        // Safety checks for undefined values
+        if (seriesIndex === undefined || dataPointIndex === undefined) {
+          return '';
+        }
+        
+        const seriesData = series[seriesIndex];
+        if (!seriesData || !seriesData.data) {
+          return '';
+        }
+        
+        const dataPoint = seriesData.data[dataPointIndex];
+        if (!dataPoint || dataPoint.y === null || dataPoint.y === undefined) {
+          return '';
+        }
+        
+        const year = years[seriesIndex];
+        const month = monthNames[dataPointIndex];
+        
+        return `
+          <div class="bg-background p-3 border shadow-sm rounded-md">
+            <p class="font-medium">${year} ${month}</p>
+            <p class="text-sm">तापक्रम: ${localizeNumber(dataPoint.y.toFixed(1), "ne")}°C</p>
+            ${dataPoint.anomaly !== null && dataPoint.anomaly !== undefined ? 
+              `<p class="text-sm">विचलन: ${dataPoint.anomaly > 0 ? '+' : ''}${localizeNumber(dataPoint.anomaly.toFixed(1), "ne")}°C</p>` : ''}
+          </div>
+        `;
+      }
+    },
+    legend: {
+      show: true,
+      position: 'bottom' as const,
+      labels: {
+        colors: ['#666']
+      }
+    }
   };
-
-  // Calculate statistics
-  const categoryStats = Object.keys(temperatureCategories).reduce((acc, category) => {
-    const count = heatmapData.filter(d => d.category === category).length;
-    const percentage = (count / heatmapData.length) * 100;
-    acc[category] = { count, percentage };
-    return acc;
-  }, {} as Record<string, { count: number; percentage: number }>);
 
   return (
-    <div className="space-y-6">
-      {/* Heatmap */}
+    <div className="space-y-4">
       <div className="border rounded-lg p-4 bg-card">
-        <h3 className="text-lg font-medium mb-4">तापक्रम हिटम्याप विश्लेषण</h3>
+        <h3 className="text-lg font-medium mb-4">तापक्रम हिटम्याप</h3>
         
-        {/* Year-Month Heatmap */}
-        <div className="overflow-x-auto">
-          <div className="min-w-max">
-            {/* Header with month names */}
-            <div className="grid grid-cols-13 gap-1 mb-2">
-              <div className="w-20 h-8"></div> {/* Empty corner */}
-              {monthNames.map((month, index) => (
-                <div key={index} className="w-20 h-8 flex items-center justify-center text-xs font-medium text-center">
-                  {month}
-                </div>
-              ))}
-            </div>
-
-            {/* Heatmap rows */}
-            {years.map((year) => (
-              <div key={year} className="grid grid-cols-13 gap-1 mb-1">
-                <div className="w-20 h-8 flex items-center justify-center text-sm font-medium">
-                  {year}
-                </div>
-                {months.map((month) => {
-                  const data = heatmapData.find(d => d.year === year && d.month === month);
-                  if (!data) {
-                    return <div key={month} className="w-20 h-8 bg-gray-100 border border-gray-200"></div>;
-                  }
-                  
-                  return (
-                    <div
-                      key={month}
-                      className="w-20 h-8 border border-gray-200 flex items-center justify-center text-xs font-medium text-white cursor-pointer hover:opacity-80 transition-opacity"
-                      style={{ backgroundColor: getCategoryColor(data.category) }}
-                      title={`${year} ${monthNames[month - 1]}: ${localizeNumber(data.temperature.toFixed(1), "ne")}°C (${getCategoryName(data.category)})`}
-                    >
-                      {localizeNumber(data.temperature.toFixed(0), "ne")}
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Legend */}
-        <div className="mt-4">
-          <h4 className="text-sm font-medium mb-2">तापक्रम श्रेणीहरू</h4>
-          <div className="flex flex-wrap gap-4">
-            {Object.entries(temperatureCategories).map(([key, category]) => (
-              <div key={key} className="flex items-center gap-2">
-                <div
-                  className="w-4 h-4 rounded border border-gray-300"
-                  style={{ backgroundColor: category.color }}
-                ></div>
-                <span className="text-sm">{category.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  ({localizeNumber(categoryStats[key]?.percentage.toFixed(1) || "0", "ne")}%)
-                </span>
-              </div>
-            ))}
-          </div>
+        <div className="w-full">
+          <Chart
+            options={options}
+            series={series}
+            type="heatmap"
+            height={400}
+          />
         </div>
       </div>
 
-      {/* Temperature Category Distribution */}
-      <div className="border rounded-lg p-4 bg-card">
-        <h3 className="text-lg font-medium mb-4">तापक्रम श्रेणी वितरण</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Object.entries(categoryStats).map(([category, stats]) => (
-            <div key={category} className="bg-muted/50 p-4 rounded-lg">
-              <div className="flex items-center gap-3 mb-2">
-                <div
-                  className="w-4 h-4 rounded"
-                  style={{ backgroundColor: getCategoryColor(category) }}
-                ></div>
-                <h4 className="font-medium">{getCategoryName(category)}</h4>
-              </div>
-              <div className="space-y-1">
-                <div className="flex justify-between text-sm">
-                  <span>महिना:</span>
-                  <span className="font-medium">{localizeNumber(stats.count.toString(), "ne")}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>प्रतिशत:</span>
-                  <span className="font-medium">{localizeNumber(stats.percentage.toFixed(1), "ne")}%</span>
-                </div>
-                <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${stats.percentage}%`,
-                      backgroundColor: getCategoryColor(category),
-                    }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Temperature Range Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-muted/50 p-4 rounded-lg text-center">
-          <h4 className="text-sm font-medium text-muted-foreground">न्यूनतम तापक्रम</h4>
-          <p className="text-2xl font-bold text-blue-600">
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-muted/50 p-3 rounded-lg text-center">
+          <p className="text-sm text-muted-foreground">न्यूनतम</p>
+          <p className="text-lg font-bold text-blue-600">
             {localizeNumber(temperatureRange.min.toFixed(1), "ne")}°C
           </p>
         </div>
-        <div className="bg-muted/50 p-4 rounded-lg text-center">
-          <h4 className="text-sm font-medium text-muted-foreground">औसत तापक्रम</h4>
-          <p className="text-2xl font-bold">
+        <div className="bg-muted/50 p-3 rounded-lg text-center">
+          <p className="text-sm text-muted-foreground">औसत</p>
+          <p className="text-lg font-bold">
             {localizeNumber(temperatureRange.mean.toFixed(1), "ne")}°C
           </p>
         </div>
-        <div className="bg-muted/50 p-4 rounded-lg text-center">
-          <h4 className="text-sm font-medium text-muted-foreground">अधिकतम तापक्रम</h4>
-          <p className="text-2xl font-bold text-red-600">
+        <div className="bg-muted/50 p-3 rounded-lg text-center">
+          <p className="text-sm text-muted-foreground">अधिकतम</p>
+          <p className="text-lg font-bold text-red-600">
             {localizeNumber(temperatureRange.max.toFixed(1), "ne")}°C
           </p>
         </div>
