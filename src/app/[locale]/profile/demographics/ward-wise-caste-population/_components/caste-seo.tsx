@@ -87,11 +87,11 @@ export default function CasteSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Caste Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Caste Demographics of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Caste distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people. Main castes include ${topCastesDescription}.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Caste demographics",
         "Ethnicity statistics",
         "Ward-wise caste data",

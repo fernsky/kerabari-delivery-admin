@@ -198,7 +198,7 @@ class EconomicallyActiveProcessor(BaseDemographicsProcessor, SimpleChartProcesso
 
         # Overall summary
         analysis_parts.append(
-            f"बुद्धशान्ति गाउँपालिकामा कुल {format_nepali_number(total_pop)} जना आर्थिक रूपले सक्रिय जनसंख्या रहेको छ।"
+            f"केराबारी गाउँपालिकामा कुल {format_nepali_number(total_pop)} जना आर्थिक रूपले सक्रिय जनसंख्या रहेको छ।"
         )
 
         # Age group analysis

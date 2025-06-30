@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const religionData =
       await api.profile.demographics.wardWiseReligionPopulation.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका";
+    const municipalityName = "केराबारी गाउँपालिका";
 
     const totalPopulation = religionData.reduce(
       (sum, item) => sum + (item.population || 0),
@@ -70,16 +70,16 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका धार्मिक जनसंख्या",
-      "बुद्धशान्ति धार्मिक विविधता",
-      `बुद्धशान्ति ${RELIGION_NAMES_NP[topReligions[0] as string]} जनसंख्या`,
+      "केराबारी गाउँपालिका धार्मिक जनसंख्या",
+      "केराबारी धार्मिक विविधता",
+      `केराबारी ${RELIGION_NAMES_NP[topReligions[0] as string]} जनसंख्या`,
       ...topReligions.map(
-        (r) => `${RELIGION_NAMES_NP[r as string]} धर्मावलम्बी बुद्धशान्ति`,
+        (r) => `${RELIGION_NAMES_NP[r as string]} धर्मावलम्बी केराबारी`,
       ),
       "वडा अनुसार धार्मिक जनसंख्या",
       "धार्मिक विविधता तथ्याङ्क",
-      "धार्मिक जनगणना बुद्धशान्ति",
-      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      "धार्मिक जनगणना केराबारी",
+      `केराबारी कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -95,12 +95,12 @@ export async function generateMetadata(): Promise<Metadata> {
       `Khajura total population ${totalPopulation}`,
     ];
 
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार धार्मिक जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${RELIGION_NAMES_NP[topReligions[0] as string]} (${localizeNumber(religionCounts[topReligions[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${RELIGION_NAMES_NP[topReligions[1] as string]} (${localizeNumber(religionCounts[topReligions[1]].toString(), "ne")}) र ${RELIGION_NAMES_NP[topReligions[2] as string]} (${localizeNumber(religionCounts[topReligions[2]].toString(), "ne")})। विभिन्न धर्मावलम्बीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार धार्मिक जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${RELIGION_NAMES_NP[topReligions[0] as string]} (${localizeNumber(religionCounts[topReligions[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${RELIGION_NAMES_NP[topReligions[1] as string]} (${localizeNumber(religionCounts[topReligions[1]].toString(), "ne")}) र ${RELIGION_NAMES_NP[topReligions[2] as string]} (${localizeNumber(religionCounts[topReligions[2]].toString(), "ne")})। विभिन्न धर्मावलम्बीहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise religious population distribution, trends and analysis for Khajura Rural Municipality. Out of a total population of ${totalPopulation}, ${RELIGION_NAMES_EN[topReligions[0] as string]} (${religionCounts[topReligions[0]]}) is the largest group, followed by ${RELIGION_NAMES_EN[topReligions[1] as string]} (${religionCounts[topReligions[1]]}) and ${RELIGION_NAMES_EN[topReligions[2] as string]} (${religionCounts[topReligions[2]]}). Detailed statistics and visualizations of various religious communities.`;
 
     return {
-      title: `बुद्धशान्ति गाउँपालिका | धर्म अनुसार जनसंख्या | डिजिटल प्रोफाइल`,
+      title: `केराबारी गाउँपालिका | धर्म अनुसार जनसंख्या | डिजिटल प्रोफाइल`,
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -111,24 +111,24 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `बुद्धशान्ति गाउँपालिका | धर्म अनुसार जनसंख्या`,
+        title: `केराबारी गाउँपालिका | धर्म अनुसार जनसंख्या`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
         alternateLocale: "en_US",
-        siteName: `बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल`,
+        siteName: `केराबारी गाउँपालिका डिजिटल प्रोफाइल`,
       },
       twitter: {
         card: "summary_large_image",
-        title: `बुद्धशान्ति गाउँपालिका | धर्म अनुसार जनसंख्या`,
+        title: `केराबारी गाउँपालिका | धर्म अनुसार जनसंख्या`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     return {
-      title: "बुद्धशान्ति गाउँपालिका | धर्म अनुसार जनसंख्या | डिजिटल प्रोफाइल",
+      title: "केराबारी गाउँपालिका | धर्म अनुसार जनसंख्या | डिजिटल प्रोफाइल",
       description:
-        "बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको धार्मिक विवरण, धर्मावलम्बीहरूको संख्या र धार्मिक विविधताको विश्लेषण।",
+        "केराबारी गाउँपालिकाको प्रत्येक वडाको धार्मिक विवरण, धर्मावलम्बीहरूको संख्या र धार्मिक विविधताको विश्लेषण।",
     };
   }
 }
@@ -270,7 +270,7 @@ export default async function WardWiseReligionPopulationPage() {
               src="/images/religion-diversity.svg"
               width={1200}
               height={400}
-              alt="धार्मिक विविधता - बुद्धशान्ति गाउँपालिका (Religious Diversity - Khajura Rural Municipality)"
+              alt="धार्मिक विविधता - केराबारी गाउँपालिका (Religious Diversity - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -278,21 +278,21 @@ export default async function WardWiseReligionPopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिका | धर्म अनुसार जनसंख्या विश्लेषण
+              केराबारी गाउँपालिका | धर्म अनुसार जनसंख्या विश्लेषण
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा अवलम्बन गरिने
+              यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा अवलम्बन गरिने
               धर्महरू र धर्मावलम्बीहरूको जनसंख्या सम्बन्धी विस्तृत तथ्याङ्क
-              प्रस्तुत गरिएको छ। यो तथ्याङ्कले बुद्धशान्ति गाउँपालिकाको धार्मिक
+              प्रस्तुत गरिएको छ। यो तथ्याङ्कले केराबारी गाउँपालिकाको धार्मिक
               विविधता, सांस्कृतिक पहिचान र स्थानीय समुदायको धार्मिक स्वरूपलाई
               प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिका विभिन्न धर्मावलम्बी समुदायहरूको सद्भाव र
+              केराबारी गाउँपालिका विभिन्न धर्मावलम्बी समुदायहरूको सद्भाव र
               सहिष्णुताको नमूना हो, र यस पालिकामा पनि विविध धार्मिक समुदायहरूको
               बसोबास रहेको छ। कुल जनसंख्या{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")} मध्ये{" "}
@@ -304,7 +304,7 @@ export default async function WardWiseReligionPopulationPage() {
                 ).toFixed(1),
                 "ne",
               )}
-              % रहेका छन्। यस तथ्याङ्कले बुद्धशान्ति गाउँपालिकाको धार्मिक नीति,
+              % रहेका छन्। यस तथ्याङ्कले केराबारी गाउँपालिकाको धार्मिक नीति,
               सांस्कृतिक संरक्षण र सामाजिक समानतामा सहयोग पुर्‍याउँछ।
             </p>
 
@@ -312,10 +312,10 @@ export default async function WardWiseReligionPopulationPage() {
               id="religion-distribution"
               className="scroll-m-20 border-b pb-2"
             >
-              बुद्धशान्ति गाउँपालिकामा धर्म अनुसार जनसंख्या
+              केराबारी गाउँपालिकामा धर्म अनुसार जनसंख्या
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न धर्मावलम्बीहरूको कुल जनसंख्या
+              केराबारी गाउँपालिकामा विभिन्न धर्मावलम्बीहरूको कुल जनसंख्या
               निम्नानुसार छ:
             </p>
           </div>
@@ -333,10 +333,10 @@ export default async function WardWiseReligionPopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none mt-8">
             <h2 id="major-religions" className="scroll-m-20 border-b pb-2">
-              बुद्धशान्ति गाउँपालिकाको प्रमुख धर्महरूको विश्लेषण
+              केराबारी गाउँपालिकाको प्रमुख धर्महरूको विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा निम्न धर्महरू प्रमुख रूपमा अवलम्बन
+              केराबारी गाउँपालिकामा निम्न धर्महरू प्रमुख रूपमा अवलम्बन
               गरिन्छन्। यी धर्महरूमध्ये{" "}
               {RELIGION_NAMES[overallSummary[0]?.religion] || "हिन्दू"}
               सबैभन्दा धेरै व्यक्तिहरूले मान्ने धर्म हो, जसलाई कुल जनसंख्याको{" "}

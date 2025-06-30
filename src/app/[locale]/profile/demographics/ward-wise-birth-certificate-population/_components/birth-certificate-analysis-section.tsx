@@ -82,7 +82,7 @@ export default function BirthCertificateAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-population-under-5",
@@ -327,7 +327,7 @@ export default function BirthCertificateAnalysisSection({
               जन्मदर्ता पहुँच सुधार अवसरहरू
             </h5>
             <p className="mt-2 text-sm text-muted-foreground">
-              बुद्धशान्ति गाउँपालिकामा पाँच वर्षमुनिका जम्मा{" "}
+              केराबारी गाउँपालिकामा पाँच वर्षमुनिका जम्मा{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")}{" "}
               बालबालिकामध्ये
               {localizeNumber(totalWithCertificate.toLocaleString(), "ne")} (

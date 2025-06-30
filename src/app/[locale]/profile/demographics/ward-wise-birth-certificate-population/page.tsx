@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const birthCertificateData =
       await api.profile.demographics.wardWiseBirthCertificatePopulation.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Try to get summary data
     let totalWithCertificate = 0;
@@ -81,13 +81,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका जन्मदर्ता",
+      "केराबारी गाउँपालिका जन्मदर्ता",
       "पाँच वर्षमुनिका बालबालिका जन्मदर्ता",
       "वडा अनुसार जन्मदर्ता विवरण",
       "बालबालिका जन्मदर्ता विश्लेषण",
       "जन्मदर्ता प्रमाणपत्र धारक बालबालिका",
-      `बुद्धशान्ति जन्मदर्ताको स्थिति: जन्मदर्ता भएका ${localizeNumber(totalWithCertificate.toString(), "ne")}, नभएका ${localizeNumber(totalWithoutCertificate.toString(), "ne")}`,
-      `बुद्धशान्ति पाँच वर्षमुनिका कुल बालबालिका संख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      `केराबारी जन्मदर्ताको स्थिति: जन्मदर्ता भएका ${localizeNumber(totalWithCertificate.toString(), "ne")}, नभएका ${localizeNumber(totalWithoutCertificate.toString(), "ne")}`,
+      `केराबारी पाँच वर्षमुनिका कुल बालबालिका संख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -101,7 +101,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता प्रमाणपत्र वितरण र विश्लेषण। कुल ${localizeNumber(totalPopulation.toString(), "ne")} बालबालिकामध्ये ${localizeNumber(totalWithCertificate.toString(), "ne")} जनासँग जन्मदर्ता प्रमाणपत्र छ भने ${localizeNumber(totalWithoutCertificate.toString(), "ne")} जनासँग छैन।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता प्रमाणपत्र वितरण र विश्लेषण। कुल ${localizeNumber(totalPopulation.toString(), "ne")} बालबालिकामध्ये ${localizeNumber(totalWithCertificate.toString(), "ne")} जनासँग जन्मदर्ता प्रमाणपत्र छ भने ${localizeNumber(totalWithoutCertificate.toString(), "ne")} जनासँग छैन।`;
 
     const descriptionEN = `Ward-wise distribution and analysis of birth certificate holders among children under five in Khajura Rural Municipality. Out of ${totalPopulation} total children, ${totalWithCertificate} have birth certificates and ${totalWithoutCertificate} do not have birth certificates.`;
 
@@ -135,7 +135,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "पाँच वर्षमुनिका बालबालिका जन्मदर्ता | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "पाँच वर्षमुनिका बालबालिका जन्मदर्ता | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "वडा अनुसार पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता प्रमाणपत्र वितरण र विश्लेषण।",
     };
@@ -301,7 +301,7 @@ export default async function WardWiseBirthCertificatePopulationPage() {
               src="/images/birth-certificate.svg"
               width={1200}
               height={400}
-              alt="पाँच वर्षमुनिका बालबालिका जन्मदर्ता - बुद्धशान्ति गाउँपालिका (Birth Certificates for Children Under Five - Khajura Rural Municipality)"
+              alt="पाँच वर्षमुनिका बालबालिका जन्मदर्ता - केराबारी गाउँपालिका (Birth Certificates for Children Under Five - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -309,7 +309,7 @@ export default async function WardWiseBirthCertificatePopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता
+              केराबारी गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
@@ -318,11 +318,11 @@ export default async function WardWiseBirthCertificatePopulationPage() {
             <p>
               जन्मदर्ता प्रमाणपत्र हरेक नागरिकको अधिकार हो र यसले बालबालिकाको
               पहिचान, शिक्षा, स्वास्थ्य सेवा लगायत विभिन्न सरकारी सेवाहरूमा
-              पहुँच सुनिश्चित गर्दछ। यस खण्डमा बुद्धशान्ति गाउँपालिकामा रहेका
+              पहुँच सुनिश्चित गर्दछ। यस खण्डमा केराबारी गाउँपालिकामा रहेका
               पाँच वर्षमुनिका बालबालिकाहरूको जन्मदर्ता स्थिति प्रस्तुत गरिएको छ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकाभरि पाँच वर्षमुनिका बालबालिकाहरूको कुल
+              केराबारी गाउँपालिकाभरि पाँच वर्षमुनिका बालबालिकाहरूको कुल
               संख्या
               {localizeNumber(totalPopulation.toLocaleString(), "ne")} रहेको छ।
               यसमध्ये
@@ -349,7 +349,7 @@ export default async function WardWiseBirthCertificatePopulationPage() {
               पाँच वर्षमुनिका बालबालिका जन्मदर्ता स्थिति
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाको जन्मदर्ता
+              केराबारी गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाको जन्मदर्ता
               स्थिति निम्नानुसार रहेको छ:
             </p>
           </div>
@@ -376,7 +376,7 @@ export default async function WardWiseBirthCertificatePopulationPage() {
               जन्मदर्ता विश्लेषण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाको जन्मदर्ता
+              केराबारी गाउँपालिकामा पाँच वर्षमुनिका बालबालिकाको जन्मदर्ता
               विश्लेषण गर्दा, सबैभन्दा बढी जन्मदर्ता प्रमाणपत्र धारकहरू वडा नं{" "}
               {localizeNumber(highestWard.wardNumber.toString(), "ne")} मा
               {localizeNumber(

@@ -51,11 +51,11 @@ export default function ReligionSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Religious Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Religious Demographics of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Religious population distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Religious demographics",
         "Ward-wise religion data",
         "Nepal census",

@@ -24,7 +24,7 @@ class HealthCheckView(APIView):
             {
                 "status": "healthy",
                 "timestamp": timezone.now(),
-                "municipality": "बुद्धशान्ति गाउँपालिका",
+                "municipality": "केराबारी गाउँपालिका",
                 "municipality_english": "buddhashantiRural Municipality",
                 "system": "Digital Profile Report System",
                 "version": "1.0.0",
@@ -48,7 +48,7 @@ class SystemInfoView(APIView):
                 "time_zone": settings.TIME_ZONE,
                 "language_code": settings.LANGUAGE_CODE,
                 "municipality": {
-                    "name_nepali": "बुद्धशान्ति गाउँपालिका",
+                    "name_nepali": "केराबारी गाउँपालिका",
                     "name_english": "buddhashantiRural Municipality",
                     "district": "कपिलवस्तु",
                     "district_english": "Kapilvastu",
@@ -72,7 +72,7 @@ class MunicipalityInfoView(APIView):
         return Response(
             {
                 "municipality": {
-                    "name_nepali": "बुद्धशान्ति गाउँपालिका",
+                    "name_nepali": "केराबारी गाउँपालिका",
                     "name_english": "buddhashantiRural Municipality",
                     "district_nepali": "कपिलवस्तु",
                     "district_english": "Kapilvastu",
@@ -84,7 +84,7 @@ class MunicipalityInfoView(APIView):
                     "contact": {
                         "phone": "+977-76-550123",
                         "email": "info@buddhashantimun.gov.np",
-                        "address_nepali": "बुद्धशान्ति गाउँपालिका, कपिलवस्तु",
+                        "address_nepali": "केराबारी गाउँपालिका, कपिलवस्तु",
                         "address_english": "buddhashantiRural Municipality, Kapilvastu",
                     },
                     "coordinates": {"latitude": 27.5833, "longitude": 82.9167},

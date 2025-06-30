@@ -135,11 +135,11 @@ export default function DeceasedPopulationSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Age and Gender Wise Deceased Population in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Age and Gender Wise Deceased Population in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Mortality data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total deceased population of ${totalDeceasedPopulation.toLocaleString()}. The most affected age group is ${AGE_GROUP_NAMES_EN[mostAffectedAgeGroupKey] || mostAffectedAgeGroupKey} with ${mostAffectedAgeGroupTotal.toLocaleString()} deceased (${mostAffectedAgeGroupPercentage}%), and the most affected ward is Ward ${mostAffectedWardNumber} with ${mostAffectedWardTotal.toLocaleString()} deceased (${mostAffectedWardPercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Mortality statistics",
         "Age-gender wise mortality",
         "Ward-wise mortality data",

@@ -203,7 +203,7 @@ class PublicationSettings(models.Model):
     Global settings for report publication
     """
 
-    municipality_name = models.CharField(max_length=200, default="बुद्धशान्ति गाउँपालिका")
+    municipality_name = models.CharField(max_length=200, default="केराबारी गाउँपालिका")
     municipality_name_english = models.CharField(
         max_length=200, default="buddhashanti Rural Municipality"
     )

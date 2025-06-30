@@ -38,7 +38,7 @@ export default function WardWiseSEO({
     // Convert ward stats to structured data format
     const wardObservations = processedWardData.map((ward) => ({
       "@type": "Observation",
-      name: `बुद्धशान्ति गाउँपालिका वडा ${ward.wardNumber} demographics`,
+      name: `केराबारी गाउँपालिका वडा ${ward.wardNumber} demographics`,
       observationDate: new Date().toISOString().split("T")[0],
       measuredProperty: [
         {
@@ -76,7 +76,7 @@ export default function WardWiseSEO({
           value: ward.sexRatio,
         },
       ],
-      description: `बुद्धशान्ति गाउँपालिका वडा ${localizeNumber(
+      description: `केराबारी गाउँपालिका वडा ${localizeNumber(
         ward.wardNumber,
         "ne",
       )} मा जनसंख्या ${localizeNumber(
@@ -97,8 +97,8 @@ export default function WardWiseSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "बुद्धशान्ति गाउँपालिका - वडागत जनसांख्यिकी तथ्याङ्क",
-      description: `बुद्धशान्ति गाउँपालिकाको ${localizeNumber(
+      name: "केराबारी गाउँपालिका - वडागत जनसांख्यिकी तथ्याङ्क",
+      description: `केराबारी गाउँपालिकाको ${localizeNumber(
         processedWardData.length,
         "ne",
       )} वडाहरूको जनसंख्या वितरण, जसमा कुल जनसंख्या ${localizeNumber(
@@ -109,20 +109,20 @@ export default function WardWiseSEO({
         "ne",
       )} घरधुरी रहेका छन्।`,
       keywords: [
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Khajura Rural Municipality",
         "वडागत जनसांख्यिकी",
-        "बुद्धशान्ति वडा जनसंख्या",
+        "केराबारी वडा जनसंख्या",
         "नेपाल जनगणना",
-        "बुद्धशान्ति जनसंख्या वितरण",
-        "बुद्धशान्ति लैङ्गिक अनुपात",
-        "बुद्धशान्ति घरधुरी तथ्याङ्क",
+        "केराबारी जनसंख्या वितरण",
+        "केराबारी लैङ्गिक अनुपात",
+        "केराबारी घरधुरी तथ्याङ्क",
         "झापा जिल्ला जनसंख्या",
       ],
       url: "https://digital.buddhashantimun.gov.np/profile/demographics/ward-wise-summary",
       creator: {
         "@type": "Organization",
-        name: "बुद्धशान्ति गाउँपालिका",
+        name: "केराबारी गाउँपालिका",
         url: "https://digital.buddhashantimun.gov.np",
       },
       temporalCoverage: "2021/2023",

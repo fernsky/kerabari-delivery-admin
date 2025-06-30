@@ -57,11 +57,11 @@ export default function LanguageSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Linguistic Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Linguistic Demographics of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Mother tongue distribution data across ${wardIds.length} wards of Khajura Rural Municipality with a total population of ${totalPopulation.toLocaleString()} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Linguistic demographics",
         "Mother tongue statistics",
         "Ward-wise language data",

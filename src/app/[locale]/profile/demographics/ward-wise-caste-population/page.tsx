@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const casteData =
       await api.profile.demographics.wardWiseCastePopulation.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = casteData.reduce(
@@ -118,14 +118,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data using localized numbers
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका जातिगत जनसंख्या",
-      "बुद्धशान्ति जातिगत विविधता",
-      `बुद्धशान्ति ${CASTE_NAMES_NP[topCastes[0]]} जनसंख्या`,
-      ...topCastes.map((c) => `${CASTE_NAMES_NP[c]} जातिगत विवरण बुद्धशान्ति`),
+      "केराबारी गाउँपालिका जातिगत जनसंख्या",
+      "केराबारी जातिगत विविधता",
+      `केराबारी ${CASTE_NAMES_NP[topCastes[0]]} जनसंख्या`,
+      ...topCastes.map((c) => `${CASTE_NAMES_NP[c]} जातिगत विवरण केराबारी`),
       "वडा अनुसार जातिगत जनसंख्या",
       "जातिगत विविधता तथ्याङ्क",
-      "जातिगत जनगणना बुद्धशान्ति",
-      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      "जातिगत जनगणना केराबारी",
+      `केराबारी कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -140,12 +140,12 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data using localized numbers
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा अनुसार जातिगत जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${CASTE_NAMES_NP[topCastes[0]]} (${localizeNumber(casteCounts[topCastes[0]].toString(), "ne")}) सबैभन्दा ठूलो जातिगत समूह हो, त्यसपछि ${CASTE_NAMES_NP[topCastes[1]]} (${localizeNumber(casteCounts[topCastes[1]].toString(), "ne")}) र ${CASTE_NAMES_NP[topCastes[2]]} (${localizeNumber(casteCounts[topCastes[2]].toString(), "ne")})। विभिन्न जातिहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा अनुसार जातिगत जनसंख्या वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${CASTE_NAMES_NP[topCastes[0]]} (${localizeNumber(casteCounts[topCastes[0]].toString(), "ne")}) सबैभन्दा ठूलो जातिगत समूह हो, त्यसपछि ${CASTE_NAMES_NP[topCastes[1]]} (${localizeNumber(casteCounts[topCastes[1]].toString(), "ne")}) र ${CASTE_NAMES_NP[topCastes[2]]} (${localizeNumber(casteCounts[topCastes[2]].toString(), "ne")})। विभिन्न जातिहरूको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise caste population distribution, trends and analysis for Khajura Rural Municipality. Out of a total population of ${totalPopulation}, ${CASTE_NAMES_EN[topCastes[0]]} (${casteCounts[topCastes[0]]}) is the largest caste group, followed by ${CASTE_NAMES_EN[topCastes[1]]} (${casteCounts[topCastes[1]]}) and ${CASTE_NAMES_EN[topCastes[2]]} (${casteCounts[topCastes[2]]})। Detailed statistics and visualizations of various castes.`;
 
     return {
-      title: "बुद्धशान्ति गाउँपालिका | जाति अनुसार जनसंख्या | डिजिटल प्रोफाइल",
+      title: "केराबारी गाउँपालिका | जाति अनुसार जनसंख्या | डिजिटल प्रोफाइल",
       description: descriptionNP,
       keywords: [...keywordsNP, ...keywordsEN],
       alternates: {
@@ -156,25 +156,25 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: `बुद्धशान्ति गाउँपालिका | जाति अनुसार जनसंख्या`,
+        title: `केराबारी गाउँपालिका | जाति अनुसार जनसंख्या`,
         description: descriptionNP,
         type: "article",
         locale: "ne_NP",
         alternateLocale: "en_US",
-        siteName: `बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल`,
+        siteName: `केराबारी गाउँपालिका डिजिटल प्रोफाइल`,
       },
       twitter: {
         card: "summary_large_image",
-        title: `बुद्धशान्ति गाउँपालिका | जाति अनुसार जनसंख्या`,
+        title: `केराबारी गाउँपालिका | जाति अनुसार जनसंख्या`,
         description: descriptionNP,
       },
     };
   } catch (error) {
     // Fallback metadata if data fetching fails
     return {
-      title: "बुद्धशान्ति गाउँपालिका | जाति अनुसार जनसंख्या | डिजिटल प्रोफाइल",
+      title: "केराबारी गाउँपालिका | जाति अनुसार जनसंख्या | डिजिटल प्रोफाइल",
       description:
-        "बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको जातिगत विवरण, जातिहरूको संख्या र जातिगत विविधताको विश्लेषण।",
+        "केराबारी गाउँपालिकाको प्रत्येक वडाको जातिगत विवरण, जातिहरूको संख्या र जातिगत विविधताको विश्लेषण।",
     };
   }
 }
@@ -336,7 +336,7 @@ export default async function WardWiseCastePopulationPage() {
               src="/images/caste-diversity.svg"
               width={1200}
               height={400}
-              alt="जातिगत विविधता - बुद्धशान्ति गाउँपालिका (Caste Diversity - Khajura Rural Municipality)"
+              alt="जातिगत विविधता - केराबारी गाउँपालिका (Caste Diversity - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -344,7 +344,7 @@ export default async function WardWiseCastePopulationPage() {
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              <span className="font-bold">बुद्धशान्ति गाउँपालिका</span> | जाति
+              <span className="font-bold">केराबारी गाउँपालिका</span> | जाति
               अनुसार जनसंख्या विश्लेषण
             </h1>
 
@@ -352,14 +352,14 @@ export default async function WardWiseCastePopulationPage() {
               परिचय
             </h2>
             <p>
-              यस खण्डमा <strong>बुद्धशान्ति गाउँपालिका</strong>को विभिन्न
+              यस खण्डमा <strong>केराबारी गाउँपालिका</strong>को विभिन्न
               वडाहरूमा बसोबास गर्ने विभिन्न जातिहरूको जनसंख्या सम्बन्धी विस्तृत
               तथ्याङ्क प्रस्तुत गरिएको छ। यो तथ्याङ्कले जातिगत विविधता, सामाजिक
               संरचना र स्थानीय समुदायको जातिगत स्वरूपलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
               नेपाल विभिन्न जातजाति र समुदायहरूको सद्भाव र सहिष्णुताको देश हो, र
-              <strong>बुद्धशान्ति गाउँपालिका</strong>मा पनि विभिन्न जातजातिहरूको
+              <strong>केराबारी गाउँपालिका</strong>मा पनि विभिन्न जातजातिहरूको
               बसोबास रहेको छ। कुल जनसंख्या{" "}
               {localizeNumber(totalPopulation.toLocaleString(), "ne")} मध्ये{" "}
               {overallSummary[0]?.casteTypeDisplay || ""} जाति{" "}
@@ -378,7 +378,7 @@ export default async function WardWiseCastePopulationPage() {
               जाति अनुसार जनसंख्या
             </h2>
             <p>
-              <strong>बुद्धशान्ति गाउँपालिका</strong>मा विभिन्न जातिहरूको कुल
+              <strong>केराबारी गाउँपालिका</strong>मा विभिन्न जातिहरूको कुल
               जनसंख्या वितरण निम्नानुसार छ:
             </p>
           </div>
@@ -400,7 +400,7 @@ export default async function WardWiseCastePopulationPage() {
               प्रमुख जातिहरूको विश्लेषण
             </h2>
             <p>
-              <strong>बुद्धशान्ति गाउँपालिका</strong>मा निम्न जातिहरू प्रमुख
+              <strong>केराबारी गाउँपालिका</strong>मा निम्न जातिहरू प्रमुख
               रूपमा बसोबास गर्छन्। यी जातिहरूमध्ये{" "}
               {overallSummary[0]?.casteTypeDisplay || ""}
               सबैभन्दा धेरै व्यक्तिहरू भएको जाति हो, जसमा कुल जनसंख्याको{" "}

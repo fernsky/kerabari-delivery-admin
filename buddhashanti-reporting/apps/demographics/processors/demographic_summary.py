@@ -70,11 +70,11 @@ class DemographicSummaryProcessor(BaseDemographicsProcessor):
         content = f"""
         <div class="content-section demographic-summary-section">
             <div class="content-paragraph">
-                <p>बुद्धशान्ति गाउँपालिकाको जनसंख्या, विकासको साधन र साध्य दुवैको रुपमा रहेको छ । विकासका लागि आवश्यक अन्य आर्थिक, भौतिक साधनहरूको परिचालन मानव श्रोतबाट नै हुने भएकाले विकास योजना तर्जुमा गर्दा यसको बनावटको विविध पक्षहरूको अध्ययन र विश्लेषण हुनु आवश्यक हुन्छ । नेपालमा जनसंख्याको विविध पक्षको तथ्याङ्क प्रत्येक १० वर्षमा हुने राष्ट्रिय जनगणनाको साथै गाउँपालिका स्तरमा घरधुरी सर्वेक्षण मार्फत् समेत प्राप्त हुने गरेको छ । यहाँ गाउँपालिकाको घरधुरी तथ्याङ्क संकलन, २०८१ बाट प्राप्त नतिजाको आधारमा जनसंख्याका विविध पक्षहरूको विश्लेषण गरिएको छ ।</p>
+                <p>केराबारी गाउँपालिकाको जनसंख्या, विकासको साधन र साध्य दुवैको रुपमा रहेको छ । विकासका लागि आवश्यक अन्य आर्थिक, भौतिक साधनहरूको परिचालन मानव श्रोतबाट नै हुने भएकाले विकास योजना तर्जुमा गर्दा यसको बनावटको विविध पक्षहरूको अध्ययन र विश्लेषण हुनु आवश्यक हुन्छ । नेपालमा जनसंख्याको विविध पक्षको तथ्याङ्क प्रत्येक १० वर्षमा हुने राष्ट्रिय जनगणनाको साथै गाउँपालिका स्तरमा घरधुरी सर्वेक्षण मार्फत् समेत प्राप्त हुने गरेको छ । यहाँ गाउँपालिकाको घरधुरी तथ्याङ्क संकलन, २०८१ बाट प्राप्त नतिजाको आधारमा जनसंख्याका विविध पक्षहरूको विश्लेषण गरिएको छ ।</p>
             </div>
             
             <div class="table-section">
-                <h4 class="table-title">तालिका: बुद्धशान्ति गाउँपालिकाको जनसांख्यिकीय सूचकहरू</h4>
+                <h4 class="table-title">तालिका: केराबारी गाउँपालिकाको जनसांख्यिकीय सूचकहरू</h4>
                 <table class="pdf-data-table demographic-summary-table">
                     <thead>
                         <tr>
@@ -164,13 +164,13 @@ class DemographicSummaryProcessor(BaseDemographicsProcessor):
             </div>
 
             <div class="content-paragraph">
-                <p>माथिको तालिकामा बुद्धशान्ति गाउँपालिकाको जनसंख्याको विस्तृत विवरण प्रस्तुत गरिएको छ । घरधुरी तथ्याङ्क संकलन, २०८१ अनुसार यहाँको कुल जनसंख्या {format_nepali_number(data.total_population)} रहेको छ जसमध्ये पुरुष {format_nepali_number(data.population_male)} अर्थात् {format_nepali_percentage(male_percentage)} प्रतिशत, महिला {format_nepali_number(data.population_female)} अर्थात् {format_nepali_percentage(female_percentage)} प्रतिशत र अन्य {format_nepali_number(data.population_other)} जना रहेका छन् । सोही अनुसार लैङ्गिक अनुपात (Sex Ratio) {format_nepali_number(data.sex_ratio)} रहेको छ, जसको अर्थ प्रत्येक १०० जना महिलामा {format_nepali_number(data.sex_ratio)} जना पुरुष रहेको देखाउँछ । जनघनत्व (प्रति वर्ग किलोमिटरमा रहेको जनसंख्या) {format_nepali_number(data.population_density)} जना प्रति वर्ग किलोमिटर रहेको छ । कुल {format_nepali_number(data.total_households)} घरपरिवार रहेको यस गाउँपालिकामा प्रति परिवार औसत {format_nepali_number(data.average_household_size)} जना सदस्य रहेको देखिन्छ । यो नेपालको राष्ट्रिय औसत घरपरिवार आकारसँग तुलना गर्दा {"मध्यम" if data.average_household_size > 4.0 else "न्यून"} रहेको छ ।</p>
+                <p>माथिको तालिकामा केराबारी गाउँपालिकाको जनसंख्याको विस्तृत विवरण प्रस्तुत गरिएको छ । घरधुरी तथ्याङ्क संकलन, २०८१ अनुसार यहाँको कुल जनसंख्या {format_nepali_number(data.total_population)} रहेको छ जसमध्ये पुरुष {format_nepali_number(data.population_male)} अर्थात् {format_nepali_percentage(male_percentage)} प्रतिशत, महिला {format_nepali_number(data.population_female)} अर्थात् {format_nepali_percentage(female_percentage)} प्रतिशत र अन्य {format_nepali_number(data.population_other)} जना रहेका छन् । सोही अनुसार लैङ्गिक अनुपात (Sex Ratio) {format_nepali_number(data.sex_ratio)} रहेको छ, जसको अर्थ प्रत्येक १०० जना महिलामा {format_nepali_number(data.sex_ratio)} जना पुरुष रहेको देखाउँछ । जनघनत्व (प्रति वर्ग किलोमिटरमा रहेको जनसंख्या) {format_nepali_number(data.population_density)} जना प्रति वर्ग किलोमिटर रहेको छ । कुल {format_nepali_number(data.total_households)} घरपरिवार रहेको यस गाउँपालिकामा प्रति परिवार औसत {format_nepali_number(data.average_household_size)} जना सदस्य रहेको देखिन्छ । यो नेपालको राष्ट्रिय औसत घरपरिवार आकारसँग तुलना गर्दा {"मध्यम" if data.average_household_size > 4.0 else "न्यून"} रहेको छ ।</p>
                 
                 <p>उमेर समूहको आधारमा हेर्दा, ०-१४ वर्ष उमेर समूहमा {format_nepali_number(data.population_0_to_14)} जना ({format_nepali_percentage(child_percentage)} प्रतिशत) बालबालिकाहरू छन् । १५-५९ वर्ष उमेर समूहमा {format_nepali_number(data.population_15_to_59)} जना ({format_nepali_percentage(working_age_percentage)} प्रतिशत) कार्यशील उमेरका व्यक्तिहरू छन् । ६० वर्षभन्दा माथिका जेष्ठ नागरिकहरूको संख्या {format_nepali_number(data.population_60_and_above)} जना ({format_nepali_percentage(elderly_percentage)} प्रतिशत) रहेको छ ।</p>
                 
                 <p>गाउँपालिकामा जनसंख्या वृद्धिदर {format_nepali_percentage(data.growth_rate)} रहेको छ । १५ वर्षभन्दा माथि साक्षरता दर {format_nepali_percentage(data.literacy_rate_above_15)} र १५-२४ वर्ष उमेर समूहको साक्षरता दर {format_nepali_percentage(data.literacy_rate_15_to_24)} रहेको छ, जसले शिक्षा क्षेत्रमा उल्लेख्य सुधार देखाउँछ ।</p>
                 
-                <p>यी तथ्याङ्कहरूले बुद्धशान्ति गाउँपालिकाको जनसांख्यिकीय संरचनालाई स्पष्ट पार्छ र स्थानीय विकास योजना निर्माण, संसाधन विनियोजन र सेवा प्रवाहका लागि महत्वपूर्ण आधार प्रदान गर्छ । जनसंख्याको यो विवरणले गाउँपालिकाले आगामी दिनमा गर्नुपर्ने नीतिगत प्राथमिकता र कार्यक्रम निर्धारणमा सहयोग पुर्‍याउनेछ ।</p>
+                <p>यी तथ्याङ्कहरूले केराबारी गाउँपालिकाको जनसांख्यिकीय संरचनालाई स्पष्ट पार्छ र स्थानीय विकास योजना निर्माण, संसाधन विनियोजन र सेवा प्रवाहका लागि महत्वपूर्ण आधार प्रदान गर्छ । जनसंख्याको यो विवरणले गाउँपालिकाले आगामी दिनमा गर्नुपर्ने नीतिगत प्राथमिकता र कार्यक्रम निर्धारणमा सहयोग पुर्‍याउनेछ ।</p>
             </div>
         </div>
         """

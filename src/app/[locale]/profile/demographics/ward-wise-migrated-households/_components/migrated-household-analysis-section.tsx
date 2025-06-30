@@ -75,7 +75,7 @@ export default function MigratedHouseholdAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-migrated-households",
@@ -343,7 +343,7 @@ export default function MigratedHouseholdAnalysisSection({
                 {overallSummary.find(
                   (item) => item.migratedFrom === "ANOTHER_DISTRICT",
                 )
-                  ? `बुद्धशान्ति गाउँपालिकामा ${localizeNumber((((overallSummary.find((item) => item.migratedFrom === "ANOTHER_DISTRICT")?.households || 0) / totalHouseholds) * 100).toFixed(2), "ne")}% आप्रवासित घरपरिवारहरू अन्य जिल्लाबाट आएका छन्।`
+                  ? `केराबारी गाउँपालिकामा ${localizeNumber((((overallSummary.find((item) => item.migratedFrom === "ANOTHER_DISTRICT")?.households || 0) / totalHouseholds) * 100).toFixed(2), "ne")}% आप्रवासित घरपरिवारहरू अन्य जिल्लाबाट आएका छन्।`
                   : "आप्रवासन सम्बन्धी विवरण उपलब्ध छैन।"}
               </p>
             </div>

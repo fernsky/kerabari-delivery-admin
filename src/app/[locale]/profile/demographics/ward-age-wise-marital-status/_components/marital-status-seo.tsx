@@ -66,11 +66,11 @@ export default function MaritalStatusSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Marital Status Demographics of Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Marital Status Demographics of Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Age-wise and ward-wise marital status distribution data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total population of ${localizeNumber(totalPopulation, "ne")} people.`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Marital status demographics",
         "Age-wise marital status",
         "Ward-wise marital status data",

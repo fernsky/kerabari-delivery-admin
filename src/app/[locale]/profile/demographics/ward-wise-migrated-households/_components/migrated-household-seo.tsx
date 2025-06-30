@@ -53,11 +53,11 @@ export default function MigratedHouseholdSEO({
     return {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      name: "Migrated Households in Khajura Rural Municipality (बुद्धशान्ति गाउँपालिका)",
+      name: "Migrated Households in Khajura Rural Municipality (केराबारी गाउँपालिका)",
       description: `Migrated household data across ${wardNumbers.length} wards of Khajura Rural Municipality with a total of ${totalHouseholds.toLocaleString()} migrated households. The most common origin is ${mostCommonMigratedFromEN} with ${mostCommonMigratedFrom?.households.toLocaleString()} households (${mostCommonMigratedFromPercentage}%).`,
       keywords: [
         "Khajura Rural Municipality",
-        "बुद्धशान्ति गाउँपालिका",
+        "केराबारी गाउँपालिका",
         "Migrated households",
         "Migration distribution",
         "Ward-wise migration data",

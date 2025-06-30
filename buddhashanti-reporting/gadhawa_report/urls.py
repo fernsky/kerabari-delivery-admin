@@ -61,6 +61,6 @@ if settings.DEBUG:
         ] + urlpatterns
 
 # Customize admin site
-admin.site.site_header = "बुद्धशान्ति गाउँपालिका - डिजिटल प्रोफाइल प्रतिवेदन"
+admin.site.site_header = "केराबारी गाउँपालिका - डिजिटल प्रोफाइल प्रतिवेदन"
 admin.site.site_title = "buddhashanti Report Admin"
 admin.site.index_title = "प्रतिवेदन व्यवस्थापन"

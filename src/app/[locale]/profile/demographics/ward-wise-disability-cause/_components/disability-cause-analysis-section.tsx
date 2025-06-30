@@ -82,7 +82,7 @@ export default function DisabilityCauseAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-disability-population",
@@ -215,7 +215,7 @@ export default function DisabilityCauseAnalysisSection({
 
       <div className="bg-muted/50 p-4 rounded-lg mt-8">
         <h3 className="text-xl font-medium mb-4">
-          बुद्धशान्ति गाउँपालिकाको अपाङ्गता कारण विश्लेषण
+          केराबारी गाउँपालिकाको अपाङ्गता कारण विश्लेषण
           <span className="sr-only">
             Disability Cause Analysis of Khajura Rural Municipality
           </span>
@@ -235,7 +235,7 @@ export default function DisabilityCauseAnalysisSection({
             }
           >
             <h4 className="font-medium mb-2">
-              बुद्धशान्ति गाउँपालिकाको प्रमुख अपाङ्गता कारण
+              केराबारी गाउँपालिकाको प्रमुख अपाङ्गता कारण
               <span className="sr-only">
                 Main Disability Cause in Khajura Rural Municipality
               </span>

@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fetch data for SEO using tRPC
     const maritalData =
       await api.profile.demographics.wardAgeWiseMaritalStatus.getAll.query();
-    const municipalityName = "बुद्धशान्ति गाउँपालिका"; // Khajura Rural Municipality
+    const municipalityName = "केराबारी गाउँपालिका"; // Khajura Rural Municipality
 
     // Process data for SEO
     const totalPopulation = maritalData.reduce(
@@ -69,16 +69,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
     // Create rich keywords with actual data
     const keywordsNP = [
-      "बुद्धशान्ति गाउँपालिका वैवाहिक जनसंख्या",
-      "बुद्धशान्ति वैवाहिक स्थिति",
-      `बुद्धशान्ति ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[0]]} जनसंख्या`,
+      "केराबारी गाउँपालिका वैवाहिक जनसंख्या",
+      "केराबारी वैवाहिक स्थिति",
+      `केराबारी ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[0]]} जनसंख्या`,
       ...topMaritalStatuses.map(
-        (r) => `${MARITAL_STATUS_NAMES_NP[r]} जनसंख्या बुद्धशान्ति`,
+        (r) => `${MARITAL_STATUS_NAMES_NP[r]} जनसंख्या केराबारी`,
       ),
       "वडा अनुसार वैवाहिक स्थिति",
       "उमेर अनुसार वैवाहिक स्थिति",
       "वैवाहिक स्थिति तथ्याङ्क",
-      `बुद्धशान्ति कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
+      `केराबारी कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")}`,
     ];
 
     const keywordsEN = [
@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ];
 
     // Create detailed description with actual data
-    const descriptionNP = `बुद्धशान्ति गाउँपालिकाको वडा र उमेर अनुसार वैवाहिक स्थिति वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[0]]} (${localizeNumber(maritalCounts[topMaritalStatuses[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[1]]} (${localizeNumber(maritalCounts[topMaritalStatuses[1]].toString(), "ne")}) र ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[2]]} (${localizeNumber(maritalCounts[topMaritalStatuses[2]].toString(), "ne")})। विभिन्न उमेर समूह र वैवाहिक स्थितिको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
+    const descriptionNP = `केराबारी गाउँपालिकाको वडा र उमेर अनुसार वैवाहिक स्थिति वितरण, प्रवृत्ति र विश्लेषण। कुल जनसंख्या ${localizeNumber(totalPopulation.toString(), "ne")} मध्ये ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[0]]} (${localizeNumber(maritalCounts[topMaritalStatuses[0]].toString(), "ne")}) सबैभन्दा ठूलो समूह हो, त्यसपछि ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[1]]} (${localizeNumber(maritalCounts[topMaritalStatuses[1]].toString(), "ne")}) र ${MARITAL_STATUS_NAMES_NP[topMaritalStatuses[2]]} (${localizeNumber(maritalCounts[topMaritalStatuses[2]].toString(), "ne")})। विभिन्न उमेर समूह र वैवाहिक स्थितिको विस्तृत तथ्याङ्क र विजुअलाइजेसन।`;
 
     const descriptionEN = `Ward-wise and age-wise marital status distribution, trends and analysis for Khajura Rural Municipality. Out of a total population of ${totalPopulation}, ${MARITAL_STATUS_NAMES_EN[topMaritalStatuses[0]]} (${maritalCounts[topMaritalStatuses[0]]}) is the largest group, followed by ${MARITAL_STATUS_NAMES_EN[topMaritalStatuses[1]]} (${maritalCounts[topMaritalStatuses[1]]}) and ${MARITAL_STATUS_NAMES_EN[topMaritalStatuses[2]]} (${maritalCounts[topMaritalStatuses[2]]})। Detailed statistics and visualizations of various marital status groups by age.`;
 
@@ -128,7 +128,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback metadata if data fetching fails
     return {
       title:
-        "उमेर अनुसार वैवाहिक स्थिति | बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल",
+        "उमेर अनुसार वैवाहिक स्थिति | केराबारी गाउँपालिका डिजिटल प्रोफाइल",
       description:
         "उमेर समूह अनुसार वैवाहिक स्थितिको वितरण, प्रवृत्ति र विश्लेषण। विस्तृत तथ्याङ्क र विजुअलाइजेसन।",
     };
@@ -351,7 +351,7 @@ export default async function AgeWiseMaritalStatusPage({
               src="/images/marital-status.svg"
               width={1200}
               height={400}
-              alt="उमेर अनुसार वैवाहिक स्थिति - बुद्धशान्ति गाउँपालिका (Age-wise Marital Status - Khajura Rural Municipality)"
+              alt="उमेर अनुसार वैवाहिक स्थिति - केराबारी गाउँपालिका (Age-wise Marital Status - Khajura Rural Municipality)"
               className="w-full h-[250px] object-cover rounded-sm"
               priority
             />
@@ -359,20 +359,20 @@ export default async function AgeWiseMaritalStatusPage({
 
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="scroll-m-20 tracking-tight mb-6">
-              बुद्धशान्ति गाउँपालिकामा उमेर अनुसार वैवाहिक स्थिति
+              केराबारी गाउँपालिकामा उमेर अनुसार वैवाहिक स्थिति
             </h1>
 
             <h2 id="introduction" className="scroll-m-20">
               परिचय
             </h2>
             <p>
-              यस खण्डमा बुद्धशान्ति गाउँपालिकाको विभिन्न वडाहरूमा उमेर समूह
+              यस खण्डमा केराबारी गाउँपालिकाको विभिन्न वडाहरूमा उमेर समूह
               अनुसारको वैवाहिक स्थिति सम्बन्धी विस्तृत तथ्याङ्क प्रस्तुत गरिएको
               छ। यो तथ्याङ्कले सामाजिक संरचना, परिवारको आकार, प्रजनन दर र
               जनसंख्या वृद्धि जस्ता पक्षहरूलाई प्रतिबिम्बित गर्दछ।
             </p>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न उमेर समूहका व्यक्तिहरूको वैवाहिक
+              केराबारी गाउँपालिकामा विभिन्न उमेर समूहका व्यक्तिहरूको वैवाहिक
               स्थितिको जानकारीले सामाजिक सुरक्षा, स्वास्थ्य, शिक्षा र अन्य
               कल्याणकारी कार्यक्रमहरू निर्धारण गर्न महत्वपूर्ण आधार प्रदान
               गर्दछ। कुल जनसंख्या{" "}
@@ -397,7 +397,7 @@ export default async function AgeWiseMaritalStatusPage({
               वैवाहिक स्थितिको समग्र वितरण
             </h2>
             <p>
-              बुद्धशान्ति गाउँपालिकामा विभिन्न वैवाहिक स्थितिमा रहेका
+              केराबारी गाउँपालिकामा विभिन्न वैवाहिक स्थितिमा रहेका
               व्यक्तिहरूको कुल जनसंख्या निम्नानुसार छ:
             </p>
           </div>

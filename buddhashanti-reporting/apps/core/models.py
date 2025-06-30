@@ -57,7 +57,7 @@ class WardModel(BaseModel):
     ward_number = models.IntegerField(
         verbose_name=_("वडा नं"),  # Ward Number
         help_text=_(
-            "बुद्धशान्ति गाउँपालिकाको वडा नम्बर (१-८)"
+            "केराबारी गाउँपालिकाको वडा नम्बर (१-८)"
         ),  # Ward number of buddhashantiRural Municipality (1-8)
     )
 

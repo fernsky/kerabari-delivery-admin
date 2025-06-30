@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "municipality_name",
-                    models.CharField(default="बुद्धशान्ति गाउँपालिका", max_length=200),
+                    models.CharField(default="केराबारी गाउँपालिका", max_length=200),
                 ),
                 (
                     "municipality_name_english",

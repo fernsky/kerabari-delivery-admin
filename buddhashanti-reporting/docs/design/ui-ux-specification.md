@@ -176,9 +176,9 @@
 ```html
 <header class="main-header">
   <div class="header-brand">
-    <img src="logo.png" alt="बुद्धशान्ति नगरपालिका" class="logo" />
+    <img src="logo.png" alt="केराबारी नगरपालिका" class="logo" />
     <div class="brand-text">
-      <h1 class="municipality-name nepali-text">बुद्धशान्ति नगरपालिका</h1>
+      <h1 class="municipality-name nepali-text">केराबारी नगरपालिका</h1>
       <p class="tagline">डिजिटल प्रोफाइल प्रतिवेदन</p>
     </div>
   </div>
@@ -261,7 +261,7 @@
     margin: 2.5cm 2cm 2cm 2cm;
 
     @top-center {
-      content: "बुद्धशान्ति नगरपालिका - डिजिटल प्रोफाइल प्रतिवेदन";
+      content: "केराबारी नगरपालिका - डिजिटल प्रोफाइल प्रतिवेदन";
       font-size: 10pt;
       color: #666;
     }

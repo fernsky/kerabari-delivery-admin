@@ -131,7 +131,7 @@ class RoadStatusProcessor(BaseInfrastructureProcessor):
 
         # Overall summary
         analysis_parts.append(
-            f"बुद्धशान्ति गाउँपालिकामा कुल {format_nepali_number(total_households)} घरपरिवारको सडकको अवस्था विश्लेषण गर्दा विभिन्न प्रकारका सडक सुविधा उपलब्ध रहेको देखिन्छ।"
+            f"केराबारी गाउँपालिकामा कुल {format_nepali_number(total_households)} घरपरिवारको सडकको अवस्था विश्लेषण गर्दा विभिन्न प्रकारका सडक सुविधा उपलब्ध रहेको देखिन्छ।"
         )
 
         # Road quality analysis

@@ -330,7 +330,7 @@ class LanguageTypeChoice(models.TextChoices):
     JONGKHA = "JONGKHA", _("जोङ्खा")
     BANKARIYA = "BANKARIYA", _("बनकरिया")
     KAIKE = "KAIKE", _("काइके")
-    GADHWALI = "GADHWALI", _("बुद्धशान्तिली")
+    GADHWALI = "GADHWALI", _("केराबारीली")
     FRECHN = "FRECHN", _("फ्रेन्च/फ्रान्सेली")
     MIJO = "MIJO", _("मिजो")
     KUKI = "KUKI", _("कुकी")

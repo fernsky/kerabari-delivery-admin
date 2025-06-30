@@ -76,7 +76,7 @@ export default function BirthplaceHouseholdAnalysisSection({
     if (document && document.body) {
       document.body.setAttribute(
         "data-municipality",
-        "Khajura Rural Municipality / बुद्धशान्ति गाउँपालिका",
+        "Khajura Rural Municipality / केराबारी गाउँपालिका",
       );
       document.body.setAttribute(
         "data-total-households",
@@ -344,7 +344,7 @@ export default function BirthplaceHouseholdAnalysisSection({
                 {overallSummary.find(
                   (item) => item.birthPlace === "SAME_MUNICIPALITY",
                 )
-                  ? `बुद्धशान्ति गाउँपालिकामा ${localizeNumber((((overallSummary.find((item) => item.birthPlace === "SAME_MUNICIPALITY")?.households || 0) / totalHouseholds) * 100).toFixed(2), "ne")}% घरपरिवारहरूको जन्मस्थान यहि गाउँपालिकामा रहेको छ।`
+                  ? `केराबारी गाउँपालिकामा ${localizeNumber((((overallSummary.find((item) => item.birthPlace === "SAME_MUNICIPALITY")?.households || 0) / totalHouseholds) * 100).toFixed(2), "ne")}% घरपरिवारहरूको जन्मस्थान यहि गाउँपालिकामा रहेको छ।`
                   : "जन्मस्थान सम्बन्धी विवरण उपलब्ध छैन।"}
               </p>
             </div>

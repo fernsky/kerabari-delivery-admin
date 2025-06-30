@@ -83,7 +83,7 @@ class Command(BaseCommand):
             {
                 "ward_number": 4,
                 "settlement_areas": [
-                    "अजबुद्धशान्ति",
+                    "अजकेराबारी",
                     "पर्सेनी",
                     "पर्सा",
                     "कतियान गाउँ",
@@ -133,7 +133,7 @@ class Command(BaseCommand):
                 "ward_number": 6,
                 "settlement_areas": [
                     "मनिकापुर",
-                    "बुद्धशान्ति",
+                    "केराबारी",
                     "बालापुर",
                     "खबरी",
                     "हासीपुर",

@@ -83,7 +83,7 @@ export default function WardWiseCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकाको वडागत जनसंख्या वितरण
+            केराबारी गाउँपालिकाको वडागत जनसंख्या वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             कुल जनसंख्या:{" "}
@@ -154,10 +154,10 @@ export default function WardWiseCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकाको वडागत लिङ्ग अनुपात
+            केराबारी गाउँपालिकाको वडागत लिङ्ग अनुपात
           </h3>
           <p className="text-sm text-muted-foreground">
-            बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको पुरुष-महिला अनुपात (प्रति
+            केराबारी गाउँपालिकाको प्रत्येक वडाको पुरुष-महिला अनुपात (प्रति
             १०० पुरुषमा महिलाको संख्या)
           </p>
         </div>
@@ -217,10 +217,10 @@ export default function WardWiseCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकाको वडागत घरधुरी र परिवार संख्या
+            केराबारी गाउँपालिकाको वडागत घरधुरी र परिवार संख्या
           </h3>
           <p className="text-sm text-muted-foreground">
-            बुद्धशान्ति गाउँपालिकाको प्रत्येक वडाको घरधुरी संख्या र औसत परिवार
+            केराबारी गाउँपालिकाको प्रत्येक वडाको घरधुरी संख्या र औसत परिवार
             संख्या
           </p>
         </div>

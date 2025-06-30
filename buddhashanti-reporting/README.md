@@ -1,8 +1,8 @@
-# बुद्धशान्ति गाउँपालिका डिजिटल प्रोफाइल प्रतिवेदन प्रणाली
+# केराबारी गाउँपालिका डिजिटल प्रोफाइल प्रतिवेदन प्रणाली
 
 # buddhashanti Rural Municipality Digital Profile Report System
 
-A comprehensive Django-based system for creating and managing digital profile reports for buddhashanti Rural Municipality (बुद्धशान्ति गाउँपालिका), jhapa District, Lumbini Province, Nepal.
+A comprehensive Django-based system for creating and managing digital profile reports for buddhashanti Rural Municipality (केराबारी गाउँपालिका), jhapa District, Lumbini Province, Nepal.
 
 ## 🌟 Features
 
@@ -223,5 +223,5 @@ For technical support or questions about the system:
 
 ---
 
-**विकसित**: बुद्धशान्ति गाउँपालिकाको लागि डिजिटल प्रोफाइल प्रतिवेदन प्रणाली  
+**विकसित**: केराबारी गाउँपालिकाको लागि डिजिटल प्रोफाइल प्रतिवेदन प्रणाली  
 **Developed**: Digital Profile Report System for buddhashanti Rural Municipality

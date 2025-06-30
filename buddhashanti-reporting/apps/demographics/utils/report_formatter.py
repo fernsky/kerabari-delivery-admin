@@ -18,7 +18,7 @@ class ReligionReportFormatter:
     """Generates formal report content for religion demographics"""
 
     def __init__(self):
-        self.municipality_name = "बुद्धशान्ति गाउँपालिका"
+        self.municipality_name = "केराबारी गाउँपालिका"
 
     def generate_formal_report(self, religion_data):
         """Generate complete formal report content as coherent analysis"""

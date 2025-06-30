@@ -83,7 +83,7 @@ class PDFGeneratorMixin:
 
         # Build content
         content = []
-        content.append(Paragraph("बुद्धशान्ति गाउँपालिका - पूर्ण प्रतिवेदन", styles["Title"]))
+        content.append(Paragraph("केराबारी गाउँपालिका - पूर्ण प्रतिवेदन", styles["Title"]))
         content.append(Spacer(1, 12))
 
         # Add basic content
@@ -105,7 +105,7 @@ class GenerateFullPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name = "केराबारी गाउँपालिका"
         municipality_name_english = "buddhashanti Rural Municipality"
 
         # Get all data
@@ -154,7 +154,7 @@ class GenerateCategoryPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name = "केराबारी गाउँपालिका"
         municipality_name_english = "buddhashantiRural Municipality"
 
         publication_settings = self.get_publication_settings()
@@ -201,7 +201,7 @@ class GenerateSectionPDFView(PDFGeneratorMixin, TemplateView):
         track_download(request, "pdf")
 
         # Municipality name - make dynamic
-        municipality_name = "बुद्धशान्ति गाउँपालिका"
+        municipality_name = "केराबारी गाउँपालिका"
         municipality_name_english = "buddhashantiRural Municipality"
 
         publication_settings = self.get_publication_settings()

@@ -138,7 +138,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 6,
-                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
+                "ward_name": "केराबारी(१,२,३,४,५)",
                 "year": 2078,
                 "total_population": 7847,
                 "male_population": 3819,
@@ -159,7 +159,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 7,
-                "ward_name": "बुद्धशान्ति(६,७,८,९)",
+                "ward_name": "केराबारी(६,७,८,९)",
                 "year": 2078,
                 "total_population": 6111,
                 "male_population": 2925,
@@ -306,7 +306,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 6,
-                "ward_name": "बुद्धशान्ति(१,२,३,४,५)",
+                "ward_name": "केराबारी(१,२,३,४,५)",
                 "year": 2081,
                 "total_population": 8069,
                 "male_population": 3926,
@@ -327,7 +327,7 @@ class Command(BaseCommand):
             },
             {
                 "ward_number": 7,
-                "ward_name": "बुद्धशान्ति(६,७,८,९)",
+                "ward_name": "केराबारी(६,७,८,९)",
                 "year": 2081,
                 "total_population": 6285,
                 "male_population": 3007,

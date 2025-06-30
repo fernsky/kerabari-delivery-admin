@@ -34,7 +34,7 @@ def quick_test():
     )[:2]
 
     context = {
-        "municipality_name": "बुद्धशान्ति गाउँपालिका",
+        "municipality_name": "केराबारी गाउँपालिका",
         "categories": categories,
         "figures": [],
         "tables": [],

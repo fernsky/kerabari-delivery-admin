@@ -502,7 +502,7 @@ class AgeGenderProcessor(BaseDemographicsProcessor, SimpleChartProcessor):
 
             # Overall demographic overview
             analysis_parts.append(
-                f"बुद्धशान्ति गाउँपालिकामा रहेका कूल {format_nepali_number(total_pop)} जनसंख्या मध्ये "
+                f"केराबारी गाउँपालिकामा रहेका कूल {format_nepali_number(total_pop)} जनसंख्या मध्ये "
                 f"{format_nepali_number(total_male)} पुरुष ({format_nepali_percentage(male_pct)}%), "
                 f"{format_nepali_number(total_female)} जना महिला ({format_nepali_percentage(female_pct)}%)"
             )

@@ -71,7 +71,7 @@ export default function ReligionCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकामा धर्म अनुसार जनसंख्या वितरण
+            केराबारी गाउँपालिकामा धर्म अनुसार जनसंख्या वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             कुल जनसंख्या:{" "}
@@ -213,7 +213,7 @@ export default function ReligionCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकाको वडा अनुसार धर्म वितरण
+            केराबारी गाउँपालिकाको वडा अनुसार धर्म वितरण
           </h3>
           <p className="text-sm text-muted-foreground">
             वडा र धर्म अनुसार जनसंख्या वितरण
@@ -248,7 +248,7 @@ export default function ReligionCharts({
 
         <div className="border-b px-4 py-3">
           <h3 className="text-xl font-semibold" itemProp="headline">
-            बुद्धशान्ति गाउँपालिकाको वडा अनुसार विस्तृत धार्मिक विश्लेषण
+            केराबारी गाउँपालिकाको वडा अनुसार विस्तृत धार्मिक विश्लेषण
           </h3>
           <p className="text-sm text-muted-foreground">
             प्रत्येक वडाको विस्तृत धार्मिक संरचना
